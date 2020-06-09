@@ -1,22 +1,25 @@
 package kr.co.lms.admin;
 
-import java.util.Locale;
+
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminController {
 
-	@RequestMapping(value = "admin", method = RequestMethod.GET)
-	public String admin(Locale locale, Model model) {
+	@RequestMapping(value="/admin", method=RequestMethod.GET)
+	public String admin() {
 		
 		return "admin/login/adminLogin";
 	}
 	
-	
-	
+	@RequestMapping(value="/adminJoin", method=RequestMethod.GET)
+	public String adminJoin() {
+		
+		return "admin/login/adminJoin";
+	}
 	
 }
