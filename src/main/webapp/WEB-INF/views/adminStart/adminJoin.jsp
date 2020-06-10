@@ -11,6 +11,10 @@
 
     <!-- Tailwind -->
 	<link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
+	
+	
+	<!-- base -->
+	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -27,7 +31,7 @@
         <div class="w-full md:w-1/2 flex flex-col">
  			<!-- 로고 -->       
             <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
-                <a href="#" class="bg-brand-500 text-white font-bold text-xl p-4">Logo</a>
+                <a href="#" class="bg-black text-white font-bold text-xl p-4 overflow-hidden"><img id="logoImg" src="<%=projectPath %>/img/educamp.png"/></a> 
             </div>
             <!-- 로고 end -->
 

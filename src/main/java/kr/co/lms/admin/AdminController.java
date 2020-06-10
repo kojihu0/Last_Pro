@@ -22,4 +22,9 @@ public class AdminController {
 		return "adminStart/adminJoin";
 	}
 	
+	@RequestMapping(value="/admin/adminMain")
+	public String adminMain() {
+		
+		return "admin/adminMain";
+	}
 }

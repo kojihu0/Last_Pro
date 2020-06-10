@@ -1,0 +1,45 @@
+[{
+    "_id": 1,
+    "title": "거래처 미팅",
+    "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
+    "start": "2019-05-07T09:30",
+    "end": "2019-05-07T15:00",
+    "type": "카테고리1",
+    "username": "원장",
+    "backgroundColor": "#D25565",
+    "textColor": "#ffffff",
+    "allDay": false
+  }, {
+    "_id": 2,
+    "title": "치과예약",
+    "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
+    "start": "2019-05-01T12:30",
+    "end": "2019-05-01T15:30",
+    "type": "카테고리1",
+    "username": "이학송",
+    "backgroundColor": "#9775fa",
+    "textColor": "#ffffff",
+    "allDay": false
+  }, {
+    "_id": 3,
+    "title": "철수 생일",
+    "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
+    "start": "2019-05-12",
+    "end": "2019-05-12",
+    "type": "카테고리2",
+    "username": "김영권",
+    "backgroundColor": "#ffa94d",
+    "textColor": "#ffffff",
+    "allDay": true
+  }, {
+    "_id": 4,
+    "title": "멜론 만기",
+    "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
+    "start": "2019-05-06",
+    "end": "2019-05-06",
+    "type": "카테고리2",
+    "username": "정진범",
+    "backgroundColor": "#74c0fc",
+    "textColor": "#ffffff",
+    "allDay": true
+  }]
