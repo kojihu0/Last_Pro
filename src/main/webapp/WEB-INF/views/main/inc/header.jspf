@@ -13,17 +13,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link href="<%=ctx %>/css/tailwind.css" rel="stylesheet" type="text/css"/>
-<link href="<%=ctx %>/css/slick-theme.css" rel="stylesheet" type="text/css"/>
 <link href="<%=ctx %>/css/slick.css" rel="stylesheet" type="text/css"/>
+<link href="<%=ctx %>/css/slick-theme.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="<%=ctx %>/css/profile.css" type="text/css">
-<script src="<%=request.getContextPath() %>/js/profile.js" type="text/javascript"></script>
+<script src="<%=ctx %>/js/profile.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="<%=ctx %>/js/slick.min.js" type="text/javascript"></script>
 <link href="<%=ctx %>/css/base.css" rel="stylesheet" type="text/css"/>
+<script src="<%=ctx %>/js/common.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="site-wrap">
-	<header id="site-header" class="border-b border-solid border-gray flex items-center relative">
+	<header id="site-header" class="border-b border-solid border-gray flex items-center absolute z-50 w-full">
 		<div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 			<div id="siteLogo" class="flex-shrink-0 w-1/4"> 
 				<a href="<%=ctx %>"><img class="w-48" src="<%=ctx %>/img/logo.png"></a>	
