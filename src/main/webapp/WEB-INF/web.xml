@@ -28,7 +28,8 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<!-- POST 방식 접속에 대한 한글 인코딩(UTF-8)  -->
+	
+	<!-- POST방식 접속에 대한 한글인코딩 -->
 	<filter>
 		<description></description>
 		<display-name>SpringEncodeFilter</display-name>
@@ -45,7 +46,21 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>SpringEncodeFilter</filter-name>
-		<url-pattern>/*</url-pattern>	
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- POST 방식 접속에 대한 한글 인코딩(UTF-8)  -->
+	<!-- POST방식 접속에 대한 한글인코딩 -->
+	
+	<!-- include -->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/home.jsp</url-pattern>
+			<include-prelude>/WEB-INF/views/main/inc/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/main/inc/footer.jspf</include-coda>
+		</jsp-property-group>
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/main/*</url-pattern>
+			<include-prelude>/WEB-INF/views/main/inc/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/views/main/inc/footer.jspf</include-coda>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>
