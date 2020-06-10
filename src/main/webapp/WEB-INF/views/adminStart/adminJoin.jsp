@@ -35,7 +35,7 @@
                 <p class="text-center text-3xl">Join Us.</p>
                
                	<!-- form start .POST 방식 -->
-                <form class="flex flex-col pt-3 md:pt-8" method="post" action="adminJoinOk">
+                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/adminJoinOk">
                     <!-- 이름 -->
                     <div class="flex flex-col pt-4">
                         <label for="adminName" class="text-lg">Name</label>
@@ -44,7 +44,7 @@
 					<!-- 이름 end -->
 					<!-- 아이디 -->
                     <div class="flex flex-col pt-4">
-                        <label for="adminId" class="text-lg">Email</label>
+                        <label for="adminId" class="text-lg">Id</label>
                         <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
     				<!-- 아이디  end-->
@@ -64,10 +64,11 @@
                 </form>
                 <!-- form end -->
                 
-                <!-- 로그인 폼으로 .GET 방식 -->
+                <!-- 로그인 폼으로 .GET 방식 --> 
                 <div class="text-center pt-12 pb-12">
                     <p>Already have an account? <a href="<%=projectPath %>/admin" class="underline font-semibold">Log in here.</a></p>
                 </div>
+                <!-- 로그인 폼으로 end -->
             </div>
 
         </div>

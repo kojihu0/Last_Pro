@@ -13,13 +13,13 @@ public class AdminController {
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
 	public String admin() {
 		
-		return "admin/login/adminLogin";
+		return "adminStart/adminLogin";
 	}
 	
-	@RequestMapping(value="/adminJoin", method=RequestMethod.GET)
+	@RequestMapping(value="/adminStart/adminJoin", method=RequestMethod.GET)
 	public String adminJoin() {
 		
-		return "admin/login/adminJoin";
+		return "adminStart/adminJoin";
 	}
 	
 }

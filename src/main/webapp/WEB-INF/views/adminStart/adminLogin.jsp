@@ -32,7 +32,7 @@
                 <p class="text-center text-3xl">Welcome!</p>
                  
                 <!-- loginform start -->
-                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/admin/loginOk">
+                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/loginOk">
                     <div class="flex flex-col pt-4">
                         <label for="adminId" class="text-lg">Id</label>
                         <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
@@ -46,7 +46,7 @@
  				<!-- loginform end -->               
                 <!-- 회원가입 링크 start-->
                 <div class="text-center pt-12 pb-12">
-                    <p>Don't have an account? <a href="<%=projectPath %>/adminJoin" class="underline font-semibold">Register here.</a></p>
+                    <p>Don't have an account? <a href="<%=projectPath %>/adminStart/adminJoin" class="underline font-semibold">Register here.</a></p>
                 </div>
                 <!-- 회원가입 링크 end -->
             </div>
