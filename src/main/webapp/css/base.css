@@ -12,3 +12,60 @@ html, body, .site-wrap{
 #footer {
   flex-shrink: 0;
 }
+#mainSlider{
+	opacity: 0.8;
+}
+#mainSlider .slick-list,
+#mainSlider .slick-track {
+	height:100vh;
+}
+.main-slide-section{
+	background-color: #212120;
+}
+.main-slide-section .slide-arrow{
+	width:50px;
+	height:50px;
+	position: absolute;
+	top:50%;
+	background-color: #3a3939;
+	color:#fff;
+	border-radius: 50%;
+}
+
+.main-slide-section .arrow-prev{left:10px}
+.main-slide-section .arrow-next{right:10px}
+
+.main-slide-section .main-slide-cols img{
+	width:61px;
+}
+
+.carou-btn .slide-arrow{
+	font-size: 12px;
+	width:26px;
+	height:26px;
+}
+
+.register-section:before{
+	content:"";
+	position:absolute;
+	background: rgba(0,0,0,.3);
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+.event-section .view-all{
+	height:26px;
+	line-height:24px;
+}
+
+.news-section:before{
+	content:"";
+	position:absolute;
+	background: rgba(255,255,255,.5);
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
