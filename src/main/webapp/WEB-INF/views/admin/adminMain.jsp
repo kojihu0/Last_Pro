@@ -14,7 +14,6 @@
 	<script src="/lms/js/jquery-3.4.1.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- fullCalendar -->
-
     <link rel="stylesheet" href="<%=projectPath %>/fullCalendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="<%=projectPath %>/fullCalendar/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='<%=projectPath %>/fullCalendar/vendor/css/select2.min.css' />

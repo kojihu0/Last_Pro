@@ -27,4 +27,9 @@ public class AdminController {
 		
 		return "admin/adminMain";
 	}
+	
+	@RequestMapping(value="/admin/adminManagementInfo")
+	public String adminManagementInfo() { 
+		return "admin/adminManagementInfo";
+	}
 }
