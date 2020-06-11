@@ -27,7 +27,7 @@
         <!-- Login Section --> 
         <div class="w-full md:w-1/2 flex flex-col">
             <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-                <a href="#" class="bg-black text-white font-bold text-xl p-4"><img id="logoImg" src="<%=projectPath %>/img/educamp.png"/></a> 
+                <a href="#" class="text-white font-bold text-xl p-4"><img id="logoImg" src="<%=projectPath %>/img/educamp.png"/></a> 
             </div>
 
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
