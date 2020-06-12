@@ -37,16 +37,16 @@
 			<nav id="site-navigation" class="flex items-center justify-between flex-wrap flex-grow w-3/4">
 				<ul class="nav-menu flex items-center flex-wrap flex-grow justify-end block text-lg roboto-slab font-bold pr-16">
 					<li class="menu-item text-center has-child flex items-center">	
-						<a href="#" class="inline-block py-8 px-4">ABOUT US</a>
+						<a href="<%=ctx %>/aboutUs" class="inline-block py-8 px-4">ABOUT US</a>
 					</li>
 					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="#" class="inline-block py-8 px-4">COURSES</a>
+						<a href="<%=ctx %>/course/courseList" class="inline-block py-8 px-4">COURSES</a>
 					</li>
 					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="#" class="inline-block py-8 px-4">NEWS</a>
+						<a href="<%=ctx %>/news/news" class="inline-block py-8 px-4">NEWS</a>
 					</li>
 					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="#" class="inline-block py-8 px-4">CONTACT</a>
+						<a href="<%=ctx %>/contact" class="inline-block py-8 px-4">CONTACT</a>
 					</li>
 					<li class="menu-item text-center flex items-center ml-2"><a href="#"  data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>
 				</ul>
