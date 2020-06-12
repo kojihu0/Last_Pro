@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/tailwind.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/profile.css" type="text/css">
+<script src="<%=request.getContextPath()%>/js/profile.js"></script>
+</head>
+<body>
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+		<div id="bannerText">
+			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
+		</div>
+	</div>
+	<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
+		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Find Id&Password</span>
+		<div id="hr"class="my-4 border-t border-solid"></div>
+		
+		
+		<div class="flex">
+			<form  class="w-1/2">
+			<div class="w-1/3 m-0 mb-4 m-auto "><p class="font-bold text-2xl">Get Your Id</p></div>
+				<div class="w-full">
+					<div>
+						<div class="w-1/3 m-0 m-auto" >
+							<input type="text" placeholder="USERNAME" class="focus:outline-none  bg-gray-200 focus:bg-white border-brand-500 py-2 px-3  border-2 border " name="username"/><br/>
+						</div>
+						<div class="w-1/3 m-0 m-auto mt-4" >
+							<input type="text" placeholder="EMAIL" class="focus:outline-none border-brand-500 bg-gray-200 focus:bg-white py-2 px-3 border-2 border " name="useremail"/>
+						</div>
+						<div class="text-center m-0 m-auto h-20 mt-8" >
+							<input type="submit" class="focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="아이디찾기"/>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<form class="w-1/2 border-l border-1 mb-2">
+			<div class="text-center m-0 mb-4 m-auto "><p class="font-bold text-2xl">Get Your Password</p></div>
+				<div class="w-full">
+					<div>
+						<div class="w-1/3 m-0 m-auto" >
+							<input type="text" placeholder="USERNAME" class="focus:outline-none  bg-gray-200 focus:bg-white border-brand-500 py-2 px-3  border-2 border" name="username"/><br/>
+						</div>
+						<div class="w-1/3 m-0 m-auto mt-4" >
+							<input type="text" placeholder="USERID" class="focus:outline-none  bg-gray-200 focus:bg-white border-brand-500 py-2 px-3  border-2 border" name="userid"/><br/>
+						</div>
+						<div class="w-1/3 m-0 m-auto mt-4" >
+							<input type="text" placeholder="EMAIL" class="focus:outline-none border-brand-500 bg-gray-200 focus:bg-white py-2 px-3 border-2 border" name="useremail"/>
+						</div>
+						<div class="text-center m-0 m-auto h-20 mt-8" >
+							<input type="submit" class="focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="패스워드찾기"/>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
