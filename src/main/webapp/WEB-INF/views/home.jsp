@@ -3,21 +3,33 @@
 <div class="main-slide-section w-full h-screen relative">
 	<div id="mainSlider" class="h-full text-white">
 		<div class="slide-item bg-cover bg-center h-full" style="background-image:url('<%=ctx %>/img/main1.jpg')">
-			<div class="w-full max-w-screen-xl my-0 mx-auto h-full flex flex-col items-center relative">
-				<div class="tw-el tw-left">
+			<div class="w-full max-w-screen-xl h-full my-0 mx-auto relative">
+				<div class="slide_txt absolute">
 					<h1 class="text-6xl">Best For Education</h1>
 					<p>노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
 				</div>
 			</div>
 		</div>
 		<div class="slide-item bg-cover bg-center h-full opacity-75" style="background-image:url('<%=ctx %>/img/main2.jpg')">
+			<div class="w-full max-w-screen-xl h-full my-0 mx-auto relative">
+				<div class="slide_txt absolute">
+					<h1 class="text-6xl">Best For Education</h1>
+					<p>노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
+				</div>
+			</div>
 		</div>
 		<div class="slide-item bg-cover bg-center h-full opacity-75" style="background-image:url('<%=ctx %>/img/main3.jpg')">
+			<div class="w-full max-w-screen-xl h-full my-0 mx-auto relative">
+				<div class="slide_txt absolute">
+					<h1 class="text-6xl">Best For Education</h1>
+					<p>노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="w-full absolute bottom-0 main-slide-cols mb-16">
-		<div class="w-full max-w-screen-xl flex my-0 mx-auto text-white opacity-75">
-			<div class="w-1/3 bg-black p-6 mr-2 flex col">
+		<div class="w-full max-w-screen-xl flex my-0 mx-auto text-white">
+			<div class="w-1/3 bg-black p-6 mr-2 flex opacity-75 duration-300 hover:opacity-100 col">
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
@@ -25,7 +37,7 @@
 					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
-			<div class="w-1/3 bg-black p-6 mr-2 flex col">
+			<div class="w-1/3 bg-black p-6 mr-2 flex opacity-75 duration-300 hover:opacity-100 col">
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
@@ -33,7 +45,7 @@
 					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
-			<div class="w-1/3 bg-black p-6 flex col">
+			<div class="w-1/3 bg-black p-6 flex opacity-75 duration-300 hover:opacity-100 col">
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
@@ -49,7 +61,7 @@
 <!-- 메인슬라이더 -->
 <!-- 베스트강의 -->
 <div class="best-section w-full max-w-screen-xl my-0 mx-auto py-16">
-	<div class="flex justify-between items-end relative pb-4 mb-10">
+	<div class="flex justify-between items-end relative pb-4 mb-10 fadeRight">
 		<div>
 			<h1 class="roboto-slab font-bold">POPULAR COURSES</h1>
 			<p>현재 인기있는 강좌입니다</p>
@@ -60,7 +72,7 @@
 		</div>
 		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
-	<div id="courseCarousel" class="-mx-4">
+	<div id="courseCarousel" class="-mx-4 fadeUp">
 		<div class="course-item px-4 text-center"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
@@ -149,11 +161,11 @@
 <div class="register-section w-full bg-cover bg-center relative" style="background-image:url('<%=ctx %>/img/register.jpg')">
 	<div class="w-full max-w-screen-xl my-0 mx-auto py-16">
 		<div class="w-full flex items-center">
-			<div class="w-2/3 relative pr-12 text-white">
+			<div class="w-2/3 relative pr-12 text-white fadeRight">
 				<p class="text-lg">인간의 거선의 속잎나고, 방황하였으며, 청춘에서만 되는 곧 두기 있다.<br>청춘은 행복스럽고 이상을 노년에게서 어디 대고, 힘있다.</p>
 				<h1 class="roboto-slab font-bold text-6xl">REGISTER NOW</h1>
 			</div>
-			<div class="w-1/3 bg-white relative">
+			<div class="w-1/3 bg-white relative fadeLeft">
 				<div class="bg-brand-500 text-white text-center py-6">
 					<h1>간편 회원가입</h1>
 				</div>
@@ -172,7 +184,7 @@
 </div>
 <!-- 이벤트 -->
 <div class="event-section w-full max-w-screen-xl my-16 mx-auto">
-	<div class="flex justify-between items-end relative pb-4 mb-10">
+	<div class="flex justify-between items-end relative pb-4 mb-10 fadeRight">
 		<div>
 			<h1 class="roboto-slab font-bold">EVENTS</h1>
 			<p>현재 인기있는 강좌입니다</p>
@@ -181,7 +193,7 @@
 		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
 	<div>
-		<div class="event-row flex border-t border-gray-300 py-12"><!-- event-row -->
+		<div class="event-row flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
 			<div class="event-date flex-shrink-0 text-brand-500 text-center mr-12">
 				<div class="date text-6xl font-bold">11</div>
 				<div class="month">06월</div>
@@ -196,7 +208,7 @@
 				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
 			</div>
 		</div><!-- event-row -->
-		<div class="event-row flex border-t border-gray-300 py-12"><!-- event-row -->
+		<div class="event-row flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
 			<div class="event-date flex-shrink-0 text-brand-500 text-center mr-12">
 				<div class="date text-6xl font-bold">11</div>
 				<div class="month">06월</div>
@@ -211,7 +223,7 @@
 				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
 			</div>
 		</div><!-- event-row -->
-		<div class="event-row flex border-t border-gray-300 py-12"><!-- event-row -->
+		<div class="event-row flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
 			<div class="event-date flex-shrink-0 text-brand-500 text-center mr-12">
 				<div class="date text-6xl font-bold">11</div>
 				<div class="month">06월</div>
@@ -232,8 +244,8 @@
 <!-- 새소식 -->
 <div class="news-section w-full py-16 bg-cover relative" style="background-image:url('<%=ctx %>/img/writing.jpg');">
 	<div class="w-full max-w-screen-xl my-0 mx-auto">
-		<h1 class="roboto-slab text-white font-bold relative">LATEST NEWS</h1>
-		<div class="flex justify-between items-end text-white relative pb-4 mb-10">
+		<h1 class="roboto-slab text-white font-bold relative fadeRight">LATEST NEWS</h1>
+		<div class="flex justify-between items-end text-white relative pb-4 mb-10 fadeRight">
 			<div>새 소식을 알려드립니다.</div>
 			<div class="carou-btn">
 				<button class="slide-arrow arrow-prev outline-none border border-white duration-300 hover:border-brand-500 hover:text-brand-500"><i class="xi-angle-left"></i></button>
@@ -241,7 +253,7 @@
 			</div>
 			<span class="heading-line bg-white absolute bottom-0 left-0"></span>
 		</div>
-		<div id="newsCarousel" class="-mx-4">
+		<div id="newsCarousel" class="-mx-4 fadeUp">
 			<div class="news-item px-4"><!-- news-item -->
 				<div class="news-img overflow-hidden">
 					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
