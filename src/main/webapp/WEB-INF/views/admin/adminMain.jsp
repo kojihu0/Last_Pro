@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 <%
@@ -8,22 +8,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    
     <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
 	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	
 	<script src="/lms/js/jquery-3.4.1.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 	<!-- fullCalendar -->
     <link rel="stylesheet" href="<%=projectPath %>/fullCalendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="<%=projectPath %>/fullCalendar/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='<%=projectPath %>/fullCalendar/vendor/css/select2.min.css' />
     <link rel="stylesheet" href='<%=projectPath %>/fullCalendar/vendor/css/bootstrap-datetimepicker.min.css' />
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
     <link rel="stylesheet" href="<%=projectPath %>/fullCalendar/css/main.css">
-		
 	<!-- end -->			
 		
 	<script type="text/javascript"  src="<%=projectPath %>/js/adminJs.js"></script>        	
@@ -34,7 +34,12 @@
 </head>
 <body> 
 <!--  -->    
-	<div class="bg-gray-100 font-sans leading-normal tracking-normal">	
+	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
+		
+		<div class="text-xl p-3 mx-16 ">  
+			<i class="xi-school"></i>&nbsp;HOME
+		</div>
+		
 	    <!--Container-->
 	    <div class="container w-full mx-auto pt-20">
 	        <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-grey-darkest leading-normal">
@@ -46,8 +51,8 @@
 	                            <div class="flex-shrink pr-4">
 	                                <div class="rounded p-3 bg-green-dark"><i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
 	                            </div>
-	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">Total Revenue</h5>
+	                            <div class="flex-1 text-right md:text-center"> 
+	                               <div class="bg-info-300"><h5 class="bg-info-300 uppercase text-grey">Total Revenue</h5></div> 
 	                                <h3 class="text-3xl">$3249 <span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
 	                            </div>
 	                        </div>
@@ -62,7 +67,7 @@
 	                                <div class="rounded p-3 bg-orange-dark"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
 	                            </div>
 	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">Total Users</h5>
+	                                <h5 class="bg-info-300 uppercase text-grey">Total Users</h5>
 	                                <h3 class="text-3xl">249 <span class="text-orange"><i class="fas fa-exchange-alt"></i></span></h3>
 	                            </div>
 	                        </div>
@@ -77,7 +82,7 @@
 	                                <div class="rounded p-3 bg-yellow-dark"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
 	                            </div>
 	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">New Users</h5>
+	                                <h5 class="bg-info-300 uppercase text-grey">New Users</h5>
 	                                <h3 class="text-3xl">2 <span class="text-yellow-dark"><i class="fas fa-caret-up"></i></span></h3>
 	                            </div>
 	                        </div>
@@ -92,7 +97,7 @@
 	                                <div class="rounded p-3 bg-blue-dark"><i class="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
 	                            </div>
 	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">Server Uptime</h5>
+	                                <h5 class="bg-info-300 uppercase text-grey">Server Uptime</h5>
 	                                <h3 class="text-3xl">152 days</h3>
 	                            </div>
 	                        </div>
@@ -107,7 +112,7 @@
 	                                <div class="rounded p-3 bg-indigo-dark"><i class="fas fa-tasks fa-2x fa-fw fa-inverse"></i></div>
 	                            </div>
 	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">To Do List</h5>
+	                                <h5 class="bg-info-300 uppercase text-grey">To Do List</h5>
 	                                <h3 class="text-3xl">7 tasks</h3>
 	                            </div>
 	                        </div>
@@ -120,9 +125,9 @@
 	                        <div class="flex flex-row items-center">
 	                            <div class="flex-shrink pr-4">
 	                                <div class="rounded p-3 bg-red-dark"><i class="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
-	                            </div>
+	                            </div>  
 	                            <div class="flex-1 text-right md:text-center">
-	                                <h5 class="uppercase text-grey">Issues</h5>
+	                                <h5 class="bg-info-300 uppercase text-grey">Issues</h5>
 	                                <h3 class="text-3xl">3 <span class="text-red"><i class="fas fa-caret-up"></i></span></h3>
 	                            </div>
 	                        </div>
@@ -139,7 +144,7 @@
 	                <div class="w-full md:w-full p-3">
 	                	<!-- 달력 넣을 공간 -->
 	                    <div class="bg-white border rounded shadow">
-	                        <div class="border-b p-3"> 
+	                        <div class="bg-info-300  border-b p-3"> 
 	                            <h5 class="text-grey-dark">Calendar</h5>
 	                       </div>
 						<div>
@@ -176,7 +181,7 @@
 					                        <div class="row">
 					                            <div class="col-xs-12">
 					                                <label class="col-xs-4" for="edit-allDay">하루종일</label>
-					                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+					                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox">
 					                            </div>
 					                        </div>
 					
@@ -202,7 +207,7 @@
 					                        <div class="row">
 					                            <div class="col-xs-12">
 					                                <label class="col-xs-4" for="edit-type">구분</label>
-					                                <select class="inputModal" type="text" name="edit-type" id="edit-type">
+					                                <select class="inputModal" name="edit-type" id="edit-type">
 					                                    <option value="카테고리1">카테고리1</option>
 					                                    <option value="카테고리2">카테고리2</option>
 					                                    <option value="카테고리3">카테고리3</option>
@@ -248,7 +253,7 @@
 					        </div><!-- /.modal -->
 					
 					        <div class="panel panel-default">
-					            <div class="panel-heading">
+					            <div class="panel-heading "> 
 					                <h3 class="panel-title">필터</h3>
 					            </div>
 					            <div class="panel-body">
@@ -434,7 +439,7 @@
 	    </div>
 	</div>
 <!--  -->
-	 <script src="<%=projectPath %>/fullCalendar/vendor/js/jquery.min.js"></script>
+	<script src="<%=projectPath %>/fullCalendar/vendor/js/jquery.min.js"></script>
     <script src="<%=projectPath %>/fullCalendar/vendor/js/bootstrap.min.js"></script>
     <script src="<%=projectPath %>/fullCalendar/vendor/js/moment.min.js"></script>
     <script src="<%=projectPath %>/fullCalendar/vendor/js/fullcalendar.min.js"></script>
