@@ -183,3 +183,114 @@ html, body, .site-wrap{
     left: 0;
     position: absolute;
 }
+
+/*캠페인 상세*/
+.campaign-slider,
+.campaign-slider .slide img{height: 400px;}
+.progress{
+	height: 6px;
+}
+
+.campaign-slider-arrow{
+    top: 175px;
+    font-size: 36px;
+    opacity: 0.9;
+}
+.campaign-slider-nav .slider-nav-item{
+    transition: all .3s;
+    opacity: 0.5;
+}
+.campaign-slider-nav .slider-nav-item.active{
+    opacity: 1;
+}
+
+.campaign-tab-nav .sticky-btn-donate{display: none;}
+.campaign-tab-nav.sticky{
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-bottom: 1px solid #c0bebd;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.campaign-tab-nav ul{
+    transition: all .4s;
+}
+
+.campaign-tab-nav.sticky .sticky-btn-donate{display: inline-block;}
+
+.campaign-tab-nav.sticky ul{
+    padding: 0;
+}
+
+.campaign-tab-nav>ul>.tab-item{
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: transparent;
+    transition: all .4s;
+}
+
+.campaign-tab-nav>ul>.tab-item.active,
+.campaign-tab-nav>ul>.tab-item:hover{
+    color: #cb0802;
+    border-bottom-color: #cb0802;
+}
+
+.campaign-tab-content .tab-content-item{
+    display: none;
+}
+
+.campaign-tab-content .tab-content-item.active{
+    display: block;
+}
+
+.campaign-tab-content #story p,
+.campaign-tab-content #updates .update-content p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#updates .campaign-update{
+    padding-left: 38px !important;
+    border-left: 3px solid #e7e7e7;
+}
+
+#updates .campaign-update span.round-circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #e7e7e7;
+    display: block;
+    margin-left: -50px;
+    transition: 400ms;
+    -webkit-transition: 400ms;
+}
+
+#updates .campaign-update li:hover span.round-circle{
+    background: #cb0802;
+}
+
+.rewards .reward-item .overlay .donate-this{
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.rewards .reward-item .overlay:hover{
+    opacity: 0.9;
+}
+
+.add-wishlist .wishlist-ico::after{
+    font-family: xeicon;
+    content: "\ea11";
+}
+.add-wishlist.added-this .wishlist-ico::after{
+    color: #cb0802;
+    content: "\ea10";
+}

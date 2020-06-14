@@ -138,8 +138,50 @@ $(function(){
 
 	$("html,body").on("mousewheel DOMMouseScroll'", refresh);
 	refresh();
-	
-	
-	
 	init_fadeAni();
+	
+	/* 메뉴 모달 검색창 */
+    $('#search-ico').on('click', function(e){
+        e.preventDefault();
+        $($(this).data('target')).fadeIn(function(){
+            $(this).removeClass('hidden');
+        });
+    });
+
+    $('.modal .close').on('click', function(){
+        $(this).parents('.modal').fadeOut(function(){
+            $(this).parents('.modal').addClass('hidden');
+        });
+    });
+
+    $('input.number-only').on('keyup', function(){
+        $(this).val($(this).val().replace(/[^0-9]/g,""));
+    });
+
+    /* 후원 상세페이지 */
+    $('a.btn-donate').on('click', function(e){
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#donate").offset().top
+        });
+    });
+
+    $('a.add-wishlist').on('click', function(e){
+        e.preventDefault();
+        $(this).toggleClass('added-this');
+    });
+
+    $('.campaign-tab-nav .tab-item a').on('click', function(e){
+        e.preventDefault();
+        
+        $('html,body').animate({
+            scrollTop: $("#donate").offset().top
+        });
+
+        $('.campaign-tab-nav .tab-item').removeClass('active');
+        $('.campaign-tab-content .tab-content-item').removeClass('active');
+
+        $(this).parent().addClass('active');
+        $($(this).attr('href')).addClass('active');
+    });
 });
