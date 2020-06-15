@@ -16,8 +16,8 @@
 	<form class="w-full" method="post" action="/lms/class_transferOk">
 		<table class="w-full">
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600" style="width:200px">이동 할 반 선택 : </td>
-				<td class="border-2 border-solid border-gray-600">
+				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2" style="width:200px">이동 할 반 선택 : </td>
+				<td class="border-2 border-solid border-gray-600 p-2">
 					<div class="inline-block relative w-20 mx-2">
 							<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 								<option>==</option>
@@ -65,24 +65,26 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600">이동 일자 : </td>
-				<td class="border-2 border-solid border-gray-600">
+				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2">이동 일자 : </td>
+				<td class="border-2 border-solid border-gray-600 p-2">
 					<div class="calendar">
 						<input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2 text-center"/>
 					</div>
 				</td>
 			</tr>
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 h-64">납부 내역 변경 : </td>
-				<td class="border-2 border-solid border-gray-600">
-					<input type="radio" name="" value=""/>수납내역을 변경하지 않음<br/>
-					<input type="radio" name="" value=""/>수납내역을 신규반으로 전액 변경처리함<br/>
-					<input type="radio" name="" value=""/>수강료를 이동일자 기준으로 배분<br/>
+				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 h-64 p-2">납부 내역 변경 : </td>
+				<td class="border-2 border-solid border-gray-600 p-2">
+					<div>
+						<input type="radio" name="1"/>수납내역을 변경하지 않음<br/>
+						<input type="radio" name="1"/>수납내역을 신규반으로 전액 변경처리함<br/>
+						<input type="radio" name="1"/>수강료를 이동일자 기준으로 배분<br/>
+					</div>
 				</td>
 			</tr>
 		</table>
-		<div class="text-center">
-			<input type="submit" value="반이동 처리" class="border-2 border-gray-600 border-solid"/>
+		<div class="text-center mt-3">
+			<input type="submit" value="반이동 처리" class="border-2 border-gray-600 border-solid rounded bg-info-200"/>
 		</div>
 	</form>
 </div>

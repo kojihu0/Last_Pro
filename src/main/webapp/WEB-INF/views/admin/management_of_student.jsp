@@ -23,8 +23,7 @@
 	    </div>
 	</div>
 	<div class="float-right">
-		<a href="/lms/assigning_class"><span class="border-solid border-2 border-gray-600 rounded">일괄 반배정</span></a>
-		<a href="/lms/table_attendance_grade"><span class="border-solid border-2 border-gray-600 rounded">출결현황</span></a>
+		<a href="/lms/table_attendance_grade"><span class="border-solid border-2 border-gray-600 rounded bg-info-200">출결현황</span></a>
 	</div>
 	<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444;">
 		<tr>
@@ -39,20 +38,20 @@
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">학생휴대폰</td>
 		</tr>
 		<tr class="bg-white student_info"><!-- hover시 배경색이 변하고 click이벤트시 디테일 화면을 이동하는 이벤트처리하기-->
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:50px"><input type="checkbox" class="check"/></td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">100100</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px">사진</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px">하정우/roy</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:50px">남</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px">비트고등학교</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:50px">3</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">010-0000-0000</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">010-0000-0001</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:50px"><input type="checkbox" class="check"/></td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:100px">100100</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px">사진</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px">하정우/roy</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:50px">남</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px">비트고등학교</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:50px">3</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:100px">010-0000-0000</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:100px">010-0000-0001</td>
 		</tr>
 	</table>
 	<div class="flex justify-end w-full my-5">
-		<a href="/lms/class_transfer"><span class="border-solid border-2 border-gray-600 rounded mr-3">반 이동</span></a>
-		<a href="/lms/leave_out"><span class="border-solid border-2 border-gray-600 rounded">휴/퇴원처리</span></a>
+		<a href="/lms/class_transfer"><span class="border-solid border-2 border-gray-600 rounded bg-info-200 mr-3">반 이동</span></a>
+		<a href="/lms/leave_out"><span class="border-solid border-2 border-gray-600 rounded bg-info-200">휴/퇴원처리</span></a>
 	</div>
 </div>
 </body>

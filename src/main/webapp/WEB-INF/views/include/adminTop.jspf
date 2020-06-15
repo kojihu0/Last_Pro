@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String projectPath = request.getContextPath();
+%>
 
 <!DOCTYPE html>
 <html>
@@ -7,12 +10,16 @@
 <meta charset="UTF-8">
 <!-- 공용 -->
 <link rel="stylesheet" href="/lms/css/tailwind.css" type="text/css"/>
-<script src="/lms/js/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+<script src="/lms/js/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 
 <!-- css -->
 <link rel="stylesheet" href="/lms/css/adminTop.css" type="text/css"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
 
 <!-- js -->
 <script src="/lms/js/adminTop.js" type="text/javascript"></script>
@@ -43,7 +50,7 @@
 				<li><a href="/lms/attendance_grade">출결/성적관리</a></li>
 			</ul>
 		</li>
-		<li><a href="/lms/admin/adminManagementInfo">경영정보</a>
+		<li><a href="/lms/admin/adminManagementInfo">경영정보</a> 
 			<ul class="submenu"> 
 				<li><a href="/lms/admin/adminManagementInfo">강사 업무일지</a></li>
 				<li><a href="/lms/admin/adminNotice">사내일정</a></li>

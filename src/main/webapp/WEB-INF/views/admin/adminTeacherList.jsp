@@ -1,25 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-<%
-	String projectPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TeacherList</title>
 
- 	<link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
-
-
 </head>
 <body>
 
 
+	
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		
 		
@@ -27,7 +20,7 @@
 			<i class="xi-school"></i>&nbsp;직원현황
 		</div>
 		
-		<div class="p-3 searchDiv text-right bg-gray-600 border-b-4 border-gray-400 flex">  
+		<div class="p-3 searchDiv text-right bg-gray-200 border-solid border-4 border-gray-600 flex">  
 			<select class="mx-2">
 				<option>::직급::</option>
 				<option>장</option>
@@ -62,28 +55,27 @@
 				</thead> 
 				<tbody>
 					<tr class="bg-white">
-						<td  class="border text-center">1</td>
-						<td  class="border text-center">홍아무개</td>
-						<td  class="border text-center">자바 클래스 장</td>
-						<td  class="border text-center">A반</td>
-						<td  class="border text-center">직원</td>
-						<td  class="border text-center">ok123</td>
-						<td  class="border text-center">학생관리</td>
-						<td  class="border text-center">금일 휴가</td>   
-						<td  class="border text-center"><a href="<%=projectPath %>/admin/adminTeacherEdit" class="bg-gray-500 hover:bg-blue-700 border border-black font-bold  px-4 rounded-full">수정</a></td>
+						<td  class="border text-center p-2">1</td>
+						<td  class="border text-center p-2">홍아무개</td>
+						<td  class="border text-center p-2">자바 클래스 장</td>
+						<td  class="border text-center p-2">A반</td>
+						<td  class="border text-center p-2">직원</td>
+						<td  class="border text-center p-2">ok123</td>
+						<td  class="border text-center p-2">학생관리</td>
+						<td  class="border text-center p-2">금일 휴가</td>   
+						<td  class="border text-center p-2"><a href="<%=projectPath %>/admin/adminTeacherEdit" class="bg-info-200 hover:bg-blue-700 border border-black font-bold  px-4 rounded">수정</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		
 		<div class="p-3 text-right">  
-			<a class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full" href="<%=projectPath%>/admin/adminTeacherRegi">직원등록</a>
+			<a class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded" href="<%=projectPath%>/admin/adminTeacherRegi">직원등록</a>
 		</div>	
 		
 		
 	</div>
 	
-
 
 
 

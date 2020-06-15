@@ -16,41 +16,41 @@
 		<table class="w-full">
 		<tbody>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 text-center bg-info-200">신청강좌</td>
-				<td class="border-solid border-2 border-gray-600">[202006]JAVASCRIPT</td>
+				<td class="border-solid border-2 border-gray-600 text-center bg-info-200 p-2">신청강좌</td>
+				<td class="border-solid border-2 border-gray-600 p-2">[202006]JAVASCRIPT</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 text-center bg-info-200">수수료 계산</td>
-				<td class="border-solid border-2 border-gray-600">
+				<td class="border-solid border-2 border-gray-600 text-center bg-info-200 p-2">수수료 계산</td>
+				<td class="border-solid border-2 border-gray-600 p-2">
 					<table>
 						<tbody>
 							<tr>
-								<td>수강기간</td>
-								<td>
+								<td class="p-2">수강기간</td>
+								<td class="p-2">
 									<input type="date" class="border-solid border-2 border-gray-600 text-center"/> ~
 									<input type="date" class="border-solid border-2 border-gray-600 text-center"/>
 								</td>
 							</tr>
 							<tr>
-								<td>수강료</td>
-								<td><input type="text" class="border-solid border-2 border-gray-600"/>원</td>
+								<td class="p-2">수강료</td>
+								<td class="p-2"><input type="text" class="border-solid border-2 border-gray-600"/>원</td>
 							</tr>
 						</tbody>
 					</table>
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 text-center bg-info-200">수납내역</td>
-				<td class="border-solid border-2 border-gray-600 text-center">
+				<td class="border-solid border-2 border-gray-600 text-center bg-info-200 p-2">수납내역</td>
+				<td class="border-solid border-2 border-gray-600 text-center p-2">
 					<table>
 						<tbody>
 							<tr>
-								<td>수납액</td>
-								<td><input type="text" class="border-solid border-2 border-gray-600 text-center"/></td>
+								<td class="p-2">수납액</td>
+								<td class="p-2"><input type="text" class="border-solid border-2 border-gray-600 text-center"/></td>
 							</tr>
 							<tr>
-								<td>결제방법</td>
-								<td>
+								<td class="p-2">결제방법</td>
+								<td class="p-2">
 									<div class="inline-block relative w-40 mx-2">
 										<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 											<option>카드결제</option>
@@ -64,12 +64,12 @@
 								</td>
 							</tr>
 							<tr>
-								<td>납부일자</td>
-								<td><input type="date" class="border-solid border-2 border-gray-600 text-center"/></td>
+								<td class="p-2">납부일자</td>
+								<td class="p-2"><input type="date" class="border-solid border-2 border-gray-600 text-center"/></td>
 							</tr>
 							<tr>
-								<td>비고</td>
-								<td><input type="text" class="border-solid border-2 border-gray-600"/></td>
+								<td class="p-2">비고</td>
+								<td class="p-2"><input type="text" class="border-solid border-2 border-gray-600"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -78,7 +78,7 @@
 		</tbody>
 		</table>
 		<div class="text-center my-5">
-			<input type="submit" value="수정하기" class="border-solid border-2 border-gray-600"/>
+			<input type="submit" value="수정하기" class="border-solid border-2 border-gray-600 bg-info-200 rounded"/>
 		</div>
 	</form>
 	<span style="color:red; margin:10px 0">- 타결제수단 분납 혹은 일시부족액 처리시 수납금액을 변경하세요.</span>

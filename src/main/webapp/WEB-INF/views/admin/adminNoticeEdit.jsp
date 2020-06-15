@@ -1,30 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-<%
-	String projectPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>noticeEdit</title>
 
- 
-	<script src="/lms/js/jquery-3.4.1.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-		<script src="<%=projectPath %>/ckeditor/ckeditor.js"></script>
-
-    <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
-
+	<script src="<%=projectPath %>/ckeditor/ckeditor.js"></script>
 
 </head>
 <body>
-	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
+		<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 			<div class="text-xl p-3 mx-16 ">  
 				<i class="xi-school"></i>&nbsp;사내공지
 			</div>
@@ -56,12 +44,14 @@
 				</table>
 			</div>
 			<div class="p-3 text-right"> 
-				<input type="submit" value="수정" class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full"/>
-				<a href="<%=projectPath%>/admin/adminNotice"  class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full">수정 취소</a>
+				<input type="submit" value="수정" class="bg-info-200 border border-black font-bold py-2 px-4 rounded"/>
+				<a href="<%=projectPath%>/admin/adminNotice"  class="bg-info-200 border border-black font-bold py-2 px-4 rounded">수정 취소</a>
 			</div>
 		</form>		
 	</div>
 		<!-- 전체 틀 끝 -->	
+
+
 
 
 <script type="text/javascript">
@@ -71,7 +61,6 @@ $(function(){
 });
 
 </script>
-
 
 </body>
 </html>

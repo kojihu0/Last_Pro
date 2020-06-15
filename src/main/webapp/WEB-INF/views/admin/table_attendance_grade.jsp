@@ -12,7 +12,7 @@
 		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
 	</div>
 	<a href="/lms/attendance__grade" class="mb-2"><i class="xi-angle-left-min">목록으로</i></a>
-	<form class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form class="w-full border-solid border-4 border-gray-600 flex bg-gray-200 mb-3">
 		<div class="mx-3 w-5/6">
 			<div class="flex my-2">
 				<span class="leading-8">수강년월 : </span><div class="inline-block relative w-30 mx-2">
@@ -72,23 +72,21 @@
 				<td style="width:100px">비고</td>
 				<td style="width:100px">수정</td>
 			</tr>
-		</table>
-		<table class="text-center" style="width:100%; border-top: 1px solid #444444; border-bottom: 1px solid #444444;">
-			<tr>
-				<td style="width:50px">1</td>
-				<td style="width:200px;">roy</td>
-				<td style="width:50px;">남</td>
-				<td style="width:200px;">서현고등학교 2학년</td>
-				<td style="width:200px;">학생:010-0000-0000</td>
-				<td style="width:100px"></td>
-				<td style="width:100px"></td>
-				<td style="width:100px"></td>
+			<tr class="bg-white" style="border-top:solid 1px black; border-bottom:solid 1px black">
+				<td class="p-2" style="width:50px">1</td>
+				<td class="p-2" style="width:200px;">roy</td>
+				<td class="p-2" style="width:50px;">남</td>
+				<td class="p-2" style="width:200px;">서현고등학교 2학년</td>
+				<td class="p-2" style="width:200px;">학생:010-0000-0000</td>
+				<td class="p-2" style="width:100px"></td>
+				<td class="p-2" style="width:100px"></td>
+				<td class="p-2" style="width:100px"></td>
 				<!-- 출결체크가 되어 있으면 보여야 한다. -->
-				<td style="width:100px"><a href="/lms/modify_table_attendance_grade" class="border-2 border-gray-600 rounded">수정</a></td>
+				<td style="width:100px"><a href="/lms/modify_table_attendance_grade" class="border-2 border-gray-600 rounded bg-info-200">수정</a></td>
 			</tr>
 		</table>
 		<!-- 출결체크가 안되어 있으면 보여야 한다. -->
-		<div class="my-2 float-right"><a href="/lms/modify_table_attendance_grade" class="border-2 border-gray-600 rounded">출결체크</a></div>
+		<div class="my-2 float-right"><a href="/lms/modify_table_attendance_grade" class="border-2 border-gray-600 rounded bg-info-200">출결체크</a></div>
 	</form>
 </div>
 </body>

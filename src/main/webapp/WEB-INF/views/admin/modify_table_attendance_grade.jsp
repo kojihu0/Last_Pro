@@ -21,12 +21,10 @@
 				<td style="width:100px;">과제제출</td>
 				<td style="width:200px">비고</td>
 			</tr>
-		</table>
-		<table class="text-center" style="width:100%; border-top: 1px solid #444444;">
-			<tr>
-				<td style="width:200px">JAVASCRIPT/roy/(1,서현고등학교 2학년)</td>
-				<td style="width:100px;">2020-06-11</td>
-				<td style="width:100px;">
+			<tr class="text-center bg-white" style="border-top: 1px solid black; border-bottom: 1px solid black;">
+				<td class="p-2" style="width:200px">JAVASCRIPT/roy/(1,서현고등학교 2학년)</td>
+				<td class="p-2" style="width:100px;">2020-06-11</td>
+				<td class="p-2" style="width:100px;">
 					<div class="inline-block relative w-20 mx-2">
 					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 						<option>출석</option>
@@ -38,7 +36,7 @@
 				    </div>
 				</div>
 				</td>
-				<td style="width:100px;">
+				<td class="p-2" style="width:100px;">
 					<div class="inline-block relative w-20 mx-2">
 					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 						<option>제출</option>
@@ -50,12 +48,12 @@
 				    </div>
 				</div>
 				</td>
-				<td style="width:200px;"></td>
+				<td class="p-2" style="width:200px;"></td>
 			</tr>
 		</table>
 		<input type="checkbox" name="deleteRecord" class="my-2"/>위 출결/숙제 기록을 삭제함
 		<div class="text-center my-3">
-			<input type="submit" value="전송하기"/>
+			<input type="submit" value="전송하기" class="bg-info-200 border-solid border-2 border-gray-600 rounded"/>
 		</div>
 	</form>
 </div>

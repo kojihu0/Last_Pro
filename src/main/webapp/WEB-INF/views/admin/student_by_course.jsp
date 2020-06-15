@@ -83,13 +83,13 @@
 			<td class="border-solid border-2 border-gray-600" style="width:100px;">학생관리</td>
 		</tr>
 		<tr class="bg-white">
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">1</td>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">2020-06</td>
-			<td class="border-solid border-2 border-gray-600" style="width:200px;">JAVASCRIPT</td>
-			<td class="border-solid border-2 border-gray-600" style="width:200px;">JAVASCRIPT여렵지 않아요</td>
-			<td class="border-solid border-2 border-gray-600" style="width:200px;">JAVASCRIPT개발자 양성</td>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">인원 수 : <span>15</span>명</td>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;"><a href="/lms/management_of_student" class="border-solid border-2 border-gray-600">학생관리</a></td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:100px;">1</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:100px;">2020-06</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:200px;">JAVASCRIPT</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:200px;">JAVASCRIPT여렵지 않아요</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:200px;">JAVASCRIPT개발자 양성</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:100px;">인원 수 : <span>15</span>명</td>
+			<td class="border-solid border-2 border-gray-600 p-2" style="width:100px;"><a href="/lms/management_of_student" class="border-solid border-2 border-gray-600 bg-info-200 rounded">학생관리</a></td>
 		</tr>
 	</table>
 </div>

@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-<%
-	String projectPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +9,7 @@
 <title>TeacherInfo Edit</title>
 
 
-	<script src="/lms/js/jquery-3.4.1.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
 
-    <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 	
 </head>
 <body>
@@ -109,28 +101,28 @@
 			</table>
 		</div>
 					<div class="p-3 text-right">  
-			<input type="submit" value="수정 " class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full"/>
-			<a class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full" href="<%=projectPath %>/admin/adminTeacherList">수정취소</a>
-			<a class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full" href="<%=projectPath %>/admin/adminTeacherList">삭제</a>
+			<input type="submit" value="수정 " class="bg-info-200 border-black border font-bold py-2 px-4 rounded"/>
+			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">수정취소</a>
+			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">삭제</a>
 		</div>
 	</form>
 </div>
 
-	<script>
-$(function(){
-	//이메일 선택.
-	$("#domainSelect").change(function(){  
-
-		var selectDomain = document.getElementById("domainSelect").selectedIndex;
-		var optionVal    = document.getElementById("domainSelect").options;
-		
-		var valueSelect  = optionVal[selectDomain].value; 
-		
-		document.getElementById("domain").value = valueSelect;
-	});
+<script>
+	$(function(){
+		//이메일 선택.
+		$("#domainSelect").change(function(){  
 	
-});	
-	</script>
+			var selectDomain = document.getElementById("domainSelect").selectedIndex;
+			var optionVal    = document.getElementById("domainSelect").options;
+			
+			var valueSelect  = optionVal[selectDomain].value; 
+			
+			document.getElementById("domain").value = valueSelect;
+		});
+		
+	});	
+</script>
 
 
 

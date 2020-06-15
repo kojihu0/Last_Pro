@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %> 
-<%
-	String projectPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<script src="/lms/js/jquery-3.4.1.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	
-
-
-    <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
 <body>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
@@ -137,7 +126,6 @@
 	</div>		
   
 </div>
-
 
 </body>
 </html>

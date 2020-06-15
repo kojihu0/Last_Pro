@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-<%
-	String projectPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +9,7 @@
 <title>Insert title here</title>
 
 
-    <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+   
 
 </head>
 <body>
@@ -118,8 +114,8 @@
 				<div class="p-3"></div>
 				
 				<div class="text-right"> 
-					<input type="submit" value="등록" class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full"/>
-					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full">등록취소</a> 
+					<input type="submit" value="등록" class="bg-info-200 border-black border font-bold py-2 px-4 rounded"/>
+					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-200 border-black border font-bold py-2 px-4 rounded">등록취소</a> 
 				</div> 
 			</div>
 		</form>   

@@ -109,23 +109,12 @@
 	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
 				    </div>
 				</div>
-				<div class="inline-block relative w-40 mx-2">
-					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
-						<option>==현금영수증==</option>
-					    <option>발행원함</option>
-					    <option>원치않음</option>
-		  	 		</select>
-		  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				    </div>
-				</div>
 				<input type="text" placeholder="이름" class="border-solid border-2 border-gray-600"/>
 			</div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-20 ml-48 mt-6 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="w-20 h-20 mt-6 border-solid border-2 border-gray-600 rounded" style="margin-left:400px;"/>
 	</form>
 		<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">0</span>건</div>
-		<div class="justify-end border-solid border-gray-600"><a href="/lms/registration_member"/>등록하기</a></div>
 	<table class="w-full bg-info-300">
 		<tr class="text-center">
 			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:70px">번호</td>
@@ -144,21 +133,19 @@
 			<td class="border-2 border-solid border-gray-600">현금</td>
 			<td class="border-2 border-solid border-gray-600">이체</td>
 		</tr>
-	</table>
-	<table>
-		<tr class="text-center">
-			<td class="border-2 border-solid border-gray-600" style="width:70px">번호</td>
-			<td class="border-2 border-solid border-gray-600" style="width:70px">구분</td>
-			<td class="border-2 border-solid border-gray-600" style="width:100px">회원명</td>
-			<td class="border-2 border-solid border-gray-600" style="width:100px">강좌명</td>
-			<td class="border-2 border-solid border-gray-600" style="width:95px">O</td>
-			<td class="border-2 border-solid border-gray-600" style="width:95px"></td>
-			<td class="border-2 border-solid border-gray-600" style="width:95px"></td>
-			<td class="border-2 border-solid border-gray-600" style="width:100px">카드명</td>
-			<td class="border-2 border-solid border-gray-600" style="width:130px">승인번호</td>
-			<td class="border-2 border-solid border-gray-600" style="width:130px">납부일자</td>
-			<td class="border-2 border-solid border-gray-600" style="width:100px">담당자</td>
-			<td class="border-2 border-solid border-gray-600" style="width:200px">비고</td>
+		<tr class="text-center bg-white">
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:70px">번호</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:70px">구분</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:100px">회원명</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:100px">강좌명</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:95px">O</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:95px"></td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:95px"></td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:100px">카드명</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:130px">승인번호</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:130px">납부일자</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:100px">담당자</td>
+			<td class="border-2 border-solid border-gray-600 p-2" style="width:200px">비고</td>
 		</tr>
 	</table>
 </div>

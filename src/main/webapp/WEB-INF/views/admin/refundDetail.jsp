@@ -15,23 +15,23 @@
 		<table class="w-full">
 		<tbody>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 bg-info-300">개강년월</td>
-				<td class="border-solid border-2 border-gray-600">2020-06-01</td>
+				<td class="border-solid border-2 border-gray-600 bg-info-300 text-center p-2">개강년월</td>
+				<td class="border-solid border-2 border-gray-600 p-2">2020-06-01</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 bg-info-300">강좌명</td>
-				<td class="border-solid border-2 border-gray-600">JAVASCRIPT</td>
+				<td class="border-solid border-2 border-gray-600 bg-info-300 text-center p-2">강좌명</td>
+				<td class="border-solid border-2 border-gray-600 p-2">JAVASCRIPT</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 bg-info-300">수납액</td>
-				<td class="border-solid border-2 border-gray-600">500,000원(카드)</td>
+				<td class="border-solid border-2 border-gray-600 bg-info-300 text-center p-2">수납액</td>
+				<td class="border-solid border-2 border-gray-600 p-2">500,000원(카드)</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-2 border-gray-600 bg-info-300">반환내역</td>
-				<td class="border-solid border-2 border-gray-600">
-					반환액 : <input type="text" class="border-solid border-2 border-gray-600"/><br/>
-					반환사유 : <input type="text" class="border-solid border-2 border-gray-600"/><br/>
-					반환방법 : <div class="inline-block relative w-40 mx-2">
+				<td class="border-solid border-2 border-gray-600 bg-info-300 text-center">반환내역</td>
+				<td class="border-solid border-2 border-gray-600 p-2">
+					<div class="mb-2">반환액 : <input type="text" class="border-solid border-2 border-gray-600"/></div>
+					<div class="mb-2">반환사유 : <input type="text" class="border-solid border-2 border-gray-600"/></div>
+					<div class="mb-2">반환방법 : <div class="inline-block relative w-40 mx-2">
 								<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 									<option>선택하세요</option>
 								    <option>현금반환</option>
@@ -42,6 +42,7 @@
 				  			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
 							    </div>
 							</div>
+						</div>
 					 <div class="mb-2 calendar">반환일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2"/></div>
 					 비고 : <input type="text" class="border-solid border-2 border-gray-600"/>
 				</td>
@@ -49,7 +50,7 @@
 		</tbody>
 	</table>
 	<div class="text-center my-5">
-		<input type="submit" value="등록하기" class="border-solid border-2 border-gray-600"/>
+		<input type="submit" value="등록하기" class="border-solid border-2 border-gray-600 bg-info-200 rounded"/>
 	</div>
 </form>
 </div>

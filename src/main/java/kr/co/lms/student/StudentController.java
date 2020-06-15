@@ -15,11 +15,6 @@ public class StudentController {
 		return "admin/registration_member";
 	}
 	
-	@RequestMapping("/leave_of_absence")
-	public String leave_of_absence() {
-		return "admin/leave_of_absence";
-	}
-	
 	@RequestMapping("/student_by_course")
 	public String student_by_course() {
 		return "admin/student_by_course";
@@ -43,11 +38,6 @@ public class StudentController {
 	@RequestMapping("/management_of_student")
 	public String management_of_student() {
 		return "admin/management_of_student";
-	}
-	
-	@RequestMapping("/assigning_class")
-	public String assigning_class() {
-		return "admin/assigning_class";
 	}
 	
 	@RequestMapping("/class_transfer")
@@ -143,6 +133,14 @@ public class StudentController {
 	
 	@RequestMapping("/counseling_registration")
 	public ModelAndView counseling_registration() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:student_detail");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/modify_counselingOk")
+	public ModelAndView modify_counselingOk() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:student_detail");
 		

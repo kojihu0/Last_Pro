@@ -83,7 +83,7 @@
 	</form>
 	<form class="w-full" action="/lms/table_attendance_grade">
 		<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse;">
-			<tr>
+			<tr class="text-center">
 				<td style="width:50px">번호</td>
 				<td style="width:120px;">개강년월</td>
 				<td style="width:300px;">과정명</td>
@@ -92,16 +92,14 @@
 				<td style="width:50px">인원</td>
 				<td>출결·과제관리</td>
 			</tr>
-		</table>
-		<table style="width:100%; border-top: 1px solid #444444;">
-			<tr>
-				<td style="width:50px">1</td>
-				<td style="width:120px;">2020-02-06</td>
-				<td style="width:300px;">JAVASCRIPT</td>
-				<td style="width:300px;">JAVASCRIPT</td>
-				<td style="width:300px;">JAVASCRIPT와 함께</td>
-				<td style="width:50px"><span>3</span>명</td>
-				<td><input type="submit" value="출결/과제관리"/></td>
+			<tr class="bg-white text-center" style="border-top:solid 1px black; border-bottom:solid 1px black">
+				<td class="p-2" style="width:50px">1</td>
+				<td class="p-2" style="width:120px;">2020-02-06</td>
+				<td class="p-2" style="width:300px;">JAVASCRIPT</td>
+				<td class="p-2" style="width:300px;">JAVASCRIPT</td>
+				<td class="p-2" style="width:300px;">JAVASCRIPT와 함께</td>
+				<td class="p-2" style="width:50px"><span>3</span>명</td>
+				<td class="p-2" ><input type="submit" value="출결/과제관리" class="bg-info-200 border-solid border-2 border-gray-600 rounded"/></td>
 			</tr>
 		</table>
 	</form>

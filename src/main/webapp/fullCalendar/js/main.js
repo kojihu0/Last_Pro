@@ -145,7 +145,7 @@ var calendar = $('#calendar').fullCalendar({
   views: {
     month: {
       columnFormat: 'dddd'
-    },
+    }, 
     agendaWeek: {
       columnFormat: 'M/D ddd',
       titleFormat: 'YYYY년 M월 D일',

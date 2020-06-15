@@ -111,25 +111,21 @@
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:85px;">결제방법</td>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:55px;">카드명</td>
 		</tr>
-	</table>
-	<table>
-		<tr>
-			<tr onClick="location.href='/lms/refund'">
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:80px;">10110</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:70px;">신규</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px;">하정우</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px;">JAVASCRIPT</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:40px;">O</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:40px;"></td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:40px;"></td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px;">등록일</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:65px;">500000</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:85px;">카드</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:55px;">신한</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:140px;">반환사유</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:160px;">반환일자</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:55px;">담당자</td>
-		</tr>
+		<tr class="bg-white hover:bg-gray-200" onClick="location.href='/lms/refund'">
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:80px;">10110</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:70px;">신규</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px;">하정우</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:200px;">JAVASCRIPT</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:40px;">O</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:40px;"></td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:40px;"></td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:100px;">등록일</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:65px;">500000</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:85px;">카드</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:55px;">신한</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:140px;">반환사유</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:160px;">반환일자</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:55px;">담당자</td>
 		</tr>
 	</table>
 </div>

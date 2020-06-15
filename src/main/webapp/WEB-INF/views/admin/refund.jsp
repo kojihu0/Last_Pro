@@ -29,14 +29,14 @@
 			<td class="border-solid border-gray-600 border-2 bg-info-300">관리</td>
 		</tr>
 		<tr class="text-center">
-			<td class="border-solid border-gray-600 border-2">500000</td>
-			<td class="border-solid border-gray-600 border-2">카드</td>
-			<td class="border-solid border-gray-600 border-2">2020-06-12</td>
-			<td class="border-solid border-gray-600 border-2">담당자</td>
-			<td class="border-solid border-gray-600 border-2">
-				<a href="/lms/refundDetail"><span class="border-solid border-gray-600 border-2">반환취소</span></a>
-				<a href="/lms/modify_receive"><span class="border-solid border-gray-600 border-2">수정</span></a>
-				<a href="javascript:receive_delCheck()"><span class="border-solid border-gray-600 border-2">삭제</span></a>
+			<td class="border-solid border-gray-600 border-2 p-2">500000</td>
+			<td class="border-solid border-gray-600 border-2 p-2">카드</td>
+			<td class="border-solid border-gray-600 border-2 p-2">2020-06-12</td>
+			<td class="border-solid border-gray-600 border-2 p-2">담당자</td>
+			<td class="border-solid border-gray-600 border-2 p-2">
+				<a href="/lms/refundDetail"><span class="border-solid border-gray-600 border-2 bg-info-200 rounded">반환취소</span></a>
+				<a href="/lms/modify_receive"><span class="border-solid border-gray-600 border-2 bg-info-200 rounded">수정</span></a>
+				<a href="javascript:receive_delCheck()"><span class="border-solid border-gray-600 border-2 bg-info-200 rounded">삭제</span></a>
 			</td>
 		</tr>
 	</table>
@@ -52,15 +52,15 @@
 			<td class="border-solid border-gray-600 border-2 bg-info-300">관리</td>
 		</tr>
 		<tr class="text-center">
-			<td class="border-solid border-gray-600 border-2"><span style="color:red">1,000</span></td>
-			<td class="border-solid border-gray-600 border-2">현금</td>
-			<td class="border-solid border-gray-600 border-2">2020-06-01</td>
-			<td class="border-solid border-gray-600 border-2">이사</td>
-			<td class="border-solid border-gray-600 border-2">비고</td>
-			<td class="border-solid border-gray-600 border-2">방문자</td>
-			<td class="border-solid border-gray-600 border-2">
-				<a href="/lms/modify_return"><span class="border-solid border-gray-600 border-2">수정</span></a>
-				<a href="javascript:return_delCheck()"><span class="border-solid border-gray-600 border-2">삭제</span></a>
+			<td class="border-solid border-gray-600 border-2 p-2"><span style="color:red">1,000</span></td>
+			<td class="border-solid border-gray-600 border-2 p-2">현금</td>
+			<td class="border-solid border-gray-600 border-2 p-2">2020-06-01</td>
+			<td class="border-solid border-gray-600 border-2 p-2">이사</td>
+			<td class="border-solid border-gray-600 border-2 p-2">비고</td>
+			<td class="border-solid border-gray-600 border-2 p-2">방문자</td>
+			<td class="border-solid border-gray-600 border-2 p-2">
+				<a href="/lms/modify_return"><span class="border-solid border-gray-600 border-2 rounded bg-info-200">수정</span></a>
+				<a href="javascript:return_delCheck()"><span class="border-solid border-gray-600 border-2 rounded bg-info-200">삭제</span></a>
 			</td>
 		</tr>
 	</table>

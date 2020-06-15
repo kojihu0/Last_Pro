@@ -15,27 +15,27 @@
 	<form method="post" action="" class="w-full my-3">
 		<table class="w-full">
 			<tr class="text-center">
-				<td class="border-2 border-solid border-gray-600 bg-info-300">대상자</td>
-				<td class="border-2 border-solid border-gray-600">
+				<td class="border-2 border-solid border-gray-600 bg-info-300 p-2">대상자</td>
+				<td class="border-2 border-solid border-gray-600 p-2">
 					<table class="w-full">
 						<tr>
-							<td class="border-2 border-solid border-gray-600">선택</td>
-							<td class="border-2 border-solid border-gray-600">수강생</td>
-							<td class="border-2 border-solid border-gray-600">학생휴대폰</td>
-							<td class="border-2 border-solid border-gray-600">부모휴대폰</td>	
+							<td class="border-2 border-solid border-gray-600 p-2">선택</td>
+							<td class="border-2 border-solid border-gray-600 p-2">수강생</td>
+							<td class="border-2 border-solid border-gray-600 p-2">학생휴대폰</td>
+							<td class="border-2 border-solid border-gray-600 p-2">부모휴대폰</td>	
 						</tr>
 						<tr>
-							<td class="border-2 border-solid border-gray-600"><input type="checkbox"/></td>
-							<td class="border-2 border-solid border-gray-600">하정우(서현고등학교 2학년)</td>
-							<td class="border-2 border-solid border-gray-600">010-0000-0001</td>
-							<td class="border-2 border-solid border-gray-600">010-0000-0000</td>	
+							<td class="border-2 border-solid border-gray-600 p-2"><input type="checkbox"/></td>
+							<td class="border-2 border-solid border-gray-600 p-2">하정우(서현고등학교 2학년)</td>
+							<td class="border-2 border-solid border-gray-600 p-2">010-0000-0001</td>
+							<td class="border-2 border-solid border-gray-600 p-2">010-0000-0000</td>	
 						</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
-				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center">구분</td>
-				<td class="border-2 border-solid border-gray-600">
+				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">구분</td>
+				<td class="border-2 border-solid border-gray-600 p-2">
 					<div>
 						<input type="radio" value="leave" name="leave_out"/>휴원
 						<input type="radio" value="out" name="leave_out"/>퇴원
@@ -43,20 +43,20 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center">휴/퇴원 일지</td>
-				<td class="border-2 border-solid border-gray-600">
+				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">휴/퇴원 일지</td>
+				<td class="border-2 border-solid border-gray-600 p-2">
 					<div class="calendar">
 						<input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2"/>
 					</div>
 				</td>
 			</tr>
 			<tr>
-				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center">비고</td>
-				<td class="border-2 border-solid border-gray-600"><input type="text" class="w-64 border-2 border-solid border-gray-600"/></td>
+				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">비고</td>
+				<td class="border-2 border-solid border-gray-600 p-2"><input type="text" class="w-64 border-2 border-solid border-gray-600"/></td>
 			</tr>
 		</table>
 		<div class="text-center my-3 ">
-			<input type="submit" value="처리하기" class="border-2 border-solid border-gray-600"/>
+			<input type="submit" value="처리하기" class="border-2 border-solid border-gray-600 rounded bg-info-200"/>
 		</div>
 	</form>
 </div>

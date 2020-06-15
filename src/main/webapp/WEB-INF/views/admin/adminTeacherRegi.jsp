@@ -1,25 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-<%
-	String projectPath = request.getContextPath();
-%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>adminTeacherRegi</title>
-
-
-	<script src="/lms/js/jquery-3.4.1.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-
-    <link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	
-
+ 
 </head>
 <body>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
@@ -103,24 +91,21 @@
 							<input type="radio" name="teacherState" value="퇴사"/>&nbsp;퇴사&nbsp;
 						</td> 
 					</tr>
-				</tbody>
+				</tbody> 
 			</table>
 		</div>
 		<div class="p-3 text-center"> 
-			<input type="submit" value="등록 " class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full"/>
-			<a class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full" href="<%=projectPath %>/admin/adminTeacherList">등록취소</a>
+			<input type="submit" value="등록 " class="bg-info-200 border-black border font-bold py-2 px-4 rounded"/>
+			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">등록취소</a>
 		</div>
 	</form>
 </div>
-
-
 
 
 	<script>
 $(function(){
 	//이메일 선택.
 	$("#domainSelect").change(function(){  
-		console.log("ㅁㄴㅇㅁㄴㅇ");
 		var selectDomain = document.getElementById("domainSelect").selectedIndex;
 		var optionVal    = document.getElementById("domainSelect").options;
 		
