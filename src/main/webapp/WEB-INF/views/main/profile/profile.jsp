@@ -86,11 +86,8 @@
 					<form id="imgUpload" style="display:none">
 						<div class='border-solid border-gray-500 border'>
 							<img src="<%=request.getContextPath()%>/img/user-avatar.png" class="my-4 ml-4" style="width:150px;height:150px">
+							<input type="file" value="Upload" class="xi-file-upload-o  text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
 							
-							<button type="submit"  class="my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
-								<i class="xi-file-upload-o "></i>
-								<span class="text-gray-800">Upload</span>
-							</button>
 						</div>	
 						<input type="submit" value="변경하기" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
 					</form>
