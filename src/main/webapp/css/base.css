@@ -225,16 +225,14 @@ html, body, .site-wrap{
 }
 
 .campaign-tab-nav>ul>.tab-item{
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
     border-bottom-color: transparent;
     transition: all .4s;
 }
 
 .campaign-tab-nav>ul>.tab-item.active,
 .campaign-tab-nav>ul>.tab-item:hover{
-    color: #cb0802;
-    border-bottom-color: #cb0802;
+    color: #FFB606;
+    border-bottom-color: #FFB606;
 }
 
 .campaign-tab-content .tab-content-item{
@@ -272,18 +270,6 @@ html, body, .site-wrap{
 
 #updates .campaign-update li:hover span.round-circle{
     background: #cb0802;
-}
-
-.rewards .reward-item .overlay .donate-this{
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.rewards .reward-item .overlay:hover{
-    opacity: 0.9;
 }
 
 .add-wishlist .wishlist-ico::after{

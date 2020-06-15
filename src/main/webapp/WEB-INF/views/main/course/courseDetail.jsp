@@ -1,80 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+	<div id="bannerText">
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;COURSES</h1>
+	</div>
+</div>
 <div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 py-8"><!-- 상세페이지 -->
-	<div class="w-full flex mb-4"><!-- 상단 -->
-		<div class="flex-shrink-0 w-1/2 mr-16">
-			<!--슬라이더-->
-			<div class="campaign-slider-wrapper relative mb-8">
-				<div class="campaign-slider w-full overflow-hidden">
-					<div class="slide">
-						<img src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full">
-					</div>
-					<div class="slide">
-						<img src="/project_Ma/img/campaign/Chrysanthemum.jpg" class="object-cover w-full">
-					</div>
-					<div class="slide">
-						<img src="/project_Ma/img/campaign/Hydrangeas.jpg" class="object-cover w-full">
-					</div>
-				</div>
-				<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
-				<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
-			</div>
-			<div class="campaign-slider-nav flex">
-				<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden active">
-					<img alt="prd_img" src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-				</div>
-				<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden">
-					<img alt="prd_img" src="/project_Ma/img/campaign/Chrysanthemum.jpg"  class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-				</div>
-				<div class="slider-nav-item w-1/3 h-32 cursor-pointer rounded overflow-hidden">
-					<img alt="prd_img" src="/project_Ma/img/campaign/Hydrangeas.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-				</div>
-			</div>
-			<!--슬라이더-->
+	<div class="w-fullmb-4"><!-- 상단 -->
+		<h1 class="mb-4 text-3xl font-bold">강좌명</h1>
+		<p class="mb-4 text-gray-dark">주며, 없는 내는 목숨이 피다. 가슴에 피는 무엇을 따뜻한 무엇을 있음으로써 있다. 얼음과 넣는 품었기 우리의 위하여, 아니한 그들에게 반짝이는 힘있다. 그들의 두기 위하여, 구하기 만물은 속에서 새가 곧 이상의 사막이다.</p>
+		<!--버튼-->
+		<div class="mt-8 mb-4 flex justify-end items-center">
+			<p class="font-bold text-2xl text-danger-500 mr-8"><span>110,000</span>원</p>
+			<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
+			<a href="#" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 		</div>
-		<div class="w-1/2">
-			<h1 class="mb-4 text-3xl font-bold">프로젝트명</h1>
-			<p class="mb-4 text-gray-dark">주며, 없는 내는 목숨이 피다. 가슴에 피는 무엇을 따뜻한 무엇을 있음으로써 있다. 얼음과 넣는 품었기 우리의 위하여, 아니한 그들에게 반짝이는 힘있다. 그들의 두기 위하여, 구하기 만물은 속에서 새가 곧 이상의 사막이다.</p>
-			<p class="mb-4 text-2xl font-bold">23일 남음</p>
-			<div class="flex justify-between items-baseline flex-grow-0 mb-2">
-				<p class="inline-block text-brand"><span class="text-2xl font-bold">36,500,000</span>원 후원</p>
-				<p class="inline-block">목표금액 100,000,000원</p>
-			</div>
-			<div class="progress relative bg-gray-lighter mb-4 rounded overflow-hidden">
-				<div class="progress-bar absolute top-0 bottom-0 left-0 bg-brand" style="width:36.5%"></div>
-			</div>
-			<p class="mb-4"><span class="text-2xl font-bold">36.5</span>% 달성</p>
-			<p class="mb-4"><span class="text-2xl font-bold">100</span>명 후원</p>
-			<div class="p-4 bg-brand-light text-sm">
-				<p class="text-brand"><span class="font-bold mr-2">펀딩기간</span>2020-04-05 ~ 2020-04-28</p>
-				<p class="text-gray-darkest">목표금액 100% 달성시에만 결제</p>
-			</div>
-			<!--버튼-->
-			<div class="mt-8 mb-4 flex justify-end">
-				<a href="#donate" class="btn-donate bg-brand hover:bg-brand-dark text-white py-2 px-4 w-1/2 rounded inline-block text-lg text-center font-bold">후원하기</a>
-				<a href="#" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
-			</div>
-			<div class="share text-2xl text-gray-darker my-4 text-right">
-				<div class="inline-block w-10 h-10 leading-10 text-center mr-2"><i class="xi-share-alt"></i></div>
-				<button title="페이스북에 공유하기" data-sns="facebook" data-url="charitree.fezze.name" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-facebook"></i></button>
-				<button title="카카오톡에 공유하기" data-sns="kakaotalk" data-url="charitree.fezze.name" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-kakaotalk"></i></button>
-				<button title="트위터에 공유하기" data-sns="twitter" data-url="charitree.fezze.name" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-twitter"></i></button>
-				<button title="URL 복사" data-clipboard-text="https://charitree.fezze.name" class="copy_url inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-link"></i></button>
-			</div>
+		<div class="">
+			<img src="<%=ctx %>/img/spring.png">
 		</div>
 	</div><!-- 상단 -->
 	<div class="w-full flex items-start content-start"><!-- 본문 -->
 		<div class="bg-white mt-4 mr-8 border border-gray pb-16">
 			<div class="campaign-tab-nav w-full bg-white flex items-center justify-center">
-				<ul class="flex items-center justify-center flex-wrap block py-8 font-bold">
-					<li class="tab-item text-center mr-4 active"><a href="#story" class="inline-block py-4 px-4">강좌소개</a></li>
-					<li class="tab-item text-center mr-4"><a href="#updates" class="inline-block py-4 px-4">커리큘럼</a></li>
-					<li class="tab-item text-center mr-4"><a href="#beckers" class="inline-block py-4 px-4">강사소개 <span class="text-brand">100</span></a></li>
-					<li class="tab-item text-center mr-4"><a href="#comments" class="inline-block py-4 px-4">리뷰 <span class="text-brand">70</span></a></li>
+				<ul class="w-full flex items-center justify-center block py-8 font-bold px-6">
+					<li class="tab-item w-1/4 text-center mx-4 border-b-2 active"><a href="#story" class="inline-block py-4 px-4">강좌소개</a></li>
+					<li class="tab-item w-1/4 text-center mx-4 border-b-2"><a href="#updates" class="inline-block py-4 px-4">커리큘럼</a></li>
+					<li class="tab-item w-1/4 text-center mx-4 border-b-2"><a href="#beckers" class="inline-block py-4 px-4">강사소개</a></li>
+					<li class="tab-item w-1/4 text-center mx-4 border-b-2"><a href="#comments" class="inline-block py-4 px-4">리뷰 <span class="text-brand-500">5</span></a></li>
 				</ul>
 				<a href="#donate" class="sticky-btn-donate inline-block bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded inline-block text-lg text-center ml-4">후원하기</a>
 			</div>
-			<div class="campaign-tab-content px-16"><!--스토리-->
+			<div class="campaign-tab-content px-10"><!--스토리-->
 				<div id="story" class="tab-content-item active">
 					<div class="story-content">
 						<p>국무총리·국무위원 또는 정부위원은 국회나 그 위원회에 출석하여 국정처리상황을 보고하거나 의견을 진술하고 질문에 응답할 수 있다. 국회는 법률에 저촉되지 아니하는 범위안에서 의사와 내부규율에 관한 규칙을 제정할 수 있다. 헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다.</p>
@@ -88,22 +44,6 @@
 						<img src="/project_Ma/img/campaign/Hydrangeas.jpg"/>
 						<p>재산권의 행사는 공공복리에 적합하도록 하여야 한다. 국무총리는 국회의 동의를 얻어 대통령이 임명한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 군인은 현역을 면한 후가 아니면 국무위원으로 임명될 수 없다. 대통령의 임기연장 또는 중임변경을 위한 헌법개정은 그 헌법개정 제안 당시의 대통령에 대하여는 효력이 없다.</p>
 						<p>법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우에는 법원은 헌법재판소에 제청하여 그 심판에 의하여 재판한다. 헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은 확정되며, 대통령은 즉시 이를 공포하여야 한다.</p>
-					</div>
-					<div class="company-info bg-white mt-16">
-						<h2 class="mb-4">단체·기업 정보</h2>
-						<div class="flex items-center border border-gray p-4">
-							<div class="company-name flex items-center w-2/5 border-r border-gray border-dashed pr-4">
-								<div class="company-photo rounded-full border border-gray w-20 h-20 p-4 mr-2 overflow-hidden">
-									<img src="/project_Ma/img/icons8-forest-48.png" class="w-full">
-								</div>
-								<div class="font-bold"><a href="#">사단법인 나무심기 운동본부</a></div>
-							</div>
-							<div class="company-detail w-3/5 pl-4">
-								<div class="company-desc text-gray-darker text-sm">
-									사단법인 나무심기 운동본부입니다. 재판의 심리와 판결은 공개한다. 다만, 심리는 국가의 안전보장 또는 안녕질서를 방해하거나 선량한 풍속을 해할 염려가 있을 때에는 법원의 결정으로 공개하지 아니할 수 있다.
-								</div>
-							</div>
-						</div>
 					</div>
 				</div><!--스토리-->
 				<div id="updates" class="tab-content-item"><!--업데이트-->
