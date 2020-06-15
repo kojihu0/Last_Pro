@@ -34,9 +34,9 @@
 	<div class="close text-white inline-block text-xl absolute top-0 right-0 p-4 cursor-pointer">
 		<i class="xi-close"></i>
 	</div>
-	<form method="GET" id="searchForm" class="w-full max-w-sm">
+	<form method="GET" id="searchForm" class="w-full max-w-sm absolute">
 		<div class="flex items-center border-b border-b-2 border-white py-2">
-			<input class="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="search_text" placeholder="검색" aria-label="Full name">
+			<input class="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="search_text" placeholder="강의검색">
 			<button class="flex-shrink-0 text-white py-1 px-2" id="searchSubmit">
 				<i class="xi-search"></i>
 			</button>

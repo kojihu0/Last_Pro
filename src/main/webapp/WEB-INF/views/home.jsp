@@ -38,25 +38,25 @@
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 mr-2 flex opacity-75 duration-300 hover:opacity-100 col">
-				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
+				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-book.png"></div>
 				<div>
-					<h1 class="roboto-slab font-bold">ABOUT US</h1>
+					<h1 class="roboto-slab font-bold">COURSES INFO</h1>
 					<p>소개</p>
 					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 flex opacity-75 duration-300 hover:opacity-100 col">
-				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
+				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-teacher.png"></div>
 				<div>
-					<h1 class="roboto-slab font-bold">ABOUT US</h1>
+					<h1 class="roboto-slab font-bold">INSTRUCTOR INFO</h1>
 					<p>소개</p>
 					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<button class="slide-arrow arrow-prev outline-none"><i class="xi-angle-left"></i></button>
-	<button class="slide-arrow arrow-next outline-none"><i class="xi-angle-right"></i></button>
+	<button class="slide-arrow arrow-prev outline-none opacity-0 duration-300"><i class="xi-angle-left"></i></button>
+	<button class="slide-arrow arrow-next outline-none opacity-0 duration-300"><i class="xi-angle-right"></i></button>
 </div>
 <!-- 메인슬라이더 -->
 <!-- 베스트강의 -->
@@ -172,9 +172,11 @@
 				<div class="p-8">
 					<form action="">
 						<p class="mb-4"><input type="text" placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></p>
+						<p class="mb-4"><input type="text" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></p>
 						<p class="mb-4"><input type="text" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></p>
 						<p class="mb-4"><input type="password" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></p>
 						<p class="mb-4"><input type="password" placeholder="패스워드 확인" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></p>
+						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a href="">사이트 이용약관</a> 및 <a href="#">개인정보 처리방침</a>에 동의합니다.</label></p>
 						<input type="submit" value="가입하기" class="w-full outline-none bg-black text-white py-2 px-4">
 					</form>
 				</div>

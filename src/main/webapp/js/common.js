@@ -44,8 +44,7 @@ $(function(){
 	}
 	
 	
-	var mainSlider = $("#mainSlider");
-	mainSlider.off().on('init', function(event, slick) {
+	$("#mainSlider").on('init', function(event, slick) {
         // let's do this after we init the banner slider
 		var el = $('#mainSlider .slide-item[data-slick-index=0]');
 		slideTxt(el);
@@ -64,7 +63,7 @@ $(function(){
 		prevArrow: ".main-slide-section .arrow-prev",
 		nextArrow: ".main-slide-section .arrow-next",
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 10000,
 	});
 	
 	function slideTxt(el) {
@@ -171,15 +170,15 @@ $(function(){
         $(this).toggleClass('added-this');
     });
 
-    $('.campaign-tab-nav .tab-item a').on('click', function(e){
+    $('.course-tab-nav .tab-item a').on('click', function(e){
         e.preventDefault();
-        
+        console.log($(this));
         $('html,body').animate({
-            scrollTop: $("#donate").offset().top
+            scrollTop: $("#courseContent").offset().top
         });
 
-        $('.campaign-tab-nav .tab-item').removeClass('active');
-        $('.campaign-tab-content .tab-content-item').removeClass('active');
+        $('.course-tab-nav .tab-item').removeClass('active');
+        $('.course-tab-content .tab-content-item').removeClass('active');
 
         $(this).parent().addClass('active');
         $($(this).attr('href')).addClass('active');

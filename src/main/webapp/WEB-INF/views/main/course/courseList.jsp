@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="w-full"></div>
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
+	<div id="bannerText">
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;COURSES</h1>
+	</div>
+</div>
 <div class="w-full max-w-screen-xl my-0 mx-auto">
-	<div class="course-list flex flex-wrap">
+	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Courses</span>
+	<div id="hr" class="my-4 border-t border-solid"></div>
+	<div class="course-list flex flex-wrap -mx-4">
 		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>

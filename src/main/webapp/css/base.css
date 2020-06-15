@@ -47,9 +47,20 @@ html, body, .site-wrap{
 #site-header.sticky-header #site-navigation>ul>li>a{
 	color:#212120;
 }
-#mainSlider{
-/*	opacity: 0.8;*/
+
+#searchForm{
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
+
+#searchForm input[type=text]{
+	background: transparent;
+}
+
+/*메인 슬라이더*/
 #mainSlider .slick-list,
 #mainSlider .slick-track {
 	height:100vh;
@@ -76,7 +87,7 @@ html, body, .site-wrap{
 	color:#fff;
 	border-radius: 50%;
 }
-
+.main-slide-section:hover .slide-arrow{opacity:1}
 .main-slide-section .arrow-prev{left:10px}
 .main-slide-section .arrow-next{right:10px}
 
@@ -185,27 +196,17 @@ html, body, .site-wrap{
 }
 
 /*캠페인 상세*/
-.campaign-slider,
-.campaign-slider .slide img{height: 400px;}
-.progress{
-	height: 6px;
-}
-
-.campaign-slider-arrow{
-    top: 175px;
-    font-size: 36px;
-    opacity: 0.9;
-}
-.campaign-slider-nav .slider-nav-item{
+.course-img img{height: 400px;}
+.course-slider-nav .slider-nav-item{
     transition: all .3s;
     opacity: 0.5;
 }
-.campaign-slider-nav .slider-nav-item.active{
+.course-slider-nav .slider-nav-item.active{
     opacity: 1;
 }
 
-.campaign-tab-nav .sticky-btn-donate{display: none;}
-.campaign-tab-nav.sticky{
+.course-tab-nav .sticky-btn-donate{display: none;}
+.course-tab-nav.sticky{
     position:fixed;
     top: 0;
     left: 0;
@@ -214,47 +215,47 @@ html, body, .site-wrap{
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-.campaign-tab-nav ul{
+.course-tab-nav ul{
     transition: all .4s;
 }
 
-.campaign-tab-nav.sticky .sticky-btn-donate{display: inline-block;}
+.course-tab-nav.sticky .sticky-btn-donate{display: inline-block;}
 
-.campaign-tab-nav.sticky ul{
+.course-tab-nav.sticky ul{
     padding: 0;
 }
 
-.campaign-tab-nav>ul>.tab-item{
+.course-tab-nav>ul>.tab-item{
     border-bottom-color: transparent;
     transition: all .4s;
 }
 
-.campaign-tab-nav>ul>.tab-item.active,
-.campaign-tab-nav>ul>.tab-item:hover{
+.course-tab-nav>ul>.tab-item.active,
+.course-tab-nav>ul>.tab-item:hover{
     color: #FFB606;
     border-bottom-color: #FFB606;
 }
 
-.campaign-tab-content .tab-content-item{
+.course-tab-content .tab-content-item{
     display: none;
 }
 
-.campaign-tab-content .tab-content-item.active{
+.course-tab-content .tab-content-item.active{
     display: block;
 }
 
-.campaign-tab-content #story p,
-.campaign-tab-content #updates .update-content p{
+.course-tab-content #story p,
+.course-tab-content #updates .update-content p{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-#updates .campaign-update{
+#updates .course-update{
     padding-left: 38px !important;
     border-left: 3px solid #e7e7e7;
 }
 
-#updates .campaign-update span.round-circle {
+#updates .course-update span.round-circle {
     position: absolute;
     left: 0;
     top: 0;
@@ -268,7 +269,7 @@ html, body, .site-wrap{
     -webkit-transition: 400ms;
 }
 
-#updates .campaign-update li:hover span.round-circle{
+#updates .course-update li:hover span.round-circle{
     background: #cb0802;
 }
 
@@ -280,3 +281,6 @@ html, body, .site-wrap{
     color: #cb0802;
     content: "\ea10";
 }
+#stickyNav{bottom: -50px; transition: .3s;}
+#stickyNav.sticky-header{bottom:0;}
+#stickyNav ul li a{line-height: 46px;}
