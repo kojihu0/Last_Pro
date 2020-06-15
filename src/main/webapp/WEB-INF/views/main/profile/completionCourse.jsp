@@ -50,10 +50,10 @@
 					
 					<ul class="flex roboto-slab mt-16">
 					  <li id="CompletionCourse" class="-mb-px mr-1">
-					    <a class="bg-white border-b border-l border-t-4 border-r py-2 px-3 font-semibold border-brand-500 text-brand-500 " href="#">CompletionCourse</a>
+					    <a class="bg-white border-b border-l border-t-4 border-r py-2 px-3 font-semibold border-brand-500 text-brand-500 ">CompletionCourse</a>
 					  </li> 
 					  <li id="FinalGrade" class="mr-1">
-					    <a class="bg-white border-b border-l border-t border-r py-2 px-3 font-semibold text-gray-900 hover:text-brand-500 " href="#">Final grade</a>
+					    <a class="bg-white border-b border-l border-t border-r py-2 px-3 font-semibold text-gray-900 hover:text-brand-500 ">Final grade</a>
 					  </li>
 					</ul>
 					
