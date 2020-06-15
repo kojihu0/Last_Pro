@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+/* Hover state of the stars */
+#stars > li.star.hover {
+  color:#FFb606;
+}
+
+/* Selected state of the stars */
+#stars > li.star.selected {
+  color:#F6a405;
+}
+</style>
 <div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
 	<div id="bannerText">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;COURSES</h1>
 	</div>
 </div>
-<div id="stickyNav" class="w-full fixed bg-white border-t border-gray">
+<div id="stickyNav" class="course-tab-nav w-full fixed bg-white border-t border-gray">
 	<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex justify-between">
 		<ul class="flex items-center block w-1/2">
 			<li class="tab-item w-1/3 text-center mx-4 border-t-4 active"><a href="#course_detail" class="inline-block px-4"><span></span>강좌소개 및 커리큘럼</a></li>
@@ -54,7 +65,7 @@
 		</div>
 	</div><!-- 상단 -->
 	<div id="courseContent" class="w-full flex items-start content-start"><!-- 본문 -->
-		<div class="w-full bg-white mt-4 border border-gray pb-16">
+		<div class="w-full bg-white mt-4 border border-gray pb-16 mb-16">
 			<div class="course-tab-nav w-full bg-white flex items-center justify-center">
 				<ul class="w-full flex items-center justify-center block py-8 font-bold px-6">
 					<li class="tab-item w-1/3 text-center mx-4 border-b-4 active"><a href="#course_detail" class="inline-block py-4 px-4"><span></span>강좌소개 및 커리큘럼</a></li>
@@ -82,41 +93,96 @@
 				<div id="instructor" class="tab-content-item"><!--후원자-->
 				</div><!--후원자-->
 				<div id="comments" class="tab-content-item"><!--응원글-->
-					<h1 class="my-4">리뷰</h1>
+					<h1 class="my-4">수강후기</h1>
 					<div class="mb-8">
 						<form method="POST" action="" enctype="multipart/form-data" onsubmit="return course_comment_validation()" class="course-comment-form">
-							<label for="course_comment"></label>
-							<textarea name="course_comment" id="course_comment" placeholder="로그인해야 응원글을 남길 수 있습니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+							<div class="mb-4">
+								<p class="mb-2">평점을 남겨주세요</p>
+								<ul id="stars" class="text-lg text-gray-500">
+									<li class="star inline-block" data-value="1"><i class="xi-star"></i></li>
+									<li class="star inline-block" data-value="2"><i class="xi-star"></i></li>
+									<li class="star inline-block" data-value="3"><i class="xi-star"></i></li>
+									<li class="star inline-block" data-value="4"><i class="xi-star"></i></li>
+									<li class="star inline-block" data-value="5"><i class="xi-star"></i></li>
+								</ul>
+							</div>
+							<textarea name="course_comment" id="course_comment" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
 							<div class="text-right">
-								<input type="submit" value="응원하기" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
+								<input type="submit" value="등록" class="bg-brand-500 hover:bg-brand-600 font-bold py-2 px-4 rounded"/>
 							</div>
 						</form>
+					</div>
+					<div class="course-total-rate flex items-center py-4 w-2/3 mb-8">
+						<div class="w-56 h-56 text-center border border-gray-500 p-6 mr-8">
+							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">5.0</h1>
+							<p class="text-brand-500 font-normal mb-2">
+								<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
+							</p>
+							<p >2개의 수강평</p>
+						</div>
+						<div class="flex-grow h-56 border border-gray-500 px-6 py-10">
+							<div class="stars flex items-center">
+								<div class="key pr-8">5</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:100%"></div></div>
+								</div>
+								<span class="w-16 text-right">100%</span>
+							</div>
+							<div class="stars flex items-center">
+								<div class="key pr-8">4</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
+								</div>
+								<span class="w-16 text-right">0%</span>
+							</div>
+							<div class="stars flex items-center">
+								<div class="key pr-8">3</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
+								</div>
+								<span class="w-16 text-right">0%</span>
+							</div>
+							<div class="stars flex items-center">
+								<div class="key pr-8">2</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
+								</div>
+								<span class="w-16 text-right">0%</span>
+							</div>
+							<div class="stars flex items-center">
+								<div class="key pr-8">1</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
+								</div>
+								<span class="w-16 text-right">0%</span>
+							</div>
+						</div>
 					</div>
 					<ul class="course-comment-list">
 						<li class="mb-8">
 							<div class="comment-container">
-								<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-								<div class="comment-text text-gray-darkest">응원합니다.</div>
-							</div>
-							<div class="comment-reply mt-4 py-4 px-8 bg-gray-lightest">
-								<p class="comment-author font-bold mb-2 text-success">나무심기 운동본부<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-								<div class="comment-text text-gray-darkest">응원 감사드립니다^^</div>
+								<p class="comment-author font-bold mb-2">
+									홍길동
+									<span class="text-brand-500 text-sm font-normal ml-4">
+										<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
+									</span>
+									<span class="text-gray-700 text-sm font-normal ml-4">2020-04-27</span>
+								</p>
+								<div class="comment-text text-gray-900">수강후기입니다.</div>
 							</div>
 						</li>
 						<li class="mb-8">
 							<div class="comment-container">
-								<p class="comment-author font-bold mb-2">홍길동<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-								<div class="comment-text text-gray-darkest">응원합니다.</div>
+								<p class="comment-author font-bold mb-2">
+									홍길동
+									<span class="text-brand-500 text-sm font-normal ml-4">
+										<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
+									</span>
+									<span class="text-gray-700 text-sm font-normal ml-4">2020-04-27</span>
+								</p>
+								<div class="comment-text text-gray-900">수강후기입니다.~~</div>
 							</div>
 						</li>
-						<li class="mb-8">
-							<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-							<div class="comment-text text-gray-darkest">응원합니다.</div>
-						</li>
-						<li class="mb-8">
-							<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-							<div class="comment-text text-gray-darkest">응원합니다.</div>
-						</li>		
 					</ul>
 					<ul class="pagenation flex items-center justify-center my-4">
 						<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
@@ -146,5 +212,40 @@ $(function(){
 
 	$("html,body").on("mousewheel DOMMouseScroll'", refresh);
 	refresh();
+	
+	/*별점*/
+	$('#stars li').on('mouseover', function(){
+    	var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+   
+    	// Now highlight all the stars that's not after the current hovered star
+    	$(this).parent().children('li.star').each(function(e){
+      		if (e < onStar) {
+        		$(this).addClass('hover');
+      		}
+      		else {
+        		$(this).removeClass('hover');
+      		}
+    	});
+    
+	}).on('mouseout', function(){
+	    $(this).parent().children('li.star').each(function(e){
+	    	$(this).removeClass('hover');
+		});
+	});
+	  
+	  
+	  /* 2. Action to perform on click */
+	  $('#stars li').on('click', function(){
+	    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+	    var stars = $(this).parent().children('li.star');
+	    
+	    for (i = 0; i < stars.length; i++) {
+	      $(stars[i]).removeClass('selected');
+	    }
+	    
+	    for (i = 0; i < onStar; i++) {
+	      $(stars[i]).addClass('selected');
+	    }
+	  });
 });
 </script>
