@@ -1,11 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/main/java/kr/co/lms/aboutUs/AboutUsController.java=UTF-8
-encoding//src/main/java/kr/co/lms/idFind/LoginController.java=UTF-8
-encoding//src/main/java/kr/co/lms/news/NewsController.java=UTF-8
-encoding//src/main/java/kr/co/lms/profile/ProfileController.java=UTF-8
-encoding//src/main/java/kr/co/lms/register/RegisterController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/main/aboutUs=UTF-8
-encoding//src/main/webapp/WEB-INF/views/main/aboutUs/aboutUs.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/main/news/noticeForm.jsp=UTF-8
 encoding//src/main/webapp/css/profile.css=UTF-8
