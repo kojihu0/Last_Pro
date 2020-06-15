@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class profileController {
+public class ProfileController {
 	@RequestMapping(value="/courseOfStudy",method=RequestMethod.GET)
 	public String courseOfStudy(){
 		return "main/profile/courseOfStudy";

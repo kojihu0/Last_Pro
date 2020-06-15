@@ -44,63 +44,63 @@
 					    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/wishList">WishList</a>
 					  </li>
 					</ul>
-					<table class="border text-center mt-8 h-64 bg-brand-500 w-9/12 border-gray-500">
+					<table class="text-white border text-center mt-8 h-64 bg-cta-500 w-9/12 border-gray-500">
 						<tbody >
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">&nbsp;</td>
-								<td class="border border-gray-500">월</td>
-								<td class="border border-gray-500">화</td>
-								<td class="border border-gray-500">수</td>
-								<td class="border border-gray-500">목</td>
-								<td class="border border-gray-500">금</td>
+							<tr class="border border-white">
+								<td class="border border-white">&nbsp;</td>
+								<td class="border border-white">월</td>
+								<td class="border border-white">화</td>
+								<td class="border border-white">수</td>
+								<td class="border border-white">목</td>
+								<td class="border border-white">금</td>
 							</tr>
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">1교시</td>
-								<td class="border border-gray-500">스프링 과정</td>
-								<td class="border border-gray-500">스프링 과정</td>
-								<td class="border border-gray-500">스프링 과정</td>
-								<td class="border border-gray-500">스프링 과정</td>
-								<td class="border border-gray-500">스프링 과정</td>
+							<tr class="border border-white">
+								<td class="border border-white">1교시</td>
+								<td class="border border-white">스프링 과정</td>
+								<td class="border border-white">스프링 과정</td>
+								<td class="border border-white">스프링 과정</td>
+								<td class="border border-white">스프링 과정</td>
+								<td class="border border-white">스프링 과정</td>
 							</tr>
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">2교시</td>
-								<td class="border border-gray-500">MVC패턴</td>
-								<td class="border border-gray-500">MVC패턴</td>
-								<td class="border border-gray-500">MVC패턴</td>
-								<td class="border border-gray-500">MVC패턴</td>
-								<td class="border border-gray-500">MVC패턴</td>
+							<tr class="border border-white">
+								<td class="border border-white">2교시</td>
+								<td class="border border-white">MVC패턴</td>
+								<td class="border border-white">MVC패턴</td>
+								<td class="border border-white">MVC패턴</td>
+								<td class="border border-white">MVC패턴</td>
+								<td class="border border-white">MVC패턴</td>
 							</tr>
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">3교시</td>
-								<td class="border border-gray-500">백엔드개발</td>
-								<td class="border border-gray-500">백엔드개발</td>
-								<td class="border border-gray-500">백엔드개발</td>
-								<td class="border border-gray-500">백엔드개발</td>
-								<td class="border border-gray-500">백엔드개발</td>
+							<tr class="border border-white">
+								<td class="border border-white">3교시</td>
+								<td class="border border-white">백엔드개발</td>
+								<td class="border border-white">백엔드개발</td>
+								<td class="border border-white">백엔드개발</td>
+								<td class="border border-white">백엔드개발</td>
+								<td class="border border-white">백엔드개발</td>
 							</tr>
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">4교시</td>
-								<td class="border border-gray-500">데이터베이스 기초</td>
-								<td class="border border-gray-500">데이터베이스 기초</td>
-								<td class="border border-gray-500">데이터베이스 기초</td>
-								<td class="border border-gray-500">데이터베이스 기초</td>
-								<td class="border border-gray-500">데이터베이스 기초</td>
+							<tr class="border border-white">
+								<td class="border border-white">4교시</td>
+								<td class="border border-white">데이터베이스 기초</td>
+								<td class="border border-white">데이터베이스 기초</td>
+								<td class="border border-white">데이터베이스 기초</td>
+								<td class="border border-white">데이터베이스 기초</td>
+								<td class="border border-white">데이터베이스 기초</td>
 							</tr>
 							<tr>
-								<td class="border border-gray-500">5교시</td>
-								<td class="border border-gray-500">자바스크립트</td>
-								<td class="border border-gray-500">자바스크립트</td>
-								<td class="border border-gray-500">자바스크립트</td>
-								<td class="border border-gray-500">자바스크립트</td>
-								<td class="border border-gray-500">자바스크립트</td>
+								<td class="border border-white">5교시</td>
+								<td class="border border-white">자바스크립트</td>
+								<td class="border border-white">자바스크립트</td>
+								<td class="border border-white">자바스크립트</td>
+								<td class="border border-white">자바스크립트</td>
+								<td class="border border-white">자바스크립트</td>
 							</tr>
-							<tr class="border border-gray-500">
-								<td class="border border-gray-500">6교시</td>
-								<td class="border border-gray-500">프로젝트 개발</td>
-								<td class="border border-gray-500">프로젝트 개발</td>
-								<td class="border border-gray-500">프로젝트 개발</td>
-								<td class="border border-gray-500">프로젝트 개발</td>
-								<td class="border border-gray-500">프로젝트 개발</td>
+							<tr class="border border-white">
+								<td class="border border-white">6교시</td>
+								<td class="border border-white">프로젝트 개발</td>
+								<td class="border border-white">프로젝트 개발</td>
+								<td class="border border-white">프로젝트 개발</td>
+								<td class="border border-white">프로젝트 개발</td>
+								<td class="border border-white">프로젝트 개발</td>
 							</tr>
 						</tbody>
 					</table>
