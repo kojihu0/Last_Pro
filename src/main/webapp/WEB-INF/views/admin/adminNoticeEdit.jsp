@@ -16,12 +16,12 @@
 			<div class="text-xl p-3 mx-16 ">  
 				<i class="xi-school"></i>&nbsp;사내공지
 			</div>
-	<form method="post" action="">
+	<form method="post" action="<%=projectPath%>/admin/adminNoticeEditOk" onsubmit="return noticeEditCheck()">
 		<div class="p-3">
-				<table class="w-full">
+				<table class="w-full"> 
 					<thead>
 						<tr>
-							<th class="p-3 text-xl border-b-4 border-info-300"><input class="border-4 border-info-300 text-center" type="text" name="noticeSubject" placeholder="글 제목" size="40"/></th>
+							<th class="p-3 text-xl border-b-4 border-info-300"><input class="border-4 border-info-300 text-center" type="text" id="noticeSubject" name="noticeSubject" placeholder="글 제목" size="40"/></th>
 						<tr>
 						<tr>
 							<td>

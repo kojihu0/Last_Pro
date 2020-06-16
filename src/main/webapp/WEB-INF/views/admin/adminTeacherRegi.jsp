@@ -15,18 +15,18 @@
 				<i class="xi-school"></i>&nbsp;직원등록
 			</div>
 
-		<form method="post" action="">
+		<form method="post" action="<%=projectPath%>/admin/adminTeacherRegiOk" onsubmit="return teacherRegiCheck()">
 			<div class="p-3 my-0 mx-auto flex justify-center">  
 			<table>
 				<tbody>  
 					<tr>  
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">이  름</th>    
-						<td class="p-3 border border-black" style="width:800px"><input class="border border-black" type="text" name="teacherName"/></td>  
+						<td class="p-3 border border-black" style="width:800px"><input class="border border-black" type="text" id="teacherName" name="teacherName"/></td>  
 					</tr> 
-					<tr>
+					<tr> 
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">소  속</th>
 						<td class="p-3 border border-black">
-							<select name="belong" class="border border-black h-8"> 
+							<select id="belong" name="belong" class="border border-black h-8"> 
 								<option value="" selected="selected">::담당::</option>
 								<option value="java">A</option> 
 								<option value="java">B</option>
@@ -39,7 +39,7 @@
 					<tr>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">직  급</th>
 						<td class="p-3 border border-black">
-							<select name="teacherRank" class="border border-black h-8"> 
+							<select id="teacherRank" name="teacherRank" class="border border-black h-8"> 
 								<option value="" selected="selected">::직급::</option>
 								<option value="평강사">평강사</option>
 								<option value="임시강사">임시강사</option>
@@ -49,12 +49,12 @@
 					</tr>
 					<tr> 
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">I  D</th>
-						<td class="p-3 border border-black"><input class="border border-black" type="text" name="teacherId" placeholder="your@email.com == id"/></td>  
+						<td class="p-3 border border-black"><input class="border border-black" type="text" id="teacherId" name="teacherId" placeholder="teacher@email.com == id"/></td>  
 					</tr>
 					<tr>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">권  한</th>
 						<td class="p-3 border border-black">
-							<select name="teacherRank" class="border border-black h-8"> 
+							<select id="teacherAuthority" name="teacherAuthority" class="border border-black h-8"> 
 								<option value="" selected="selected">::권한::</option>
 								<option value="일반">일반</option>
 								<option value="임시">임시</option>
@@ -65,13 +65,13 @@
 					<tr>
 						<th class="p-3 w-32 border border-black  bg-info-300 text-center text-l">휴대폰</th>
 						<td class="p-3 border border-black">
-							<input class="border border-black" type="tel" name="teacherTel_01" size="3"/>&nbsp;-&nbsp;<input type="tel" name="teacherTel_02" size="4" class="border border-black"/>&nbsp;-&nbsp;<input type="tel" name="teacherTel_03"size="4" class="border border-black"/>
+							<input class="border border-black" type="tel" id="teacherTel_01" name="teacherTel_01" size="3"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_02" name="teacherTel_02" size="4" class="border border-black"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_03" name="teacherTel_03"size="4" class="border border-black"/>
 						</td>
 					</tr> 
 					<tr>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">이메일</th>
 						<td class="p-3 border border-black">
-							<input type="text" name="emailId" class="border border-black" size="15"/>&nbsp;@&nbsp;<input type="text" name="domain" id="domain" class="border border-black" size="15" value=""/>
+							<input type="text" id="emailId" name="emailId" class="border border-black" size="15"/>&nbsp;@&nbsp;<input type="text" name="domain" id="domain" class="border border-black" size="15" value=""/>
 
 							<select title="이메일 도메인 선택" id="domainSelect" name="domainSelect" class="border border-black h-8">
                                 <option value="" selected="selected">::선택::</option>
@@ -86,7 +86,7 @@
 					<tr> 
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">상  태</th> 
 						<td class="p-3 border border-black">
-							<input type="radio" name="teacherState" value="정상"/>&nbsp;정상&nbsp;
+							<input type="radio" name="teacherState" value="정상" checked/>&nbsp;정상&nbsp;
 							<input type="radio" name="teacherState" value="계약만료"/>&nbsp;계약만료&nbsp;
 							<input type="radio" name="teacherState" value="퇴사"/>&nbsp;퇴사&nbsp;
 						</td> 

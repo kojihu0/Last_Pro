@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-	  var calendarEl = document.getElementById('calendar');
+	  var calendarEl  = document.getElementById('calendar');
 	  var draggableEl = document.getElementById('mydraggable');
 	  
 	  var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  selectMirror:true,
 		  selectHelper:true,
 		  locale : 'ko',
-		
+		 
 		  header: {
 			  left: 'prev,next today',
 			  center: 'title',
@@ -87,7 +87,6 @@ function addEvent(){
 				"<button id='saveButton' onClick=javascript:saveEvent();>저장</button>&nbsp;&nbsp;" +
 			"</div>";		
 	
-	console.log(tag);
 	openPopup("일정 등록", tag,  1000);
 }
 
