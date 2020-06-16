@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/kr/co/lms/admin=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/adminCourseEdit.jsp=UTF-8
 encoding//src/main/webapp/fullCalendar/data.json=UTF-8
+encoding/<project>=UTF-8
