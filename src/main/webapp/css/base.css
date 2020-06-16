@@ -225,15 +225,15 @@ html, body, .site-wrap{
     padding: 0;
 }
 
-.course-tab-nav>ul>.tab-item{
+.course-tab-nav ul>.tab-item{
     border-bottom-color: transparent;
     transition: all .4s;
 }
 
-.course-tab-nav>ul>.tab-item.active,
-.course-tab-nav>ul>.tab-item:hover{
+.course-tab-nav ul>.tab-item.active,
+.course-tab-nav ul>.tab-item:hover{
     color: #FFB606;
-    border-bottom-color: #FFB606;
+    border-color: #FFB606;
 }
 
 .course-tab-content .tab-content-item{

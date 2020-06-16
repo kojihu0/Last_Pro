@@ -5,19 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/tailwind.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/profile.css" type="text/css">
-<script src="<%=request.getContextPath()%>/js/profile.js"></script>
+<link rel="stylesheet" href="<%=ctx%>/css/tailwind.css" type="text/css">
+<link rel="stylesheet" href="<%=ctx%>/css/profile.css" type="text/css">
+<script src="<%=ctx%>/js/profile.js"></script>
 </head>
 <body>
 <body>
-	<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+	<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
 		<div id="bannerText">
 			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
 		</div>
 	</div>
 	<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Register</span>
+		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Register</span>
 		<div id="hr"class="my-4 border-t border-solid"></div>
 		<div class="w-1/3 m-0 mb-4 m-auto mt-8"><p class="font-bold text-2xl">Register a new account</p></div>
 		

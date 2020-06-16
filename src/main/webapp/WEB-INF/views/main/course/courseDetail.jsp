@@ -232,10 +232,9 @@ $(function(){
 	    	$(this).removeClass('hover');
 		});
 	});
-	  
-	  
-	  /* 2. Action to perform on click */
-	  $('#stars li').on('click', function(){
+	
+	/* 2. Action to perform on click */
+	$('#stars li').on('click', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
 	    var stars = $(this).parent().children('li.star');
 	    
@@ -246,6 +245,27 @@ $(function(){
 	    for (i = 0; i < onStar; i++) {
 	      $(stars[i]).addClass('selected');
 	    }
-	  });
+	});
+	
+	//위시리스트
+	$('a.add-wishlist').on('click', function(e){
+		e.preventDefault();
+		$(this).toggleClass('added-this');
+	});
+	
+	//탭
+	$('.course-tab-nav .tab-item a').on('click', function(e){
+		e.preventDefault();
+        console.log($(this));
+        $('html,body').animate({
+            scrollTop: $("#courseContent").offset().top
+        });
+
+        $('.course-tab-nav .tab-item').removeClass('active');
+        $('.course-tab-content .tab-content-item').removeClass('active');
+
+        $(this).parent().addClass('active');
+        $($(this).attr('href')).addClass('active');
+    });
 });
 </script>

@@ -6,22 +6,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/tailwind.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/profile.css" type="text/css">
-<script src="<%=request.getContextPath()%>/js/profile.js"></script>
+<link rel="stylesheet" href="<%=ctx%>/css/tailwind.css" type="text/css">
+<link rel="stylesheet" href="<%=ctx%>/css/profile.css" type="text/css">
+<script src="<%=ctx%>/js/profile.js"></script>
 </head>
 <body>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
 		<div id="bannerText">
 			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
 		</div>
 	</div>
 	<div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 		<div class="flex mt-12">
 			<div>
-				<img src="<%=request.getContextPath()%>/img/user-avatar.png">
+				<img src="<%=ctx%>/img/user-avatar.png">
 				<div id="hr" class="my-8 border-t border-solid"></div>
 				<h1 class="text-4xl font-bold roboto-slab text-center">Hong Gil Dong</h1>
 				<div id="hr" class="m-0 m-auto bg-black border-black my-4 border-t border-solid w-4 border-2"></div>
@@ -30,22 +30,22 @@
 			<div class="w-full mt-4 ml-8">
 				<ul class="flex roboto-slab">
 					  <li class="-mb-px mr-1">
-					    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/courseOfStudy">Course</a>
+					    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
 					  </li> 
 					  <li class="mr-1">
-					    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/completionCourse">Completion Course</a>
+					    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
 					  </li>
 					  <li class="mr-1">
-					   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/inCompletionCourse">Incomplete Course</a>
+					   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
 					  </li>
 					  <li class="mr-1">
-					    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/schedule">Schedule</a>
+					    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
 					  </li>
 					  <li class="mr-1">
-					    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=request.getContextPath()%>/profile">Profile</a>
+					    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/profile">Profile</a>
 					  </li>
 					   <li class="mr-1">
-					    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=request.getContextPath()%>/wishList">WishList</a>
+					    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
 					  </li>
 					</ul>
 					
@@ -85,7 +85,7 @@
 					
 					<form id="imgUpload" style="display:none">
 						<div class='border-solid border-gray-500 border'>
-							<img src="<%=request.getContextPath()%>/img/user-avatar.png" class="my-4 ml-4" style="width:150px;height:150px">
+							<img src="<%=ctx%>/img/user-avatar.png" class="my-4 ml-4" style="width:150px;height:150px">
 							
 							<button type="submit"  class="my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
 								<i class="xi-file-upload-o "></i>

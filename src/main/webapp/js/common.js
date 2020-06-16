@@ -157,30 +157,4 @@ $(function(){
         $(this).val($(this).val().replace(/[^0-9]/g,""));
     });
 
-    /* 후원 상세페이지 */
-    $('a.btn-donate').on('click', function(e){
-        e.preventDefault();
-        $('html,body').animate({
-            scrollTop: $("#donate").offset().top
-        });
-    });
-
-    $('a.add-wishlist').on('click', function(e){
-        e.preventDefault();
-        $(this).toggleClass('added-this');
-    });
-
-    $('.course-tab-nav .tab-item a').on('click', function(e){
-        e.preventDefault();
-        console.log($(this));
-        $('html,body').animate({
-            scrollTop: $("#courseContent").offset().top
-        });
-
-        $('.course-tab-nav .tab-item').removeClass('active');
-        $('.course-tab-content .tab-content-item').removeClass('active');
-
-        $(this).parent().addClass('active');
-        $($(this).attr('href')).addClass('active');
-    });
 });

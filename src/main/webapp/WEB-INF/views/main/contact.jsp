@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1697bf8ffdf3960a4e20ff67ba4f1d5f"></script>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
 	<div id="bannerText">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;CONTACT</h1>
 	</div>
 </div>
 <div class="my-0 mx-auto w-full max-w-screen-xl">
-	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
-	<div class="flex"><!-- contact-info -->
+	<div class="flex pt-12"><!-- contact-info -->
 		<div class="w-1/2 pr-6">
 			<div class="mb-12">
 				<h1 class="roboto-slab font-bold">CONTACT INFO</h1>

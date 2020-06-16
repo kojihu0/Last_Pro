@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
 		<div id="bannerText">
 			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;NEWS</h1>
 		</div>
 	</div>
 	<div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 		<div  class="card_box w-full my-0 mx-auto max-w-screen-xl"> 
 				<!-- notice-navigation -->
@@ -54,7 +54,7 @@
 					    					</div> 
 					 					</div>  	 
 					 					<div class="notice_img_box h-36 flex-initial w-1/3 rounded-t lg:rounded-t-none lg:rounded-l text-center"   title=""> 
-					  						<a href="#"><img class="notice_img object-cover" src="<%=request.getContextPath() %>/img/notebook.jpg"/></a>  
+					  						<a href="#"><img class="notice_img object-cover" src="<%=ctx %>/img/notebook.jpg"/></a>  
 					  					</div> 
 					 				</div>
 								</div>
@@ -83,7 +83,7 @@
 					    					</div> 
 					 					</div>  	 
 					 					<div class="notice_img_box h-36 flex-initial w-1/3 rounded-t lg:rounded-t-none lg:rounded-l text-center"   title=""> 
-					  						<a href="#"><img class="notice_img object-cover" src="<%=request.getContextPath() %>/img/notebook.jpg"/></a>  
+					  						<a href="#"><img class="notice_img object-cover" src="<%=ctx %>/img/notebook.jpg"/></a>  
 					  					</div> 
 					 				</div>
 								</div>
@@ -112,7 +112,7 @@
 					    					</div> 
 					 					</div>  	 
 					 					<div class="notice_img_box h-36 flex-initial w-1/3 rounded-t lg:rounded-t-none lg:rounded-l text-center"   title=""> 
-					  						<a href="#"><img class="notice_img object-cover" src="<%=request.getContextPath() %>/img/notebook.jpg"/></a>  
+					  						<a href="#"><img class="notice_img object-cover" src="<%=ctx %>/img/notebook.jpg"/></a>  
 					  					</div> 
 					 				</div>
 								</div>
@@ -141,7 +141,7 @@
 					    					</div> 
 					 					</div>  	 
 					 					<div class="notice_img_box h-36 flex-initial w-1/3 rounded-t lg:rounded-t-none lg:rounded-l text-center"   title=""> 
-					  						<a href="#"><img class="notice_img object-cover" src="<%=request.getContextPath() %>/img/notebook.jpg"/></a>  
+					  						<a href="#"><img class="notice_img object-cover" src="<%=ctx %>/img/notebook.jpg"/></a>  
 					  					</div> 
 					 				</div>
 								</div>

@@ -45,7 +45,7 @@
 						<a href="<%=ctx %>/course/courseList" class="inline-block py-8 px-4">COURSES</a>
 					</li>
 					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="<%=ctx %>/news/news" class="inline-block py-8 px-4">NEWS</a>
+						<a href="<%=ctx %>/news" class="inline-block py-8 px-4">NEWS</a>
 					</li>
 					<li class="menu-item text-center has-child flex items-center ml-2">	
 						<a href="<%=ctx %>/contact" class="inline-block py-8 px-4">CONTACT</a>
@@ -75,13 +75,13 @@
 		      <input class="appearance-none w-1/2 bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="password" placeholder="PASSWORD">
 		    </div>
 		    <div class="mb-4">
-		    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=request.getContextPath() %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
+		    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=ctx %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
 		    </div>
 		    <div class="mb-4">
 		    	<input type="submit" id="loginBtn" value="login" class="text-2xl font-bold w-1/2  bg-brand-500 py-3 px-4"/>
 		    </div>
 		    <div class="mb-4">
-				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=request.getContextPath() %>/register" class="text-brand-500 text-xs">Register now</a>
+				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=ctx %>/register" class="text-brand-500 text-xs">Register now</a>
 			</div>
   		</div>
 	</div>
