@@ -17,7 +17,7 @@
 		</div>
 	
 		<div class="p-3 text-right"> 
-			<button class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full"><a href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a></button>
+			<button class="border-solid border-2 border-gray-600 rounded py-2 px-4"><a href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a></button>
 		</div>
 	
 	
@@ -126,8 +126,8 @@
 				<div class="p-3"></div>
 				
 				<div class="text-right"> 
-					<input type="submit" value="수정" class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full"/>
-					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-gray-500 border-black border hover:bg-cta-800 font-bold py-2 px-4 rounded-full">수정취소</a> 
+					<input type="submit" value="수정" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
+					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4">수정취소</a> 
 				</div> 
 			</div>
 		</form>   

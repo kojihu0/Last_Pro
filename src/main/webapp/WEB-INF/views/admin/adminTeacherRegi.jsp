@@ -99,7 +99,7 @@
 			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">등록취소</a>
 		</div>
 	</form>
-</div>
+</div> 
 
 
 	<script>

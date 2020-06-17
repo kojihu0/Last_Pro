@@ -20,7 +20,7 @@
 		</div>
 	
 		<div class="p-3 text-right"> 
-			<button class="bg-info-200 border border-black font-bold py-2 px-4 rounded"><a href="<%=projectPath%>/admin/adminNotice">목록으로</a></button>
+			<a class="bg-info-200 border border-black font-bold rounded py-2 px-4" href="<%=projectPath%>/admin/adminNotice">목록으로</a>
 		</div>
 		
 		

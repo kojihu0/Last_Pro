@@ -59,16 +59,15 @@
 							<th class="bg-info-300 px-4 py-2 text-center">결제</th>
 							<th class="bg-info-300 px-32 py-2 text-center">한 줄 의견</th>		
 						</tr>
-					</thead> 
-					<tbody> 
-						
-						<tr>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">1</a></td>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">06.11</a></td>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">기초 자바 웹 프로그래밍</a></td>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">정진범</a></td>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">미승인</a></td>
-							<td class="border bg-white text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">수고</a></td>	 	
+					</thead>  
+					<tbody>  
+						<tr class="bg-white hover:bg-gray-200"> 
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">1</a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">06.11</a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">기초 자바 웹 프로그래밍</a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">정진범</a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">미승인</a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">수고</a></td>	 	
 						</tr>
 						
 					</tbody>
@@ -76,7 +75,7 @@
 				<div class="p-3"></div>
 				<!-- 테이블 end -->
 				<div class="text-right">
-					<button class="bg-gray-500 border-black border hover:bg-blue-700 font-bold py-2 px-4 rounded bg-info-200"><a href="<%=projectPath%>/admin/adminManageRegi">등록</a></button>		
+					<button class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"><a href="<%=projectPath%>/admin/adminManageRegi">등록</a></button>		
 				</div>
 			</div>
 		</div>

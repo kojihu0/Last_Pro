@@ -36,8 +36,8 @@
 						<td class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-16">조회수</td> 
 					</tr>
 				</tbody> 
-				<tbody>
-					<tr OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?no='">
+				<tbody> 
+					<tr class="bg-white hover:bg-gray-200" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?no='">
 						<td  class="border text-center p-2">1</td>
 						<td  class="border text-center p-2">공지사항 1번</td>
 						<td  class="border text-center p-2">공지사항</td>
@@ -50,7 +50,7 @@
 		</div>
 		
 		<div class="p-3 text-right"> 
-			<button class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded"><a href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a></button>
+			<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4 href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a>
 		</div>	
 	</div>
 	

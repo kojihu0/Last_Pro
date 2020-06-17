@@ -75,7 +75,7 @@
 			</div>
 			
 			<div class="text-right p-3">
-				<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseRegi">등록하기</a>
+				<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseRegi">등록하기</a>
 			</div>
 	</div>
 

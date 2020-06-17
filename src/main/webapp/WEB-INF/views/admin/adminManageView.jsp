@@ -16,8 +16,8 @@
 		</div>
 		 
 		<div class="p-3 text-right"> 
-			<button class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full"><a href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a></button>
-			<button class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full"><a href="<%=projectPath%>/admin/adminManageEdit">수정</a></button>
+			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
+			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit">수정</a>
 		</div>
 		 
 		<!-- 테이블 -->
@@ -116,9 +116,9 @@
 				<br/>
 				
 				<div class="p-3"></div> 
-				
+			
 				<div class="text-right">  
-					<input type="submit" value="결제" class="bg-gray-500 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded-full"/>
+					<input type="submit" value="결제" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
 					<!-- 목록으로 가는 버튼 -->		
 				</div>
 			</form>	

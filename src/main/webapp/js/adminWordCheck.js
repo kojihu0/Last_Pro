@@ -478,71 +478,57 @@ function noticeRegiCheck(){
 }
 //---------------------------------------------------------------------------------------------
 //강사 정보
-
 function teacherEditCheck(){
-	var reg = "";
+	var reg = ""; 
 	//belong
 	var optionValue = document.getElementById("belong").options;
 	var selectIndex = document.getElementById("belong").selectedIndex;
 	var selectValue = optionValue[selectIndex].value;
+	//teacherRank(select)
+	var optionValueRank = document.getElementById("teacherRank").options;
+	var selectIndexRank = document.getElementById("teacherRank").selectedIndex;
+	var selectValueRank = optionValueRank[selectIndexRank].value; 
+	//teacherAuthority(select) 
+	var optionValueAuthority = document.getElementById("teacherAuthority").options;
+	var selectIndexAuthority = document.getElementById("teacherAuthority").selectedIndex;
+	var selectValueAuthority = optionValueAuthority[selectIndexAuthority].value;  
+	
 	
 	if(selectValue == "::담당::"){
 		alert("어떤 반을 담당하는지 선택해주세요.");
 		return false;
-	}
-	//teacherRank(select)
-	var optionValueRank = document.getElementById("teacherRank").options;
-	var selectIndexRank = document.getElementById("teacherRank").selectedIndex;
-	var selectValueRank = optionValue[selectIndex].value; 
-	
-	if(selectValueRank == "::직급::"){
+	}else if(selectValueRank == "::직급::"){
 		alert("해당 직원의 직급을 선택해주세요");
 		return false;
-	}
-	//teacherAuthority(select) 
-	var optionValueAuthority = document.getElementById("teacherAuthority").options;
-	var selectIndexAuthority = document.getElementById("teacherAuthority").selectedIndex;
-	var selectValueAuthority = optionValue[selectIndex].value; 
-	
-	if(selectValueRank == "::권한::"){
+	}else if(selectValueAuthority == "::권한::"){
 		alert("해당 직원의 권한을 선택해주세요.");
 		return false;
 	}
 	//teacherTel_01 teacherTel_02 teacherTel_03
 	var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
-	var telPhone = document.getElementById("teacherTel_01").value + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;
-	if(!regExp.test(telPhone)){
-		alert("번호로만 작성이 가능합니다.");
-		return false;
-	}
+	var telPhone = "010" + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;
 	//teacherTel_01 teacherTel_02 teacherTel_03
-	var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
-	var telPhone = document.getElementById("teacherTel_01").value + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;
-	
-	if(document.getElementById("teacherTel_01").value == "" ){
-		alert("연락처의 가장 앞부분이 비었습니다.");
-		return false;
-	}else if(document.getElementById("teacherTel_02").value == "" ){
+	if(document.getElementById("teacherTel_02").value == "" ){
 		alert("연락처의 중간이 비었습니다.");
 		return false;
-	}else if(document.getElementById("teacherTel_03").value == "" ){
+	} if(document.getElementById("teacherTel_03").value == "" ){
 		alert("연락처의 마지막 부분이 비었습니다.");
 		return false;
-	}else if(!regExp.test(telPhone)){
+	} if(!regExp.test(telPhone)){
 		alert("연락처의 규정에 맞춰주세요. 숫자로만 작성이 가능하며, 중간은 숫자 3~4개, 마지막은 숫자 네 개가 필요합니다.");
-		return false;
+		return false; 
 	}
 	//emailId
 	if(document.getElementById("emailId").value == ""){
 		alert("이메일 작성 부분이 비었습니다.");
 		return false;
 	}
-	if(document.getElementById("domainSelect").value == ""){
+	if(document.getElementById("domain").value == ""){
 		alert("도메인 작성 부분이 비었습니다.");
 		return false;
 	}
 	
-	var email = document.getElementById("emailId").value + "@" + document.getElementById("domainSelect").value;
+	var email = document.getElementById("emailId").value + "@" + document.getElementById("domain").value;
 	emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규식
 	
 	if(!emailRule.test(email)) {             
@@ -572,7 +558,7 @@ function teacherRegiCheck(){
 	//teacherRank(select)
 	var optionValueRank = document.getElementById("teacherRank").options;
 	var selectIndexRank = document.getElementById("teacherRank").selectedIndex;
-	var selectValueRank = optionValue[selectIndex].value; 
+	var selectValueRank = optionValueRank[selectIndexRank].value; 
 	
 	if(selectValueRank == "::직급::"){
 		alert("작성 대상자의 직급을 선택해주세요");
@@ -581,7 +567,7 @@ function teacherRegiCheck(){
 	//teacherAuthority
 	var optionValueAuthority = document.getElementById("teacherAuthority").options;
 	var selectIndexAuthority = document.getElementById("teacherAuthority").selectedIndex;
-	var selectValueAuthority = optionValue[selectIndex].value; 
+	var selectValueAuthority = optionValueAuthority[selectIndexAuthority].value; 
 	
 	if(selectValueRank == "::권한::"){
 		alert("해당 직원의 권한을 선택해주세요.");
@@ -598,7 +584,7 @@ function teacherRegiCheck(){
 
 	//teacherTel_01 teacherTel_02 teacherTel_03
 	var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
-	var telPhone = document.getElementById("teacherTel_01").value + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;
+	var telPhone = "010" + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;
 	
 	if(document.getElementById("teacherTel_01").value == "" ){
 		alert("연락처의 가장 앞부분이 비었습니다.");
@@ -676,7 +662,7 @@ function adminIdRegiChek(){
 	}else if(!pw.test(document.getElementById("adminPw").value)){
 	    alert("pw는 최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자로 작성하셔야 합니다.");
 	    return false;
-	}
+	} 
 	
 	//confirmPw
 	if(document.getElementById("confirmPw").value == ""){

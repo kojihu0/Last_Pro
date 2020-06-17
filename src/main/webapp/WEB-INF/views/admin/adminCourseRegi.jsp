@@ -88,9 +88,9 @@
 						  			</div>
 					 			</div> 
 					 			<div class="inline-block relative w-40">
-									<select id="courseStage" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									<select id="courseStage" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-center">
 										<option selected="selected">::장소::</option>
-									    <option value="">:본관:</option>
+									    <option value="">=====본관=====</option>
 									    <option value="본관 :A101">A101</option>
 									    <option value="본관 :A102">A102</option>
 									    <option value="본관 :A103">A103</option>
@@ -100,7 +100,7 @@
 									    <option value="본관 :C301">C301</option>
 									    <option value="본관 :C302">C302</option>
 									    <option value="본관 :C303">C303</option>
-									    <option value="">:신관:</option>
+									    <option value="">=====신관=====</option>
 									    <option value="신관:A101">A101</option>
 									    <option value="신관:A102">A102</option>
 									    <option value="신관:A103">A103</option>
@@ -110,7 +110,7 @@
 									    <option value="신관:C301">C301</option>
 									    <option value="신관:C302">C302</option>
 									    <option value="신관:C303">C303</option>
-									    <option value="">:구관:</option>
+									    <option value="">=====구관=====</option>
 									    <option value="구관:A101">A101</option>
 									    <option value="구관:A102">A102</option>
 									    <option value="구관:A103">A103</option>
@@ -147,8 +147,8 @@
 						</tr>
 						<tr>
 							<th colspan="2" class="p-3 text-right">
-								<input class="bg-info-200 border-black border font-bold py-2 px-4 rounded" type="submit" value="등록"/>
-								<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
+								<input class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" type="submit" value="등록"/>
+								<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
 							</th>
 							<th>
 							</th>

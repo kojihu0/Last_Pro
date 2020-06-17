@@ -21,7 +21,7 @@
 				<i class="xi-school"></i>&nbsp;직원-정보수정
 			</div>
 
-		<form method="post" action="<%=projectPath%>/admin/adminTeacherEditOk" onsubmit="return teacherEditCheck()">
+		<form method="post" action="<%=projectPath %>/admin/adminTeacherEditOk" onsubmit="return teacherEditCheck()">
 			<div class="p-3 my-0 mx-auto flex justify-center">  
 			<table>
 				<tbody>  
@@ -33,12 +33,12 @@
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">소  속</th>
 						<td class="p-3 border border-black">
 							<select id="belong" name="belong" class="border border-black h-8"> 
-								<option value="" selected="selected">::담당::</option>
-								<option value="java">A</option> 
-								<option value="java">B</option>
-								<option value="java">C</option>
-								<option value="java">D</option>
-								<option value="java">E</option>
+								<option  selected="selected">::담당::</option>
+								<option value="A" >A</option> 
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+								<option value="E">E</option>
 							</select>
 						</td>
 					</tr>
@@ -46,7 +46,7 @@
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">직  급</th>
 						<td class="p-3 border border-black">
 							<select id="teacherRank"name="teacherRank" class="border border-black h-8"> 
-								<option value="" selected="selected">::직급::</option>
+								<option  selected="selected">::직급::</option>
 								<option value="평강사">평강사</option>
 								<option value="임시강사">임시강사</option>
 								<option value="강사">강사</option>
@@ -61,8 +61,8 @@
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">권  한</th>
 						<td class="p-3 border border-black">
 							<select  id="teacherAuthority" name="teacherAuthority" class="border border-black h-8"> 
-								<option value="" selected="selected">::권한::</option>
-								<option value="일반">일반</option>
+								<option  selected="selected">::권한::</option>
+						 		<option value="일반">일반</option>
 								<option value="임시">임시</option>
 								<option value="관리자">관리자</option>
 							</select>
@@ -71,7 +71,7 @@
 					<tr>
 						<th class="p-3 w-32 border border-black  bg-info-300 text-center text-l">휴대폰</th>
 						<td class="p-3 border border-black">
-							<input class="border border-black" type="tel" id="teacherTel_01" name="teacherTel_01" size="3"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_02" name="teacherTel_02" size="4" class="border border-black"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_03" name="teacherTel_03"size="4" class="border border-black"/>
+						 	<span id="teacherTel_01">010</span>&nbsp;-&nbsp;<input type="tel" id="teacherTel_02" name="teacherTel_02" size="4" class="border border-black" maxlength="4"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_03" name="teacherTel_03"size="4" class="border border-black" maxlength="4"/>
 						</td>
 					</tr> 
 					<tr>
@@ -120,7 +120,7 @@
 			
 			document.getElementById("domain").value = valueSelect;
 		});
-		
+
 	});	
 </script>
 
