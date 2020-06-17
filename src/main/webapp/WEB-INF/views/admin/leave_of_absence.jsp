@@ -35,9 +35,9 @@
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px">회원명</td>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px">휴대전화</td>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px">부모전화</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:230px">최근수강강좌</td>
+			<td class="border-solid border-2 border-gray-600 text-center" style="width:230px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">최근수강강좌</td>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">휴원일자</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px" >휴원사유</td>
+			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis" >휴원사유</td>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">담당자</td>
 		</tr>
 	</table>

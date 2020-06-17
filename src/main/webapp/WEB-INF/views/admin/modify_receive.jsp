@@ -26,9 +26,9 @@
 						<tbody>
 							<tr>
 								<td class="p-2">수강기간</td>
-								<td class="p-2">
-									<input type="date" class="border-solid border-2 border-gray-600 text-center"/> ~
-									<input type="date" class="border-solid border-2 border-gray-600 text-center"/>
+								<td class="p-2 calendar">
+									<input type="text" class="datepicker border-solid border-2 border-gray-600 text-center"/> ~
+									<input type="text" class="datepicker border-solid border-2 border-gray-600 text-center"/>
 								</td>
 							</tr>
 							<tr>
@@ -65,7 +65,7 @@
 							</tr>
 							<tr>
 								<td class="p-2">납부일자</td>
-								<td class="p-2"><input type="date" class="border-solid border-2 border-gray-600 text-center"/></td>
+								<td class="p-2 calendar"><input type="text" class="datepicker border-solid border-2 border-gray-600 text-center"/></td>
 							</tr>
 							<tr>
 								<td class="p-2">비고</td>

@@ -58,20 +58,20 @@
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">이름</td>
-				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">한글 : <input type="text" name="korname" class="border-solid border-2 border-gray-600 rounded"/> 영문 : <input type="text" name="engname" class="border-solid border-2 border-gray-600 rounded"/></td>
+				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">한글 : <input type="text" name="korName" class="border-solid border-2 border-gray-600 rounded korName"/> 영문 : <input type="text" name="engName" class="border-solid border-2 border-gray-600 rounded engName"/></td>
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">성별</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div>
-						<input type="radio" name="gender" value="M">남
+						<input type="radio" name="gender" value="M" checked>남
 						<input type="radio" name="gender" value="F">여
 					</div>
 				</td>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">생년월일</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div class="inline-block relative w-40 mx-2">
-						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
+						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline birthYear">
 							<option>선택</option>
 							<c:forEach var="i" begin="0" end="${2020-1940}">
 							    <c:set var="yearOption" value="${2020-i}" />
@@ -83,7 +83,7 @@
 					    </div>
 					</div>
 					년<div class="inline-block relative w-40 mx-2">
-						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
+						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline birthMonth">
 							<option>선택</option>
 							<c:forEach var="i" begin="1" end="12">
 							    <option value="${i}">${i}</option>
@@ -94,7 +94,7 @@
 					    </div>
 					</div>
 					월<div class="inline-block relative w-40 mx-2">
-						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
+						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline birthDay">
 							<option>선택</option>
 							<c:forEach var="i" begin="1" end="31">
 							    <option value="${i}">${i}</option>
@@ -110,13 +110,13 @@
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">휴대폰 정보</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					010
-					- <input type="text" name="student_phone1" class="border-solid border-2 border-gray-600 w-20 rounded" maxlength="4"/>
-					- <input type="text" name="student_phone2" class="border-solid border-2 border-gray-600 w-20 rounded" maxlength="4"/>
+					- <input type="text" name="student_phone1" class="border-solid border-2 border-gray-600 w-20 rounded text-center student_phone1" maxlength="4"/>
+					- <input type="text" name="student_phone2" class="border-solid border-2 border-gray-600 w-20 rounded text-center student_phone2" maxlength="4"/>
 				</td>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">Email</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div> 
-						<input type="text" name="id" class="border-solid border-2 border-gray-600 rounded email1"/>@  
+						<input id="sEmail" type="text" name="id" class="border-solid border-2 border-gray-600 rounded"/>@  
 						<input id="sDomain" name="domain" type="text" class="border-solid border-2 border-gray-600 text-center rounded"/> 	
 						<div class="inline-block relative w-40">
 							<select id="sDomainSelect" onclick="sInputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
@@ -140,45 +140,45 @@
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">전화번호</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div class="inline-block relative w-auto">
-								<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-									   <option>02</option>
-									   <option>051</option>
-									   <option>053</option>
-									   <option>032</option>
-									   <option>062</option>
-									   <option>042</option>
-									   <option>052</option>
-									   <option>044</option>
-									   <option>031</option>
-									   <option>033</option>
-									   <option>043</option>
-									   <option>063</option>
-									   <option>061</option>
-									   <option>054</option>
-									   <option>055</option>
-									   <option>064</option>
-								  </select>
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-						  		</div>
-					 		</div>
-					- <input type="text" name="tel2" class="border-solid border-2 border-gray-600 w-20 rounded" maxlength="4"/>
-					- <input type="text" name="tel3" class="border-solid border-2 border-gray-600 w-20 rounded" maxlength="4"/>
+						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+							   <option>02</option>
+							   <option>051</option>
+							   <option>053</option>
+							   <option>032</option>
+							   <option>062</option>
+							   <option>042</option>
+							   <option>052</option>
+							   <option>044</option>
+							   <option>031</option>
+							   <option>033</option>
+							   <option>043</option>
+							   <option>063</option>
+							   <option>061</option>
+							   <option>054</option>
+							   <option>055</option>
+							   <option>064</option>
+						  </select>
+						<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+				    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				  		</div>
+			 		</div>
+					- <input type="text" class="border-solid border-2 border-gray-600 w-20 rounded text-center tel2" maxlength="4"/>
+					- <input type="text" class="border-solid border-2 border-gray-600 w-20 rounded text-center tel3" maxlength="4"/>
 				</td>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">홈아이디</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" name="id" class="border-solid border-2 border-gray-600 rounded w-64"/></td>
+				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" class="border-solid border-2 border-gray-600 rounded w-64 student_id"/></td>
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 휴대폰</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					010
-					- <input type="text" name="parent_phone1" class="border-solid border-2 border-gray-600 w-20 rounded"/>
-					- <input type="text" name="parent_phone2" class="border-solid border-2 border-gray-600 w-20 rounded"/>
+					- <input type="text" name="parent_phone1" class="border-solid border-2 border-gray-600 w-20 rounded parent_phone1"/>
+					- <input type="text" name="parent_phone2" class="border-solid border-2 border-gray-600 w-20 rounded parent_phone2"/>
 				</td>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 Email</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div> 
-						<input type="text" name="id" class="border-solid border-2 border-gray-600 rounded email1"/>@  
+						<input id="pEmail" type="text" name="id" class="border-solid border-2 border-gray-600 rounded email1"/>@  
 						<input id="pDomain" name="domain" type="text" class="border-solid border-2 border-gray-600 text-center rounded email2"/> 	
 						<div class="inline-block relative w-40">
 							<select id="pDomainSelect" onclick="pInputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
@@ -202,7 +202,7 @@
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 관계</td>
 				<td class="border-solid border-4 border-gray-600 p-2 ">
 					<div class="inline-block relative w-40 mx-2">
-						<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
+						<select class="relation block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							<option>==</option>
 							<option>조부</option>
 							<option>조모</option>
@@ -215,29 +215,29 @@
 					</div>
 				</td>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 성함</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" class="border-solid border-2 border-gray-600 rounded w-40"/></td>
+				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" class="border-solid border-2 border-gray-600 rounded w-40 pkorName"/></td>
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">주소</td>
 				<td  class="border-solid border-4 border-gray-600 p-2 "colspan="3">
 					<div class="flex">
-						<input id="reward_addr_num" name="reward_addr_num" type="text" class="border-solid border-2 border-gray-600 w-32 rounded addr1 text-center" maxlength="5" readonly/>
+						<input name="reward_addr_num" type="text" class="addr_num border-solid border-2 border-gray-600 w-32 rounded addr1 text-center" maxlength="5" readonly/>
 						<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20 bg-info-200" value="주소검색"/>
 					</div>
-					<input id="reward_addr_main" name="reward_addr_main" type="text" class="border-solid border-2 border-gray-600 mt-3 rounded addr2" style="width:400px" readonly>
-					<input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border-solid border-2 border-gray-600 mt-3 rounded" style="width:300px"placeholder="상세주소">
+					<input type="text" class="addr_main border-solid border-2 border-gray-600 mt-3 rounded addr2" style="width:400px" readonly>
+					<input type="text" class="addr_sub border-solid border-2 border-gray-600 mt-3 rounded" style="width:300px"placeholder="상세주소">
 				</td>
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">수강동기</td>
 				<td class="border-solid border-4 border-gray-600 p-2 "colspan="3">
 					<div>
-						<input type="radio" name="motivation">소개
+						<input type="radio" name="motivation" checked>소개
 						<input type="radio" name="motivation">신문
 						<input type="radio" name="motivation">전단지
 						<input type="radio" name="motivation">홈페이지
 						<input type="radio" name="motivation">카페
-						<input type="radio" name="motivation">기타<input type="text" name="motivation" class="border-solid border-2 border-gray-600 rounded"/>
+						<input type="radio" name="motivation" class="other">기타<input type="text" name="motivation" class="otherReason border-solid border-2 border-gray-600 rounded"/>
 					</div>
 				</td>
 			</tr>
@@ -245,12 +245,12 @@
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">관심분야</td>
 				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">
 					<div>
-						<input type="radio" name="motivation">JAVA
-						<input type="radio" name="motivation">HTML/CSS
-						<input type="radio" name="motivation">JAVASCRIPT
-						<input type="radio" name="motivation">SPRING
-						<input type="radio" name="motivation">MYBATIS
-						<input type="radio" name="motivation">기타<input type="text" name="motivation" class="border-solid border-2 border-gray-600 rounded"/>
+						<input type="radio" name="interesting" checked>JAVA
+						<input type="radio" name="interesting">HTML/CSS
+						<input type="radio" name="interesting">JAVASCRIPT
+						<input type="radio" name="interesting">SPRING
+						<input type="radio" name="interesting">MYBATIS
+						<input type="radio" name="interesting" class="interest">기타<input type="text" name="motivation" class="interestReason border-solid border-2 border-gray-600 rounded"/>
 					</div>
 				</td>
 			</tr>
@@ -261,11 +261,11 @@
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">최초 등록일</td>
 				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">
-				<div class="calendar"><input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2"/></div></td>
+				<div class="calendar"><input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2 first_regiDate"/></div></td>
 			</tr>
 		</table>
 		<div class="my-5 flex justify-center">
-			<input class="border-solid border-2 border-gray-600 rounded mr-1 bg-info-200" type="submit" value="수정하기"/>
+			<input class="border-solid border-2 border-gray-600 rounded mr-1 bg-info-200" type="submit" value="수정하기" id="modify_studentInfo"/>
 			<a href="javascript:memberDelete_check()" class="border-solid border-2 border-gray-600 rounded ml-1 bg-info-200"/>삭제하기</a>
 		</div>
 	</form>

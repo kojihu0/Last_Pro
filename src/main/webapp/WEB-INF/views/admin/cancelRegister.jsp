@@ -94,13 +94,13 @@
 		<tr>
 			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:80px;">회원번호</td>
 			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:70px;">구분</td>
-			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:150px;">회원명</td>
+			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:130px;">회원명</td>
 			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:200px;">강좌명</td>
 			<td colspan="3" class="border-solid border-2 border-gray-600 text-center" style="width:120px;">반환방법</td>
 			<td colspan="4" class="border-solid border-2 border-gray-600 text-center" style="width:305px;">원 등록정보</td>
 			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:140px;">반환사유</td>
 			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:160px;">반환일자</td>
-			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:55px;">담당자</td>
+			<td rowspan="2" class="border-solid border-2 border-gray-600 text-center" style="width:75px;">담당자</td>
 		</tr>
 		<tr>
 			<td class="border-solid border-2 border-gray-600 text-center" style="width:40px;">카드</td>
@@ -114,7 +114,7 @@
 		<tr class="bg-white hover:bg-gray-200" onClick="location.href='/lms/refund'">
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:80px;">10110</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:70px;">신규</td>
-			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px;">하정우</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:130px;">하정우</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:200px;">JAVASCRIPT</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:40px;">O</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:40px;"></td>
@@ -125,7 +125,7 @@
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:55px;">신한</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:140px;">반환사유</td>
 			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:160px;">반환일자</td>
-			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:55px;">담당자</td>
+			<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:75px;">담당자</td>
 		</tr>
 	</table>
 </div>

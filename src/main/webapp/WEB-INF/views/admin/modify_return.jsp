@@ -58,7 +58,7 @@
 							</tr>
 							<tr>
 								<td class="p-2">반환일자</td>
-								<td class="p-2"><input type="date" class="border-solid border-2 border-gray-600"/></td>
+								<td class="p-2 calendar"><input type="text" class="datepicker border-solid border-2 border-gray-600"/></td>
 							</tr>
 							<tr>
 								<td class="p-2">비고</td>

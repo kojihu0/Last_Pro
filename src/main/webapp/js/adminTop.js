@@ -249,14 +249,31 @@ function pInputDomain(){
 		document.getElementById("pDomain").value= domain;
 	}
 }
+function rsInputDomain(){
+	var domain = $("#rsDomainSelect option:selected").val();
+	if(domain=="직접입력"){
+		document.getElementById("rsDomain").value="";
+	}else{
+		document.getElementById("rsDomain").value= domain;
+	}
+} 
+
+function rpInputDomain(){
+	var domain = $("#rpDomainSelect option:selected").val();
+	if(domain=="직접입력"){
+		document.getElementById("rpDomain").value="";
+	}else{
+		document.getElementById("rpDomain").value= domain;
+	}
+}
 ////////////이메일 도메인////////////////////////////////////////////////////////////////
 function openDaumZipAddress() {
 	new daum.Postcode({
 		oncomplete:function(data) {
 			
-			jQuery("#reward_addr_num").val(data.zonecode);
-			jQuery("#reward_addr_main").val(data.address);
-			jQuery("#reward_addr_sub").focus();
+			jQuery(".addr_num").val(data.zonecode);
+			jQuery(".addr_main").val(data.address);
+			jQuery(".addr_sub").focus();
 		}
 	}).open();
 }

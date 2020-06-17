@@ -1,5 +1,7 @@
 package kr.co.lms.student;
 
+import javax.xml.ws.RequestWrapper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,9 +12,23 @@ public class StudentController {
 	public String student_current_situation() {
 		return "admin/student_current_situation";
 	}
+	
+	@RequestMapping("/leave_of_absence")
+	public String leave_of_absence() {
+		return "admin/leave_of_absence";
+	}
+	
 	@RequestMapping("/registration_member")
 	public String registration_member() {
 		return "admin/registration_member";
+	}
+	
+	@RequestMapping("/registration_memberOk")
+	public ModelAndView registration_memberOk() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:student_current_situation");
+		
+		return mav;
 	}
 	
 	@RequestMapping("/student_by_course")
