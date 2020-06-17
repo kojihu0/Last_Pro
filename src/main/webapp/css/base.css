@@ -13,7 +13,23 @@ html, body, .site-wrap{
 #footer {
   flex-shrink: 0;
 }
-
+#back-to-top{
+	position: fixed;
+    bottom: 14px;
+    right: 14px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    z-index: 997;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+}
+#back-to-top.active{
+    visibility: visible;
+    opacity: 1;
+}
 .slick-slider *{outline: none;}
 .slick-slider .tw-el.tw-left{
 	position:absolute;

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	</div>
+	<a href="#" id="back-to-top" class="text-center text-white bg-black hover:text-black hover:bg-brand-500 duration-300">
+		<i class="xi-angle-up"></i>
+	</a>
 	<footer id="footer" class="bg-black text-gray-300 text-sm">
 		<div class="footer-menu w-full">
 			<div class="w-full max-w-screen-xl my-0 mx-auto sm:flex justify-between text-white px-8 xl:px-0">

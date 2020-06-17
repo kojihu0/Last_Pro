@@ -10,7 +10,7 @@
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<div class="lg:flex pt-12"><!-- contact-info -->
-		<div class="lg:w-1/2 pr-6 lg:pl-0 pl-6">
+		<div class="lg:w-1/2 pr-6 lg:pl-0 pl-6 mb-8">
 			<div class="relative pb-4 mb-12 fadeUp">
 				<h1 class="roboto-slab font-bold">CONTACT INFO</h1>
 				<p class="text-gray-700">고객센터</p>

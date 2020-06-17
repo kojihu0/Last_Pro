@@ -177,11 +177,13 @@ $(function(){
 	function refresh() {
 		if (scrollY > 30) {
 			$('#site-header').addClass('sticky-header');
+			$('#back-to-top').addClass('active');
 			hide();
 		}
 		else if (scrollY < 30) {
 			show();
 			$('#site-header').removeClass('sticky-header');
+			$('#back-to-top').removeClass('active');
 		}
 	}
 
@@ -189,6 +191,10 @@ $(function(){
 	refresh();
 	init_fadeAni();
 	
+	$('#back-to-top').on('click', function(e){
+		e.preventDefault();
+		$("html,body").animate({scrollTop: 0});
+	});
 	/* 메뉴 모달 검색창 */
     $('.search-ico').on('click', function(e){
         e.preventDefault();
