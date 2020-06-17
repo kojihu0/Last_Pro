@@ -624,7 +624,7 @@ function teacherRegiCheck(){
 	}
 	
 	var email = document.getElementById("emailId").value + "@" + document.getElementById("domainSelect").value;
-	emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규식
+	var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규식
 	
 	if(!emailRule.test(email)) {             
 	    alert("이메일 양식에 맞춰서 작성해주세요. 특수문자 -,_ ,. 는 한번까지 가능합니다.");
@@ -632,5 +632,59 @@ function teacherRegiCheck(){
 	}
 }
 
- 
-
+//===============================================================
+	//로그인
+function adminLoginChek(){
+	//adminId
+	if(document.getElementById("adminId").value == "") {             
+	    alert("id가 비었습니다.");
+	    return false;
+	} 
+	//adminPw 
+	if(document.getElementById("adminPw").value == "") {             
+	    alert("비밀번호가  비었습니다.");
+	    return false;
+	}
+} 
+	//회원가입 체크
+function adminIdRegiChek(){
+	//adminName
+ 	var reg = /^[가-힣]{2,7}$/;
+	if(document.getElementById("adminName").value == ""){
+		alert("이름을 입력해주세요.");
+		return false;
+	}else if(!reg.test(document.getElementById("adminName").value)){
+		alert("이름은 한글 2~7글자로 작성하셔야 합니다.");
+		return false;
+	}
+	//adminId
+	var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;//이메일 정규식
+	if(document.getElementById("adminId").value == "") {             
+	    alert("id가 비었습니다.");
+	    return false;
+	}else if(!emailRule.test(document.getElementById("adminId").value)) {             
+	    alert("id는 이메일 형식으로 작성되어야 합니다.");
+	    return false;
+	} 
+	//adminPw
+	//최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자
+	var pw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	
+	if(document.getElementById("adminPw").value == ""){
+		 alert("비밀번호가 비었습니다.");
+		    return false;
+	}else if(!pw.test(document.getElementById("adminPw").value)){
+	    alert("pw는 최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자로 작성하셔야 합니다.");
+	    return false;
+	}
+	
+	//confirmPw
+	if(document.getElementById("confirmPw").value == ""){
+		alert("비밀번호 확인이 필요합니다.");
+	    return false;
+	}
+	if(document.getElementById("adminPw").value != document.getElementById("confirmPw").value){
+		alert("비밀번호가 다릅니다. 확인해주세요.");
+	    return false;
+	}
+}

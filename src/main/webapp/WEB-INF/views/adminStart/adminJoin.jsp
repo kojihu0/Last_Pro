@@ -23,6 +23,7 @@
         }
     </style>
 
+<script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
 
 </head>
 <body class="bg-white font-family-karla h-screen">
@@ -38,15 +39,15 @@
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                 <p class="text-center text-3xl">Join Us.</p>
                
-               	<!-- form start .POST 방식 -->
-                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/adminJoinOk">
+               	<!-- form start .POST 방식 --> 
+                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/adminJoinOk" onsubmit="return adminIdRegiChek()">
                     <!-- 이름 -->
                     <div class="flex flex-col pt-4">
                         <label for="adminName" class="text-lg">Name</label>
                         <input type="text" id="adminName" name="adminName" placeholder="your name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
 					<!-- 이름 end -->
-					<!-- 아이디 -->
+					<!-- 아이디 --> 
                     <div class="flex flex-col pt-4">
                         <label for="adminId" class="text-lg">Id</label>
                         <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
