@@ -25,9 +25,7 @@
 						  <li class="mr-1">
 						    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="#">이벤트</a>
 						  </li>
-						  <li class="mr-1">
-						   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="#">새소식</a>
-						  </li>
+						 
 						</ul> 					   
 				</nav><!-- notice-navigation end -->  
 					<!-- 공지사항 폼 -->

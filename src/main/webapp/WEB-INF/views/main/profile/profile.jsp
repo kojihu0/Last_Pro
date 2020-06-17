@@ -6,9 +6,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet" href="<%=ctx%>/css/tailwind.css" type="text/css">
-<link rel="stylesheet" href="<%=ctx%>/css/profile.css" type="text/css">
-<script src="<%=ctx%>/js/profile.js"></script>
+<style type="text/css">
+	.img_wrap{
+		width:150px;
+		
+		height:150px;
+	}
+	.img_wrap img{
+	max-width:100%;
+	max-height:100%;
+	} 
+	
+</style>
+
+<script>
+function preview(input, target) {
+    if(input.files && input.files[0]){
+      var fileName= input.files[0].name;
+      var ext=fileName.substr(fileName.length-3, fileName.length);
+      var isCheck=false; 
+          if(ext.toLowerCase()=='jpg' || ext.toLowerCase()=='gif' || ext.toLowerCase()=='png'){
+          isCheck=true;               
+      }
+      if(isCheck==false){
+          alert("이미지 파일 아님");
+          jQuery(input).val("");
+          return;
+      }
+      var reader = new FileReader();
+      reader.readAsDataURL(input.files[0]);          
+      reader.onload = function(e) {
+        jQuery(target).attr('src', e.target.result);
+      }
+    }
+}
+</script>
+
 </head>
 <body>
 <div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
@@ -17,7 +50,7 @@
 		</div>
 	</div>
 	<div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 		<div class="flex mt-12">
 			<div>
@@ -69,46 +102,42 @@
 						<span class="text-gray-500 ">Share a little biographical information to fill out your profile. This may be shown publicly.</span><br/>
 						<div class="mt-5">
 							<span class="font-bold">FirstName</span><br/>
-							<input type="text" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
+							<input type="text" id="firstName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
 						</div>
 						
 						<div class="mt-5">
 							<span class=" font-bold">LastName</span><br/>
-							<input type="text" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
+							<input type="text" id="lastName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
 						</div>
-						<div class="mt-5">
-							<span class=" font-bold">NickName</span><br/>
-							<input type="text" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
-						</div>
-						<input value="변경하기" type="submit"class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
+						
+						<input value="변경하기" id="generalBtn" type="submit" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
 					</form>
-					
+					<!--이미지 업로드   -->
 					<form id="imgUpload" style="display:none">
 						<div class='border-solid border-gray-500 border'>
-							<img src="<%=ctx%>/img/user-avatar.png" class="my-4 ml-4" style="width:150px;height:150px">
+							<div class="img_wrap my-4 ml-4 bg-gray-500">
+								<img src="" id="img01"/>
+							</div>
 							
-							<button type="submit"  class="my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
-								<i class="xi-file-upload-o "></i>
-								<span class="text-gray-800">Upload</span>
-							</button>
+							<input onchange="	preview(this, $('#img01'));"id="input_img" type="file" value="Upload" class="xi-file-upload-o  text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
 						</div>	
 						<input type="submit" value="변경하기" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
 					</form>
-					
+				
 					<form id="passwordUpdate"style="display:none">
 						<div class="mt-5">
 							<span class="font-bold">Old Password</span><br/>					
-							<input type="password" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/>
+							<input type="password" id="oldPwd" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/>
 						</div>
 						<div class="mt-3">
 							<span class="font-bold">New Password</span><br/> 	
-							<input type="password" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/> 						
+							<input type="password" id="newPwd" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/> 						
 						</div>
 						<div class="mt-3">
 							<span class="font-bold">Confirmation password</span><br/>
-							<input type="password" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/>
+							<input type="password" id="newPwdChk" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/>
 						</div>
-						<input type="submit" value="변경하기" class="cursor-pointer focus:outline-none my-4 py-3 px-5 bg-brand-500 text-black font-bold">
+						<input type="submit" id="pwUpdateBtn" value="변경하기" class="cursor-pointer focus:outline-none my-4 py-3 px-5 bg-brand-500 text-black font-bold">
 					</form>
 				</div>
 			</div>
