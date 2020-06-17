@@ -10,5 +10,13 @@ public class RegisterController {
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String register() {
 		return"main/register/register";
+
+	@RequestMapping("/subjectRegister")
+	public String subjectRegister() {
+		return "admin/subjectRegister";
+	}
+	@RequestMapping("/cancelRegister")
+	public String cancelRegister() {
+		return "admin/cancelRegister";
 	}
 }
