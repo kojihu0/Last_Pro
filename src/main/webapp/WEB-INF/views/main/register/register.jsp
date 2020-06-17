@@ -1,23 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<body>
-	<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
-		<div id="bannerText">
-			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
-		</div>
+<div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
+	<div class="container my-0 mx-auto">
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
 	</div>
-	<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Register</span>
-		<div id="hr"class="my-4 border-t border-solid"></div>
-		<div class="w-1/3 m-0 mb-4 m-auto mt-8"><p class="font-bold text-2xl">Register a new account</p></div>
-		<!-- 회원가입 폼  -->
+</div>
+<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
+	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Register</span>
+	<div id="hr"class="my-4 border-t border-solid"></div>
+	<div class="w-1/3 m-0 mb-4 m-auto mt-8"><p class="font-bold text-2xl">Register a new account</p></div>
+	<!-- 회원가입 폼  -->
 	<form class="m-0 m-auto w-full max-w-xl">
 	  <div class="flex flex-wrap -mx-3 mb-6">
 	    <div class="w-10/12 px-3">
@@ -85,6 +77,3 @@
 	  </div>
 	</form>
 </div>
-	
-</body>
-</html>

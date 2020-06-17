@@ -1,23 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
-		<div id="bannerText">
-			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
-		</div>
+<div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
+	<div class="container my-0 mx-auto">
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
 	</div>
-	<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Find Id&Password</span>
-		<div id="hr"class="my-4 border-t border-solid"></div>
+</div>
+<div id="register"  class="m-0 m-auto w-full max-w-screen-xl">
+	<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Find Id&Password</span>
+	<div id="hr"class="my-4 border-t border-solid"></div>
 		
-		<div class="flex">
-			<form  class="w-1/2">
+	<div class="flex">
+		<form  class="w-1/2">
 			<div class="w-1/3 m-0 mb-4 m-auto "><p class="font-bold text-2xl">Get Your Id</p></div>
 				<div class="w-full">
 					<div>
@@ -35,7 +28,7 @@
 			</form>
 			
 			<form class="w-1/2 border-l border-1 mb-2">
-			<div class="text-center m-0 mb-4 m-auto "><p class="font-bold text-2xl">Get Your Password</p></div>
+				<div class="text-center m-0 mb-4 m-auto "><p class="font-bold text-2xl">Get Your Password</p></div>
 				<div class="w-full">
 					<div>
 						<div class="w-1/3 m-0 m-auto" >
@@ -54,6 +47,4 @@
 				</div>
 			</form>
 		</div>
-	</div>
-</body>
-</html>
+</div>

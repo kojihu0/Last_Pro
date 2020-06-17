@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
-		<div id="bannerText">
+<div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
+		<div class="container my-0 mx-auto">
 			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;NEWS</h1>
 		</div>
 	</div>

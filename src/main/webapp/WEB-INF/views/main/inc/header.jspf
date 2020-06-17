@@ -51,11 +51,11 @@
 						<a href="<%=ctx %>/contact" class="inline-block py-8 px-4 duration-300">CONTACT</a>
 					</li>
 					<li class="menu-item text-center flex items-center ml-2 duration-300">
-						<a href="#"  data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4 duration-300"><i class="xi-search"></i></a>
+						<a href="#"  data-target="#searchModal" class="search-ico inline-block py-8 px-4 duration-300"><i class="xi-search"></i></a>
 					</li>
 				</ul>
 				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab"> 		
-					<li class="menu-item text-center mr-4"><a href="#" id="login-ico" data-target="#loginModal" class="inline-block duration-300">LOGIN</a></li>
+					<li class="menu-item text-center mr-4"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300">LOGIN</a></li>
 					<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block duration-300">REGISTER</a></li>
 					<li class="menu-item text-center mr-4 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300">LOGOUT</a></li>
 				    <li class="menu-item text-center hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300">MYPAGE</a></li>
@@ -85,7 +85,7 @@
 					</li>
 				</ul>
 				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab bg-gray-300"> 		
-					<li class="menu-item text-center w-1/2"><a href="#" id="login-ico" data-target="#loginModal" class="inline-block duration-300 px-4 py-2">LOGIN</a></li>
+					<li class="menu-item text-center w-1/2"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300 px-4 py-2">LOGIN</a></li>
 					<li class="menu-item text-center w-1/2"><a href="<%=ctx%>/register" class="inline-block duration-300 px-4 py-2">REGISTER</a></li>
 					<li class="menu-item text-center w-1/2 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300 px-4 py-2">LOGOUT</a></li>
 				    <li class="menu-item text-center w-1/2 hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300 px-4 py-2">MYPAGE</a></li>

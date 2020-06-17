@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>수강신청창</title>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script> 
 <script>
 function payment(){//매개변수에 데이터 베이스 값을 넣거나 value값을 가져오는 방법 시도해보기
@@ -35,18 +30,16 @@ function payment(){//매개변수에 데이터 베이스 값을 넣거나 value�
 	});
 }
 </script>
-</head>
-<body>
 		<!--헤더(메뉴)-->
-		<div id="content" class="w-full my-0 mx-auto">
-		<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
-		<div id="bannerText">
+<div id="content" class="w-full my-0 mx-auto">
+	<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
+		<div class="container my-0 mx-auto">
 			<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PAYMENT</h1>
 		</div>
 	</div>
 			<!-----------------페이지 내용----------------->
-			<div class="m-0 m-auto w-full max-w-screen-xl mt-12 mb-4 mx-auto">
-			<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;PayMent</span>
+	<div class="m-0 m-auto w-full max-w-screen-xl mt-12 mb-4 mx-auto">
+		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;PayMent</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 			<div class="m-0 m-auto text-center"><span class="font-bold text-5xl text-black ">결제</span></div>
 				<div class="flex my-5">
@@ -147,14 +140,10 @@ function payment(){//매개변수에 데이터 베이스 값을 넣거나 value�
 					<input type="radio" name="paymentSelectRadio" class="ml-4"/>&nbsp;&nbsp;&nbsp;<span>계좌이체 </span><br/>
 					<div></div>
 					<input type="radio" name="paymentSelectRadio" class="ml-4"/>&nbsp;&nbsp;&nbsp;<span>신용카드</span><br/>
-					</div>
+				</div>
 				<div class="mt-12 mb-4"><span class="text-lg font-semibold">총 결제 금액 : 110000원</span></div>
 			    
 					<input type="submit" onclick="payment();" class="w-1/3 text-2xl px-2 py-4 justify-center leading-9 h-full text-white bg-brand-500" id="payReser" value="결제 하기"/>
 				
-			</div>
-		</div><!-----------------페이지 내용 끝----------------->
-		
-			
-</body>
-</html>
+	</div>
+</div><!-----------------페이지 내용 끝----------------->

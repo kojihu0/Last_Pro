@@ -1,23 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
-	<div id="bannerText">
+<div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
+	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ABOUT_US</h1>
 	</div>
 </div>
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;aboutUs</span>
-	<div id="hr" class="my-4 border-t border-solid"></div>
+	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;aboutUs</span>
+	<div id="hr" class="mt-4 border-t border-solid"></div>
 </div>
-<div class="w-full my-0 mx-auto bg-cover" style="height:700px; background-image:url('<%=ctx%>/img/avel.jpg')">
-	<span class="text-5xl font-bold text-black position-absolute" style="position:absolute; margin-top:240px; margin-left:100px; ">코딩이 습관이 되는 학원<br>EDUCAMP입니다.</span><br>
-	<span class="text-black post" style="position:absolute; margin-top:380px; margin-left:100px; font-size:18px;"><span class="text-danger">EDUCAMP</span>항상 끊임없이 연구하고 노력하는<br>IT전문교육기관입니다.</span>
+<div class="w-full bg-cover flex items-center" style="height:700px; background-image:url('<%=ctx%>/img/avel.jpg')">
+	<div class="container my-0 mx-auto">
+		<p class="text-5xl font-bold">코딩이 습관이 되는 학원<br>EDUCAMP입니다.</p>
+		<p class="text-black post"><span class="text-danger">EDUCAMP</span>항상 끊임없이 연구하고 노력하는<br>IT전문교육기관입니다.</p>
+	</div>
 </div>
 <div class="w-full max-w-screen-xl my-0 mx-auto ">
 	<div class="mt-20">
 		<span class="text-danger roboto-slab">EduCamp 5 Principles</span>
 		<div class="w-full mt-3 flex">
-			<span class="text-xl w-1/2 roboto-slab">EduCamp가 가르치는 방식</span>
+			<span class="text-xl w-1/2"><span class="roboto-slab">EduCamp</span>가 가르치는 방식</span>
 			<span class="ml-24 w-1/2"><span class="text-danger roboto-slab">EduCamp</span>는 서로를 지지하고 도전을 즐기는 기업문화 안에서 아래 5가지<br>원칙을 가지고 일합니다.</span>
 		</div>
 		<div class="flex text-left mt-24 font-bold">
