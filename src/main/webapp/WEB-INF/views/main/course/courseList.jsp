@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <div class="w-full"></div>
 <div class="w-full max-w-screen-xl my-0 mx-auto">
 	<div class="course-list flex flex-wrap">

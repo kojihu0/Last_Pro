@@ -5,9 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/tailwind.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/profile.css" type="text/css">
-<script src="<%=request.getContextPath()%>/js/profile.js"></script>
 </head>
 <body>
 	<div id="mainBanner" style="background-size:cover;background-image:url('<%=request.getContextPath()%>/img/top-banner.jpg')" class="mb-4  w-full ">
@@ -16,7 +13,7 @@
 		</div>
 	</div>
 	<div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 		<div class="flex mt-12">
 			<div>

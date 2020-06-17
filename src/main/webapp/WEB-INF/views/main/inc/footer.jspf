@@ -43,5 +43,28 @@
 		</div>
 	</form>
 </div>
+<div id="loginModal"class="loginModal w-full h-screen bg-black opacity-85 roboto-slab fixed top-0 z-50 hidden">
+  <i class="xi-close mt-4 ml-4 text-2xl text-white "></i>
+		<div style="border:1px white solid" class="bg-white max-w-screen-sm m-0 m-auto roboto-slab mt-20 h-auto z-99 opacity-100 text-center">
+			<div class="mt-8 h-4 mb-8">
+				<p class="text-2xl">Login with your site account</p>
+			</div>
+			<div>
+		      <input class="appearance-none  w-1/2 bg-gray-200  text-gray-700 border border-gray-200 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-id" type="text" placeholder="ID">
+		    </div>
+		    <div>
+		      <input class="appearance-none w-1/2 bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="password" placeholder="PASSWORD">
+		    </div>
+		    <div class="mb-4">
+		    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=request.getContextPath() %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
+		    </div>
+		    <div class="mb-4">
+		    	<input type="submit" id="loginBtn" value="login" class="text-2xl font-bold w-1/2  bg-brand-500 py-3 px-4"/>
+		    </div>
+		    <div class="mb-4">
+				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=request.getContextPath() %>/register" class="text-brand-500 text-xs">Register now</a>
+			</div>
+  		</div>
+	</div>
 </body>
 </html>

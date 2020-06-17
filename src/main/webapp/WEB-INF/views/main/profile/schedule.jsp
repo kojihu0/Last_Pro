@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;＞&nbsp;&nbsp;Profile</span>
+		<span class="text-gray-500"><a href="<%=request.getContextPath()%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 		<div id="hr" class="my-4 border-t border-solid"></div>
 		<div class="flex mt-12">
 			<div>
@@ -107,8 +107,6 @@
 				<!-- DivTable.com -->
 				</div>
 			</div>
-			
 		</div>
-					
 </body>
 </html>
