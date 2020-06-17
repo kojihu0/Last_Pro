@@ -19,9 +19,15 @@
 <div id="stickyNav" class="course-tab-nav w-full fixed bg-white border-t border-gray">
 	<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex justify-between">
 		<ul class="flex items-center block w-1/2">
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4 active"><a href="#course_detail" class="inline-block px-4"><span></span>강좌소개 및 커리큘럼</a></li>
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4"><a href="#instructor" class="inline-block px-4">강사소개</a></li>
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4"><a href="#comments" class="inline-block px-4">리뷰 <span class="text-brand-500">5</span></a></li>
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4 active" data-nav-idx="1">
+				<a href="#course_detail" class="inline-block px-4">강좌소개 및 커리큘럼</a>
+			</li>
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="2">
+				<a href="#instructor" class="inline-block px-4">강사소개</a>
+			</li>
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="3">
+				<a href="#comments" class="inline-block px-4">수강후기</a>
+			</li>
 		</ul>
 		<div class="flex items-center">
 			<p class="font-bold text-xl text-danger-500 mr-8"><span>110,000</span>원</p>
@@ -68,9 +74,21 @@
 		<div class="w-full bg-white mt-4 border border-gray pb-16 mb-16">
 			<div class="course-tab-nav w-full bg-white flex items-center justify-center">
 				<ul class="w-full flex items-center justify-center block py-8 font-bold px-6">
-					<li class="tab-item w-1/3 text-center mx-4 border-b-4 active"><a href="#course_detail" class="inline-block py-4 px-4"><span></span>강좌소개 및 커리큘럼</a></li>
-					<li class="tab-item w-1/3 text-center mx-4 border-b-4"><a href="#instructor" class="inline-block py-4 px-4">강사소개</a></li>
-					<li class="tab-item w-1/3 text-center mx-4 border-b-4"><a href="#comments" class="inline-block py-4 px-4">리뷰 <span class="text-brand-500">5</span></a></li>
+					<li class="tab-item w-1/3 text-center mx-4 border-b-4 active" data-nav-idx="1">
+						<a href="#course_detail" class="inline-block py-4 px-4">
+							<span class="ico mr-2"><i class="xi-bookmark"></i></span>강좌소개 및 커리큘럼
+						</a>
+					</li>
+					<li class="tab-item w-1/3 text-center mx-4 border-b-4" data-nav-idx="2">
+						<a href="#instructor" class="inline-block py-4 px-4">
+							<span class="ico mr-2"><i class="xi-user"></i></span>강사소개
+						</a>
+					</li>
+					<li class="tab-item w-1/3 text-center mx-4 border-b-4" data-nav-idx="3">
+						<a href="#comments" class="inline-block py-4 px-4">
+							<span class="ico mr-2"><i class="xi-speech"></i></span>수강후기 <span class="text-brand-500">5</span>
+						</a>
+					</li>
 				</ul>
 				<a href="#donate" class="sticky-btn-donate inline-block bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded inline-block text-lg text-center ml-4">후원하기</a>
 			</div>
@@ -90,12 +108,34 @@
 						<p>법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우에는 법원은 헌법재판소에 제청하여 그 심판에 의하여 재판한다. 헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은 확정되며, 대통령은 즉시 이를 공포하여야 한다.</p>
 					</div>
 				</div><!--스토리-->
-				<div id="instructor" class="tab-content-item"><!--후원자-->
-				</div><!--후원자-->
+				<div id="instructor" class="tab-content-item"><!--강사소개-->
+					<div class="border p-8">
+						<div class="flex items-center">
+							<div class="w-24 h-24 mr-8 rounded-full overflow-hidden">
+								<img src="<%=ctx %>/img/user-avatar.png">
+							</div>
+							<div class="instructor-name font-bold mr-8">홍길동</div>
+							<div class="instructor-desc text-gray-700">
+								강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개
+							</div>
+						</div>
+					</div>
+					<div class="border p-8">
+						<div class="flex items-center">
+							<div class="w-24 h-24 mr-8 rounded-full overflow-hidden">
+								<img src="<%=ctx %>/img/user-avatar.png">
+							</div>
+							<div class="instructor-name font-bold mr-8">홍길동</div>
+							<div class="instructor-desc text-gray-700">
+								강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개
+							</div>
+						</div>
+					</div>
+				</div><!--강사소개-->
 				<div id="comments" class="tab-content-item"><!--응원글-->
-					<h1 class="my-4">수강후기</h1>
+					<h1 class="my-4 font-bold">수강후기</h1>
 					<div class="mb-8">
-						<form method="POST" action="" enctype="multipart/form-data" onsubmit="return course_comment_validation()" class="course-comment-form">
+						<form method="POST" action="/reviewOk" enctype="multipart/form-data" onsubmit="return basicFormValidate(this)" class="course-comment-form">
 							<div class="mb-4">
 								<p class="mb-2">평점을 남겨주세요</p>
 								<ul id="stars" class="text-lg text-gray-500">
@@ -105,22 +145,23 @@
 									<li class="star inline-block" data-value="4"><i class="xi-star"></i></li>
 									<li class="star inline-block" data-value="5"><i class="xi-star"></i></li>
 								</ul>
+								<input type="hidden" name="rate" id="rate" value="">
 							</div>
-							<textarea name="course_comment" id="course_comment" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+							<textarea name="course_comment" id="course_comment" placeholder="여기에 수강후기를 남겨주세요." class="appearance-none border border-gray-500 w-full py-2 px-3 leading-tight focus:outline-none focus:border-brand-500 h-24"></textarea>
 							<div class="text-right">
 								<input type="submit" value="등록" class="bg-brand-500 hover:bg-brand-600 font-bold py-2 px-4 rounded"/>
 							</div>
 						</form>
 					</div>
 					<div class="course-total-rate flex items-center py-4 w-2/3 mb-8">
-						<div class="w-56 h-56 text-center border border-gray-500 p-6 mr-8">
+						<div class="w-56 h-56 text-center border p-6 mr-8">
 							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">5.0</h1>
 							<p class="text-brand-500 font-normal mb-2">
 								<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
 							</p>
-							<p >2개의 수강평</p>
+							<p>2개의 수강평</p>
 						</div>
-						<div class="flex-grow h-56 border border-gray-500 px-6 py-10">
+						<div class="flex-grow h-56 border px-6 py-10">
 							<div class="stars flex items-center">
 								<div class="key pr-8">5</div>
 								<div class="bar w-full">
@@ -159,7 +200,7 @@
 						</div>
 					</div>
 					<ul class="course-comment-list">
-						<li class="mb-8">
+						<li class="py-8 px-4 border-t">
 							<div class="comment-container">
 								<p class="comment-author font-bold mb-2">
 									홍길동
@@ -171,7 +212,7 @@
 								<div class="comment-text text-gray-900">수강후기입니다.</div>
 							</div>
 						</li>
-						<li class="mb-8">
+						<li class="py-8 px-4 border-t">
 							<div class="comment-container">
 								<p class="comment-author font-bold mb-2">
 									홍길동
@@ -200,19 +241,15 @@
 </div><!-- 상세페이지 -->
 <script>
 $(function(){
-	function refresh() {
-	console.log(scrollY);
-		if (scrollY < 800) {
-			$("#stickyNav").removeClass('sticky-header');
+	function stickyTabNav() {
+		if (scrollY < 500) {
+			$("#stickyNav").removeClass('sticky-nav');
 		}
-		else if (scrollY > 800) {
-			$("#stickyNav").addClass('sticky-header');
+		else {
+			$("#stickyNav").addClass('sticky-nav');
 		}
 	}
 
-	$("html,body").on("mousewheel DOMMouseScroll'", refresh);
-	refresh();
-	
 	/*별점*/
 	$('#stars li').on('mouseover', function(){
     	var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -235,7 +272,8 @@ $(function(){
 	
 	/* 2. Action to perform on click */
 	$('#stars li').on('click', function(){
-	    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+	    var onStar = parseInt($(this).data('value'), 10); //현재 선택된 별점
+	    $('#rate').val(onStar);
 	    var stars = $(this).parent().children('li.star');
 	    
 	    for (i = 0; i < stars.length; i++) {
@@ -256,16 +294,21 @@ $(function(){
 	//탭
 	$('.course-tab-nav .tab-item a').on('click', function(e){
 		e.preventDefault();
-        console.log($(this));
+        
+        var tabIdx=$(this).parent().data('nav-idx');
         $('html,body').animate({
-            scrollTop: $("#courseContent").offset().top
+            scrollTop: $("#courseContent").offset().top-95
         });
 
         $('.course-tab-nav .tab-item').removeClass('active');
         $('.course-tab-content .tab-content-item').removeClass('active');
 
         $(this).parent().addClass('active');
+        $('.course-tab-nav li[data-nav-idx='+tabIdx+']').addClass('active');
         $($(this).attr('href')).addClass('active');
     });
+	
+	$("html,body").on("mousewheel DOMMouseScroll'", stickyTabNav);
+	stickyTabNav();
 });
 </script>

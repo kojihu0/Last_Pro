@@ -5,7 +5,7 @@
 	String ctx = request.getContextPath();
 %>
 <!DOCTYPE html>
-<html class="h-full">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,41 +29,72 @@
 <body>
 <div class="site-wrap">
 	<header id="site-header" class="flex items-center w-full">
-		<div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
-			<div id="siteLogo" class="flex-shrink-0 w-1/4"> 
+		<div class="container my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
+			<div id="siteLogo" class="flex-shrink-0 w-1/3 lg:w-1/4"> 
 				<a href="<%=ctx %>">
 					<img class="default-logo w-48" src="<%=ctx %>/img/logo.png">
 					<img class="another-logo w-48" src="<%=ctx %>/img/logo-light.png">
 				</a>	
 			</div>
-			<nav id="site-navigation" class="flex items-center justify-between flex-wrap flex-grow w-3/4">
+			<nav id="site-navigation" class="hidden lg:flex items-center justify-between flex-wrap flex-grow w-3/4">
 				<ul class="nav-menu flex items-center flex-wrap flex-grow justify-end block text-lg roboto-slab font-bold pr-16">
-					<li class="menu-item text-center has-child flex items-center">	
-						<a href="<%=ctx %>/aboutUs" class="inline-block py-8 px-4">ABOUT US</a>
+					<li class="menu-item text-center has-child flex items-center border-b-2 duration-300 relative">	
+						<a href="<%=ctx %>/aboutUs" class="inline-block py-8 px-4 duration-300">ABOUT US</a>
 					</li>
-					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="<%=ctx %>/course/courseList" class="inline-block py-8 px-4">COURSES</a>
+					<li class="menu-item text-center has-child flex items-center border-b-2 duration-300 relative">	
+						<a href="<%=ctx %>/course/courseList" class="inline-block py-8 px-4 duration-300">COURSES</a>
 					</li>
-					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="<%=ctx %>/news" class="inline-block py-8 px-4">NEWS</a>
+					<li class="menu-item text-center has-child flex items-center border-b-2 duration-300 relative">	
+						<a href="<%=ctx %>/news" class="inline-block py-8 px-4 duration-300">NEWS</a>
 					</li>
-					<li class="menu-item text-center has-child flex items-center ml-2">	
-						<a href="<%=ctx %>/contact" class="inline-block py-8 px-4">CONTACT</a>
+					<li class="menu-item text-center has-child flex items-center border-b-2 duration-300 relative">	
+						<a href="<%=ctx %>/contact" class="inline-block py-8 px-4 duration-300">CONTACT</a>
 					</li>
-					<li class="menu-item text-center flex items-center ml-2"><a href="#"  data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>
+					<li class="menu-item text-center flex items-center ml-2 duration-300">
+						<a href="#"  data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4 duration-300"><i class="xi-search"></i></a>
+					</li>
 				</ul>
 				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab"> 		
-					<li class="menu-item text-center mr-4"><a href="#" id="login-ico" data-target="#loginModal" class="inline-block">LOGIN</a></li>
-					<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block">REGISTER</a></li>
-					<li class="menu-item text-center mr-4 hidden"> <span class="mr-4">000님 </span><a id="loginTag"class="inline-block">LOGOUT</a></li>
-				    <li class="menu-item text-center hidden"><a href="#" class="inline-block">MYPAGE</a></li>
+					<li class="menu-item text-center mr-4"><a href="#" id="login-ico" data-target="#loginModal" class="inline-block duration-300">LOGIN</a></li>
+					<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block duration-300">REGISTER</a></li>
+					<li class="menu-item text-center mr-4 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300">LOGOUT</a></li>
+				    <li class="menu-item text-center hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300">MYPAGE</a></li>
+				</ul>
+			</nav>
+			<div class="mobile-btns flex items-center lg:hidden">
+				<a href="#"  data-target="#searchModal" class="search-ico inline-block font-bold text-2xl py-8 px-3 duration-300">
+					<i class="xi-search"></i>
+				</a>
+				<button id="mobileNavBtn" class="py-8 px-2 font-bold text-2xl focus:outline-none">
+			    	<i class="xi-bars"></i>
+			    </button>
+			</div>
+			<nav id="mobile-navigation" class="absolute w-full block lg:hidden bg-white" style="display:none;">
+				<ul class="nav-menu">
+					<li class="menu-item has-child flex items-center border-b duration-300 relative">	
+						<a href="<%=ctx %>/aboutUs" class="block w-full py-2 px-4 duration-300">ABOUT US</a>
+					</li>
+					<li class="menu-item has-child flex items-center border-b duration-300 relative">	
+						<a href="<%=ctx %>/course/courseList" class="block w-full py-2 px-4 duration-300">COURSES</a>
+					</li>
+					<li class="menu-item has-child flex items-center border-b duration-300 relative">	
+						<a href="<%=ctx %>/news" class="block w-full py-2 px-4 duration-300">NEWS</a>
+					</li>
+					<li class="menu-item has-child flex items-center border-b duration-300 relative">	
+						<a href="<%=ctx %>/contact" class="block w-full py-2 px-4 duration-300">CONTACT</a>
+					</li>
+				</ul>
+				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab bg-gray-300"> 		
+					<li class="menu-item text-center w-1/2"><a href="#" id="login-ico" data-target="#loginModal" class="inline-block duration-300 px-4 py-2">LOGIN</a></li>
+					<li class="menu-item text-center w-1/2"><a href="<%=ctx%>/register" class="inline-block duration-300 px-4 py-2">REGISTER</a></li>
+					<li class="menu-item text-center w-1/2 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300 px-4 py-2">LOGOUT</a></li>
+				    <li class="menu-item text-center w-1/2 hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300 px-4 py-2">MYPAGE</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-	
-  <div id="loginModal"class="loginModal w-full h-screen bg-black opacity-85 roboto-slab fixed top-0 z-50 hidden">
-  <i class="xi-close mt-4 ml-4 text-2xl text-white "></i>
+	<div id="loginModal"class="loginModal w-full h-screen bg-black opacity-85 roboto-slab fixed top-0 z-50 hidden">
+		<i class="xi-close mt-4 ml-4 text-2xl text-white "></i>
 		<div style="border:1px white solid" class="bg-white max-w-screen-sm m-0 m-auto roboto-slab mt-20 h-auto z-99 opacity-100 text-center">
 			<div class="mt-8 h-4 mb-8">
 				<p class="text-2xl">Login with your site account</p>
@@ -83,9 +114,6 @@
 		    <div class="mb-4">
 				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=ctx %>/register" class="text-brand-500 text-xs">Register now</a>
 			</div>
-  		</div>
+	 	</div>
 	</div>
-
-	
-	
 	<div class="page-content w-full">

@@ -3,7 +3,7 @@
 	</div>
 	<footer id="footer" class="bg-black text-gray-300 text-sm">
 		<div class="footer-menu w-full">
-			<div class="w-full max-w-screen-xl my-0 mx-auto flex justify-between text-white px-8 xl:px-0">
+			<div class="w-full max-w-screen-xl my-0 mx-auto sm:flex justify-between text-white px-8 xl:px-0">
 				<div>
 					<a href="<%=ctx%>/terms/tos.do"	class="inline-block py-4 mr-8">이용약관</a>
 					<a href="<%=ctx%>/terms/private.do" class="inline-block py-4">개인정보 처리방침</a>
@@ -14,14 +14,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="w-full max-w-screen-xl my-0 mx-auto flex justify-between mt-8 px-8 xl:px-0">
+		<div class="w-full max-w-screen-xl my-0 mx-auto sm:flex justify-between mt-8 px-8 xl:px-0">
 			<div>
 				<p>
 					서울 마포구 백범로 23 구프라자 3층 | 사업자 이영범 | 사업등록번호 000-00-00000<br /> TEL
 					02-0000-0000 | FAX 02-0000-0000 | E-mail test@test.or.kr
 				</p>
 			</div>
-			<div class="text-right">
+			<div class="text-right my-4">
 				<a href="<%=ctx%>"><img class="w-48" src="<%=ctx%>/img/logo-light.png"></a>
 			</div>
 		</div>
@@ -30,11 +30,11 @@
 		</div>
 	</footer>
 </div><!-- wrap -->
-<div id="searchModal" class="modal w-full h-screen bg-black opacity-75 fixed top-0 z-50 hidden">
+<div id="searchModal" class="modal w-full h-full bg-black opacity-75 fixed top-0 left-0 right-0 z-50 hidden">
 	<div class="close text-white inline-block text-xl absolute top-0 right-0 p-4 cursor-pointer">
 		<i class="xi-close"></i>
 	</div>
-	<form method="GET" id="searchForm" class="w-full max-w-sm absolute">
+	<form method="GET" id="searchForm" action="/course/courseList" class="w-full max-w-sm absolute" onsubmit='return basicFormValidate(this)'>
 		<div class="flex items-center border-b border-b-2 border-white py-2">
 			<input class="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="search_text" placeholder="강의검색">
 			<button class="flex-shrink-0 text-white py-1 px-2" id="searchSubmit">
@@ -43,5 +43,8 @@
 		</div>
 	</form>
 </div>
+<script>
+
+</script>
 </body>
 </html>

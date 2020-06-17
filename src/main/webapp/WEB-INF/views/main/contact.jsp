@@ -2,28 +2,29 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1697bf8ffdf3960a4e20ff67ba4f1d5f"></script>
 <div id="mainBanner" style="background-size:cover;background-image:url('<%=ctx%>/img/top-banner.jpg')" class="mb-4  w-full ">
-	<div id="bannerText">
+	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;CONTACT</h1>
 	</div>
 </div>
-<div class="my-0 mx-auto w-full max-w-screen-xl">
+<div class="container my-0 mx-auto">
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
-	<div class="flex pt-12"><!-- contact-info -->
-		<div class="w-1/2 pr-6">
-			<div class="mb-12">
+	<div class="lg:flex pt-12"><!-- contact-info -->
+		<div class="lg:w-1/2 pr-6 lg:pl-0 pl-6">
+			<div class="relative pb-4 mb-12 fadeUp">
 				<h1 class="roboto-slab font-bold">CONTACT INFO</h1>
 				<p class="text-gray-700">고객센터</p>
+				<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 			</div>
-			<div class="flex border-b border-t border-gray-500 pt-4 pb-12">
-				<div class="w-1/2">
+			<div class="lg:flex border-b border-t border-gray-500 pt-4 pb-4 lg:pb-12 fadeUp">
+				<div class="lg:w-1/2 overflow-hidden pb-4 lg:pb-0">
 					<div class="float-left text-2xl text-brand-500 mr-4"><i class="xi-call"></i></div>
 					<div class="float-left">
 						<p class="font-bold roboto-slab">Tel</p>
 						<p class="text-gray-700">02-000-0000</p>
 					</div>
 				</div>
-				<div class="w-1/2">
+				<div class="lg:w-1/2 overflow-hidden">
 					<div class="float-left text-2xl text-brand-500 mr-4"><i class="xi-mail"></i></div>
 					<div class="float-left">
 						<p class="font-bold roboto-slab">Email</p>
@@ -31,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="border-b border-gray-500 overflow-hidden pt-4 pb-12">
+			<div class="border-b border-gray-500 overflow-hidden pt-4 pb-12 fadeUp">
 				<div class="float-left text-2xl text-brand-500 mr-4"><i class="xi-maker"></i></div>
 				<div class="float-left">
 					<p class="font-bold roboto-slab">ADDRESS</p>
@@ -40,24 +41,25 @@
 			</div>
 		</div>
 		
-		<div class="w-1/2 pl-6">
-			<div class="mb-12">
+		<div class="lg:w-1/2 pl-6 lg:pr-0 pr-6">
+			<div class="relative pb-4 mb-12 fadeUp">
 				<h1 class="roboto-slab font-bold">CONTACT FORM</h1>
 				<p class="text-gray-700">자세한 문의사항은 여기에 남겨주세요</p>
+				<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 			</div>
-			<div>
-				<form>
+			<div class=" fadeUp">
+				<form method="post" action="/contactOk" onsubmit="return basicFormValidate(this);">
 					<p class="mb-4">
-						<input type="text" placeholder="성함" class="w-full p-4 border border-gray-500">
+						<input type="text" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="email" placeholder="이메일" class="w-full p-4 border border-gray-500">
+						<input type="email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="tel" placeholder="연락처" class="w-full p-4 border border-gray-500">
+						<input type="tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<div class="mb-4">
-						<textarea placeholder="상냄내용을 입력해주세요." class="w-full p-4 border border-gray-500"></textarea>
+						<textarea placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>
 					</div>
 					<div class="border-t border-b border-gray-500 mb-2 py-4 text-gray-700">
 						<p class="mb-2">EDUCAMP는 온라인상담을 이용하는분을 대상으로 아래와 같이 개인정보를 수집하고 있습니다.</p>
@@ -69,28 +71,41 @@
 						</ul>
 						<p>그 밖의 사항은 개인정보취급방침을 준수합니다.</p>
 					</div>
-					<p class="mb-4"><input type="checkbox" id="accept_policy" class="mr-2"><label for="accept_policy">개인정보수집 및 이용에 동의합니다.</label></p>
+					<p class="mb-4"><input type="checkbox" value="동의함" id="accept_policy" class="mr-2"><label for="accept_policy">개인정보수집 및 이용에 동의합니다.</label></p>
 					<input type="submit" value="문의하기" class="py-4 px-6 bg-brand-500 font-bold">
 				</form>
 			</div>
 		</div>
 	</div><!-- contactinfo -->
 </div>
-<div class="my-0 mx-auto w-full max-w-screen-xl">
-	<div class="my-12 pt-12 border-t border-gray-500">
+<div class="container my-0 mx-auto px-6 lg:px-0">
+	<div class="relative my-12 pb-4 pt-12 border-t border-gray-500 fadeUp">
 		<h1 class="roboto-slab font-bold">LOCATION ON MAP</h1>
 		<p class="text-gray-700">오시는 길</p>
+		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
 </div>
-<div id="direction" class="w-full mt-12" style="height: 500px;"></div>
+<div id="direction" class="w-full mt-12 fadeUp" style="height: 500px;"></div>
 <script type="text/javascript">
 $(function(){
 	var container = document.getElementById('direction'); //지도를 담을 영역의 DOM 레퍼런스
+	var lat = 37.55268208248053;
+	var lng = 126.93773432181362;
 	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+		center: new kakao.maps.LatLng(lat, lng), //지도의 중심좌표.
 		level: 3 //지도의 레벨(확대, 축소 정도)
 	};
 
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
+	var markerPosition  = new kakao.maps.LatLng(lat, lng);
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
 });
 </script>

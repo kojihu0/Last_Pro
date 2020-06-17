@@ -5,11 +5,11 @@
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;COURSES</h1>
 	</div>
 </div>
-<div class="w-full max-w-screen-xl my-0 mx-auto">
+<div class="container my-0 mx-auto">
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Courses</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
-	<div class="course-list flex flex-wrap -mx-4">
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+	<div class="course-list lg:flex lg:flex-wrap -mx-4 px-4 lg:px-0">
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -22,7 +22,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -35,7 +35,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -48,7 +48,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -61,7 +61,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -74,7 +74,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -87,7 +87,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -100,7 +100,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -113,7 +113,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -126,7 +126,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -139,7 +139,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
@@ -152,7 +152,7 @@
 				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 py-6 text-center w-1/4"><!-- course-item -->
+		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
 				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>

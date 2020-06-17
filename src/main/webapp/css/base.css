@@ -27,6 +27,7 @@ html, body, .site-wrap{
 	box-shadow: none;
 	background: transparent;
 	transition: color .3s, background .3s;
+	height:93px;
 }
 #site-header.sticky-header{
 	position: fixed;
@@ -39,15 +40,24 @@ html, body, .site-wrap{
 #site-header #siteLogo .another-logo{display:block;}
 #site-header.sticky-header #siteLogo .default-logo{display:block;}
 #site-header.sticky-header #siteLogo .another-logo{display:none;}
-
-#site-header #site-navigation>ul>li>a{
+#site-header #site-navigation>ul>li{
+	border-color: transparent;
+}
+#site-header #site-navigation>ul>li:hover{
+	border-color: #FFB606;
+}
+#site-header #site-navigation>ul>li>a,
+#site-header .mobile-btns{
 	color:#fff;
 }
-
-#site-header.sticky-header #site-navigation>ul>li>a{
+#site-header.sticky-header #site-navigation>ul>li>a,
+#site-header.sticky-header .mobile-btns{
 	color:#212120;
 }
-
+#site-header #site-navigation>ul>li:hover>a{
+	color:#FFB606;
+}
+#mobile-navigation{top:93px; left:0}
 #searchForm{
 	top: 50%;
 	left: 50%;
@@ -232,8 +242,12 @@ html, body, .site-wrap{
 
 .course-tab-nav ul>.tab-item.active,
 .course-tab-nav ul>.tab-item:hover{
-    color: #FFB606;
     border-color: #FFB606;
+}
+
+.course-tab-nav ul>.tab-item.active .ico,
+.course-tab-nav ul>.tab-item:hover .ico{
+    color: #FFB606;
 }
 
 .course-tab-content .tab-content-item{
@@ -282,5 +296,5 @@ html, body, .site-wrap{
     content: "\ea10";
 }
 #stickyNav{bottom: -50px; transition: .3s;}
-#stickyNav.sticky-header{bottom:0;}
+#stickyNav.sticky-nav{bottom:0;}
 #stickyNav ul li a{line-height: 46px;}

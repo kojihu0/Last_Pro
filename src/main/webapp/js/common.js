@@ -1,7 +1,29 @@
 /**
  * common.js
  */
+function basicFormValidate(form){
+	var flag;
+	$(form).find('input, textarea').each(function(){
+		if($(this).val()==""){
+			flag=false;
+			alert('모든 항목을 입력해주세요.');
+			return false;
+		}
+	});
+	if($(form).find('#accept_policy').prop('checked')==false){
+		flag=false;
+		alert('약관 동의에 체크해주세요.');
+	}
+	
+	if(flag==false){
+		return false;
+	}
+}
 $(function(){
+	$('#mobileNavBtn').on('click', function(){
+		$('#mobile-navigation').slideToggle();
+	});
+	//fade애니메이션
 	function init_fadeAni(){
 		$('.fadeIn, .fadeUp, .fadeDown, .fadeLeft, .fadeRight').each(function(idx, el){
 			var $this = $(this);
@@ -69,7 +91,6 @@ $(function(){
 	function slideTxt(el) {
         var eltxt = el.find(".slide_txt").children();
         $.each(eltxt, function(e){
-        	console.log(e);
         	var $this = $(this);
         	var delay = 500;
         	setTimeout(function() {
@@ -88,12 +109,42 @@ $(function(){
 		slidesToShow: 4,
 		prevArrow: ".best-section .arrow-prev",
 		nextArrow: ".best-section .arrow-next",
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2
+				}
+			},
+			{
+				breakpoint: 640,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+			
+		]
 	});
 	
 	$("#newsCarousel").slick({
 		slidesToShow: 3,
 		prevArrow: ".news-section .arrow-prev",
 		nextArrow: ".news-section .arrow-next",
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2
+				}
+			},
+			{
+				breakpoint: 640,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+			
+		]
 	});
 	
 	var isVisible = true;
@@ -124,7 +175,6 @@ $(function(){
 	}
 
 	function refresh() {
-	console.log(scrollY);
 		if (scrollY > 30) {
 			$('#site-header').addClass('sticky-header');
 			hide();
@@ -140,7 +190,7 @@ $(function(){
 	init_fadeAni();
 	
 	/* 메뉴 모달 검색창 */
-    $('#search-ico').on('click', function(e){
+    $('.search-ico').on('click', function(e){
         e.preventDefault();
         $($(this).data('target')).fadeIn(function(){
             $(this).removeClass('hidden');
