@@ -20,6 +20,8 @@
         }
         <!-- 폰트 추가 end -->
     </style>
+    <script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
+    
 </head>
 <body class="bg-white font-family-karla h-screen">
 
@@ -34,7 +36,7 @@
                 <p class="text-center text-3xl">Welcome!</p>
                  
                 <!-- loginform start -->
-                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/loginOk">
+                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/loginOk" onsubmit="return adminLoginChek()">
                     <div class="flex flex-col pt-4">
                         <label for="adminId" class="text-lg">Id</label>
                         <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
@@ -43,7 +45,7 @@
                         <label for="adminPw" class="text-lg">Password</label>
                         <input type="password" id="adminPw" name="adminPw" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
-                    <input type="submit" value="Log In" class="bg-brand-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
+                    <input type="submit" value="LogIn" class="bg-brand-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
                 </form>
  				<!-- loginform end -->               
                 <!-- 회원가입 링크 start-->

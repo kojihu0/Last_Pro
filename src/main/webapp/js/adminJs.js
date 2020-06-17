@@ -1,18 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-	  var calendarEl = document.getElementById('calendar');
-	  var draggableEl = document.getElementById('mydraggable');
-	  
+	  var calendarEl  = document.getElementById('calendar');
+  
 	  var calendar = new FullCalendar.Calendar(calendarEl, {
-	    
+		  
 		  plugins	    : [ 'interaction', 'dayGrid', 'timeGrid' ],
-		  defaultView : 'dayGridMonth',
-		  defaultDate : new Date(),
-		  selectable  : true,
-		  selectMirror:true,
-		  selectHelper:true,
-		  locale : 'ko',
-		
+		  defaultView   : 'dayGridMonth',
+		  defaultDate   : new Date(),
+		  selectable    : true,
+		  selectMirror  : true,
+		  selectHelper  : true,
+		  locale 		: 'ko',
 		  header: {
 			  left: 'prev,next today',
 			  center: 'title',
@@ -24,23 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
 			    },
 		  },
 			    
-	      navLink:true,
-	      businessHours:true,
-	      editable: true,
-	      eventLimit : true,
-	      events: [ 
-	    	  { 
-                  title : "빨강색 배경 & 글자색 노랑색"
-                , color : "#FF0000"
-                , textColor : "#FFFF00"
-                , start : "2020-06-02"
-                , end : "2020-06-06T10:00:00"
-            }
-         ]
-	  	});
-	     
+	      navLink		 : true,
+	      businessHours	 : true,
+	      editable		 : true,
+	      eventDrop: function(info) {
+	    	   var startDate = info.event.start;
+	    	   alert(startDate);
+	    	   
+	    	    alert(info.event.title + " was dropped on " + startDate.toISOString());
+
+	    	    if (!confirm("Are you sure about this change?")) {
+	    	      info.revert();
+	    	    }
+	    	  },
+	      events		 : 
+	    	  	[ 
+		    	  { 
+	                  title : "빨강색 배경 & 글자색 노랑색"
+	                , color : "#FF0000"
+	                , textColor : "#FFFF00"
+	                , start : "2020-06-02"
+	                , end : "2020-06-06T10:00:00"
+		    	  }
+		    	]
+	  	}); 
+	  //캘린더 그리기.
 	  calendar.render();
-	  
 });
 
 function addEvent(){
@@ -87,7 +94,6 @@ function addEvent(){
 				"<button id='saveButton' onClick=javascript:saveEvent();>저장</button>&nbsp;&nbsp;" +
 			"</div>";		
 	
-	console.log(tag);
 	openPopup("일정 등록", tag,  1000);
 }
 

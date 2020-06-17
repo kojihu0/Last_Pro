@@ -56,6 +56,11 @@ public class AdminController {
 	public String adminMangeEdit() {
 		return "admin/adminManageEdit";
 	}
+	
+	@RequestMapping("/admin/adminManageEditOk")
+	public String adminMangeEditOk() {
+		return "admin/adminManagementInfo";
+	}
 //-------------------------------------------------------------		
 
 	@RequestMapping("/admin/adminNotice")
@@ -98,14 +103,14 @@ public class AdminController {
 		
 		return "admin/adminTeacherEdit";
 	}
-	
+	 
 	@RequestMapping("/admin/adminTeacherDel")
 	public String adminTeacherDel() {
 		 
 		return "admin/adminTeacherList";
 	}
 //-------------------------------------------------------------	
-	
+	 
 	@RequestMapping("/admin/adminCourseList")
 	public String adminCourseList() {
 		
@@ -114,8 +119,14 @@ public class AdminController {
 
 	@RequestMapping("/admin/adminCourseEdit")
 	public String adminCourseEdit() {
-		return "admin/adminCourseEdit"; 
+		return "admin/adminCourseEdit";  
 	}
+	
+	@RequestMapping("/admin/adminCourseEditOk")
+	public String adminCourseEditOk(){
+		return "admin/adminCourseList";
+	}
+	
 	
 	@RequestMapping("/admin/adminCourseDel")
 	public String adminCourseDel() {
@@ -126,6 +137,10 @@ public class AdminController {
 	public String adminCourseRegi() {
 		
 		return "admin/adminCourseRegi";
+	}
+	@RequestMapping("/admin/adminCourseRegiOk")
+	public String adminCourseRegiOk() {
+		return "admin/adminCourseList"; 
 	}
 //------------------------------------------------------------
  	
