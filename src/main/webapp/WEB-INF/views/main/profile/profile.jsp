@@ -47,7 +47,7 @@ function preview(input, target) {
 		<div class="lg:w-1/5 flex-initial">
 			<img src="<%=ctx%>/img/user-avatar.png">
 			<div id="hr" class="my-8 border-t border-solid"></div>
-			<h1 class="text-4xl font-bold roboto-slab text-center">Hong Gil Dong</h1>
+			<h1 class="text-4xl font-bold text-center">${username}</h1>
 			<div id="hr" class="m-0 m-auto bg-black border-black my-4 border-t border-solid w-4 border-2"></div>
 			<h4 class="text-gray-500 text-center mb-4">I have basics skills in leadership!</h4>
 		</div>

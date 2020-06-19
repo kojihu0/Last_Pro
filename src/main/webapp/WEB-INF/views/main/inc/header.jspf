@@ -54,12 +54,21 @@
 						<a href="#"  data-target="#searchModal" class="search-ico inline-block py-8 px-4 duration-300"><i class="xi-search"></i></a>
 					</li>
 				</ul>
-				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab"> 		
-					<li class="menu-item text-center mr-4"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300">LOGIN</a></li>
-					<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block duration-300">REGISTER</a></li>
-					<li class="menu-item text-center mr-4 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300">LOGOUT</a></li>
-				    <li class="menu-item text-center hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300">MYPAGE</a></li>
+				
+				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab">
+				
+				 	<c:if test="${logStatus==null || logStatus=='N'}">
+						<li class="menu-item text-center mr-4"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300">LOGIN</a></li>
+						<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block duration-300">REGISTER</a></li>
+					</c:if>
+					
+					<c:if test="${logStatus == 'Y' && logStatus != null}">
+						<li class="menu-item text-center mr-4 "><span class="text-brand-500 font-bold mr-4">${username}&nbsp;님</span><a href="<%=ctx%>/logout" class="inline-block duration-300">LOGOUT</a></li>
+				    	<li class="menu-item text-center "><a href="<%=ctx%>/profile" class="inline-block duration-300">MYPAGE</a></li>
+				    </c:if>
+				    
 				</ul>
+				
 			</nav>
 			<div class="mobile-btns flex items-center lg:hidden">
 				<a href="#"  data-target="#searchModal" class="search-ico inline-block font-bold text-2xl py-8 px-3 duration-300">

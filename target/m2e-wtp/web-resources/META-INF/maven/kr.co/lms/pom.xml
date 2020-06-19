@@ -12,6 +12,7 @@
 		<org.springframework-version>5.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<spring.security.version>5.1.1.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -161,7 +162,52 @@
 		    <artifactId>mybatis</artifactId>
 		    <version>3.5.3</version>
 		</dependency>
-		
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-config</artifactId>
+
+			<version>3.2.5.RELEASE</version>
+
+		</dependency>
+
+
+
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-core</artifactId>
+
+			<version>3.2.5.RELEASE</version>
+
+		</dependency>
+
+
+
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-web</artifactId>
+
+			<version>3.2.5.RELEASE</version>
+
+		</dependency>
+
+
+
+		<dependency>
+
+			<groupId>org.springframework.security</groupId>
+
+			<artifactId>spring-security-taglibs</artifactId>
+
+			<version>3.2.4.RELEASE</version>
+
+		</dependency>
+			
 		<!-- 추가 end -->
 		        
 	</dependencies>

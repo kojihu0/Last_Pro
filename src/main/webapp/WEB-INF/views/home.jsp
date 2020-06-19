@@ -170,11 +170,11 @@
 					<h1>간편 회원가입</h1>
 				</div>
 				<div class="p-8">
-					<form method="post" action="/registerOk" onsubmit="return basicFormValidate(this)">
-						<p class="mb-4"><input type="text" placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="text" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="text" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="password" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+					<form method="post" action="/lms/registerOk" onsubmit="return basicFormValidate(this)">
+						<p class="mb-4"><input type="text" name="userid"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+						<p class="mb-4"><input type="text" name="student_name_ko" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+						<p class="mb-4"><input type="text" name="useremail" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+						<p class="mb-4"><input type="password" name="student_pw" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" placeholder="패스워드 확인" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a href="">사이트 이용약관</a> 및 <a href="#">개인정보 처리방침</a>에 동의합니다.</label></p>
 						<input type="submit" value="가입하기" class="w-full outline-none bg-black text-white py-2 px-4">
