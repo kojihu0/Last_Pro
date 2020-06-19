@@ -33,8 +33,6 @@ public class CourseController {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		PagingVO pvo = new PagingVO();
 		pvo.setOnePageRecord(8);
-		pvo.setTotalRecord(dao.getTotalCoureses(search_text));
-		
 		if(!search_text.isEmpty() && search_text!=null) {
 			pvo.setSearch_text(search_text);
 		}
@@ -54,9 +52,11 @@ public class CourseController {
 		List<CourseVO> courseList = dao.courseList(pvo);
 		
 		ModelAndView mav = new ModelAndView();
+		
 		mav.addObject("list", courseList);
 		mav.addObject("pvo", pvo);
 		mav.addObject("crrPageNum", pvo.getPageNum());
+		mav.addObject("search_text", search_text);
 		mav.setViewName("main/course/courseList");
 		return mav;
 	}

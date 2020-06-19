@@ -35,7 +35,7 @@
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
 					<p>소개</p>
-					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/aboutUs">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 mr-2 flex opacity-75 duration-300 hover:opacity-100 col">
@@ -43,7 +43,7 @@
 				<div>
 					<h1 class="roboto-slab font-bold">COURSES INFO</h1>
 					<p>소개</p>
-					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/course/coureseList">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 flex opacity-75 duration-300 hover:opacity-100 col">

@@ -8,8 +8,8 @@
 			(select * from
 				(select course_no, course_name, e.employee_name employee_name, course_price, course_img
 				from course c join employee e on c.employee_no=e.employee_no
-				<if test="search_text!=null and search_text!=''">
-				where course_name like '%#{search_text}%'
+				<if test="search_text != null and search_text != ''">
+				where course_name like '%'||#{search_text}||'%'
 				</if>
 				order by course_no desc)
 			where rownum<![CDATA[<=]]>#{pageNum}*#{onePageRecord} order by course_no asc)
@@ -17,8 +17,8 @@
 	</select>
 	<select id="getTotalCoureses" resultType="java.lang.Integer">
 		select count(course_no) totalRecord from course
-		<if test="search_text!=null and search_text!=''">
-		where course_name like '%#{search_text}%'
+		<if test="search_text != null and search_text != ''">
+		where course_name like '%'||#{search_text}||'%'
 		</if>
 	</select>
 	<select id="selectCourse" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseVO">
