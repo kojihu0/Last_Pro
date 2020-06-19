@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class NewsController {
 	@RequestMapping(value="/news", method=RequestMethod.GET)
 	public String news() {
-		return"main/news/news";
+		return "main/news/news";
 	}
-	@RequestMapping(value="/noticeForm", method=RequestMethod.GET)
+	@RequestMapping(value="/event", method=RequestMethod.GET)
 	public String noticeForm(){
-		return "main/news/noticeForm";
+		return "main/news/event";
 	}
 	
 }

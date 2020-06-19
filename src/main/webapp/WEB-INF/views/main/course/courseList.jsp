@@ -9,6 +9,9 @@
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Courses</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<div class="course-list lg:flex lg:flex-wrap -mx-4 px-4 lg:px-0">
+		<c:if test="${empty list}">
+			<p class="py-8 text-center text-lg font-bold">강좌가 없습니다.</p>
+		</c:if>
 		<c:forEach var="vo" items="${list}">
 		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">

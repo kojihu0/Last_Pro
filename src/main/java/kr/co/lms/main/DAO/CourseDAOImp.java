@@ -12,7 +12,7 @@ public interface CourseDAOImp {
 	//강좌선택
 	public CourseVO selectCourse(int course_no);
 	//강좌개수
-	public int getTotalCoureses();
+	public int getTotalCoureses(String search_text);
 	//수강후기 리스트
 	public List<CourseReviewVO> reviewList(PagingVO pvo);
 	//수강후기 등록

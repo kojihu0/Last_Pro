@@ -10,15 +10,17 @@
 		order by course_no desc
 	</select>
 	<select id="homeEventList" resultType="kr.co.lms.main.VO.HomeVO">
-		select admin_notice_no, admin_category, admin_notice_title, admin_notice_img, admin_notice_date
+		select admin_notice_no, admin_category, admin_notice_title, admin_notice_content, admin_notice_img,
+		to_char(admin_notice_date, 'mm') notice_month, to_char(admin_notice_date, 'dd') notice_day
 		from admin_notice
-		where rownum<![CDATA[<=]]>3
+		where admin_category=2 and rownum<![CDATA[<=]]>3
 		order by admin_notice_no desc
 	</select>
 	<select id="homeNewsList" resultType="kr.co.lms.main.VO.HomeVO">
-		select admin_notice_no, admin_category, admin_notice_title, admin_notice_img, admin_notice_date
+		select admin_notice_no, admin_category, admin_notice_title, admin_notice_content, admin_notice_img,
+		to_char(admin_notice_date, 'yyyy/mm/dd') admin_notice_date
 		from admin_notice
-		where rownum<![CDATA[<=]]>6
+		where admin_category=1 and rownum<![CDATA[<=]]>6
 		order by admin_notice_no desc
 	</select>
 </mapper>

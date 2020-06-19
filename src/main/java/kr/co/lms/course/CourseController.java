@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,12 +27,17 @@ public class CourseController {
 		this.sqlSession = sqlSession;
 	}
 
-	@RequestMapping("/course/courseList")
-	public ModelAndView courseList(@RequestParam(required = false, defaultValue = "1") int pageNum) {
+	@RequestMapping(value = "/course/courseList", method = RequestMethod.GET)
+	public ModelAndView courseList(@RequestParam(required = false, defaultValue = "1") int pageNum,
+			@RequestParam(required = false, defaultValue = "") String search_text) {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		PagingVO pvo = new PagingVO();
 		pvo.setOnePageRecord(8);
-		pvo.setTotalRecord(dao.getTotalCoureses());
+		pvo.setTotalRecord(dao.getTotalCoureses(search_text));
+		
+		if(!search_text.isEmpty() && search_text!=null) {
+			pvo.setSearch_text(search_text);
+		}
 		
 		if(pageNum>0) {
 			pvo.setPageNum(pageNum);
@@ -39,7 +45,7 @@ public class CourseController {
 		else {
 			pvo.setPageNum(1);
 		}
-		pvo.setTotalRecord(dao.getTotalCoureses());
+		pvo.setTotalRecord(dao.getTotalCoureses(search_text));
 		
 		if((pvo.getPageNum() < pvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때
 			pvo.setLastPageRecord(pvo.getOnePageRecord());

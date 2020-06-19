@@ -7,7 +7,8 @@ public class HomeVO {
 	
 	/*ÀÎ±â°­ÁÂ*/
 	private int course_no; //°­ÁÂ¹øÈ£
-	private int employee_name; //°­»ç¸í
+	private String course_name; //°­ÁÂ¸í
+	private String employee_name; //°­»ç¸í
 	private int course_price; //°­ÁÂ±Ý¾×
 	private String course_img; //½æ³×ÀÏ
 	private String course_price_format; //°­ÁÂ±Ý¾×(Æ÷¸Ë)
@@ -17,8 +18,12 @@ public class HomeVO {
 //	int employee_no;
 	private String admin_category;
 	private String admin_notice_title;
+	private String admin_notice_content;
 	private String admin_notice_img;
 	private String admin_notice_date;
+	
+	private String notice_month;
+	private String notice_day;
 	
 	public int getEmployee_no() {
 		return employee_no;
@@ -32,10 +37,16 @@ public class HomeVO {
 	public void setCourse_no(int course_no) {
 		this.course_no = course_no;
 	}
-	public int getEmployee_name() {
+	public String getCourse_name() {
+		return course_name;
+	}
+	public void setCourse_name(String course_name) {
+		this.course_name = course_name;
+	}
+	public String getEmployee_name() {
 		return employee_name;
 	}
-	public void setEmployee_name(int employee_name) {
+	public void setEmployee_name(String employee_name) {
 		this.employee_name = employee_name;
 	}
 	public int getCourse_price() {
@@ -75,6 +86,12 @@ public class HomeVO {
 	public void setAdmin_notice_title(String admin_notice_title) {
 		this.admin_notice_title = admin_notice_title;
 	}
+	public String getAdmin_notice_content() {
+		return admin_notice_content;
+	}
+	public void setAdmin_notice_content(String admin_notice_content) {
+		this.admin_notice_content = admin_notice_content;
+	}
 	public String getAdmin_notice_img() {
 		return admin_notice_img;
 	}
@@ -86,5 +103,17 @@ public class HomeVO {
 	}
 	public void setAdmin_notice_date(String admin_notice_date) {
 		this.admin_notice_date = admin_notice_date;
+	}
+	public String getNotice_month() {
+		return notice_month;
+	}
+	public void setNotice_month(String notice_month) {
+		this.notice_month = notice_month;
+	}
+	public String getNotice_day() {
+		return notice_day;
+	}
+	public void setNotice_day(String notice_day) {
+		this.notice_day = notice_day;
 	}
 }
