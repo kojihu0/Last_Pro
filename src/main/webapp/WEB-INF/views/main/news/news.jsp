@@ -49,11 +49,53 @@
 					</c:forEach>
 				
 					<ul class="pagenation flex items-center justify-center my-4">
-						<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-						<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
+					<!-- prev 버튼 비활성화 -->
+						<c:if test=${pvo.pageNum==1 }><!--1페이지일 경우 prev버튼을 비활성화 시킨다  -->
+							<li class="page-item disabled">
+								<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#">
+									<i class="xi-angle-left-min"></i>
+								</a>	
+							</li>
+						</c:if>
+						<!-- prev 버튼 활성화 -->	
+						<c:if test=${pvo.pageNum!=1 }><!--1페이지가 아닐 경우 prev버튼을 활성화 시킨다  -->
+							<li class="page-item">
+								<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="<%=ctx%>/?pageNum=${pvo.pageNum-1}">
+									<i class="xi-angle-left-min"></i>
+								</a>
+							</li>
+						</c:if>
+						
+						<c:forEach var="i" begin="${pvo.startPage}" end="${pvo.startPage+ pvo.pageCount-1 }"><!-- begin=시작하는페이지 ,end=보이는 페이지수 ex)prev 12345 next -->
+						totalPage =10
+						pageNum =1 
+							<c:if test="${i<=pvo.totalPage}">
+								<c:if test="${i==pvo.pageNum }"><!--페이징 숫자와 있는 곳이 같으면 활성화 된다  -->
+									<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="<%=ctx%>/NewsControlle?pageNum=${i}">${i}</a></li>
+								</c:if>
+							</c:if>
+							
+							<c:if test="${i != pvo.pageNum }"><!--페이징 숫자와 있는곳이 다르면 활성화가 안된다  -->
+								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="<%=ctx%>/NewsController?pageNum=${i}">${i}</a></li>
+							</c:if>
+						</c:forEach>
+						
+						<!--  next 버튼 비활성화  -->
+						<c:if test="${pvo.pageNum == pvo.totalPage }"><!--현재있는페이지와 총페이지 수가 같으면 next가 비활성화 된다  -->
+							<li class="page-item disabled">
+								<a class="page-link block py-1 px-2 hover:text-brand" href="#">
+									<i class="xi-angle-right-min"></i>
+								</a>
+							</li>
+						</c:if>
+						<!--  next 버튼 활성화  -->
+						<c:if test="${pvo.pageNum<pvo.totalPage }"><!-- 현재있는 페이지가 총페이지수 보다 적을 경우 next  번호 활성화  -->
+							<li class="page-item disabled">
+								<a class="page-link block py-1 px-2 hover:text-brand" href="<%=ctx%>/NewsController?pageNum=${pvo.pageNum+1}"><!--next클릭스 pageNum+1을 넘겨준다 그리고 페이지가 1페이지씩 넘어간다   -->
+									<i class="xi-angle-right-min"></i>
+								</a>
+							</li>
+						</c:if>
 					</ul> 
 				</div><!-- card_box end -->
 

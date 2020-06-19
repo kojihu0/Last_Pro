@@ -34,14 +34,12 @@ public class PagingVO {
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
-
 		if(totalRecord % onePageRecord == 0) { //마지막 페이지 레코드 수 구하기
 			lastPageRecord = onePageRecord;
 		}else { 
 			lastPageRecord = totalRecord % onePageRecord;
 		}
 		System.out.println("총레코드수" + totalRecord);
-//		System.out.println("1페이지레코드수" + onePageRecord);
 		System.out.println("마지막레코드수" + lastPageRecord);
 	}
 	public int getStartPage() {
