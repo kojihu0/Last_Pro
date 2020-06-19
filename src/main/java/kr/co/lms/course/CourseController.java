@@ -31,21 +31,23 @@ public class CourseController {
 	public ModelAndView courseList(@RequestParam(required = false, defaultValue = "1") int pageNum,
 			@RequestParam(required = false, defaultValue = "") String search_text) {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
+		
 		PagingVO pvo = new PagingVO();
-		pvo.setOnePageRecord(8);
-		if(!search_text.isEmpty() && search_text!=null) {
+		pvo.setOnePageRecord(8); //한페이지당 보여질 개수
+		
+		if(!search_text.isEmpty() && search_text!=null) { //검색어가 존재할때 검색어 셋팅
 			pvo.setSearch_text(search_text);
 		}
 		
-		if(pageNum>0) {
+		if(pageNum>0) { //페이지번호  세팅
 			pvo.setPageNum(pageNum);
 		}
 		else {
 			pvo.setPageNum(1);
 		}
-		pvo.setTotalRecord(dao.getTotalCoureses(search_text));
+		pvo.setTotalRecord(dao.getTotalCoureses(search_text)); //전체 레코드 수 세팅
 		
-		if((pvo.getPageNum() < pvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때
+		if((pvo.getPageNum() < pvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때만 lastPageRecord에 onePageRecord적용
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		}
 		

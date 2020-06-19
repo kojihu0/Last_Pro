@@ -48,18 +48,18 @@
 				<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 			</div>
 			<div class=" fadeUp">
-				<form method="post" action="/contactOk" onsubmit="return basicFormValidate(this);">
+				<form method="post" action="/sendContactForm" onsubmit="return basicFormValidate(this);">
 					<p class="mb-4">
-						<input type="text" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="text" name="contact_name" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="email" name="contact_email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="tel" name="contact_tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<div class="mb-4">
-						<textarea placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>
+						<textarea name="contact_content" placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>
 					</div>
 					<div class="border-t border-b border-gray-500 mb-2 py-4 text-gray-700">
 						<p class="mb-2">EDUCAMP는 온라인상담을 이용하는분을 대상으로 아래와 같이 개인정보를 수집하고 있습니다.</p>
