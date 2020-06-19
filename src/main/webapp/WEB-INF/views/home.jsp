@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!-- 메인슬라이더 -->
 <div class="main-slide-section w-full h-screen relative">
 	<div id="mainSlider" class="h-full text-white">
@@ -73,87 +74,24 @@
 		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
 	<div id="courseCarousel" class="-mx-4 fadeUp">
+		<c:forEach var="cvo" items="${courseList}">
 		<div class="course-item px-4 text-center"><!-- course-item -->
 			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
+				<img class="duration-300" src="<%=ctx %>/img/${cvo.course_img}">
+				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">READ MORE</a>
 			</div>
 			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
 				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
+					<a href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">${cvo.course_name}</a>
 				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
+				<div class="course-author text-gray-900 mb-4">${cvo.employee_name}</div>
+				<div class="course-price text-danger-500 relative py-4">${cvo.course_price_format}<span>원</span></div>
 			</div>
 		</div><!-- course-item -->
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="#">자바 스프링 완전정복</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">홍길동</div>
-				<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
+		</c:forEach>
 	</div>
 	<div class="text-center mt-8 mb-2">
-		<a class="inline-block bg-black text-white py-2 px-4 rounded border border-black duration-300 hover:bg-white hover:text-black" href="#">READ MORE</a>
+		<a class="inline-block bg-black text-white py-2 px-4 rounded border border-black duration-300 hover:bg-white hover:text-black" href="<%=ctx %>/course/courseList">READ MORE</a>
 	</div>
 </div>
 <!-- 베스트강의 -->
@@ -189,57 +127,30 @@
 	<div class="flex justify-between items-end relative pb-4 mb-10 fadeRight">
 		<div>
 			<h1 class="roboto-slab font-bold">EVENTS</h1>
-			<p>현재 인기있는 강좌입니다</p>
+			<p>최근 진행중이거나 진행된 이벤트입니다.</p>
 		</div>
-		<a class="outline-none border border-black text-xs px-4 view-all" href="#">VIEW ALL</a>
+		<a class="outline-none border border-black text-xs px-4 view-all" href="<%=ctx%>/event">VIEW ALL</a>
 		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
 	<div>
+		<c:if test="${empty eventList}">
+			<p class="py-8 text-center text-lg font-bold">이벤트가 없습니다.</p>
+		</c:if>
+		<c:forEach var="evo" items="${eventList}">
 		<div class="event-row sm:flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
 			<div class="event-date flex-shrink-0 text-brand-500 sm:text-center mr-12 flex items-end sm:block">
-				<div class="date text-6xl font-bold">11</div>
-				<div class="month">06월</div>
+				<div class="date text-6xl font-bold">${evo.notice_day}</div>
+				<div class="month">${evo.notice_month}월</div>
 			</div>
-			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
-				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="#">~~~~이벤트 입니다.</a></h2>
-				<div class="event-desc text-gray-700 mt-6">
-				노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다. 우는 인간은 꽃이 튼튼하며, 이상은 반짝이는 남는 것이다.
-				</div>
+			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0 flex-auto">
+				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="#">${evo.admin_notice_title}</a></h2>
+				<div class="event-desc text-gray-700 mt-6">${fn:substring(evo.admin_notice_content,0,140)}</div>
 			</div>
 			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
 				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
 			</div>
 		</div><!-- event-row -->
-		<div class="event-row sm:flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
-			<div class="event-date flex-shrink-0 text-brand-500 sm:text-center mr-12 flex items-end sm:block">
-				<div class="date text-6xl font-bold">11</div>
-				<div class="month">06월</div>
-			</div>
-			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
-				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="#">~~~~이벤트 입니다.</a></h2>
-				<div class="event-desc text-gray-700 mt-6">
-				노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다. 우는 인간은 꽃이 튼튼하며, 이상은 반짝이는 남는 것이다.
-				</div>
-			</div>
-			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
-			</div>
-		</div><!-- event-row -->
-		<div class="event-row sm:flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
-			<div class="event-date flex-shrink-0 text-brand-500 sm:text-center mr-12 flex items-end sm:block">
-				<div class="date text-6xl font-bold">11</div>
-				<div class="month">06월</div>
-			</div>
-			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
-				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="#">~~~~이벤트 입니다.</a></h2>
-				<div class="event-desc text-gray-700 mt-6">
-				노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다. 우는 인간은 꽃이 튼튼하며, 이상은 반짝이는 남는 것이다.
-				</div>
-			</div>
-			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
-			</div>
-		</div><!-- event-row -->
+		</c:forEach>
 	</div>
 </div>
 <!-- 이벤트 -->
@@ -255,56 +166,25 @@
 			</div>
 			<span class="heading-line bg-white absolute bottom-0 left-0"></span>
 		</div>
+		<c:if test="${empty newsList}">
+			<p class="py-8 text-center text-lg font-bold text-white">새 소식이 없습니다.</p>
+		</c:if>
 		<div id="newsCarousel" class="-mx-4 fadeUp">
+			<c:forEach var="nvo" items="${newsList}">
 			<div class="news-item px-4"><!-- news-item -->
 				<div class="news-img overflow-hidden">
-					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
+					<a href="<%=ctx %>/news/newsDetail?news_no=${nvo.admin_notice_no}"><img src="<%=ctx %>/img/${nvo.admin_notice_img}"></a>
 				</div>
 				<div class="news-content text-center -mt-4">
-					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">2020/06/11</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="#">새로운 강좌 안내</a></h2>
+					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">${nvo.admin_notice_date}</div>
+					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="<%=ctx %>/news/newsDetail?news_no=${nvo.admin_notice_no}">${nvo.admin_notice_title}</a></h2>
 				</div>
 			</div><!-- news-item -->
-			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden">
-					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
-				</div>
-				<div class="news-content text-center -mt-4">
-					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">2020/06/11</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="#">새로운 강좌 안내</a></h2>
-				</div>
-			</div><!-- news-item -->
-			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden">
-					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
-				</div>
-				<div class="news-content text-center -mt-4">
-					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">2020/06/11</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="#">새로운 강좌 안내</a></h2>
-				</div>
-			</div><!-- news-item -->
-			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden">
-					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
-				</div>
-				<div class="news-content text-center -mt-4">
-					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">2020/06/11</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="#">새로운 강좌 안내</a></h2>
-				</div>
-			</div><!-- news-item -->
-			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden">
-					<a href="#"><img src="<%=ctx %>/img/restroom.jpg"></a>
-				</div>
-				<div class="news-content text-center -mt-4">
-					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">2020/06/11</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="#">새로운 강좌 안내</a></h2>
-				</div>
-			</div><!-- news-item -->
+			</c:forEach>
 		</div>
 	</div>
 	<div class="text-center mt-8 mb-2 relative">
-		<a class="bg-black text-white py-2 px-4 rounded border border-black duration-300 hover:bg-white hover:text-black" href="#">READ MORE</a>
+		<a class="bg-black text-white py-2 px-4 rounded border border-black duration-300 hover:bg-white hover:text-black" href="<%=ctx%>/news">READ MORE</a>
 	</div>
 </div>
 <!-- 새소식 -->

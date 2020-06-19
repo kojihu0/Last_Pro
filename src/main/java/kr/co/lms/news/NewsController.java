@@ -25,7 +25,7 @@ public class NewsController {
 		this.sqlSession = sqlSession;
 	}
 	@RequestMapping(value="/event", method=RequestMethod.GET)
-	public ModelAndView event(NewsVO vo ,HttpServletRequest req) {//ÀÌº¥Æ® Æû
+	public ModelAndView event(NewsVO vo ,HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		mav.addObject("event_list",dao.eventsAllSelectRecord(vo));
@@ -33,7 +33,7 @@ public class NewsController {
 		return mav;
 	}
 	@RequestMapping(value="/news", method=RequestMethod.GET)
-	public ModelAndView news(NewsVO vo ,HttpServletRequest req ) {//°øÁö»çÇ× Æû
+	public ModelAndView news(NewsVO vo ,HttpServletRequest req ) {
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		mav.addObject("notice_list",dao.newsAllSelectRecord(vo));
