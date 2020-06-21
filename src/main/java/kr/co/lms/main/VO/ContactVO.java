@@ -8,11 +8,11 @@ public class ContactVO {
 	private String contact_content;
 	private String contact_date;
 	private String contentType;
+	private String emailSender;
 	
 	public ContactVO() {
 		contentType="text/plane";
 	}
-	
 	public int getContact_no() {
 		return contact_no;
 	}
@@ -48,5 +48,13 @@ public class ContactVO {
 	}
 	public void setContact_date(String contact_date) {
 		this.contact_date = contact_date;
+	}
+
+	public String getEmailSender() {
+		return emailSender;
+	}
+
+	public void setEmailSender(String emailSender) {
+		this.emailSender = emailSender;
 	}
 }

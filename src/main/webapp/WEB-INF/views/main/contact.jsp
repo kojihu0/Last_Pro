@@ -47,8 +47,8 @@
 				<p class="text-gray-700">자세한 문의사항은 여기에 남겨주세요</p>
 				<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 			</div>
-			<div class=" fadeUp">
-				<form method="post" action="/sendContactForm" onsubmit="return basicFormValidate(this);">
+			<div class="contactFormWrap fadeUp">
+				<form id="contactForm" method="post" action="<%=ctx %>/sendContactForm" onsubmit="return basicFormValidate(this);">
 					<p class="mb-4">
 						<input type="text" name="contact_name" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
@@ -88,6 +88,7 @@
 <div id="direction" class="w-full mt-12 fadeUp" style="height: 500px;"></div>
 <script type="text/javascript">
 $(function(){
+	/**지도**/
 	var container = document.getElementById('direction'); //지도를 담을 영역의 DOM 레퍼런스
 	var lat = 37.55268208248053;
 	var lng = 126.93773432181362;
@@ -107,5 +108,38 @@ $(function(){
 
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
+	
+	$("#contactForm").on('submit', function(e){
+		e.preventDefault();
+		var flag;
+		$(this).find('input, textarea').each(function(){
+			if($(this).val()==""){
+				flag=false;
+				return false;
+			}
+		});
+		if($(this).find('#accept_policy').prop('checked')==false){
+			flag=false;
+		}
+		
+		if(flag==false){
+			return false;
+		}
+		else{
+			$.ajax({
+				url:$(this).attr('action'),
+				type: 'POST',
+				data: $(this).serialize(),
+				success: function(result){
+					$('.contactFormWrap').html('<p class="text-center font-bold py-8">'+result+'</p>')
+					$('html, body').scrollTop($('.contactFormWrap').offset().top);
+					console.log(result);
+				},
+				error: function(e){
+					console.log(e.responseText);
+				}
+			});
+		}
+	});
 });
 </script>
