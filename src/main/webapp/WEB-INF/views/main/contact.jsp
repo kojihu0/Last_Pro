@@ -71,6 +71,7 @@
 						</ul>
 						<p>그 밖의 사항은 개인정보취급방침을 준수합니다.</p>
 					</div>
+					<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 					<p class="mb-4"><input type="checkbox" value="동의함" id="accept_policy" class="mr-2"><label for="accept_policy">개인정보수집 및 이용에 동의합니다.</label></p>
 					<input type="submit" value="문의하기" class="py-4 px-6 bg-brand-500 font-bold">
 				</form>
@@ -86,6 +87,7 @@
 	</div>
 </div>
 <div id="direction" class="w-full mt-12 fadeUp" style="height: 500px;"></div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
 $(function(){
 	/**지도**/

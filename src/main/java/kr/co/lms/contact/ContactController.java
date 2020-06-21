@@ -1,6 +1,7 @@
 package kr.co.lms.contact;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.ContactDAOImp;
 import kr.co.lms.main.VO.ContactVO;
+
+import kr.co.lms.VerifyRecaptcha;
 
 @Controller
 public class ContactController {
