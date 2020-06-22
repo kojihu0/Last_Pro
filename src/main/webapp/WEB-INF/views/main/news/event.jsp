@@ -43,13 +43,19 @@
 								</div><!-- event-row -->
 							</div><!-- 공지사항 폼 end -->
 					</c:forEach>
-					<ul class="pagenation flex items-center justify-center my-4">
-						<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-						<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
-					</ul> 
+						
+					<ul class="pagenation flex items-center justify-center my-8 pb-8">
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/event?pageNum=${pvo.pageNum-1}"><i class="xi-angle-left-min"></i></a></li>
+						<c:forEach var="i" begin="${pvo.startPage}" end="${pvo.startPage+pvo.pageCount-1}">
+						<c:if test="${i<=pvo.totalPage}">
+						<li class="page-item">
+						<a class="pn page-link block py-1 px-2 hover:text-brand-500
+						<c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/event?pageNum=${i}">${i}
+						</a></li>
+						</c:if>
+						</c:forEach>
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==pvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/event?pageNum=${pvo.pageNum+1}"><i class="xi-angle-right-min"></i></a></li>
+					</ul>
 				</div><!-- card_box end -->
 
 	</div>

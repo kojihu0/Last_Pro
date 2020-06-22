@@ -352,6 +352,18 @@ $(function(){
 	});
 });
 
-
+$(function(){
+	$("#emailCodeBtn").click(function(){
+		/*이메일 유효성 검사 및 정규식*/
+		var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
+		if($("#userEmail").val()=="" || !reg.test($("#userEmail").val())){
+			alert("잘못된 이메일 입니다 다시 입력해 주세요.");
+				return false;
+		}else{
+			$("#userEmailText").css("display","none");
+			$("#userEmailCodeText").css("display","block");
+		}
+	});
+});
 
 
