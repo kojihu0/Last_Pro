@@ -108,21 +108,21 @@ public class NewsController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/noticeForm", method=RequestMethod.GET)
+	@RequestMapping(value="/noticeDetail", method=RequestMethod.GET)
 	public ModelAndView noticeForm(int no ,HttpServletRequest req){//공지사항 게시물 선택
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		mav.addObject("vo",dao.newsSelectRecord(no));
-		mav.setViewName("main/news/noticeForm");
+		mav.setViewName("main/news/newsDetail");
 		return mav;
 	}
 	
-	@RequestMapping(value="/eventForm", method=RequestMethod.GET)
+	@RequestMapping(value="/eventDetail", method=RequestMethod.GET)
 	public ModelAndView eventForm(int no ,HttpServletRequest req){//이벤트 게시물 선택
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		mav.addObject("vo",dao.eventsSelectRecord(no));
-		mav.setViewName("main/news/eventForm");
+		mav.setViewName("main/news/eventDetail");
 		return mav;
 	}
 }
