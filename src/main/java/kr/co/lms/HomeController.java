@@ -48,6 +48,17 @@ public class HomeController {
 		return "main/aboutUs";
 	}
 	
+	@RequestMapping("/termsOfService")
+	public String termsOfPolicy() {
+		return "main/terms/termsOfService";
+	}
+	
+	@RequestMapping("/privacyPolicy")
+	public String privatePolicy() {
+		return "main/terms/privacyPolicy";
+	}
+	
+	//Ä¸Â÷
 	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
 	@ResponseBody
     public int VerifyRecaptcha(HttpServletRequest request) {

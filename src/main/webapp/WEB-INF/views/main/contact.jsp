@@ -71,8 +71,8 @@
 						</ul>
 						<p>그 밖의 사항은 개인정보취급방침을 준수합니다.</p>
 					</div>
-					<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 					<p class="mb-4"><input type="checkbox" value="동의함" id="accept_policy" class="mr-2"><label for="accept_policy">개인정보수집 및 이용에 동의합니다.</label></p>
+					<div class="g-recaptcha mb-4" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 					<input type="submit" value="문의하기" class="py-4 px-6 bg-brand-500 font-bold">
 				</form>
 			</div>
@@ -111,6 +111,9 @@ $(function(){
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
 	
+	//recaptcha
+	
+	//폼
 	$("#contactForm").on('submit', function(e){
 		e.preventDefault();
 		var flag;
@@ -133,8 +136,17 @@ $(function(){
 				type: 'POST',
 				data: $(this).serialize(),
 				success: function(result){
-					$('.contactFormWrap').html('<p class="text-center font-bold py-8">'+result+'</p>')
-					$('html, body').scrollTop($('.contactFormWrap').offset().top);
+					if(result == 1){
+						$('.contactFormWrap').html('<p class="text-center font-bold py-8">문의가 접수되었습니다.</p>')
+					}
+					else if(result == -1){
+						alert('자동 등록 방지에 체크해주세요.');
+					}
+					else{
+						alert('문의 접수에 에러가 있습니다. 고객센터 전화로 직접 문의 부탁드립니다.');
+					}
+					
+					$('html, body').animate({scrollTop:0});
 					console.log(result);
 				},
 				error: function(e){
