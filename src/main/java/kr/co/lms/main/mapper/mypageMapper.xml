@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.co.lms.main.DAO.MypageDAOImp">
+ 	<select id="courseRecord" resultType="kr.co.lms.main.VO.MypageVO">
+	 	SELECT 
+		     state,
+		     rank,
+		     grade,
+		     student_no,
+		    (SELECT course_name FROM course WHERE course_no IN 
+		        (SELECT c.course_no
+		         FROM course c, payment p , student_course_state sc
+		         WHERE p.payment_no = sc.payment_no AND
+		               p.course_no = c.course_no    AND
+		               sc.student_no = p.student_no))course_name,
+		    (SELECT employee_name FROM employee WHERE employee_no IN 
+		        (SELECT c.employee_no
+		         FROM course c, payment p , student_course_state sc
+		         WHERE sc.payment_no = p.payment_no AND
+		               c.course_no = p.course_no    AND
+		               sc.student_no = p.student_no)) employee_name
+		FROM student_course_state WHERE student_no = #{param1};
+ 	</select>
+ </mapper>

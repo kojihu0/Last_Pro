@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.main.DAO.MemberDAOImp">
+ 	<insert id="memberRegister" parameterType="kr.co.lms.main.VO.MemberVO">
+ 		<if test="usertel != null">
+	 		insert into student(student_no,student_id,student_pw,student_name_ko,student_tel_phone,student_email,student_regi_date)
+	 		values(student_sq.nextval,#{userid},#{student_pw},#{student_name_ko},#{usertel},#{useremail},sysdate)
+ 		</if>
+ 		<if test="usertel == null">
+ 			insert into student(student_no,student_id,student_pw,student_name_ko,student_email,student_regi_date)
+	 		values(student_sq.nextval,#{userid},#{student_pw},#{student_name_ko},#{useremail},sysdate)
+ 		</if>
+ 	</insert>
+ 	<select id="memberLogin" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
+ 		select student_name_ko ,student_pw from student where student_id=#{userid} and student_pw=#{student_pw}	
+ 	</select>
+</mapper>

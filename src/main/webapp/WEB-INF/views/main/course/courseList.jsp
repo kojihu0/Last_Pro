@@ -34,7 +34,10 @@
 		</li>
 		<c:forEach var="i" begin="${pvo.startPage}" end="${pvo.startPage+pvo.pageCount-1}">
 		<c:if test="${i<=pvo.totalPage}">
-		<li class="page-item"><a class="pn page-link block py-1 px-2 hover:text-brand<c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/course/courseList?pageNum=${i}<c:if test="${pvo.search_text!=null && pvo.search_text!=''}">&search_text=${pvo.search_text}</c:if>">${i}</a></li>
+		<li class="page-item">
+		<a class="pn page-link block py-1 px-2 hover:text-brand-500
+		<c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/course/courseList?pageNum=${i}">${i}
+		</a></li>
 		</c:if>
 		</c:forEach>
 		<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==pvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseList?pageNum=${pvo.pageNum+1}<c:if test="${pvo.search_text!=null && pvo.search_text!=''}">&search_text=${pvo.search_text}</c:if>"><i class="xi-angle-right-min"></i></a></li>

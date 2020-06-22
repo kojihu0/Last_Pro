@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class LoginController {
+public class Id_pwdFindController {
 	@RequestMapping(value="/idFind",method=RequestMethod.GET)
 	public String idFind() {
 		return"main/login/idFind";
