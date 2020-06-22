@@ -59,20 +59,20 @@ public class HomeController {
 	}
 	
 	//캡차
-	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
-	@ResponseBody
-    public int VerifyRecaptcha(HttpServletRequest request) {
-        VerifyRecaptcha.setSecretKey("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe");
-        String gRecaptchaResponse = request.getParameter("recaptcha");
-        System.out.println(gRecaptchaResponse);
-        //0 = 성공, 1 = 실패, -1 = 오류
-        try {
-            if(VerifyRecaptcha.verify(gRecaptchaResponse))
-                return 0;
-            else return 1;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
+//	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
+//	@ResponseBody
+//    public int VerifyRecaptcha(HttpServletRequest request) {
+//        VerifyRecaptcha.setSecretKey("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe");
+//        String gRecaptchaResponse = request.getParameter("recaptcha");
+//        System.out.println(gRecaptchaResponse);
+//        //0 = 성공, 1 = 실패, -1 = 오류
+//        try {
+//            if(VerifyRecaptcha.verify(gRecaptchaResponse))
+//                return 0;
+//            else return 1;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return -1;
+//        }
+//    }
 }
