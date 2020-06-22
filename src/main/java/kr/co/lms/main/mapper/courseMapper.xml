@@ -31,10 +31,17 @@
 		from course c join employee e on c.employee_no=e.employee_no
 		where course_no=#{course_no}
 	</select>
+	<select id="selectPaymentNo" resultType="java.lang.Integer">
+		select payment_no from payment where course_no=#{param1} and student_no=#{param2}
+	</select>
+	<insert id="insertReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
+		insert into course_review(review_no, student_no, payment_no, review_content, review_date, review_rank, course_no)
+		values(review_sq.nextVal, #{student_no}, #{payment_no}, #{review_content:CLOB}, sysdate, #{review_rank}, #{course_no})
+	</insert>
 	<select id="reviewList" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseReviewVO">
 		select * from
 			(select * from
-				(select review_no, student_no, review_content, review_date, review_rank
+				(select review_no, student_no, review_content, review_date, review_rank, course_no
 				from course_review where course_no=#{course_no}
 				order by review_no desc)
 			where rownum<![CDATA[<=]]>#{pageNum}*#{onePageRecord} order by review_no asc)

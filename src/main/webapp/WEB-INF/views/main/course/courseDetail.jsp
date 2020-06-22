@@ -109,10 +109,16 @@
 						</div>
 					</div>
 				</div><!--강사소개-->
-				<div id="comments" class="tab-content-item"><!--응원글-->
+				<div id="comments" class="tab-content-item"><!--수강후기-->
 					<h1 class="my-4 font-bold">수강후기</h1>
 					<div class="mb-8">
-						<form method="POST" action="/reviewOk" enctype="multipart/form-data" onsubmit="return basicFormValidate(this)" class="course-comment-form">
+					<c:if test="${logStatus==null || logStatus=='N'}">
+						<p class="py-8 text-center font-bold">로그인 해야 수강후기를 남길 수 있습니다.</p>
+					</c:if>
+					<c:if test="${logStatus == 'Y' && logStatus != null}">
+						<form method="POST" action="<%=ctx %>/course/reviewOk" enctype="multipart/form-data" onsubmit="return basicFormValidate(this)" class="course-comment-form">
+							<input type="hidden" name="course_no" value="${vo.course_no}">
+							<input type="hidden" name="review_rank" id="rate" value="">
 							<div class="mb-4">
 								<p class="mb-2">평점을 남겨주세요</p>
 								<ul id="stars" class="text-lg text-gray-500">
@@ -122,13 +128,13 @@
 									<li class="star inline-block" data-value="4"><i class="xi-star"></i></li>
 									<li class="star inline-block" data-value="5"><i class="xi-star"></i></li>
 								</ul>
-								<input type="hidden" name="rate" id="rate" value="">
 							</div>
-							<textarea name="course_comment" id="course_comment" placeholder="여기에 수강후기를 남겨주세요." class="appearance-none border border-gray-500 w-full py-2 px-3 leading-tight focus:outline-none focus:border-brand-500 h-24"></textarea>
+							<textarea name="review_content" id="review_content" placeholder="여기에 수강후기를 남겨주세요." class="appearance-none border border-gray-500 w-full py-2 px-3 leading-tight focus:outline-none focus:border-brand-500 h-24"></textarea>
 							<div class="text-right">
 								<input type="submit" value="등록" class="bg-brand-500 hover:bg-brand-600 font-bold py-2 px-4 rounded"/>
 							</div>
 						</form>
+					</c:if>	
 					</div>
 					<div class="course-total-rate lg:flex items-center py-4 lg:w-2/3 mb-8">
 						<div class="lg:w-56 h-56 text-center border p-6 lg:mr-8">
@@ -177,41 +183,33 @@
 						</div>
 					</div>
 					<ul class="course-comment-list">
+					<c:forEach var="rvo" items="${reviewList}">
 						<li class="py-8 px-4 border-t">
 							<div class="comment-container">
 								<p class="comment-author font-bold mb-2">
-									홍길동
+									${rvo.student_no}
 									<span class="text-brand-500 text-sm font-normal ml-4">
 										<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
 									</span>
-									<span class="text-gray-700 text-sm font-normal ml-4">2020-04-27</span>
+									<span class="text-gray-700 text-sm font-normal ml-4">${rvo.review_date}</span>
 								</p>
-								<div class="comment-text text-gray-900">수강후기입니다.</div>
+								<div class="comment-text text-gray-900">${rvo.review_content}</div>
 							</div>
 						</li>
-						<li class="py-8 px-4 border-t">
-							<div class="comment-container">
-								<p class="comment-author font-bold mb-2">
-									홍길동
-									<span class="text-brand-500 text-sm font-normal ml-4">
-										<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
-									</span>
-									<span class="text-gray-700 text-sm font-normal ml-4">2020-04-27</span>
-								</p>
-								<div class="comment-text text-gray-900">수강후기입니다.~~</div>
-							</div>
-						</li>
+					</c:forEach>
 					</ul>
+					<c:if test="${rpvo.startPage+rpvo.pageCount>0}">
 					<ul class="pagenation flex items-center justify-center my-4">
-						<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-						<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">4</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">5</a></li>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&pageNum=${rpvo.pageNum-1}"><i class="xi-angle-left-min"></i></a></li>
+					<c:forEach var="i" begin="${rpvo.startPage}" end="${rpvo.startPage+rpvo.pageCount-1}">
+						<c:if test="${i<=rpvo.totalPage}">
+						<li class="page-item"><a class="pn page-link block py-1 px-2 hover:text-brand-500 <c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/course/courseList?pageNum=${i}">${i}</a></li>
+						</c:if>
+					</c:forEach>
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==rpvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&pageNum=${rpvo.pageNum+1}"><i class="xi-angle-right-min"></i></a></li>
 					</ul>
-				</div><!--응원글-->
+					</c:if>
+				</div><!--강좌후기-->
 			</div>
 		</div>
 	</div><!-- 본문 -->
