@@ -29,11 +29,18 @@
 				<a href="#comments" class="inline-block px-4">수강후기</a>
 			</li>
 		</ul>
+		<c:if test="${logStatus == 'Y' && logStatus != null}">
 		<div class="flex items-center">
+			<c:if test="${payment_no=='' || payment_no==null}">
 			<p class="font-bold text-xl text-danger-500 mr-8"><span>${vo.course_price_format}</span>원</p>
 			<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded hidden lg:inline-block text-lg text-center font-bold">수강신청</a>
+			</c:if>
 			<a href="#" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded hidden lg:inline-bloc text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 		</div>
+		</c:if>
+		<c:if test="${logStatus == 'N' || logStatus == null}">
+		<div class="font-bold text-right flex items-center">로그인 후 수강신청이 가능합니다.</div>
+		</c:if>
 	</div>
 </div>
 <div class="w-full max-w-screen-xl my-0 mx-auto px-2 xl:px-0"><!-- 상세페이지 -->
@@ -63,11 +70,18 @@
 				</div>
 			</div>
 			<!--버튼-->
+			<c:if test="${logStatus == 'Y' && logStatus != null}">
 			<div class="mt-8 mb-4 flex justify-end items-center">
+				<c:if test="${payment_no=='' || payment_no==null}">
 				<p class="font-bold text-3xl text-danger-500 mr-8"><span>${vo.course_price_format}</span>원</p>
 				<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
-				<a href="#" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
+				</c:if>
+				<a href="/course/wishOk" data-param="course_no=${vo.course_no}" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 			</div>
+			</c:if>
+			<c:if test="${logStatus == 'N' || logStatus == null}">
+			<div class="mt-8 mb-4 font-bold text-right">로그인 후 수강신청이 가능합니다.</div>
+			</c:if>
 		</div>
 	</div><!-- 상단 -->
 	<div id="courseContent" class="w-full flex items-start content-start"><!-- 본문 -->
@@ -116,7 +130,7 @@
 						<p class="py-8 text-center font-bold">로그인 해야 수강후기를 남길 수 있습니다.</p>
 					</c:if>
 					<c:if test="${logStatus == 'Y' && logStatus != null}">
-						<form method="POST" action="<%=ctx %>/course/reviewOk" enctype="multipart/form-data" onsubmit="return basicFormValidate(this)" class="course-comment-form">
+						<form method="POST" action="<%=ctx %>/course/reviewOk" onsubmit="return basicFormValidate(this)" class="courese-review-form">
 							<input type="hidden" name="course_no" value="${vo.course_no}">
 							<input type="hidden" name="review_rank" id="rate" value="">
 							<div class="mb-4">
@@ -186,29 +200,53 @@
 					<c:forEach var="rvo" items="${reviewList}">
 						<li class="py-8 px-4 border-t">
 							<div class="comment-container">
-								<p class="comment-author font-bold mb-2">
-									${rvo.student_no}
-									<span class="text-brand-500 text-sm font-normal ml-4">
-										<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
+								<p class="comment-author font-bold mb-2">${rvo.student_id}
+									<span data-review_rank="${rvo.review_rank}" class="review_rank-${rvo.review_no} text-brand-500 text-sm font-normal ml-4">
+										<c:forEach begin="1" end="${rvo.review_rank}"><i class="xi-star"></i></c:forEach><c:if test="${rvo.review_rank<5}"><c:forEach  var="i" begin="${rvo.review_rank+1}" end="5"><i class="xi-star-o"></i></c:forEach></c:if>
 									</span>
 									<span class="text-gray-700 text-sm font-normal ml-4">${rvo.review_date}</span>
 								</p>
-								<div class="comment-text text-gray-900">${rvo.review_content}</div>
+								<div class="review_content-${rvo.review_no} text-gray-900">${rvo.review_content}</div>
+								<c:if test="${logStatus == 'Y' && logStatus != null && student_no == rvo.student_no}">
+								<div class="text-danger-500 mt-4 text-right font-bold">
+									<a class="modifyReview mr-4" data-review_no="${rvo.review_no}" href="#">수정</a><a class="deleteReview" data-review_no="${rvo.review_no}" href="<%=ctx %>/course/reviewDeleteOk?review_no=${rvo.review_no}&course_no=${vo.course_no}">삭제</a>
+								</div>
+								<div class="modify-review-${rvo.review_no} hidden">
+									<form method="POST" action="<%=ctx %>/course/reviewModifyOk" onsubmit="return basicFormValidate(this)" class="courese-review-form review-modify-form">
+										<input type="hidden" name="review_no" value="${rvo.review_no}">
+										<input type="hidden" name="review_rank" value="${rvo.review_rank}">
+										<div class="mb-4">
+											<ul id="stars" class="text-lg text-gray-500">
+											<c:forEach var="i" begin="1" end="${rvo.review_rank}">
+												<li class="star inline-block selected" data-value="${i}"><i class="xi-star"></i></li>
+											</c:forEach>
+											<c:if test="${rvo.review_rank<5}">
+											<c:forEach  var="i" begin="${rvo.review_rank+1}" end="5">
+												<li class="star inline-block" data-value="${i}"><i class="xi-star"></i></li>
+											</c:forEach>
+											</c:if>
+											</ul>
+										</div>
+										<textarea name="review_content" placeholder="여기에 수강후기를 남겨주세요." class="appearance-none border border-gray-500 w-full py-2 px-3 leading-tight focus:outline-none focus:border-brand-500 h-24">${rvo.review_content}</textarea>
+										<div class="text-right">
+											<input type="submit" value="등록" class="bg-brand-500 hover:bg-brand-600 font-bold py-2 px-4 rounded"/>
+										</div>
+									</form>
+								</div>
+								</c:if>
 							</div>
 						</li>
 					</c:forEach>
 					</ul>
-					<c:if test="${rpvo.startPage+rpvo.pageCount>0}">
 					<ul class="pagenation flex items-center justify-center my-4">
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&pageNum=${rpvo.pageNum-1}"><i class="xi-angle-left-min"></i></a></li>
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&reviewPageNum=${rpvo.pageNum-1}#comments"><i class="xi-angle-left-min"></i></a></li>
 					<c:forEach var="i" begin="${rpvo.startPage}" end="${rpvo.startPage+rpvo.pageCount-1}">
 						<c:if test="${i<=rpvo.totalPage}">
-						<li class="page-item"><a class="pn page-link block py-1 px-2 hover:text-brand-500 <c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/course/courseList?pageNum=${i}">${i}</a></li>
+						<li class="page-item"><a class="pn page-link block py-1 px-2 hover:text-brand-500 <c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&reviewPageNum=${i}#comments">${i}</a></li>
 						</c:if>
 					</c:forEach>
-						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==rpvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&pageNum=${rpvo.pageNum+1}"><i class="xi-angle-right-min"></i></a></li>
+						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==rpvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&reviewPageNum=${rpvo.pageNum+1}#comments"><i class="xi-angle-right-min"></i></a></li>
 					</ul>
-					</c:if>
 				</div><!--강좌후기-->
 			</div>
 		</div>
@@ -247,8 +285,9 @@ $(function(){
 	
 	/* 2. Action to perform on click */
 	$('#stars li').on('click', function(){
+		var form = $(this).parents('.courese-review-form');
 	    var onStar = parseInt($(this).data('value'), 10); //현재 선택된 별점
-	    $('#rate').val(onStar);
+	    form.find('input[name=review_rank]').val(onStar);
 	    var stars = $(this).parent().children('li.star');
 	    
 	    for (i = 0; i < stars.length; i++) {
@@ -263,10 +302,42 @@ $(function(){
 	//위시리스트
 	$('a.add-wishlist').on('click', function(e){
 		e.preventDefault();
-		$(this).toggleClass('added-this');
+		$.ajax({
+			url:$(this).attr('href'),
+			data: $(this).data('param'),
+			success: function(result){
+				console.log(result);
+				var jsonData = JSON.parse(result);
+				alert(jsonData.msg);
+				var review_no = jsonData.review_no;
+				var review_rank = jsonData.review_rank;
+				var review_content = jsonData.review_content;
+				$('.modify-review-'+review_no).addClass('hidden');
+				$('.review_rank-'+review_no).attr('data-review_rank', review_rank);
+				$('.review_rank-'+review_no).html('');
+				$('.review_content-'+review_no).text(review_content);
+				for(var i=1; i<=5; i++){
+					if(i<=review_rank){
+						$('.review_rank-'+review_no).append('<i class="xi-star"></i>');
+					}
+					else{
+						$('.review_rank-'+review_no).append('<i class="xi-star-o"></i>');
+					}
+				}
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
+		$(this).add('added-this');
 	});
 	
 	//탭
+	if(location.hash.length>0){
+		$('#'+location.hash.replace('#', '')).addClass('active');
+		$('html,body').scrollTop($('.course-comment-list').offset().top-95);
+	}
+	
 	$('.course-tab-nav .tab-item a').on('click', function(e){
 		e.preventDefault();
         
@@ -285,5 +356,56 @@ $(function(){
 	
 	$("html,body").on("mousewheel DOMMouseScroll'", stickyTabNav);
 	stickyTabNav();
+	
+	$(".modifyReview").on('click', function(e){
+		e.preventDefault();
+		var review_no=$(this).data('review_no');
+		$('.modify-review-'+review_no).toggleClass('hidden');
+	});
+	
+	$('.review-modify-form').on('submit', function(e){
+		e.preventDefault();
+		var flag;
+		$(this).find('input, textarea').each(function(){
+			if($(this).val()==""){
+				flag=false;
+				return false;
+			}
+		});
+		if(flag==false){
+			return false;
+		}
+		$.ajax({
+			url:$(this).attr('action'),
+			type: 'POST',
+			data: $(this).serialize(),
+			success: function(result){
+				console.log(result);
+				var jsonData = JSON.parse(result);
+				alert(jsonData.msg);
+				var review_no = jsonData.review_no;
+				var review_rank = jsonData.review_rank;
+				var review_content = jsonData.review_content;
+				$('.modify-review-'+review_no).addClass('hidden');
+				$('.review_rank-'+review_no).attr('data-review_rank', review_rank);
+				$('.review_rank-'+review_no).html('');
+				$('.review_content-'+review_no).text(review_content);
+				for(var i=1; i<=5; i++){
+					if(i<=review_rank){
+						$('.review_rank-'+review_no).append('<i class="xi-star"></i>');
+					}
+					else{
+						$('.review_rank-'+review_no).append('<i class="xi-star-o"></i>');
+					}
+				}
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
+	});
+	function deleteReview(review_no){
+		
+	}
 });
 </script>

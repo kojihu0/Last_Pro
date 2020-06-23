@@ -60,7 +60,7 @@ public class CourseReviewVO {
 	}
 
 	public String getStudent_id() {
-		return student_id;
+		return student_id.substring(student_id.length()-1, student_id.length())+"****";
 	}
 
 	public void setStudent_id(String student_id) {
