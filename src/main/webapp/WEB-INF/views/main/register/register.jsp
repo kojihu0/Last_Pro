@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <script>
+<script>
     $(function(){ 
 
 	function email(url,params,msg){
@@ -27,7 +27,7 @@
 		}
 	});
 	}
-	
+
 //이메일 인증코드 받기 joinMembershipEmailCheckBtn 
 	$(document).on("click",'#emailCodeBtn',function(){
 		var url="<%=ctx%>/emailSend"
@@ -43,8 +43,21 @@
 		email(url,params,msg);
 	});
 });
-  </script> -->
-  
+	</script>
+ <script>
+  $(function(){ 
+	$("#userIdChk").click(function(){
+		reg = /^[a-zA-Z]{1}\w{7,11}$/; //[a-zA-Z0-9_] = \w: 영어 대소문자, 숫자,_		
+		if (!reg.test($("#userId").val())) {
+			alert("아이디는 첫번째 문자는 영문자 ,영,숫자,_만 허용 , 8~12글자까지 허용합니다...");
+			return false;
+		}else{
+		//아이디 중복 체크 
+		window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=300px");
+		}
+	});
+});
+ </script>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ACCOUNT</h1>
@@ -73,6 +86,7 @@
 	      </label>
 	      <div class="flex">
 	      	<input id="userId" name="userid" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200   py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="text">
+	      	<input type="hidden" id="idStatus" value="N"/><!-- 아이디 중복검사 여부 설정 -->
 	      <div class="ml-2">
 	      	<input type="button" id="userIdChk" class="focus:outline-none cursor-pointer py-3 px-4 bg-brand-500 font-bold focus:bg-brand-700" value="중복체크"/>
 	      </div>

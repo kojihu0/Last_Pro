@@ -31,6 +31,7 @@ public class RegisterController {
 	BCryptPasswordEncoder BPd;
 	
 	
+	
 	public SqlSession getSqlSession() {
 		return sqlSession;
 	}
@@ -48,11 +49,11 @@ public class RegisterController {
 		BPd = bPd;
 	}
 	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String register() {//유저 회원가입 
+	public String register() {
 		return"main/register/register";
 	}
 	@RequestMapping(value="/registerOk", method=RequestMethod.POST)
-	public ModelAndView register(MemberVO vo) {//유저 회원가입
+	public ModelAndView register(MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
 		String Encryption = BPd.encode(vo.getStudent_pw());
 		vo.setStudent_pw(Encryption);
@@ -66,15 +67,29 @@ public class RegisterController {
 		}
 		return mav;
 	}
-	//이메일 네이버 smtp 보내기
+	
+	
+	
+	@RequestMapping(value="/idCheck" ,method=RequestMethod.GET)
+	public ModelAndView idCheck(String userid) {//아이디 중복 검사
+		ModelAndView mav = new ModelAndView();
+		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		
+		int cnt = dao.idCheck(userid);
+		mav.addObject("userid",userid);
+		mav.addObject("cnt",cnt);
+		mav.setViewName("main/register/idCheck");
+		return mav; 
+	}
+	
+	
 	@RequestMapping("/emailSend")
 	public String emailCode(HttpServletRequest req) {
-		String email = req.getParameter("user_email");
-		System.out.println(email);
+		String email = req.getParameter("useremail");
 		String sesId = req.getSession().getId();
 		Properties p = new Properties();
 		p.put("mail.smtp.host", "smtp.naver.com");
-		p.put("mail.smtp.port","25");
+		p.put("mail.smtp.port","465");
 		p.put("defaultEncoding","UTF-8");
 		p.put("mail.smtp.auth","true");
 		try {
@@ -88,34 +103,32 @@ public class RegisterController {
 			});
 			
 			ses.setDebug(false);
-		
 			MimeMessage mM = new MimeMessage(ses);
 			mM.setFrom(new InternetAddress("insunok0715@naver.com"));
 			InternetAddress[] toAddr = new InternetAddress[1];
 			toAddr[0] =new InternetAddress(email);
-			
 			mM.setRecipients(Message.RecipientType.TO, toAddr);
-			mM.setSubject("EduCamp 회원가입 이메일 인증 코드입니다. "); 
+			mM.setSubject("EduCamp 회원가입에 필요한 인증코드 메일 입니다. "); 
 			
-			
-			String content = "EduCamp 회원가입에 필요한 이메일 인증 코드입니다.\n";
+			String content = "EduCamp 회원가입에 필요한 인증코드 메일 입니다.\n";
 				   content+="인증코드:"+sesId;
-			
-				   
 			mM.setText(content);
-			System.out.println();
-			Transport.send(mM);
 			
-			//이메일 인증코드가 전송되었는지 보내기 
-			req.setAttribute("code", "ok");
-			System.out.println("이메일 인증 -->"+email);
+			
+			
+			Transport.send(mM);
+			req.setAttribute("code","ok");
+			System.out.println("인증코드 전송 완료  -->"+email);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("이메일 에러 -->"+e.getMessage());
+			System.out.println("이메일 인증 코드 보내기 오류 -->"+e.getMessage());
 		}
-		return "main/register/register";
+		return "main/register/emailCheck";
 	}
+	
+	 
+	
 	
 	
 	@RequestMapping("/subjectRegister")

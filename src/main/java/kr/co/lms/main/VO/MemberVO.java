@@ -3,6 +3,7 @@ package kr.co.lms.main.VO;
 
 
 public class MemberVO {
+	private String student_no;
 	private String userid;
 	private String student_pw;
 	private String student_name_ko;
@@ -14,6 +15,12 @@ public class MemberVO {
 	
 
 
+	public String getStudent_no() {
+		return student_no;
+	}
+	public void setStudent_no(String student_no) {
+		this.student_no = student_no;
+	}
 	public String getUserid() {
 		return userid;
 	}

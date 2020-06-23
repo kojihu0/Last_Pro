@@ -31,9 +31,11 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlsession.getMapper(MemberDAOImp.class);
 		MemberVO vo2 = dao.memberLogin(vo);
+		
 		if(vo2!=null) {
 			HttpSession s = req.getSession();
 			s.setAttribute("username",vo2.getStudent_name_ko());
+			s.setAttribute("student_no",vo2.getStudent_no());
 			mav.addObject("message","로그인에 성공 하셨습니다.");
 			s.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");

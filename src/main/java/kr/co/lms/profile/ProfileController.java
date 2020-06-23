@@ -1,6 +1,7 @@
 package kr.co.lms.profile;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,36 +29,30 @@ public class ProfileController {
 		this.sqlSession = sqlSession;
 	}
 	@RequestMapping(value="/courseOfStudy",method=RequestMethod.GET)
-	public ModelAndView courseOfStudy(HttpServletRequest req, MypageVO vo){//수강중인강좌
+	public ModelAndView courseOfStudy(HttpServletRequest req, int no){//수강중인강좌
 		ModelAndView mav = new ModelAndView();
-		HttpSession ses = req.getSession();//세션값에서 아이디 값 가져오기
-		vo.setUserid((String)ses.getAttribute("userid"));
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class); 
-		List<MypageVO> courseList =dao.courseRecord();
-		mav.addObject("vo", courseList);
+		List<MypageVO> courseList =dao.courseRecord(no);
+		mav.addObject("courseList",courseList);
 		mav.setViewName("main/profile/courseOfStudy");
 		return mav;
 				
 	}
 	@RequestMapping(value="/completionCourse",method=RequestMethod.GET)
-	public ModelAndView completionCourse(HttpServletRequest req, MypageVO vo) {//수료강좌
+	public ModelAndView completionCourse(HttpServletRequest req, int no) {//수료강좌
 		ModelAndView mav = new ModelAndView();
-		HttpSession ses = req.getSession();
-		vo.setUserid((String)ses.getAttribute("userid"));
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
-		List<MypageVO> completionCourse = dao.completionCourseRecord();
-		mav.addObject("vo",completionCourse);
+		List<MypageVO> completionCourse = dao.completionCourseRecord(no);
+		mav.addObject("completionCourse",completionCourse);
 		mav.setViewName("main/profile/completionCourse");
 		return mav;
 	}
 	@RequestMapping(value="/inCompletionCourse",method=RequestMethod.GET)
-	public ModelAndView inCompletionCourse(HttpServletRequest req, MypageVO vo) {//미수료강좌
+	public ModelAndView inCompletionCourse(HttpServletRequest req, int no) {//미수료강좌
 		ModelAndView mav = new ModelAndView();
-		HttpSession ses = req.getSession();
-		vo.setUserid((String)ses.getAttribute("userid"));
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
-		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord();
-		mav.addObject("vo",incompleteCourse);
+		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord(no);
+		mav.addObject("incompleteCourse",incompleteCourse);
 		mav.setViewName("main/profile/inCompletionCourse");
 		return mav;
 	}

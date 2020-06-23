@@ -1,48 +1,49 @@
 package kr.co.lms.main.VO;
 
 public class MypageVO {
-	private String userid;
-	private String instructor;
-	private String course;
-	private String startDate;
-	private String endDate;
-	private String passingGrade;
-	private String grade;
-	private String rating;
-	private String CompletionStatus;
-
+	private String Student_no;//등록된학생번호 
+	private String employee_name;//강사명
+	private String course_name;//강좌명
+	private String course_start_date;//시작일
+	private String course_end_date;//종료일
+	private String passingGrade;//퍼센트율
+	private String grade;//성적
+	private String rank;//순위
+	private String state;//수료상태
 	
 	
+	public String getStudent_no() {
+		return Student_no;
+	}
+	public void setStudent_no(String student_no) {
+		Student_no = student_no;
+	}
+	public String getEmployee_name() {
+		return employee_name;
+	}
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
+	}
+	public String getCourse_name() {
+		return course_name;
+	}
+	public void setCourse_name(String course_name) {
+		this.course_name = course_name;
+	}
 	
-	public String getUserid() {
-		return userid;
+	
+	public String getCourse_start_date() {
+		return course_start_date;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setCourse_start_date(String course_start_date) {
+		this.course_start_date = course_start_date;
 	}
-	public String getInstructor() {
-		return instructor;
+	
+	public String getCourse_end_date() {
+		return course_end_date;
 	}
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
-	}
-	public String getCourse() {
-		return course;
-	}
-	public void setCourse(String course) {
-		this.course = course;
-	}
-	public String getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-	public String getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setCourse_end_date(String course_end_date) {
+		this.course_end_date = course_end_date;
 	}
 	public String getPassingGrade() {
 		return passingGrade;
@@ -56,18 +57,22 @@ public class MypageVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public String getRating() {
-		return rating;
+	public String getRank() {
+		return rank;
 	}
-	public void setRating(String rating) {
-		this.rating = rating;
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
-	public String getCompletionStatus() {
-		return CompletionStatus;
+	public String getState() {
+		return state;
 	}
-	public void setCompletionStatus(String completionStatus) {
-		CompletionStatus = completionStatus;
+	public void setState(String state) {
+		this.state = state;
 	}
+	
+
+	
+	
 	
 	
 	

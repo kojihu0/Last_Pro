@@ -19,22 +19,22 @@
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex roboto-slab">
 				  <li class="-mb-px mr-1">
-				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r  py-3 px-4 text-gray-900  hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
+				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r  py-3 px-4 text-gray-900  hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
 				  </li> 
 				  <li class="mr-1">
-				    <a class="bg-white hover:border-brand-500   border-b border-l border-t border-r py-3 px-4 text-gray-900  hover:text-brand-500  font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
+				    <a class="bg-white hover:border-brand-500   border-b border-l border-t border-r py-3 px-4 text-gray-900  hover:text-brand-500  font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
 				  </li>
 				  <li class="mr-1">
-				   	 <a class="bg-white border-brand-500  border-b border-l border-t-4 border-r py-3 px-4 text-brand-500  font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
+				   	 <a class="bg-white border-brand-500  border-b border-l border-t-4 border-r py-3 px-4 text-brand-500  font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
 				  </li>
 				  <li class="mr-1">
-				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
+				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
 				  </li>
 				  <li class="mr-1">
-				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile">Profile</a>
+				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 				  </li>
 				</ul>
 				<div>
@@ -45,14 +45,16 @@
 					<li class="text-white text-xl w-1/5">CompletionStatus</li>
 					<li class="text-white text-xl">End date</li>
 				</ul>
-				<ul class="flex my-4 roboto-slab">
-					<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">김길동</a></li>
-					<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">즐기면서 배우는 코딩공부</a></li>
-					<li class="text-black text-xl w-1/6">F등급</li>
-					<li class="text-black text-xl w-1/5">NO</li>
-					<li class="text-black text-xl ">2020-06-10</li>
-				</ul>
-				<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
+				<c:forEach var = "incompleteCourse" items="${incompleteCourse}">
+					<ul class="flex my-4 roboto-slab">
+						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${incompleteCourse.employee_name }</a></li>
+						<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${incompleteCourse.course_name}</a></li>
+						<li class="text-black text-xl w-1/6">${incompleteCourse.grade}등급</li>
+						<li class="text-black text-xl w-1/5">${incompleteCourse.state}등급</li>
+						<li class="text-black text-xl ">${incompleteCourse.course_end_date }</li>
+					</ul>
+					<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

@@ -54,22 +54,22 @@ function preview(input, target) {
 		<div class="lg:w-4/5 w-full mt-4 pl-8">
 			<ul class="flex roboto-slab">
 			  <li class="-mb-px mr-1">
-			    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
+			    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
 			  </li> 
 			  <li class="mr-1">
-			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
+			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
 			  </li>
 			  <li class="mr-1">
-			   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
+			   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
 			  </li>
 			  <li class="mr-1">
-			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
+			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
 			  </li>
 			  <li class="mr-1">
-			    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/profile">Profile</a>
+			    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/profile?${student_no}">Profile</a>
 			  </li>
 			   <li class="mr-1">
-			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
+			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 			  </li>
 			</ul>
 				
@@ -86,17 +86,12 @@ function preview(input, target) {
 			</ul>
 				
 			<form id="profileUpdate"  style="display:block">
-				<span class="text-gray-500 ">Biographical Info</span><br/>
+				<span class="text-black font-bold ">자기소개</span><br/>
 				<textarea  class="focus:outline-none bg-gray-200 mt-4 " rows="8" cols="50"></textarea><br/>
 				<span class="text-gray-500 ">Share a little biographical information to fill out your profile. This may be shown publicly.</span><br/>
 				<div class="mt-5">
-					<span class="font-bold">FirstName</span><br/>
+					<span class="font-bold">이름</span><br/>
 					<input type="text" id="firstName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
-				</div>
-				
-				<div class="mt-5">
-					<span class=" font-bold">LastName</span><br/>
-					<input type="text" id="lastName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
 				</div>
 				
 				<input value="변경하기" id="generalBtn" type="submit" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">

@@ -19,22 +19,22 @@
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex flex-initial roboto-slab">
 				  <li class="-mb-px mr-1">
-				    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
+				    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
 				  </li> 
 				  <li class="mr-1">
-				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
+				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
 				  </li>
 				  <li class="mr-1">
-				   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
+				   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
 				  </li>
 				  <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
 				  </li>
 				  <li class="mr-1">
-					<a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile">Profile</a>
+					<a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/wishList">WishList</a>
+				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 				  </li>
 				</ul>
 				<div class="best-section my-0 mx-auto py-16">
@@ -49,45 +49,7 @@
 						<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 					</div>
 				<div id="wishListCourseCarousel" class="-mx-4 overflow-hidden">
-					<div class="course-item px-4 text-center outline-none"><!-- course-item -->
-						<div class="course-image relative overflow-hidden border border-gray-300">
-							<a href="#" class="outline-none"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-							<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-						</div>
-						<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-							<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-								<a href="#">자바 스프링 완전정복</a>
-							</h2>
-							<div class="course-author text-gray-900 mb-4">홍길동</div>
-							<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-						</div>
-					</div><!-- course-item -->
-					<div class="course-item px-4 text-center"><!-- course-item -->
-						<div class="course-image relative overflow-hidden border border-gray-300">
-							<a href="#" class="outline-none"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-							<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-						</div>
-						<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-							<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-								<a href="#">자바 스프링 완전정복</a>
-							</h2>
-							<div class="course-author text-gray-900 mb-4">홍길동</div>
-							<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-						</div>
-					</div><!-- course-item -->
-					<div class="course-item px-4 text-center"><!-- course-item -->
-						<div class="course-image relative overflow-hidden border border-gray-300">
-							<a href="#" class="outline-none"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-							<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-						</div>
-						<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-							<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-								<a href="#">자바 스프링 완전정복</a>
-							</h2>
-							<div class="course-author text-gray-900 mb-4">홍길동</div>
-							<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-						</div>
-					</div><!-- course-item -->
+				
 					<div class="course-item px-4 text-center"><!-- course-item -->
 						<div class="course-image relative overflow-hidden border border-gray-300">
 							<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
@@ -101,19 +63,7 @@
 							<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
 						</div>
 					</div><!-- course-item -->
-						<div class="course-item px-4 text-center"><!-- course-item -->
-						<div class="course-image relative overflow-hidden border border-gray-300">
-							<a href="#"><img class="duration-300" src="<%=ctx %>/img/spring.png"></a>
-							<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="#">READ MORE</a>
-						</div>
-						<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-							<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-								<a href="#">자바 스프링 완전정복</a>
-							</h2>
-							<div class="course-author text-gray-900 mb-4">홍길동</div>
-							<div class="course-price text-danger-500 relative py-4">110,000<span>원</span></div>
-						</div>
-					</div><!-- course-item -->
+						
 				</div>
 			</div>
 		</div>

@@ -14,6 +14,9 @@
  		</if>
  	</insert>
  	<select id="memberLogin" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
- 		select student_name_ko ,student_pw from student where student_id=#{userid} and student_pw=#{student_pw}	
+ 		select student_name_ko , student_no from student where student_id=#{userid} and student_pw=#{student_pw}	
+ 	</select>
+ 	<select id="idCheck" resultType="java.lang.Integer">
+ 		select count(student_id) from student where student_id=#{userid}	
  	</select>
 </mapper>
