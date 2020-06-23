@@ -29,7 +29,9 @@
 		</c:forEach>
 	</div>
 	<ul class="pagenation flex items-center justify-center my-8 pb-8">
-		<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseList?pageNum=${pvo.pageNum-1}"><i class="xi-angle-left-min"></i></a></li>
+		<li class="page-item">
+			<a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseList?pageNum=${pvo.pageNum-1}<c:if test="${pvo.search_text!=null && pvo.search_text!=''}">&search_text=${pvo.search_text}</c:if>"><i class="xi-angle-left-min"></i></a>
+		</li>
 		<c:forEach var="i" begin="${pvo.startPage}" end="${pvo.startPage+pvo.pageCount-1}">
 		<c:if test="${i<=pvo.totalPage}">
 		<li class="page-item">
@@ -38,6 +40,6 @@
 		</a></li>
 		</c:if>
 		</c:forEach>
-		<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==pvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseList?pageNum=${pvo.pageNum+1}"><i class="xi-angle-right-min"></i></a></li>
+		<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==pvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseList?pageNum=${pvo.pageNum+1}<c:if test="${pvo.search_text!=null && pvo.search_text!=''}">&search_text=${pvo.search_text}</c:if>"><i class="xi-angle-right-min"></i></a></li>
 	</ul>
 </div>

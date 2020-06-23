@@ -21,6 +21,7 @@ public class CourseVO {
 	private String course_stage;
 	private String course_img; //½æ³×ÀÏ
 	private String course_price_format; //°­ÁÂ±Ý¾×(Æ÷¸Ë)
+	private String search_string = "";
 	
 	public int getCourse_no() {
 		return course_no;
@@ -130,5 +131,11 @@ public class CourseVO {
 	}
 	public void setCourse_price_format(String course_price_format) {
 		this.course_price_format = course_price_format;
+	}
+	public String getSearch_string() {
+		return search_string;
+	}
+	public void setSearch_string(String search_string) {
+		this.search_string = search_string;
 	}
 }

@@ -27,7 +27,7 @@
 	
 	<context:component-scan base-package="kr.co.lms" />
 	
-		<!-- 오라클 서버 위치와  계정, 비밀번호 -->
+	<!-- 오라클 서버 위치와  계정, 비밀번호 -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
 		<beans:property name="url" value="jdbc:oracle:thin:@106.240.16.167:1521:xe"></beans:property>

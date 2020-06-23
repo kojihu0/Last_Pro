@@ -8,7 +8,8 @@ public class PagingVO {
 	private int startPage = 1;		//페이지 시작
 	private int pageCount = 5;		//출력되는 페이지의 수
 	private int lastPageRecord = onePageRecord; //마지막 페이지에 남아있는 레코드의 수
-	private String search_text = "";
+	private String search_text;
+	private int course_no;
 	
 	public int getPageNum() {
 		return pageNum;
@@ -66,5 +67,11 @@ public class PagingVO {
 	}
 	public void setSearch_text(String search_text) {
 		this.search_text = search_text;
+	}
+	public int getCourse_no() {
+		return course_no;
+	}
+	public void setCourse_no(int course_no) {
+		this.course_no = course_no;
 	}
 }

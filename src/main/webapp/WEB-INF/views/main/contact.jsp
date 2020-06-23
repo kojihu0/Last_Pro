@@ -47,19 +47,19 @@
 				<p class="text-gray-700">자세한 문의사항은 여기에 남겨주세요</p>
 				<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 			</div>
-			<div class=" fadeUp">
-				<form method="post" action="/contactOk" onsubmit="return basicFormValidate(this);">
+			<div class="contactFormWrap fadeUp">
+				<form id="contactForm" method="post" action="<%=ctx %>/sendContactForm" onsubmit="return basicFormValidate(this);">
 					<p class="mb-4">
-						<input type="text" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="text" name="contact_name" placeholder="성함" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="email" name="contact_email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="tel" name="contact_tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<div class="mb-4">
-						<textarea placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>
+						<textarea name="contact_content" placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>
 					</div>
 					<div class="border-t border-b border-gray-500 mb-2 py-4 text-gray-700">
 						<p class="mb-2">EDUCAMP는 온라인상담을 이용하는분을 대상으로 아래와 같이 개인정보를 수집하고 있습니다.</p>
@@ -72,6 +72,7 @@
 						<p>그 밖의 사항은 개인정보취급방침을 준수합니다.</p>
 					</div>
 					<p class="mb-4"><input type="checkbox" value="동의함" id="accept_policy" class="mr-2"><label for="accept_policy">개인정보수집 및 이용에 동의합니다.</label></p>
+					<div class="g-recaptcha mb-4" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 					<input type="submit" value="문의하기" class="py-4 px-6 bg-brand-500 font-bold">
 				</form>
 			</div>
@@ -86,8 +87,10 @@
 	</div>
 </div>
 <div id="direction" class="w-full mt-12 fadeUp" style="height: 500px;"></div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
 $(function(){
+	/**지도**/
 	var container = document.getElementById('direction'); //지도를 담을 영역의 DOM 레퍼런스
 	var lat = 37.55268208248053;
 	var lng = 126.93773432181362;
@@ -107,5 +110,50 @@ $(function(){
 
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
+	
+	//recaptcha
+	
+	//폼
+	$("#contactForm").on('submit', function(e){
+		e.preventDefault();
+		var flag;
+		$(this).find('input, textarea').each(function(){
+			if($(this).val()==""){
+				flag=false;
+				return false;
+			}
+		});
+		if($(this).find('#accept_policy').prop('checked')==false){
+			flag=false;
+		}
+		
+		if(flag==false){
+			return false;
+		}
+		else{
+			$.ajax({
+				url:$(this).attr('action'),
+				type: 'POST',
+				data: $(this).serialize(),
+				success: function(result){
+					if(result == 1){
+						$('.contactFormWrap').html('<p class="text-center font-bold py-8">문의가 접수되었습니다.</p>')
+					}
+					else if(result == -1){
+						alert('자동 등록 방지에 체크해주세요.');
+					}
+					else{
+						alert('문의 접수에 에러가 있습니다. 고객센터 전화로 직접 문의 부탁드립니다.');
+					}
+					
+					$('html, body').animate({scrollTop:0});
+					console.log(result);
+				},
+				error: function(e){
+					console.log(e.responseText);
+				}
+			});
+		}
+	});
 });
 </script>

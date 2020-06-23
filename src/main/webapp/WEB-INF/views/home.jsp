@@ -35,7 +35,7 @@
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
 					<p>소개</p>
-					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/aboutUs">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 mr-2 flex opacity-75 duration-300 hover:opacity-100 col">
@@ -43,7 +43,7 @@
 				<div>
 					<h1 class="roboto-slab font-bold">COURSES INFO</h1>
 					<p>소개</p>
-					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/course/coureseList">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 flex opacity-75 duration-300 hover:opacity-100 col">
@@ -114,7 +114,7 @@
 						<p class="mb-4"><input type="text" name="useremail" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" name="student_pw" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" placeholder="패스워드 확인" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a href="">사이트 이용약관</a> 및 <a href="#">개인정보 처리방침</a>에 동의합니다.</label></p>
+						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a class="text-danger-500" href="<%=ctx%>/termsOfService">사이트 이용약관</a> 및 <a class="text-danger-500" href="<%=ctx%>/privacyPolicy">개인정보 처리방침</a>에 동의합니다.</label></p>
 						<input type="submit" value="가입하기" class="w-full outline-none bg-black text-white py-2 px-4">
 					</form>
 				</div>

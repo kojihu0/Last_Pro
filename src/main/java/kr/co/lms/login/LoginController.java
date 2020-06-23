@@ -27,7 +27,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value="/loginOk",method=RequestMethod.POST)
-	public ModelAndView login(MemberVO vo , HttpServletRequest req) {//·Î±×ÀÎ
+	public ModelAndView login(MemberVO vo , HttpServletRequest req) {//ï¿½Î±ï¿½ï¿½ï¿½
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlsession.getMapper(MemberDAOImp.class);
 		MemberVO vo2 = dao.memberLogin(vo);
@@ -36,11 +36,11 @@ public class LoginController {
 			HttpSession s = req.getSession();
 			s.setAttribute("username",vo2.getStudent_name_ko());
 			s.setAttribute("student_no",vo2.getStudent_no());
-			mav.addObject("message","·Î±×ÀÎ¿¡ ¼º°ø ÇÏ¼Ì½À´Ï´Ù.");
+			mav.addObject("message","ï¿½Î±ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
 			s.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");
 		}else {
-			mav.addObject("message","·Î±×ÀÎ¿¡ ½ÇÆÐÇÏ¼Ì½À´Ï´Ù \n ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä");
+			mav.addObject("message","ï¿½Î±ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½ \n ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½");
 			mav.setViewName("redirect:/");
 		}
 		

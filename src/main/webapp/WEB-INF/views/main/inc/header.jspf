@@ -55,18 +55,15 @@
 					</li>
 				</ul>
 				
-				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab">
-				
+				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker">
 				 	<c:if test="${logStatus==null || logStatus=='N'}">
-						<li class="menu-item text-center mr-4"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300">LOGIN</a></li>
+						<li class="menu-item text-center mr-4 roboto-slab"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300">LOGIN</a></li>
 						<li class="menu-item text-center"><a href="<%=ctx%>/register" class="inline-block duration-300">REGISTER</a></li>
 					</c:if>
-					
 					<c:if test="${logStatus == 'Y' && logStatus != null}">
-						<li class="menu-item text-center mr-4 "><span class="text-brand-500 font-bold mr-4">${username}&nbsp;님</span><a href="<%=ctx%>/logout" class="inline-block duration-300">LOGOUT</a></li>
-				    	<li class="menu-item text-center "><a href="<%=ctx%>/profile?no=${student_no}" class="inline-block duration-300">MYPAGE</a></li>
+						<li class="menu-item text-center mr-4 "><span class="text-brand-500 font-bold mr-4">${username}&nbsp;님</span><a href="<%=ctx%>/logout" class="roboto-slab inline-block duration-300">LOGOUT</a></li>
+				    	<li class="menu-item text-center roboto-slab"><a href="<%=ctx%>/profile" class="inline-block duration-300">MYPAGE</a></li>
 				    </c:if>
-				    
 				</ul>
 				
 			</nav>
@@ -94,10 +91,14 @@
 					</li>
 				</ul>
 				<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker roboto-slab bg-gray-300"> 		
-					<li class="menu-item text-center w-1/2"><a href="#" data-target="#loginModal" class="login-ico inline-block duration-300 px-4 py-2">LOGIN</a></li>
-					<li class="menu-item text-center w-1/2"><a href="<%=ctx%>/register" class="inline-block duration-300 px-4 py-2">REGISTER</a></li>
-					<li class="menu-item text-center w-1/2 hidden"><span class="mr-4">000님 </span><a href="<%=ctx%>/logout" class="inline-block duration-300 px-4 py-2">LOGOUT</a></li>
-				    <li class="menu-item text-center w-1/2 hidden"><a href="<%=ctx%>/profile" class="inline-block duration-300 px-4 py-2">MYPAGE</a></li>
+				<c:if test="${logStatus==null || logStatus=='N'}">
+					<li class="menu-item text-center w-1/2 roboto-slab"><a href="#" data-target="#loginModal" class="login-ico inline-block py-2 duration-300">LOGIN</a></li>
+					<li class="menu-item text-center w-1/2 roboto-slab"><a href="<%=ctx%>/register" class="inline-block py-2 duration-300">REGISTER</a></li>
+				</c:if>
+				<c:if test="${logStatus == 'Y' && logStatus != null}">
+					<li class="menu-item text-center w-1/2 roboto-slab"><a href="<%=ctx%>/logout" class="inline-block py-2 duration-300">LOGOUT</a></li>
+			    	<li class="menu-item text-center w-1/2 roboto-slab"><a href="<%=ctx%>/profile" class="inline-block py-2 duration-300">MYPAGE</a></li>
+			    </c:if>
 				</ul>
 			</nav>
 		</div>
