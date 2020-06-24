@@ -32,7 +32,7 @@
 		where course_no=#{course_no}
 	</select>
 	<select id="selectPaymentNo" resultType="java.lang.Integer">
-		select payment_no from payment where course_no=#{param1} and student_no=#{param2}
+		select NVL(payment_no, 0) from payment where course_no=#{param1} and student_no=#{param2}
 	</select>
 	<select id="reviewList" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseReviewVO">
 		select * from

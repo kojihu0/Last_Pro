@@ -87,12 +87,18 @@ public class CourseController {
 		if((rpvo.getPageNum() < rpvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때만 lastPageRecord에 onePageRecord적용
 			rpvo.setLastPageRecord(rpvo.getOnePageRecord());
 		}
+		
+		//세션
 		HttpSession sess = req.getSession();
+		String logStatus = (String) sess.getAttribute("logStatus");
 		int student_no = 0;
 		int payment_no = 0;
-		if((String)sess.getAttribute("logStatus")=="Y") {
-			student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
-			payment_no = dao.selectPaymentNo(course_no, student_no);
+		
+		if(logStatus!=null) { //로그인 상태일때 세션에서 학생번호와 구매번호 가져오기
+			if(logStatus.equals("Y")) {
+				student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+				payment_no = dao.selectPaymentNo(course_no, student_no);
+			}
 		}
 		
 		ModelAndView mav = new ModelAndView();
