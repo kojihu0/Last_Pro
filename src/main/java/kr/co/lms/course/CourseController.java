@@ -18,6 +18,7 @@ import kr.co.lms.main.DAO.CourseDAOImp;
 import kr.co.lms.main.VO.CourseReviewVO;
 import kr.co.lms.main.VO.CourseVO;
 import kr.co.lms.main.VO.PagingVO;
+import kr.co.lms.main.VO.WishVO;
 
 @Controller
 public class CourseController {
@@ -82,7 +83,8 @@ public class CourseController {
 		else {
 			rpvo.setPageNum(1);
 		}
-		rpvo.setTotalRecord(dao.getTotalReviews(course_no));
+		int totalReviews = dao.getTotalReviews(course_no); //전체 수강평 수
+		rpvo.setTotalRecord(totalReviews);
 		
 		if((rpvo.getPageNum() < rpvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때만 lastPageRecord에 onePageRecord적용
 			rpvo.setLastPageRecord(rpvo.getOnePageRecord());
@@ -93,20 +95,24 @@ public class CourseController {
 		String logStatus = (String) sess.getAttribute("logStatus");
 		int student_no = 0;
 		int payment_no = 0;
-		
+		int wish_no = 0;
 		if(logStatus!=null) { //로그인 상태일때 세션에서 학생번호와 구매번호 가져오기
 			if(logStatus.equals("Y")) {
 				student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
 				payment_no = dao.selectPaymentNo(course_no, student_no);
+				wish_no = dao.selectWishNo(course_no, student_no);
+				System.out.println(wish_no);
 			}
 		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", dao.selectCourse(course_no));
 		mav.addObject("reviewList", dao.reviewList(rpvo));
+		mav.addObject("reviewRanks", dao.reviewRanks(course_no));
 		mav.addObject("rpvo", rpvo);
 		mav.addObject("crrPageNum", rpvo.getPageNum());
 		mav.addObject("payment_no", payment_no);
+		mav.addObject("wish_no", wish_no);
 		mav.setViewName("main/course/courseDetail");
 		return mav;
 	}
@@ -188,25 +194,34 @@ public class CourseController {
 	
 	@RequestMapping(value = "/course/wishOk", produces = "application/text;charset=UTF-8")
 	@ResponseBody
-	public String insertWishList(int course_no, String wishStatus) {
+	public String insertWishList(WishVO vo, String wish_status, HttpServletRequest req) {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		
+		HttpSession sess = req.getSession();
+		int student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+		vo.setStudent_no(student_no);
+		System.out.println(wish_status);
 		int cnt = 0;
 		String response="";
 		String msg="";
-		if(wishStatus=="add") {
-			cnt = dao.insertWish();
-			if(cnt>0) {
-				msg = "강좌를 위시리스트에 추가했습니다.";
-			}
-			else {
-				msg = "위시리스트 추가 실패";
+		if(wish_status.equals("add")) {
+			int wish_cnt = dao.selectWishNo(vo.getCourse_no(), student_no);
+			if(wish_cnt==0) {
+				cnt = dao.insertWish(vo);
+				if(cnt>0) {
+					msg = "강좌를 위시리스트에 추가했습니다.";
+					vo.setWish_status("remove");
+				}
+				else {
+					msg = "위시리스트 추가 실패";
+				}
 			}
 		}
-		else if(wishStatus=="remove") {
-			cnt = dao.deleteWish();
+		else if(wish_status.equals("remove")) {
+			cnt = dao.deleteWish(vo);
 			if(cnt>0) {
 				msg = "강좌를 위시리스트에서 삭제했습니다.";
+				vo.setWish_status("add");
 			}
 			else {
 				msg = "위시리스트 삭제 실패";
@@ -214,10 +229,9 @@ public class CourseController {
 		}
 		
 		
-//		response="{\"msg\": \""+msg+"\", "
-//				+ "\"review_no\": \""+vo.getReview_no()+"\", "
-//				+ "\"review_rank\": \""+vo.getReview_rank()+"\", "
-//				+ "\"review_content\": \""+vo.getReview_content()+"\"}";
+		response="{\"msg\": \""+msg+"\", "
+				+ "\"wish_status\": \""+vo.getWish_status()+"\", "
+				+ "\"course_no\": \""+vo.getCourse_no()+"\"}";
 		
 		return response;
 	}

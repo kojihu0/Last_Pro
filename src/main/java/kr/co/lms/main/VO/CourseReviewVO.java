@@ -10,6 +10,9 @@ public class CourseReviewVO {
 	
 	private String student_id;
 	private int course_no;
+	private int review_cnt;
+	private int totalRecord;
+	private double percentage = Math.round((double)review_cnt/(double)totalRecord*100.0);
 
 	public int getReview_no() {
 		return review_no;
@@ -73,6 +76,30 @@ public class CourseReviewVO {
 
 	public void setCourse_no(int course_no) {
 		this.course_no = course_no;
+	}
+
+	public int getReview_cnt() {
+		return review_cnt;
+	}
+
+	public void setReview_cnt(int review_cnt) {
+		this.review_cnt = review_cnt;
+	}
+
+	public int getTotalRecord() {
+		return totalRecord;
+	}
+
+	public void setTotalRecord(int totalRecord) {
+		this.totalRecord = totalRecord;
+	}
+
+	public double getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(double percentage) {
+		this.percentage = percentage;
 	}
 	
 }

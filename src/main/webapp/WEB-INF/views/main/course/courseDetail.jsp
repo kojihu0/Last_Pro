@@ -76,7 +76,8 @@
 				<p class="font-bold text-3xl text-danger-500 mr-8"><span>${vo.course_price_format}</span>원</p>
 				<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
 				</c:if>
-				<a href="/course/wishOk" data-param="course_no=${vo.course_no}" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
+				<a href="/course/wishOk" data-course_no="${vo.course_no}" data-wish_status="<c:if test="${wish_no>0}">remove</c:if><c:if test="${wish_no==0}">add</c:if>"
+				data-action="<%=ctx %>/course/wishOk" class="<c:if test="${wish_no>0}">added-this </c:if>add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 			</div>
 			</c:if>
 			<c:if test="${logStatus == 'N' || logStatus == null}">
@@ -100,7 +101,7 @@
 					</li>
 					<li class="tab-item w-1/3 text-center mx-4 border-b-4" data-nav-idx="3">
 						<a href="#comments" class="inline-block lg:p-4">
-							<span class="ico mr-2"><i class="xi-speech"></i></span>수강후기 <span class="text-brand-500">5</span>
+							<span class="ico mr-2"><i class="xi-speech"></i></span>수강후기 <span class="text-brand-500">${rpvo.totalRecord}</span>
 						</a>
 					</li>
 				</ul>
@@ -114,11 +115,17 @@
 					<div class="border p-8">
 						<div class="flex items-center">
 							<div class="w-24 h-24 mr-8 rounded-full overflow-hidden">
-								<img src="<%=ctx %>/img/user-avatar.png">
+							<c:if test="${vo.employee_img=='' || employee_img==null}"><img src="<%=ctx %>/img/user-avatar.png"></c:if>
+							<c:if test="${vo.employee_img!='' && employee_img!=null}"><img src="<%=ctx %>/img/${vo.employee_img}"></c:if>
 							</div>
 							<div class="instructor-name font-bold mr-8">${vo.employee_name}</div>
 							<div class="instructor-desc text-gray-700">
-								강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개강사소개
+								<c:if test="${vo.employee_overview=='' || employee_overview==null}">
+								강사 소개가 없습니다.
+								</c:if>
+								<c:if test="${vo.employee_overview!='' && employee_overview!=null}">
+								${vo.employee_overview}
+								</c:if>
 							</div>
 						</div>
 					</div>
@@ -243,6 +250,7 @@
 						</li>
 					</c:forEach>
 					</ul>
+					<c:if test="${rpvo.totalPage>0}">
 					<ul class="pagenation flex items-center justify-center my-4">
 						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==1}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&reviewPageNum=${rpvo.pageNum-1}#comments"><i class="xi-angle-left-min"></i></a></li>
 					<c:forEach var="i" begin="${rpvo.startPage}" end="${rpvo.startPage+rpvo.pageCount-1}">
@@ -252,6 +260,7 @@
 					</c:forEach>
 						<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand-500 <c:if test="${crrPageNum==rpvo.totalPage}">pointer-events-none</c:if>" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}&reviewPageNum=${rpvo.pageNum+1}#comments"><i class="xi-angle-right-min"></i></a></li>
 					</ul>
+					</c:if>
 				</div><!--강좌후기-->
 			</div>
 		</div>

@@ -48,36 +48,33 @@ $(function(){
 	});
 	
 	//위시리스트
-	$('a.add-wishlist').on('click', function(e){
+	$(document).on('click', 'a.add-wishlist', function(e){
 		e.preventDefault();
+		console.log($(this).attr('data-wish_status'));
 		$.ajax({
-			url:$(this).attr('href'),
-			data: $(this).data('param'),
+			url:$(this).data('action'),
+			data: {
+				course_no: $(this).data('course_no'),
+				wish_status: $(this).attr('data-wish_status'),
+			},
 			success: function(result){
 				console.log(result);
 				var jsonData = JSON.parse(result);
 				alert(jsonData.msg);
-				var review_no = jsonData.review_no;
-				var review_rank = jsonData.review_rank;
-				var review_content = jsonData.review_content;
-				$('.modify-review-'+review_no).addClass('hidden');
-				$('.review_rank-'+review_no).attr('data-review_rank', review_rank);
-				$('.review_rank-'+review_no).html('');
-				$('.review_content-'+review_no).text(review_content);
-				for(var i=1; i<=5; i++){
-					if(i<=review_rank){
-						$('.review_rank-'+review_no).append('<i class="xi-star"></i>');
-					}
-					else{
-						$('.review_rank-'+review_no).append('<i class="xi-star-o"></i>');
-					}
+				var wish_status = jsonData.wish_status;
+				console.log(wish_status);
+				$('a.add-wishlist').attr('data-wish_status', wish_status);
+				if(wish_status == 'remove'){
+					$('a.add-wishlist').addClass('added-this');
+				}else{
+					$('a.add-wishlist').removeClass('added-this');
 				}
 			},
 			error: function(e){
 				console.log(e.responseText);
 			}
 		});
-		$(this).add('added-this');
+		
 	});
 	
 	//탭

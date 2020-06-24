@@ -22,8 +22,8 @@
 		</if>
 	</select>
 	<select id="selectCourse" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseVO">
-		select course_no, course_name, c.employee_no employee_no,
-		e.employee_name employee_name, e.admin_id admin_id, course_price, 
+		select course_no, course_name, c.employee_no employee_no, e.employee_name,
+		e.employee_img, e.employee_overview, e.admin_id, course_price, 
         to_char(course_reception_start, 'yyyy/mm/dd') course_reception_start,
         to_char(course_reception_end, 'yyyy/mm/dd') course_reception_end,
         to_char(course_start_date, 'yyyy/mm/dd') course_start_date, to_char(course_end_date, 'yyyy-mm-dd') course_end_date,
@@ -32,7 +32,7 @@
 		where course_no=#{course_no}
 	</select>
 	<select id="selectPaymentNo" resultType="java.lang.Integer">
-		select NVL(payment_no, 0) from payment where course_no=#{param1} and student_no=#{param2}
+		select count(payment_no) from payment where course_no=#{param1} and student_no=#{param2}
 	</select>
 	<select id="reviewList" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseReviewVO">
 		select * from
@@ -48,6 +48,11 @@
 		select count(review_no) totalRecord from course_review
 		where course_no=#{course_no}
 	</select>
+	<select id="reviewRanks" resultType="kr.co.lms.main.VO.CourseReviewVO">
+		select review_rank, count(student_no) review_cnt from course_review
+		where course_no = #{course_no}
+		group by review_rank order by review_rank asc
+	</select>
 	<insert id="insertReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
 		insert into course_review(review_no, student_no, payment_no, review_content, review_date, review_rank, course_no)
 		values(review_sq.nextVal, #{student_no}, #{payment_no}, #{review_content:CLOB}, sysdate, #{review_rank}, #{course_no})
@@ -57,5 +62,15 @@
 	</update>
 	<delete id="deleteReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
 		delete from course_review where review_no=#{review_no}
+	</delete>
+	<select id="selectWishNo" resultType="java.lang.Integer">
+		select count(wish_no) from wish_list where course_no=#{param1} and student_no=#{param2}
+	</select>
+	<insert id="insertWish" parameterType="kr.co.lms.main.VO.WishVO">
+		insert into wish_list(wish_no, student_no, course_no, wish_date)
+		values(wish_sq.nextVal, #{student_no}, #{course_no}, sysdate)
+	</insert>
+	<delete id="deleteWish" parameterType="kr.co.lms.main.VO.WishVO">
+		delete from wish_list where student_no=#{student_no} and course_no=#{course_no}
 	</delete>
 </mapper>
