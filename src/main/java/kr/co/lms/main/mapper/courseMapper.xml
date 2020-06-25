@@ -31,8 +31,8 @@
 		from course c join employee e on c.employee_no=e.employee_no
 		where course_no=#{course_no}
 	</select>
-	<select id="selectPaymentNo" resultType="java.lang.Integer">
-		select count(payment_no) from payment where course_no=#{param1} and student_no=#{param2}
+	<select id="selectPaymentNo" resultType="java.lang.String">
+		select nvl(payment_no, 0) payment_no from payment where course_no=#{param1} and student_no=#{param2}
 	</select>
 	<select id="reviewList" parameterType="kr.co.lms.main.VO.PagingVO" resultType="kr.co.lms.main.VO.CourseReviewVO">
 		select * from

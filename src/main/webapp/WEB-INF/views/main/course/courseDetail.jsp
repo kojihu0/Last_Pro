@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 /* Hover state of the stars */
 #stars > li.star.hover {
@@ -164,27 +165,48 @@
 					</div>
 					<div class="course-total-rate lg:flex items-center py-4 lg:w-2/3 mb-8">
 						<div class="lg:w-56 h-56 text-center border p-6 lg:mr-8">
-							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">${reviewRankAvg}</h1>
+							<c:if test="${rpvo.totalRecord>0}">
+							<h1 class="roboto-slab text-brand-500 font-bold text-6xl"><fmt:formatNumber value="${reviewRankSum/rpvo.totalRecord}" pattern="0.0"/></h1>
+							</c:if>
+							<c:if test="${rpvo.totalRecord==0}">
+							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">0.0</h1>
+							</c:if>
 							<p class="text-brand-500 font-normal mb-2">
 								<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
 							</p>
 							<p>${rpvo.totalRecord}개의 수강평</p>
 						</div>
 						<div class="flex-grow h-56 border px-6 py-10">
+						<c:if test="${rpvo.totalRecord==0}">
+						<c:forEach var="i" begin="0" end="4">
+							<div class="stars flex items-center">
+								<div class="key pr-8">${5-i}</div>
+								<div class="bar w-full">
+									<div class="fullbar bg-gray-300 relative h-2 w-full">
+									</div>
+								</div>
+								<span class="w-16 text-right">0.0%</span>
+							</div>
+						</c:forEach>
+						</c:if>
+						<c:if test="${rpvo.totalRecord>0}">
 						<c:forEach var="rank" items="${reviewRanks}" varStatus="status">
-					
 							<div class="stars flex items-center">
 								<div class="key pr-8">${5-status.index}</div>
 								<div class="bar w-full">
 									<div class="fullbar bg-gray-300 relative h-2 w-full">
-										<div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:${rank.review_cnt/rpvo.totalRecord*100.0}%"></div>
+										<div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:<fmt:formatNumber value="${rank.review_cnt/rpvo.totalRecord*100.0}" pattern="0.00" type="percent"/>%"></div>
 									</div>
 								</div>
-								<span class="w-16 text-right">${rank.review_cnt/rpvo.totalRecord*100.0}%</span>
+								<span class="w-16 text-right"><fmt:formatNumber value="${rank.review_cnt/rpvo.totalRecord*100.0}" pattern="0.0"/>%</span>
 							</div>
 						</c:forEach>
+						</c:if>
 						</div>
 					</div>
+					<c:if test="${empty reviewList}">
+					<p class="py-8 text-center font-bold">아직 수강후기가 없습니다.</p>
+					</c:if>
 					<ul class="course-comment-list">
 					<c:forEach var="rvo" items="${reviewList}">
 						<li class="py-8 px-4 border-t">

@@ -1,5 +1,6 @@
 package kr.co.lms.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -99,28 +100,37 @@ public class CourseController {
 		if(logStatus!=null) { //로그인 상태일때 세션에서 학생번호와 구매번호 가져오기
 			if(logStatus.equals("Y")) {
 				student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
-				payment_no = dao.selectPaymentNo(course_no, student_no);
+				String strPayment_no = dao.selectPaymentNo(course_no, student_no); 
+				if(strPayment_no!=null) {
+					payment_no = Integer.parseInt(strPayment_no);
+				}
+				System.out.println("구매번호"+payment_no);
 				wish_no = dao.selectWishNo(course_no, student_no);
-				System.out.println(wish_no);
+				
 			}
 		}
 		//리뷰 퍼센트 구하기
 		int rankSum=0;
+		List<CourseReviewVO> reviewTmp = new ArrayList<CourseReviewVO>();
 		List<CourseReviewVO> review = dao.reviewRanks(course_no);
+		for(int i=0; i<5; i++) {
+			CourseReviewVO vvv = new CourseReviewVO();
+			reviewTmp.add(vvv);
+		}
+		System.out.println("ddddd"+review.size());
 		for(int i=0; i<review.size(); i++) {
 			CourseReviewVO vv = review.get(i);
-			rankSum+=vv.getReview_rank()*vv.getReview_cnt();
-			if(vv.getReview_rank()!=5-i) {
-				review.add(i, new CourseReviewVO());
-			}
+			rankSum+=vv.getReview_rank()*vv.getReview_cnt();			
+			reviewTmp.set(5-vv.getReview_rank(), vv);	
+			
 		}
 		String reviewRankAvg = String.format("%10.1f", (double)rankSum/totalReviews);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", dao.selectCourse(course_no));
 		mav.addObject("reviewList", dao.reviewList(rpvo));
-		mav.addObject("reviewRanks", review);
-		mav.addObject("reviewRankAvg", reviewRankAvg);
+		mav.addObject("reviewRanks", reviewTmp);
+		mav.addObject("reviewRankSum", rankSum);
 		mav.addObject("rpvo", rpvo);
 		mav.addObject("crrPageNum", rpvo.getPageNum());
 		mav.addObject("payment_no", payment_no);
@@ -137,7 +147,7 @@ public class CourseController {
 		int student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
 		vo.setStudent_no(student_no);
 		System.out.println("test"+ vo.getCourse_no()+" "+vo.getStudent_no());
-		int payment_no = dao.selectPaymentNo(vo.getCourse_no(), vo.getStudent_no());
+		int payment_no = Integer.parseInt(dao.selectPaymentNo(vo.getCourse_no(), vo.getStudent_no()));
 		vo.setPayment_no(payment_no);
 		int cnt = dao.insertReview(vo);
 		

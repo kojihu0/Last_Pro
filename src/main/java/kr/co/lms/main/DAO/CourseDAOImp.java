@@ -15,7 +15,7 @@ public interface CourseDAOImp {
 	//강좌개수
 	public int getTotalCoureses(String search_text);
 	//구매번호 선택
-	public int selectPaymentNo(int course_no, int student_no);
+	public String selectPaymentNo(int course_no, int student_no);
 	//수강후기 리스트
 	public List<CourseReviewVO> reviewList(PagingVO rpvo);
 	//수강평 퍼센테이지
