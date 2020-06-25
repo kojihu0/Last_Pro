@@ -36,14 +36,14 @@
                 <p class="text-center text-3xl">Welcome!</p>
                  
                 <!-- loginform start -->
-                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/loginOk" onsubmit="return adminLoginChek()">
+                <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/adminLoginOk" onsubmit="return adminLoginChek()">
                     <div class="flex flex-col pt-4">
                         <label for="adminId" class="text-lg">Id</label>
-                        <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="email" id="adminId" name="admin_id" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <div class="flex flex-col pt-4">
-                        <label for="adminPw" class="text-lg">Password</label>
-                        <input type="password" id="adminPw" name="adminPw" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <label for="adminPw" class="text-lg">Password</label> 
+                        <input type="password" id="adminPw" name="admin_pw" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <input type="submit" value="LogIn" class="bg-brand-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
                 </form>

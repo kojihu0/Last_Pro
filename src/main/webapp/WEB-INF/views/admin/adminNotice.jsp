@@ -35,22 +35,24 @@
 						<td class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-64">작성일</td> 
 						<td class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-16">조회수</td> 
 					</tr>
-				</tbody> 
-				<tbody> 
-					<tr class="bg-white hover:bg-gray-200" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?no='">
-						<td  class="border text-center p-2">1</td>
-						<td  class="border text-center p-2">공지사항 1번</td>
-						<td  class="border text-center p-2">공지사항</td>
-						<td  class="border text-center p-2">원장</td>
-						<td  class="border text-center p-2">오늘</td>
-						<td  class="border text-center p-2">1</td>
-					</tr>
+				</tbody>  
+				<tbody>  
+					<c:forEach var="vo" items="${list }">
+						<tr class="bg-white hover:bg-gray-200" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?admin_notice_no=${vo.admin_notice_no }'">
+							<td  class="border text-center p-2">${vo.admin_notice_no}</td>
+							<td  class="border text-center p-2">${vo.admin_notice_title}</td>
+							<td  class="border text-center p-2">${vo.admin_category}</td>
+							<td  class="border text-center p-2">${vo.employee_name}</td>
+							<td  class="border text-center p-2">${vo.admin_notice_date}</td>
+							<td  class="border text-center p-2">${vo.admin_notice_hit}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		
 		<div class="p-3 text-right"> 
-			<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4 href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a>
+			<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a>
 		</div>	
 	</div>
 	

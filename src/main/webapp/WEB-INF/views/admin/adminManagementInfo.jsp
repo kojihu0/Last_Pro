@@ -54,28 +54,38 @@
 						<tr> 
 							<th class="bg-info-300 px-4 py-2 text-center">번호</th>
 							<th class="bg-info-300 px-4 py-2 text-center">강의 일자</th>
-							<th class="bg-info-300 px-64 py-2 text-center">클래스</th>
+							<th class="bg-info-300 px-32 py-2 text-center">담당 분야</th>
 							<th class="bg-info-300 px-4 py-2 text-center">담당자</th>
 							<th class="bg-info-300 px-4 py-2 text-center">결제</th>
-							<th class="bg-info-300 px-32 py-2 text-center">한 줄 의견</th>		
+							<th class="bg-info-300 px-64 py-2 text-center">건의사항</th>		
 						</tr>
 					</thead>  
 					<tbody>  
+					<c:forEach var="vo" items="${resultList}">   
 						<tr class="bg-white hover:bg-gray-200"> 
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">1</a></td>
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">06.11</a></td>
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">기초 자바 웹 프로그래밍</a></td>
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">정진범</a></td>
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">미승인</a></td>
-							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView">수고</a></td>	 	
-						</tr>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_no} </a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_date} </a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_subject} </a></td>
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.employee_name} </a></td>
+							
+							
+							<c:if test="${vo.admin_manageinfo_ok == 0}">
+								<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">미승인</a></td>		
+							</c:if>
+							<c:if test="${vo.admin_manageinfo_ok == 1}">  
+								<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">승인</a></td>	
+							</c:if>
+						
+							<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_opinion} </a></td>	 	
+						</tr> 
+					</c:forEach>	
 						
 					</tbody>
 				</table>
 				<div class="p-3"></div>
 				<!-- 테이블 end -->
 				<div class="text-right">
-					<button class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"><a href="<%=projectPath%>/admin/adminManageRegi">등록</a></button>		
+					<a href="<%=projectPath%>/admin/adminManageRegi" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4">등록</a>
 				</div>
 			</div>
 		</div>

@@ -581,7 +581,20 @@ function teacherRegiCheck(){
 	    alert("id는 이메일 형식으로 작성하셔야 합니다. 회원가입 했던 id(email)을 입력해주세요");
 	    return false;
 	}
-
+	//teacherPw
+	//최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자
+	var pw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	
+	if(document.getElementById("teacherPw").value == ""){
+		 alert("비밀번호가 비었습니다.");
+		    return false;
+	}else if(!pw.test(document.getElementById("teacherPw").value)){ 
+	    alert("pw는 최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자로 작성하셔야 합니다.");
+	    return false;
+	} 
+	
+	
+	
 	//teacherTel_01 teacherTel_02 teacherTel_03
 	var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
 	var telPhone = "010" + "-" + document.getElementById("teacherTel_02").value + "-" + document.getElementById("teacherTel_03").value;

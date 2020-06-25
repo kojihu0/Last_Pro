@@ -56,28 +56,40 @@
 						</tr>
 					</thead> 
 					<tbody>
-						<tr>
-							<th class="border border-black bg-white w-16 p-2">1</th>
-							<th class="border border-black bg-white w-32 p-2">2020.06.31</th>
-							<th class="border border-black bg-white w-64 p-2">JAVA</th>
-							<th class="border border-black bg-white w-32 p-2">360000</th> 
-							<th class="border border-black bg-white w-32 p-2">개강준비</th>
-							<th class="border border-black bg-white w-32 p-2">
-								<a class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded" href="<%=projectPath%>/admin/adminCourseEdit">수정</a>
-								<a class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded"  href="<%=projectPath%>/admin/adminCourseDel">삭제</a>
-							</th>
-							<th class="border border-black bg-white w-32 p-2">월 수 금</th>
-							<th class="border border-black bg-white w-32 p-2">10:00~13:00</th>
-							<th class="border border-black bg-white w-32 p-2">본관 : A301</th>
+					<c:forEach var="vo" items="${list }"> 
+						<tr class="text-center">
+							<td class="border border-black bg-white w-16 p-2">${vo.course_no }</td>
+							<td class="border border-black bg-white w-32 p-2">${vo.course_start_date }</td> 
+							<td class="border border-black bg-white w-64 p-2">${vo.course_name }</td>
+							<td class="border border-black bg-white w-32 p-2">${vo.course_price }</td> 
+							<td class="border border-black bg-white w-32 p-2">${vo.course_state }</td>
+							<td class="border border-black bg-white w-32 p-2">
+								<a class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded" href="<%=projectPath%>/admin/adminCourseEdit?course_no=${vo.course_no }">수정</a>
+								<button data-course_no ="${vo.course_no}" onclick= "delCheck(this)" class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded">삭제</button>
+							</td>
+							<td class="border border-black bg-white w-32 p-2">${vo.course_day }</td>
+							<td class="border border-black bg-white w-32 p-2">${vo.course_time }</td>
+							<td class="border border-black bg-white w-32 p-2">${vo.course_stage }</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
-			</div>
+			</div> 
 			
 			<div class="text-right p-3">
 				<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseRegi">등록하기</a>
 			</div>
 	</div>
-
+	<script>
+		function delCheck(num){ 
+			var $course_no = $(num).data("course_no");
+			if(confirm("삭제 하시겠습니까?")){  
+				 location.href="<%=projectPath%>/admin/adminCourseDel?course_no=" +  $course_no; 
+			}
+		}
+	
+	</script>
+	
+	
 </body>
 </html>

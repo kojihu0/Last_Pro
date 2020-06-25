@@ -12,55 +12,113 @@
 
 </head>
 <body>
-		<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-			<div class="text-xl p-3 mx-16 ">  
-				<i class="xi-school"></i>&nbsp;사내공지
-			</div>
-	<form method="post" action="<%=projectPath%>/admin/adminNoticeEditOk" onsubmit="return noticeEditCheck()">
-		<div class="p-3">
-				<table class="w-full"> 
-					<thead>
-						<tr>
-							<th class="p-3 text-xl border-b-4 border-info-300"><input class="border-4 border-info-300 text-center" type="text" id="noticeSubject" name="noticeSubject" placeholder="글 제목" size="40"/></th>
-						<tr>
-						<tr>
-							<td>
-								<div class="flex justify-end border-b-4 border-info-300">
-									<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성자 : 정아무개</div>
-									<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성일자 : 2020.06.11</div>
-									<div class="p-3"><i class="xi-gratipay"></i>&nbsp;조회수 : 10</div>  
-								</div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td class="border border-b-4 border-info-300">
-								<div  style="min-height:400px">
-									<textarea id="noticEditContent" name="noticEditContent" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-								</div>	
-							<td>
-						<tr>
-					</thead> 
-				</table>
-			</div>
-			<div class="p-3 text-right"> 
-				<input type="submit" value="수정" class="bg-info-200 border border-black font-bold py-2 px-4 rounded"/>
-				<a href="<%=projectPath%>/admin/adminNotice"  class="bg-info-200 border border-black font-bold py-2 px-4 rounded">수정 취소</a>
-			</div>
-		</form>		
+
+
+	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
+		<div class="text-xl p-3 mx-16 ">  
+			<i class="xi-school"></i>&nbsp;사내 공지사항 작성
+		</div>
+	
+		<div class="p-3 text-right"> 
+			<a class="bg-info-200 border border-black font-bold rounded py-2 px-4" href="<%=projectPath%>/admin/adminNotice">목록으로</a>
+		</div>
+		
+		
+		
+		<div class="p-3 bg-gray-100 tableDiv border border-cta-900"> 
+		<form method="post" action="<%=projectPath%>/admin/adminNoticeEditOk" onsubmit="return noticeEditCheck()">
+			<table class=" my-0 mx-auto"> 
+				<thead>
+					<tr>
+						<th class="bg-info-300 w-32 border border-black">작성자</th>
+						<th class="p-2 text-left border border-black">관리자
+							<input type="hidden" name="admin_notice_no" value="${list.admin_notice_no }"/>
+						</th>
+					</tr>
+					<tr>
+						<th class="bg-info-300 w-32 border border-black">제목</th>
+						<th class="p-2 text-left border border-black"><input  style="width:400px" class="border border-black" type="text" id="noticeWriteSubject" name="admin_notice_title" value="${list.admin_notice_title }"/></th>
+					</tr>
+					<tr>
+						<th class="bg-info-300 w-32 border border-black">분류</th>
+						<th class="p-2 text-left border border-black">	
+							<div class="inline-block relative w-40">
+								<select name="admin_category" id="selectNoticeCategory" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									<c:if test="${list.admin_category != null }">
+										<option>::선택::</option>
+									</c:if>
+										<c:if test="${list.admin_category == null }">
+									<option selected="selected">::선택::</option>
+									</c:if>
+									
+									<c:if test="${list.admin_category == '1' }">
+										<option value="1" selected="selected">공지사항</option>
+									</c:if>
+									<c:if test="${list.admin_category != '1' }">
+										<option value="1">공지사항</option>
+									</c:if>
+									
+									<c:if test="${list.admin_category == '2' }">
+										<option value="2" selected="selected">이벤트</option> 
+									</c:if>
+									<c:if test="${list.admin_category != '2' }"> 
+										<option value="2">이벤트</option> 
+									</c:if>
+							  	 </select>
+							  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+					    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+					  			</div>
+				 			</div>
+			 			</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="bg-info-300 w-32 border border-black">내용</th>  
+						<td class="border border-black"><textarea id="noticeWriteContent" name="admin_notice_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">${list.admin_notice_content }</textarea></td>
+					</tr>
+					<tr>
+						<th class="bg-info-300 border border-black p-3 w-32">강의 이미지</th>
+						<td class="p-3 border border-black">  
+							<input class="border border-black" type="file" name="admin_notice_img" value="${list.admin_notice_img }"/> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		
+				<div class="text-right">  
+					<input type="submit" value="수정" class="bg-info-200 border-black border  font-bold py-2 px-4 rounded"/>
+					<a href="<%=projectPath %>/admin/adminNotice" class="bg-info-200 border-black border font-bold py-2 px-4 rounded">등록취소</a> 
+				</div> 
+		
+		</form>
+		
+		</div>
+		
+		
+		
+		
+		
 	</div>
-		<!-- 전체 틀 끝 -->	
+
+
+
+
+
+
+
 
 
 
 
 <script type="text/javascript">
 $(function(){
-	CKEDITOR.replace('noticEditContent',
-					 {height: 400 })
+	CKEDITOR.replace('noticeWriteContent',
+					 {height: 350 })
 });
 
 </script>
+
 
 </body>
 </html>

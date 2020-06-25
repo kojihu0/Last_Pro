@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%
 	String projectPath = request.getContextPath();
 %>
@@ -25,6 +26,8 @@
 
 <script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
 
+
+
 </head>
 <body class="bg-white font-family-karla h-screen">
     <div class="w-full flex flex-wrap">
@@ -42,21 +45,21 @@
                	<!-- form start .POST 방식 --> 
                 <form class="flex flex-col pt-3 md:pt-8" method="post" action="<%=projectPath %>/adminStart/adminJoinOk" onsubmit="return adminIdRegiChek()">
                     <!-- 이름 -->
-                    <div class="flex flex-col pt-4">
+                    <div class="flex flex-col pt-4"> 
                         <label for="adminName" class="text-lg">Name</label>
-                        <input type="text" id="adminName" name="adminName" placeholder="your name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="text" id="adminName" name="employee_name" placeholder="your name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
-					<!-- 이름 end -->
+					<!-- 이름 end --> 
 					<!-- 아이디 --> 
                     <div class="flex flex-col pt-4">
                         <label for="adminId" class="text-lg">Id</label>
-                        <input type="email" id="adminId" name="adminId" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="email" id="adminId" name="admin_id" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
     				<!-- 아이디  end-->
     				<!-- 비밀번호 -->
                     <div class="flex flex-col pt-4">
                         <label for="adminPw" class="text-lg">Password</label>
-                        <input type="password" id="adminPw" name="adminPw" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="password" id="adminPw" name="admin_pw" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <!-- 비밀번호 end -->
 					<!-- 비밀번호 확인 -->
@@ -66,7 +69,7 @@
                     </div>
     				<!-- 비밀번호 확인 end -->
                     <input type="submit" value="Register" class="bg-brand-500 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
-                </form>
+                </form> 
                 <!-- form end -->
                 
                 <!-- 로그인 폼으로 .GET 방식 --> 
@@ -83,5 +86,16 @@
             <img class="object-cover w-full h-screen hidden md:block" src="<%=projectPath%>/img/adminLoginBanner_02.jpg"/>
         </div>
     </div>
+    
+    
+    <script>
+		var $overlap = "${overlap}";
+	
+		if($overlap == "Y"){
+			alert("계정이 중복되어있습니다. 다른 계정을 입력해주세요");
+		}
+	</script>
+
+    
 </body>
 </html>
