@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<insert id="insertAdminID"
+			parameterType="kr.co.lms.admin.VO.AdminRegiVO">
+			INSERT INTO employee(employee_no, employee_name, admin_id, admin_pw, employee_date)
+			VALUES(employee_sq.nextval, #{employee_name}, #{admin_id}, #{admin_pw}, SYSDATE)			
+	</insert> 
+</mapper>

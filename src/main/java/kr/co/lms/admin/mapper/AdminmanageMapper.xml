@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+
+	<select id="selectOneRecord"
+			resultType="kr.co.lms.admin.VO.AdminManageInfoVO">
+	 	SELECT 
+	 		admin_manageinfo_no,
+			employee_no,
+			employee_name,
+			admin_manageinfo_subject,
+			admin_manageinfo_class,
+			 TO_CHAR(admin_manageinfo_date, 'YYYY-MM-DD') admin_manageinfo_date,
+			admin_manageinfo_absent,
+			admin_manageinfo_tardy,
+			admin_manageinfo_early,
+			admin_manageinfo_rest,
+			admin_manageinfo_move,
+			admin_manageinfo_now, 
+			absent_reason,
+			tardy_reason,
+			early_reason,
+			rest_reason,
+			move_reason,
+			student_parent_counsel,
+			admin_manageinfo_work,
+			admin_manageinfo_opinion,
+			admin_manageinfo_file,
+			admin_manageinfo_ok
+		FROM admin_manageinfo
+		WHERE admin_manageinfo_no = #{param1}
+	</select>
+	<select id="selectManageInfo"
+			resultType="kr.co.lms.admin.VO.AdminManageInfoVO">
+	
+		 SELECT   
+		        admin_manageinfo_no,  
+		        admin_manageinfo_subject,
+		        employee_no,
+		        employee_name,
+		        admin_manageinfo_class,
+		        TO_CHAR(admin_manageinfo_date, 'YYYY-MM-DD') admin_manageinfo_date,
+		        admin_manageinfo_ok,
+		        admin_manageinfo_opinion
+		        
+	    FROM admin_manageinfo 
+	    ORDER BY admin_manageinfo_no DESC 
+	</select>
+
+
+	<insert id="insertAdminManageInfo"
+			parameterType="kr.co.lms.admin.VO.AdminManageInfoVO">
+	
+		INSERT INTO admin_manageinfo(		
+			admin_manageinfo_no,
+			employee_no,
+			employee_name,
+			admin_manageinfo_subject,
+			admin_manageinfo_class,
+			admin_manageinfo_date,
+			admin_manageinfo_absent,
+			admin_manageinfo_tardy,
+			admin_manageinfo_early,
+			admin_manageinfo_rest,
+			admin_manageinfo_move,
+			admin_manageinfo_now, 
+			absent_reason,
+			tardy_reason,
+			early_reason,
+			rest_reason,
+			move_reason,
+			student_parent_counsel,
+			admin_manageinfo_work,
+			admin_manageinfo_opinion,
+			admin_manageinfo_file,
+			admin_manageinfo_ok
+		)VALUES(		
+			admin_manageinfo_sq.nextval,
+			#{employee_no},
+			#{employee_name},
+			#{admin_manageinfo_subject},
+			#{admin_manageinfo_class},
+			TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			#{admin_manageinfo_absent},
+			#{admin_manageinfo_tardy},
+			#{admin_manageinfo_early},
+			#{admin_manageinfo_rest},
+			#{admin_manageinfo_move},
+			#{admin_manageinfo_now}, 
+				<if test="absent_reason != null">
+					#{absent_reason}, 
+				</if>		
+				<if test="absent_reason == null">
+					'X',
+				</if>		
+				<if test="tardy_reason != null">
+					#{tardy_reason},
+				</if>		
+				<if test="tardy_reason == null">
+					'X',
+				</if>		
+				<if test="early_reason != null">
+					#{early_reason},
+				</if>		
+				<if test="early_reason == null">
+					'X',
+				</if>	
+				<if test="rest_reason != null">
+					#{rest_reason},
+				</if>		
+				<if test="rest_reason == null">
+					'X',
+				</if>	
+				<if test="move_reason != null">
+					#{move_reason},
+				</if>			
+				<if test="move_reason == null"> 
+					'X'
+				</if> 	
+				<if test="student_parent_counsel != null">
+					#{student_parent_counsel},
+				</if>  
+				<if test="student_parent_counsel == null">
+					'X',
+				</if> 
+			#{admin_manageinfo_work},
+			#{admin_manageinfo_opinion},
+			#{admin_manageinfo_file},
+			0
+		)
+	</insert>
+	<update id="updateAdminManageInfo"
+		    parameterType="kr.co.lms.admin.VO.AdminManageInfoVO">
+		UPDATE admin_manageinfo
+		SET
+			admin_manageinfo_subject = #{admin_manageinfo_subject},
+			admin_manageinfo_class 	 = #{admin_manageinfo_class},
+			admin_manageinfo_date 	 = #{admin_manageinfo_date},
+			admin_manageinfo_absent  = #{admin_manageinfo_absent},
+			admin_manageinfo_tardy   = #{admin_manageinfo_tardy},
+			admin_manageinfo_early 	 = #{admin_manageinfo_early},
+			admin_manageinfo_rest 	 = #{admin_manageinfo_rest},
+			admin_manageinfo_move 	 = #{admin_manageinfo_move},
+			admin_manageinfo_now 	 = #{admin_manageinfo_now}, 
+			 
+			absent_reason 	= 
+			<if test = "absent_reason != null">#{absent_reason},</if>
+			<if test = "absent_reason == null">'X',</if>
+			tardy_reason 	= 
+			<if test = "tardy_reason != null">#{tardy_reason},</if>
+			<if test = "tardy_reason == null">'X',</if>
+			early_reason 	= 
+			<if test = "early_reason != null">#{early_reason},</if>
+			<if test = "early_reason == null">'X',</if>	
+			rest_reason 	= 
+			<if test = "rest_reason != null">#{rest_reason},</if>
+			<if test = "rest_reason == null">'X',</if>
+			move_reason 	= 
+			<if test = "move_reason != null">#{move_reason},</if>
+			<if test = "move_reason == null">'X',</if>
+			
+			student_parent_counsel  	= #{student_parent_counsel},
+			admin_manageinfo_work 		= #{admin_manageinfo_work},
+			admin_manageinfo_opinion 	= #{admin_manageinfo_opinion},
+			admin_manageinfo_file 		= #{admin_manageinfo_file},
+			admin_manageinfo_ok 		= #{admin_manageinfo_ok}
+			WHERE
+				admin_manageinfo_no = #{admin_manageinfo_no}
+	</update>
+	
+	<update id="updateAdminManageInfoOk"
+	 	    parameterType="kr.co.lms.admin.VO.AdminManageInfoVO">
+	 	    	UPDATE 	admin_manageinfo
+				SET    	admin_manageinfo_ok = #{admin_manageinfo_ok}
+				WHERE	admin_manageinfo_no = #{admin_manageinfo_no}
+	</update>
+</mapper>

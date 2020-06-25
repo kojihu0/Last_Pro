@@ -20,14 +20,14 @@
 			<table class="w-full">
 				<thead>
 				<tr>
-					<th class="p-3 text-xl border-b-4 border-info-300">글제목</th>
+					<th class="p-3 text-xl border-b-4 border-info-300">${list.admin_notice_title}</th>
 				<tr>
 				<tr>
 					<td>
 						<div class="flex justify-end border-b-4 border-info-300">
-							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성자 : 정진법</div>
-							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성일자 : 2020.06.11</div>
-							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;조회수 : 10</div>  
+							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성자 : ${list.employee_name }</div>
+							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성일자 : ${list.admin_notice_date }</div>
+							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;조회수 : ${list.admin_notice_hit}</div>  
 						</div>
 					</td>
 				</tr>
@@ -35,7 +35,7 @@
 				<tr>
 					<td class="border border-b-4 border-info-300">
 						<div  style="min-height:400px">
-							글 내용
+							${list.admin_notice_content } 
 						</div>	
 					<td>
 				<tr>
@@ -43,10 +43,10 @@
 			</table>
 		</div>
 	
-		<div class="p-3 text-right"> 
+		<div class="p-3 text-right">  
 			<a href="<%=projectPath%>/admin/adminNotice"  class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">목록으로</a>
-			<a href="<%=projectPath%>/admin/adminNoticeEdit"  class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">수정</a>
-			<a href="<%=projectPath%>/admin/adminNoticeDel"  class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">삭제</a>
+			<a href="<%=projectPath%>/admin/adminNoticeEdit?admin_notice_no=${list.admin_notice_no }&employee_name=${list.employee_name}" class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">수정</a>
+			<a href="<%=projectPath%>/admin/adminNoticeDel?admin_notice_no=${list.admin_notice_no }" class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">삭제</a>
 		</div>	
 	</div>
 	<!-- 전체 틀 끝 -->

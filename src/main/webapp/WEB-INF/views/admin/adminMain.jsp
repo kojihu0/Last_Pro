@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
     
-
+	<script src="/lms/js/jquery-3.4.1.js"></script>
+		
 	   <!-- chart js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
 	
@@ -113,7 +114,7 @@
 	              <!-- 캘린더 생성 -->
 	         <div class="w-full md:w-full p-3">
 	              		<div class="rounded text-white ">
-	              			<button style="background-color: #1a252f;" class="p-3 w-24 h-10 rounded" onClick="javascript:addEvent();">일정등록</button>
+	              			<input style="background-color: #1a252f;" class="p-3 w-24 h-10 rounded" type="button" id="popover" value="일정"/>
 	              		</div>
 	         	
 	              	<div id='calendar'>
@@ -272,7 +273,7 @@
 	        </div>
 	    </div>
 	</div>
- 
+  
 	<!--  -->
 	<script src="<%=projectPath %>/fullCalendar02/moment/main.js"></script>
 	<script src="<%=projectPath %>/js/bPopup.js"></script>
@@ -280,8 +281,170 @@
 	<script src="<%=projectPath %>/fullCalendar02/interaction/main.js"></script>
 	<script src="<%=projectPath %>/fullCalendar02/daygrid/main.js"></script>
 	<script src="<%=projectPath %>/fullCalendar02/timegrid/main.js"></script>
+<script>
+
+var startDate;
+var ednDate;
+var titelDate;
+var colorDate;
+var contentDate;
+var calendar;
+var fixeDate;
+var date;
+document.addEventListener('DOMContentLoaded', function() {
+	  var calendarEl  = document.getElementById('calendar');
+	  
+  	  calendar = new FullCalendar.Calendar(calendarEl, {
+		  
+		  plugins	    : [ 'interaction', 'dayGrid', 'timeGrid' ],
+		  defaultView   : 'dayGridMonth',
+		  defaultDate   : new Date(),
+		  selectable    : true,
+		  selectMirror  : true,
+		  selectHelper  : true,
+		  locale 		: 'ko',
+		  header: {
+			  left: 'prev,next today',
+			  center: 'title',
+			  right:  'listMonth'
+		  },
+		  views: {
+			    month: {
+			      columnFormat: 'dddd'
+			    },
+		  },   
+	      navLink		 : true,
+	      businessHours	 : true,
+	      editable		 : true,
+	      eventDrop: function(info) {
+	    	   
+	    	    alert(info.event.title + " was dropped on " + startDate.toISOString());
+
+	    	    if (!confirm("Are you sure about this change?")) {
+	    	      info.revert();
+	    	    }
+	    	  },
+	      events: function(info, successCallback, failureCallback){
+	    	  $.ajax({
+	    		  type:"GET",
+	    		  url: "<%=projectPath%>/calendar/base",
+	    		  success: function(result){
+	    			  fixeDate = result; 
+	    			  console.log(info.end + " :  info 결과값");
+	    			  console.log(successCallback + " : successCallback 결과값");  
+	    			  console.log(failureCallback + " : failureCallback 결과값");    			  
 	
-	<script type="text/javascript"  src="<%=projectPath %>/js/adminJs.js"></script> 
-    
+	    			  console.log(result + " : 결과값"); 
+	    			  console.log(fixeDate + " : fixeDate 결과값"); 	    			    
+	    		  },
+	    		  error:function(e){   
+	    			  console.log(e.responseText + " : 에러 ");
+	    		  }
+	    	  });
+	    	  
+	    	  return fixeDate;
+	      }
+	    	  
+	  	}); 
+	  //캘린더 그리기.
+	  calendar.render();
+});
+
+$(function(){
+
+	//일정등록 버튼 클릭시, 일정 등록.
+	$("#popover").on('click', function(){ 
+		var tag = "";
+		tag += 	"<form id='calendar_form' method='post'>";
+		tag += "<div class='flex p-3'>"+ 
+					"<div class=''>일정명</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+					"<div class=''>" +
+						"<input size='15' class='border border-black' type='text' name='calendar_title' id='calendar_title' value=''/>" +
+					"</div>" +
+				"</div>";
+		tag += "<div class='flex p-3'>" +
+					"<div>시작 날짜</div>&nbsp;&nbsp;" +
+					"<div>" +
+						"<input  class='border border-black' type='date' name='calendar_start_date' id='calendar_start_date' value=''/>" +
+					"</div>" +
+				"</div>";
+		tag += "<div class='flex p-3'>" +
+					"<div>마침 날짜</div>&nbsp;&nbsp;" +
+						"<div>" +
+							"<input  class='border border-black' type='date' name='calendar_end_date' id='calendar_end_date' value=''/>" +
+					"</div>" +
+				"</div>";
+		tag += "<div class='flex p-3'>" +
+					"<div>일정 명칭</div>&nbsp;&nbsp;" + 
+					"<div>" + 
+						"<textarea style='resize:none;'class='border border-black' cols='18' rows='5' name='calendar_content' id='calendar_content'></textarea>" +
+					"</div>" +
+				"</div>"	;
+		tag += "<div class='flex p-3'>" +
+					"<div>컬    러</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+					"<div>" +
+						"<select name='calendar_color' id='colorSelect'>" +
+							"<option selected='selected'>::색상::</option>" +
+							"<option value='#3A3939' style='color:#3A3939'>검정</option>" +
+							"<option value='#FF583F' style='color:#FF583F'>빨강</option>" +
+							"<option value='#51DBFF' style='color:#51DBFF'>파랑</option>" +
+							"<option value='#A4ED75' style='color:#A4ED75'>녹색</option>" +  
+						"</select>" +
+					"</div>" +
+				"</div>"	 ;
+					
+		tag += "<div class='text-right p-3'>" +
+					"<input type='submit'value='저장' />"+  
+				"</div>";
+		tag	+=	"</form>";
+		
+		openPopup("일정관리", tag, 400)
+	});//일정등록 창 end
+	
+	//add event 작업.
+	$(document).on('submit','#calendar_form', function(){
+	   var jsonData = $("#calendar_form").serialize();
+	   $.ajax({
+			type:"POST",
+			async:false, 
+			url:"<%=projectPath%>/calendar/newData",
+			data: jsonData,  
+			success : function(result){	 
+				console.log("너 어디갔니?" + result);
+				//--------------------------- 
+				//eventSource.refetch();
+				calendar.refetchEvents();
+				//calendar.rerenderEvents();
+				//location.reload();
+				//---------------------------
+				//데이터 작업. 
+			}, error : function(e){ 
+				console.log("달력 이벤트 추가 에러" + e.responseText);
+			}
+		});
+	   closebPopup("popup")
+	   return false;   
+	});//이벤트영역	
+	
+	
+	//모달 작업.
+	function openPopup(subject, content, width){
+		$("#modal_calendar").html(subject);
+		$("#modal_calendar_content").html(content);
+		openbPopup("popup", width)
+	}
+
+	function openbPopup(IDS, width){
+		$("#"+IDS).css("width", width + "px");
+		$("#" + IDS).bPopup(); 
+	}
+	function closebPopup(IDS){
+		$("#" + IDS).bPopup().close();
+	}
+});//제이쿼리 영역 end
+
+ </script>
+	
+	
 </body>
 </html>

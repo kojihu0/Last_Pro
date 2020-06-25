@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			    month: {
 			      columnFormat: 'dddd'
 			    },
-		  },
-			    
+		  },   
 	      navLink		 : true,
 	      businessHours	 : true,
 	      editable		 : true,
@@ -35,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	    	      info.revert();
 	    	    }
 	    	  },
-	      events		 : 
+	      events: 
+	    	
 	    	  	[ 
 		    	  { 
 	                  title : "빨강색 배경 & 글자색 노랑색"
@@ -82,10 +82,10 @@ function addEvent(){
 				"<div>" +
 					"<select id='colorSelect'>" +
 						"<option selected='selected'>::색상::</option>" +
-						"<option vlaue='1'>검정</option>" +
-						"<option vlaue='2'>빨강</option>" +
-						"<option vlaue='3'>파랑</option>" +
-						"<option vlaue='4'>녹색</option>" +
+						"<option vlaue='black'>검정</option>" +
+						"<option vlaue='red'>빨강</option>" +
+						"<option vlaue='blue'>파랑</option>" +
+						"<option vlaue='info-300'>녹색</option>" +
 					"</select>" +
 				"</div>" +
 			"</div>"	 

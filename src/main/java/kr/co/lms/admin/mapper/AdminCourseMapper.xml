@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<select id="selectCourseAll" 
+			resultType="kr.co.lms.admin.VO.AdminCourseVO"> 
+		SELECT 
+			course_no,
+			course_name,
+			TO_CHAR(course_start_date, 'YYYY-MM-DD') course_start_date,
+			course_price,
+			course_state,
+			course_day, 
+			course_time,
+			course_stage
+		FROM 
+			course 
+		ORDER BY
+			 course_no
+		DESC
+	</select>
+		<select id="selectCourseOne" 
+			resultType="kr.co.lms.admin.VO.AdminCourseVO"> 
+		SELECT 
+			c.course_no,
+			c.employee_no,
+            e.employee_name,
+			c.course_name, 
+			TO_CHAR(course_reception_start, 'YYYY-MM-DD') course_reception_start,
+			TO_CHAR(course_reception_end, 'YYYY-MM-DD') course_reception_end,
+			TO_CHAR(course_start_date, 'YYYY-MM-DD') course_start_date,
+			TO_CHAR(course_end_date, 'YYYY-MM-DD') course_end_date,
+			c.course_price,
+			c.course_overview,
+			c.course_content,
+			c.course_textbook,
+			TO_CHAR(course_date, 'YYYY-MM-DD') course_date,
+			c.course_state,
+			c.course_day, 
+			c.course_time,
+			c.course_stage,
+			c.course_img
+		FROM  
+			course c JOIN employee e  
+		ON
+            c.employee_no = e.employee_no AND
+			course_no = #{param1}
+	</select>
+	
+	<update id="updateCourse" 
+			parameterType="kr.co.lms.admin.VO.AdminCourseVO">
+		UPDATE
+			course
+		SET  
+			course_reception_start 	= #{course_reception_start},
+			course_reception_end 	= #{course_reception_end},
+			course_start_date 		= #{course_start_date}, 
+			course_end_date = #{course_end_date},
+			course_price 	= #{course_price},
+			course_overview = #{course_overview},
+			course_content 	= #{course_content},
+			course_textbook = #{course_textbook},
+			course_date 	= #{course_date},
+			course_state 	= #{course_state},
+			course_day 		= #{course_day}, 
+			course_time 	= #{course_time},
+			course_stage 	= #{course_stage}
+			<if test="course_img != null">
+				,course_img	 	= #{course_img}
+			</if>
+		WHERE 
+			course_no = #{course_no}
+	</update>
+	
+	<delete id="delRecord"
+			parameterType="kr.co.lms.admin.VO.AdminCourseVO">
+		DELETE FROM course 
+		WHERE course_no = #{course_no}
+	</delete>
+	
+	<select id="checkTeacherId"
+			parameterType="string"
+			resultType="int">
+		
+			SELECT 
+				employee_no
+			FROM 
+				employee
+			WHERE
+				admin_id = #{param1} 
+	</select>
+		
+	<insert id="insertCourse"
+			parameterType="kr.co.lms.admin.VO.AdminCourseVO">
+		INSERT INTO course(
+			course_no, 
+			employee_no,
+			employee_name,
+			course_name,
+			course_price,
+			course_reception_start,
+			course_reception_end,
+			course_start_date,
+			course_end_date,
+			course_state,
+			course_overview,
+			course_content,
+			course_textbook,
+			course_day,
+			course_time,
+			course_stage,
+			course_date,
+			course_img
+		)
+		VALUES(
+			course_sq.nextval,
+			#{employee_no},
+			#{employee_name},
+			#{course_name},
+			#{course_price},
+			#{course_reception_start},
+			#{course_reception_end},
+			#{course_start_date},
+			#{course_end_date},
+			#{course_state},
+			#{course_overview},
+			#{course_content}, 
+			#{course_textbook},
+			#{course_day},
+			#{course_time},
+			#{course_stage},
+			#{course_date},
+			#{course_img}
+		)
+	</insert>
+
+</mapper> 

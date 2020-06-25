@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<select id="selectNoticeAll"
+			resultType="kr.co.lms.admin.VO.AdminNoticeVO">
+		SELECT 
+			n.admin_notice_no,
+			n.admin_notice_title,
+			n.admin_category,
+			n.employee_no,
+			e.employee_name,
+			n.admin_notice_date,
+			n.admin_notice_hit 
+		FROM  
+			employee e JOIN admin_notice n
+		ON
+			e.employee_no = n.employee_no
+		ORDER BY
+			 n.admin_notice_no
+		DESC 
+	</select> 
+	
+ 	<select id="selectNoticeOne" 
+ 			parameterType="int" 
+			resultType="kr.co.lms.admin.VO.AdminNoticeVO">
+		SELECT 
+			n.admin_notice_no,
+			n.admin_notice_title,
+			n.admin_category,
+			n.employee_no,
+			e.employee_name,
+			n.admin_notice_content,
+			n.admin_notice_date,
+			n.admin_notice_hit
+		FROM   
+			employee e JOIN admin_notice n
+		ON
+			e.employee_no = n.employee_no
+		AND n.admin_notice_no = #{param1}	
+	</select>
+
+	<select id="selectEmployeeNo"
+			parameterType="string"
+			resultType="int">
+		SELECT
+			employee_no
+		FROM 
+			employee
+		WHERE
+			admin_id = #{param1}	 
+			
+	</select>
+	
+	<insert id="insertNotice"
+			parameterType="kr.co.lms.admin.VO.AdminNoticeVO"> 
+		INSERT INTO 
+			admin_notice(
+				admin_notice_no,
+				admin_notice_title,
+				admin_notice_content,
+				admin_notice_date,
+				employee_no,
+				admin_category,
+				admin_notice_img
+			)
+		VALUES(
+			30,
+			#{admin_notice_title},
+			#{admin_notice_content},
+			SYSDATE,
+			#{employee_no},
+			#{admin_category},
+			#{admin_notice_img}
+		)	
+		
+	
+	</insert>
+	
+	
+	
+
+	<update id="updateNotice" 
+			parameterType="kr.co.lms.admin.VO.AdminNoticeVO">
+		UPDATE 
+			admin_notice
+		SET
+			admin_notice_title 		= #{admin_notice_title},
+			admin_notice_content 	= #{admin_notice_content},
+			admin_notice_date 		= TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			admin_notice_hit 		= #{admin_notice_hit},
+			admin_notice_img		= #{admin_notice_img}
+		WHERE 
+			admin_notice_no = #{admin_notice_no} 
+	</update>
+
+	 
+</mapper>

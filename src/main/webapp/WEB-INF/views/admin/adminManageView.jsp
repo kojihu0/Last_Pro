@@ -15,30 +15,35 @@
 			<i class="xi-school"></i>&nbsp;강사 업무 일지 작성
 		</div>
 		 
-		<div class="p-3 text-right"> 
+		<div class="p-3 text-right">  
 			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
-			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit">수정</a>
+			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}">수정</a>
 		</div>
 		 
 		<!-- 테이블 -->
 			<div class="p-6 bg-info-100">  
 				<table class="border w-full"> 
-					<thead>
+					<thead> 
 						<tr>
 							<th class="w-32 bg-info-300 py-2 text-center">강사명</th>
-							<th class="border bg-white  px-4 py-2 text-left">김개똥</th>
+							<td class="border bg-white  px-4 py-2 text-left">${result_Vo.employee_name }</td>
 						</tr>
 						<tr>		
 							<th class="bg-info-300 py-2 text-center">클래스</th>
-							<th class="border bg-white px-4 py-2 text-left">자바 반</th>
+							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_class }</td>
 						</tr>
 						<tr>		
 							<th class="bg-info-300  py-2 text-center">강의 일자</th>
-							<th class="border bg-white  px-4 py-2 text-left">06.11</th>
+							<td class="border bg-white  px-4 py-2 text-left">${result_Vo.admin_manageinfo_date }</td>
 						</tr>
 						<tr> 
 							<th class="bg-info-300 py-2 text-center">결제 상태</th>
-							<th class="border bg-white px-4  py-2 text-left">미결</th>		
+							<c:if test="${result_Vo.admin_manageinfo_ok == 0}">
+								<td class="border bg-white px-4  py-2 text-left">미승인</td>		
+							</c:if>
+							<c:if test="${result_Vo.admin_manageinfo_ok == 1}"> 
+								<td class="border bg-white px-4  py-2 text-left">승   인</td>		 
+							</c:if>
 						</tr>
 					</thead>   
 				</table> 
@@ -51,39 +56,39 @@
 					<thead>
 					<tr>
 						<th class="w-32 bg-info-300 py-2 text-center">결석</th>
-						<th class="w-32 border bg-white  px-4 py-2 text-center">3</th>
+						<td class="w-32 border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_absent }</td>
 						<th class="w-64 bg-info-300 py-2 text-center">결석생</th>
-						<th class="border bg-white px-4 py-2 text-justify" style="width:800px">사유 : </th> 
+						<td class="border bg-white px-4 py-2 text-justify" style="width:800px">${result_Vo.absent_reason } </td> 
 					</tr>
 					<tr>
 						<th class="bg-info-300 py-2 text-center">지각</th>
-						<th class="border bg-white  px-4 py-2 text-center">4</th>
+						<td class="border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_tardy }</td>
 						<th class="bg-info-300 py-2 text-center">지각생</th>
-						<th class="border bg-white  px-4 py-2 text-justify"style="width:800px">사유 : </th>
+						<td class="border bg-white  px-4 py-2 text-justify"style="width:800px">${result_Vo.tardy_reason }</td>
 					</tr>
 					<tr>	
 						<th class="bg-info-300 py-2 text-center">조퇴</th> 
-						<th class="border bg-white  px-4 py-2 text-center">4</th>
+						<td class="border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_early }</td>
 						<th class="bg-info-300 py-2 text-center">조퇴 인원</th>
-						<th class="border bg-white  px-4 py-2 text-justify"style="width:800px">사유 : </th>
+						<td class="border bg-white  px-4 py-2 text-justify"style="width:800px">${result_Vo.early_reason }</td>
 					</tr>
 					<tr>	
 						<th class="bg-info-300 py-2 text-center">휴강자</th>
-						<th class="border bg-white  px-4 py-2 text-center">5</th>
+						<td class="border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_rest }</td>
 						<th class="bg-info-300 py-2 text-center">휴강생</th>
-						<th class="border bg-white  px-4 py-2 text-justify"style="width:800px">사유 : </th>
+						<td class="border bg-white  px-4 py-2 text-justify"style="width:800px">${result_Vo.rest_reason }</td>
 					</tr>
 					<tr>	
 						<th class="bg-info-300 py-2 text-center">반 이동</th>
-						<th class="border bg-white  px-4 py-2 text-center">3</th>
+						<td class="border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_move }</td>
 						<th class="bg-info-300 py-2 text-center">이동 인원</th>
-						<th class="border bg-white  px-4 py-2 text-justify"style="width:800px">사유 : </th>
+						<td class="border bg-white  px-4 py-2 text-justify"style="width:800px">${result_Vo.move_reason }</td>
 					</tr>
 					<tr>	
 						<th class="bg-info-300 py-2 text-center">현재 인원/총인원</th>
-						<th class="border bg-white  px-4 py-2 text-center">30명/40명</th>
+						<td class="border bg-white  px-4 py-2 text-center">${result_Vo.admin_manageinfo_now }/40명</td>
 						<th class="bg-info-300 py-2 text-center">학생 및 학부모 상담</th>
-						<th class="border bg-white  px-4 py-2 text-justify"style="width:800px">사유 :</th>	
+						<td class="border bg-white  px-4 py-2 text-justify"style="width:800px">${result_Vo.student_parent_counsel }</td>	
 					</tr>
 					</thead>
 				</table>
@@ -94,30 +99,29 @@
 					<thead>
 						<tr>
 							<th class="w-32 bg-info-300 py-2 text-center">금일 진행 업무</th>
-							<th class="border bg-white px-4 py-2 text-left">너 오늘 뭐 했니??</th>
+							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_work }</td>
 						</tr>
 						<tr>		
 							<th class="bg-info-300 py-2 text-center">건의 사항</th>
-							<th class="border bg-white px-4 py-2 text-left">말해봐. 들어는 줄게</th>
+							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_opinion }</td> 
 						</tr>
 						<tr>  
 							<th class="bg-info-300 py-2 text-center">첨부파일</th>
-							<th class="border  bg-white px-32 py-2 text-left"><a href="#" download></a></th>		
+							<td class="border  bg-white px-32 py-2 text-left"><a href="#" download>${result_Vo.admin_manageinfo_file }</a></td>		
 						</tr>
 					</thead>  
 				</table>  
 				
 				<div class="p-3"></div>
 				
-			<form method="get" action="<%=projectPath %>/admin/adminManagementInfo">
-				승인 여부 &nbsp;: <input class="mx-2" type="radio" name="type" value="Y" checked>승인 <input class="mx-2" type="radio" name="type" value="N">반송 <br/> 
-				한 줄 의견 : <input type="text" style="width:500px" class="border"/>
-				
+			<form method="post" action="<%=projectPath %>/admin/adminManagementInfoOk">  
+				승인 여부 &nbsp;: <input class="mx-2" type="radio" name="admin_manageinfo_ok" value="1" checked>승인 <input class="mx-2" type="radio" name="admin_manageinfo_ok" value="0">반송 <br/> 
 				<br/>
 				
 				<div class="p-3"></div> 
 			
 				<div class="text-right">  
+					<input type="hidden"  name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
 					<input type="submit" value="결제" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
 					<!-- 목록으로 가는 버튼 -->		
 				</div>
