@@ -104,11 +104,23 @@ public class CourseController {
 				System.out.println(wish_no);
 			}
 		}
+		//리뷰 퍼센트 구하기
+		int rankSum=0;
+		List<CourseReviewVO> review = dao.reviewRanks(course_no);
+		for(int i=0; i<review.size(); i++) {
+			CourseReviewVO vv = review.get(i);
+			rankSum+=vv.getReview_rank()*vv.getReview_cnt();
+			if(vv.getReview_rank()!=5-i) {
+				review.add(i, new CourseReviewVO());
+			}
+		}
+		String reviewRankAvg = String.format("%10.1f", (double)rankSum/totalReviews);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", dao.selectCourse(course_no));
 		mav.addObject("reviewList", dao.reviewList(rpvo));
-		mav.addObject("reviewRanks", dao.reviewRanks(course_no));
+		mav.addObject("reviewRanks", review);
+		mav.addObject("reviewRankAvg", reviewRankAvg);
 		mav.addObject("rpvo", rpvo);
 		mav.addObject("crrPageNum", rpvo.getPageNum());
 		mav.addObject("payment_no", payment_no);

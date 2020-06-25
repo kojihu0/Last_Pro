@@ -12,7 +12,7 @@ public class CourseReviewVO {
 	private int course_no;
 	private int review_cnt;
 	private int totalRecord;
-	private double percentage = Math.round((double)review_cnt/(double)totalRecord*100.0);
+	private double percentage;
 
 	public int getReview_no() {
 		return review_no;
@@ -99,6 +99,8 @@ public class CourseReviewVO {
 	}
 
 	public void setPercentage(double percentage) {
+		System.out.println(totalRecord);
+		percentage = Math.round((double)review_rank/(double)totalRecord*100.0);
 		this.percentage = percentage;
 	}
 	

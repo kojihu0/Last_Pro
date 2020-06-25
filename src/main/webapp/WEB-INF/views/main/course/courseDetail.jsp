@@ -164,48 +164,25 @@
 					</div>
 					<div class="course-total-rate lg:flex items-center py-4 lg:w-2/3 mb-8">
 						<div class="lg:w-56 h-56 text-center border p-6 lg:mr-8">
-							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">5.0</h1>
+							<h1 class="roboto-slab text-brand-500 font-bold text-6xl">${reviewRankAvg}</h1>
 							<p class="text-brand-500 font-normal mb-2">
 								<i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i><i class="xi-star"></i>
 							</p>
-							<p>2개의 수강평</p>
+							<p>${rpvo.totalRecord}개의 수강평</p>
 						</div>
 						<div class="flex-grow h-56 border px-6 py-10">
+						<c:forEach var="rank" items="${reviewRanks}" varStatus="status">
+					
 							<div class="stars flex items-center">
-								<div class="key pr-8">5</div>
+								<div class="key pr-8">${5-status.index}</div>
 								<div class="bar w-full">
-									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:100%"></div></div>
+									<div class="fullbar bg-gray-300 relative h-2 w-full">
+										<div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:${rank.review_cnt/rpvo.totalRecord*100.0}%"></div>
+									</div>
 								</div>
-								<span class="w-16 text-right">100%</span>
+								<span class="w-16 text-right">${rank.review_cnt/rpvo.totalRecord*100.0}%</span>
 							</div>
-							<div class="stars flex items-center">
-								<div class="key pr-8">4</div>
-								<div class="bar w-full">
-									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
-								</div>
-								<span class="w-16 text-right">0%</span>
-							</div>
-							<div class="stars flex items-center">
-								<div class="key pr-8">3</div>
-								<div class="bar w-full">
-									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
-								</div>
-								<span class="w-16 text-right">0%</span>
-							</div>
-							<div class="stars flex items-center">
-								<div class="key pr-8">2</div>
-								<div class="bar w-full">
-									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
-								</div>
-								<span class="w-16 text-right">0%</span>
-							</div>
-							<div class="stars flex items-center">
-								<div class="key pr-8">1</div>
-								<div class="bar w-full">
-									<div class="fullbar bg-gray-300 relative h-2 w-full"><div class="bg-brand-500 absolute left-0 top-0 h-2" style="width:0%"></div></div>
-								</div>
-								<span class="w-16 text-right">0%</span>
-							</div>
+						</c:forEach>
 						</div>
 					</div>
 					<ul class="course-comment-list">

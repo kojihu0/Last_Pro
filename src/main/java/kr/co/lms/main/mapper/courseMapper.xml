@@ -51,7 +51,7 @@
 	<select id="reviewRanks" resultType="kr.co.lms.main.VO.CourseReviewVO">
 		select review_rank, count(student_no) review_cnt from course_review
 		where course_no = #{course_no}
-		group by review_rank order by review_rank asc
+		group by review_rank order by review_rank desc
 	</select>
 	<insert id="insertReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
 		insert into course_review(review_no, student_no, payment_no, review_content, review_date, review_rank, course_no)
