@@ -10,11 +10,16 @@
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<div class="flex mt-12">
 		<div class="lg:w-1/5 flex-initial">
+		<c:if test="${student_img != null }">
+			<img src="<%=ctx%>/img/${student_img}">
+		</c:if >
+		<c:if test="${student_img == null }">
 			<img src="<%=ctx%>/img/user-avatar.png">
+		</c:if>
 			<div id="hr" class="my-8 border-t border-solid"></div>
-			<h1 class="text-4xl font-bold text-center">${username}</h1>
+			<h1 class="text-4xl font-bold text-center">${student_name_ko}</h1>
 			<div id="hr" class="m-0 m-auto bg-black border-black my-4 border-t border-solid w-4 border-2"></div>
-			<h4 class="text-gray-500 text-center mb-4">I have basics skills in leadership!</h4>
+			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex roboto-slab">
@@ -50,7 +55,9 @@
 						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${incompleteCourse.employee_name }</a></li>
 						<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${incompleteCourse.course_name}</a></li>
 						<li class="text-black text-xl w-1/6">${incompleteCourse.grade}등급</li>
-						<li class="text-black text-xl w-1/5">${incompleteCourse.state}등급</li>
+						<c:if test="${incompleteCourse.state == 2}">
+						<li class="text-black text-xl w-1/5">NO</li>
+						</c:if>
 						<li class="text-black text-xl ">${incompleteCourse.course_end_date }</li>
 					</ul>
 					<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>

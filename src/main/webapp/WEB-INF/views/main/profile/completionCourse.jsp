@@ -10,11 +10,16 @@
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<div class="flex mt-12">
 		<div class="lg:w-1/5 flex-initial">
+		<c:if test="${student_img != null }">
+			<img src="<%=ctx%>/img/${student_img}">
+		</c:if >
+		<c:if test="${student_img == null }">
 			<img src="<%=ctx%>/img/user-avatar.png">
+		</c:if>
 			<div id="hr" class="my-8 border-t border-solid"></div>
-			<h1 class="text-4xl font-bold text-center">${username}</h1>
+			<h1 class="text-4xl font-bold text-center">${student_name_ko}</h1>
 			<div id="hr" class="m-0 m-auto bg-black border-black my-4 border-t border-solid w-4 border-2"></div>
-			<h4 class="text-gray-500 text-center mb-4">I have basics skills in leadership!</h4>
+			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex roboto-slab">

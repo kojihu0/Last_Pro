@@ -10,11 +10,16 @@
 <div id="hr" class="my-4 border-t border-solid"></div>
 <div class="flex mt-12">
 	<div class="lg:w-1/5 flex-initial">
+		<c:if test="${student_img != null }">
+			<img src="<%=ctx%>/img/${student_img}">
+		</c:if >
+		<c:if test="${student_img == null }">
 			<img src="<%=ctx%>/img/user-avatar.png">
+		</c:if>
 			<div id="hr" class="my-8 border-t border-solid"></div>
-			<h1 class="text-4xl font-bold text-center">${username}</h1>
+			<h1 class="text-4xl font-bold text-center">${student_name_ko}</h1>
 			<div id="hr" class="m-0 m-auto bg-black border-black my-4 border-t border-solid w-4 border-2"></div>
-			<h4 class="text-gray-500 text-center mb-4">I have basics skills in leadership!</h4>
+			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 		<ul class="flex roboto-slab">
@@ -37,7 +42,7 @@
 			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 			  </li>
 			</ul>
-			<table class="text-white border text-center mt-8 h-64 bg-cta-500 w-9/12 border-gray-500">
+			<table class="text-white border text-xl text-center mt-8 mb-8 bg-cta-500 w-10/12 border-gray-500">
 				<tbody >
 					<tr class="border border-white">
 						<td class="border border-white">&nbsp;</td>
@@ -73,11 +78,11 @@
 					</tr>
 					<tr class="border border-white">
 						<td class="border border-white">4교시</td>
-						<td class="border border-white">데이터베이스 기초</td>
-						<td class="border border-white">데이터베이스 기초</td>
-						<td class="border border-white">데이터베이스 기초</td>
-						<td class="border border-white">데이터베이스 기초</td>
-						<td class="border border-white">데이터베이스 기초</td>
+						<td class="border border-white">데이터베이스 </td>
+						<td class="border border-white">데이터베이스 </td>
+						<td class="border border-white">데이터베이스 </td>
+						<td class="border border-white">데이터베이스 </td>
+						<td class="border border-white">데이터베이스 </td>
 					</tr>
 					<tr>
 						<td class="border border-white">5교시</td>
@@ -89,6 +94,30 @@
 					</tr>
 					<tr class="border border-white">
 						<td class="border border-white">6교시</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+					</tr>
+					<tr class="border border-white">
+						<td class="border border-white">7교시</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+					</tr>
+					<tr class="border border-white">
+						<td class="border border-white">8교시</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+						<td class="border border-white">프로젝트 개발</td>
+					</tr>
+					<tr class="border border-white">
+						<td class="border border-white">9교시</td>
 						<td class="border border-white">프로젝트 개발</td>
 						<td class="border border-white">프로젝트 개발</td>
 						<td class="border border-white">프로젝트 개발</td>

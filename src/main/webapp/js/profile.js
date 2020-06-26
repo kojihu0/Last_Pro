@@ -46,10 +46,16 @@ $(function(){
 			alert("아이디를 입력해주세요.");
 				return false;
 		}
+		
 		/*아이디 정규식*/
 		var reg = /^[a-zA-Z]{1}\w{7,20}$/;
 		if(!reg.test($("#userId").val())){
 			alert("아이디는 영어만 입력가능하며 \n 최소 2글자부터 최대 20글자 까지입니다 .");
+				return false;
+		}
+		/*아이디 중복체크 유효성검사 */
+		if($("#userId").val()=="N"){
+			alert("아이디 중복체크를 시도해주세요.");
 				return false;
 		}
 		/*비밀번호 유효성 검사*/
@@ -85,7 +91,8 @@ $(function(){
 				return false;
 		}
 		/*전화번호 정규식  */
-		var reg = /^(010){0,2}[0-9][0-9]{3,10}$/;
+		
+		var reg =  /^\d{3}-\d{3,4}-\d{4}$/;
 		if(!reg.test($("#userTel").val())){
 			alert("잘못된 전화번호 입니다. 다시 입력해주세요.");
 			return false;
@@ -94,6 +101,10 @@ $(function(){
 		if($("#userEmail").val()==""){
 			alert("이메일을 입력해주세요.");
 				return false;
+		}/*이메일 인증 유효성 검사*/
+		if($("#emailCheckResult").val()=="no"){
+			alert("이메일 인증코드 절차를 다시 시도해주세요..");
+				return false;
 		}
 		/*이메일 정규식 */
 		var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
@@ -101,6 +112,21 @@ $(function(){
 			alert("잘못된 이메일 입니다 다시 입력해 주세요.");
 				return false;
 		}
+		//회원가입 이메일 인증코드 유효성 검사 및 정규식 
+		$("#emailCodeBtn").click(function(){
+			/*이메일 유효성 검사*/
+			if($("#userEmail").val()==""){
+				alert("이메일을 입력해주세요.");
+					return false;
+			}
+			/*이메일 정규식 */
+			var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
+			if(!reg.test($("#userEmail").val())){
+				alert("잘못된 이메일 입니다 다시 입력해 주세요.");
+					return false;
+			}
+			
+		});
 	});
 });
 /*아이디 및 비밀번호 찾기 유효성검사 및 정규식*/
@@ -365,5 +391,47 @@ $(function(){
 		}
 	});
 });
-
-
+//회원가입 비밀번호 및 비밀번호 확인문
+$(function(){
+	$("#registerPw").hide();
+	$("#registerPwChk").hide();
+	$("input").keyup(function(){
+			var pwd1=$("#userPw").val();
+			var pwd2=$("#userPwChk").val();
+		if(pwd1 !="" || pwd2 !=""){
+			//패스워드 텍스트창 확인창에서 값을 가져와서 패스워드 창이 공백일때 if문으로 들어와서 
+			//다음 if문에서 패스워드창과 패스워드체크창을 비교하여 맞을경우 일치 틀릴경우 불일치 보여준다 
+			if(pwd1 == pwd2){
+				$("#registerPw").show();
+				$("#registerPwChk").hide();
+			}else{
+				$("#registerPw").hide();
+				$("#registerPwChk").show();
+			}
+		}else if(pwd1 =="" || pwd2 ==""){
+			$("#registerPw").hide();
+			$("#registerPwChk").hide();
+		}
+	});
+//내정보 비밀번호 및 비밀번호 확인문
+	$("#mypagePw").hide();
+	$("#mypagePwChk").hide();
+	$("input").keyup(function(){
+			var pwd1=$("#newPwd").val();
+			var pwd2=$("#newPwdChk").val();
+		if(pwd1 !="" || pwd2 !=""){
+			//패스워드 텍스트창 확인창에서 값을 가져와서 패스워드 창이 공백일때 if문으로 들어와서 
+			//다음 if문에서 패스워드창과 패스워드체크창을 비교하여 맞을경우 일치 틀릴경우 불일치 보여준다 
+			if(pwd1 == pwd2){
+				$("#mypagePw").show();
+				$("#mypagePwChk").hide();
+			}else{
+				$("#mypagePw").hide();
+				$("#mypagePwChk").show();
+			}	
+		}else if(pwd1 =="" || pwd2 ==""){
+			$("#mypagePw").hide();
+			$("#mypagePwChk").hide();
+		}
+	});
+});

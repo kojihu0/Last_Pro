@@ -32,7 +32,7 @@
 										<div class="month">${vo.admin_notice_date }년&nbsp;${vo.admin_notice_MM_date}월</div>
 									</div>
 									<div class="flex-auto event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
-										<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx%>/eventDetail?no=${vo.admin_notice_no}">${vo.admin_notice_title}</a></h2>
+										<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx%>/eventDetail?no=${vo.admin_notice_no}&pageNum=${pvo.pageNum}">${vo.admin_notice_title}</a></h2>
 										<div class="event-desc text-gray-700 mt-6">
 										${vo.admin_notice_content }
 										</div>

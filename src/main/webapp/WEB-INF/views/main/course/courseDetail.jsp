@@ -65,7 +65,7 @@
 			<!--버튼-->
 			<div class="mt-8 mb-4 flex justify-end items-center">
 				<p class="font-bold text-3xl text-danger-500 mr-8"><span>${vo.course_price_format}</span>원</p>
-				<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
+				<a href="<%=ctx %>/paymentProcess?course_no=${vo.course_no}" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
 				<a href="#" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 			</div>
 		</div>

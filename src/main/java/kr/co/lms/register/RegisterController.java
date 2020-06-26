@@ -1,36 +1,28 @@
 package kr.co.lms.register;
 
 
-import java.nio.charset.CodingErrorAction;
-import java.util.Properties;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
+import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import kr.co.lms.main.DAO.MemberDAOImp;
 import kr.co.lms.main.VO.MemberVO;
-
+ 
 @Controller
 public class RegisterController {
 	SqlSession sqlSession;
-	BCryptPasswordEncoder BPd;
-	
-	
+	@Inject
+	JavaMailSenderImpl mailSender2;
 	
 	public SqlSession getSqlSession() {
 		return sqlSession;
@@ -41,13 +33,6 @@ public class RegisterController {
 	}
 
 	
-	public BCryptPasswordEncoder getBPd() {
-		return BPd;
-	}
-	@Autowired
-	public void setBPd(BCryptPasswordEncoder bPd) {
-		BPd = bPd;
-	}
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String register() {
 		return"main/register/register";
@@ -55,8 +40,6 @@ public class RegisterController {
 	@RequestMapping(value="/registerOk", method=RequestMethod.POST)
 	public ModelAndView register(MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
-		String Encryption = BPd.encode(vo.getStudent_pw());
-		vo.setStudent_pw(Encryption);
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		
 		int cnt = dao.memberRegister(vo);
@@ -82,55 +65,55 @@ public class RegisterController {
 		return mav; 
 	}
 	
-	
+
 	@RequestMapping("/emailSend")
-	public String emailCode(HttpServletRequest req) {
-		String email = req.getParameter("useremail");
+	@ResponseBody
+	public String sendMail(HttpServletRequest req){
 		String sesId = req.getSession().getId();
-		Properties p = new Properties();
-		p.put("mail.smtp.host", "smtp.naver.com");
-		p.put("mail.smtp.port","465");
-		p.put("defaultEncoding","UTF-8");
-		p.put("mail.smtp.auth","true");
+		
+		String body ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다.\n 인증코드="+sesId;
+		String subject ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다. ";
+		String ok ="";
 		try {
-			Session ses = Session.getDefaultInstance(p, new Authenticator() {
-			String un = "insunok0715@naver.com";
-				String pw = "wjd1234!";
+			
+			MimeMessage message = mailSender2.createMimeMessage();
+				String email = req.getParameter("student_email");
+				System.out.println(email);
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
+				helper.setFrom("insunok0715@naver.com"); 
+				helper.setTo(email); 
+				helper.setSubject(subject); 
+				helper.setText(body); 
+				mailSender2.send(message);
 				
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(un, pw);
-				}
-			});
-			
-			ses.setDebug(false);
-			MimeMessage mM = new MimeMessage(ses);
-			mM.setFrom(new InternetAddress("insunok0715@naver.com"));
-			InternetAddress[] toAddr = new InternetAddress[1];
-			toAddr[0] =new InternetAddress(email);
-			mM.setRecipients(Message.RecipientType.TO, toAddr);
-			mM.setSubject("EduCamp 회원가입에 필요한 인증코드 메일 입니다. "); 
-			
-			String content = "EduCamp 회원가입에 필요한 인증코드 메일 입니다.\n";
-				   content+="인증코드:"+sesId;
-			mM.setText(content);
-			
-			
-			
-			Transport.send(mM);
-			req.setAttribute("code","ok");
-			System.out.println("인증코드 전송 완료  -->"+email);
-			
+				ok="ok";
+				System.out.println("이메일 전송 성공");
 		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("이메일 인증 코드 보내기 오류 -->"+e.getMessage());
+			System.out.println(e.getMessage());
 		}
-		return "main/register/emailCheck";
+		
+		return ok;	
+	}	
+	@RequestMapping("/emailCodeCheck")
+	@ResponseBody
+	public String emailCodeCheck(HttpServletRequest req) {
+		String yes = "";
+		String sesId = req.getSession().getId();
+		System.out.println(sesId);
+		String emailCode = req.getParameter("useremailCode");
+		System.out.println(emailCode);
+		if(sesId.equals(emailCode)) {
+			yes = "yes";
+		}else {
+			yes="no";
+		}
+		return yes;
 	}
-	
-	 
-	
-	
-	
+	@RequestMapping("/registerComplete")
+	public String registerComplete() {
+		
+		return "main/register/registerComplete";
+	}
 	@RequestMapping("/subjectRegister")
 	public String subjectRegister() {
 		return "admin/subjectRegister";

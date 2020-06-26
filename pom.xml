@@ -163,22 +163,8 @@
 		    <version>3.5.3</version>
 		</dependency>
 		
-		<!-- 이메일 발송 관련 라이브러리 -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
+		
+  
 		<!-- 구글 리캡차 관련 -->
 		<!-- https://mvnrepository.com/artifact/net.tanesha.recaptcha4j/recaptcha4j -->
 		<dependency>
@@ -208,31 +194,56 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.2.5.RELEASE</version>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
-
+		<!--  스프링 시큐리티-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.2.5.RELEASE</version>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.2.5.RELEASE</version>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>3.2.4.RELEASE</version>
-
+			<version>5.0.6.RELEASE</version>
 		</dependency>
+		<!--  스프링 시큐리티-->
+		<!--이미지 https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.7</version>
+		</dependency>
+		<!--파일 업로드  https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
+				
 		<!-- 추가 end -->
-		        
-	
-		
+		<!-- 이메일 발송 관련 라이브러리 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+  		<dependency> 
+			<groupId>org.springframework</groupId> 
+			<artifactId>spring-context-support</artifactId> 
+			<version>5.1.1.RELEASE</version>
+		 </dependency>
+        <dependency> 
+	        <groupId>com.sun.mail</groupId>
+	        <artifactId>javax.mail</artifactId> 
+	        <version>1.6.2</version> 
+        </dependency>
+
 	</dependencies>
     <build>
         <plugins>
