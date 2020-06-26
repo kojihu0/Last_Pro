@@ -124,7 +124,6 @@ public class CourseController {
 			reviewTmp.set(5-vv.getReview_rank(), vv);	
 			
 		}
-		String reviewRankAvg = String.format("%10.1f", (double)rankSum/totalReviews);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", dao.selectCourse(course_no));
