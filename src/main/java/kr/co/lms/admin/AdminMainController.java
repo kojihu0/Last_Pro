@@ -38,81 +38,109 @@ public class AdminMainController {
 		
 	//-------------------------------------------------------------
 		//어드민 메인 이동
-		@RequestMapping(value="/admin/adminMain", method=RequestMethod.GET)
-		public ModelAndView adminMain(AdminCalendarVO vo, HttpServletRequest request) {
+		@RequestMapping(value="/admin/adminMain", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=UTF-8")
+		public ModelAndView adminMain(AdminCalendarVO vo, HttpServletRequest request) { 
 			ModelAndView mav = new ModelAndView();
-			/*
-			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
-			String jsonStr = "";
-			 
-			for(int i = 0; i < result_List.size(); i++) {  
 
-				//json형식으로 문자열 생성->javascript 필드에서 작업할 것.
-				 jsonStr += "{" + "start :"  +"'"+ result_List.get(i).getCalendar_start_date()  +"'" + "," +
-								  "end : "   +"'"+ result_List.get(i).getCalendar_end_date()	+"'" + "," + 
-								  "title : " +"'"+ result_List.get(i).getCalendar_title() 		+"'" + "," +
-								  "color : " +"'"+ result_List.get(i).getCalendar_color() 	    +"'" 
-						  + "},";  
-			}	 
-			
-			if(result_List != null) {
-				mav.addObject("event", jsonStr);  
-				mav.setViewName("/admin/adminMain");			
-			}
-			*/
 			mav.setViewName("/admin/adminMain");		
 			return mav;  
-	}
-	
-		@RequestMapping(value="/calendar/base", method= {RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
+		}
+		//DB에서 일정 읽어오기;
+		@RequestMapping(value="/calendar/base", method={RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
-		public String base(AdminCalendarVO vo, HttpServletRequest request) { 
-			
-			ModelAndView mav = new ModelAndView();
+		public String base(AdminCalendarVO vo, HttpServletRequest request) {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
-		
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
-
 				//json형식으로 문자열 생성->javascript 필드에서 작업할 것.
-				 jsonStr += "{" + "start:"  	    +"'"+ result_List.get(i).getCalendar_start_date()  +"'" + "," +
-								   "end:"   	    +"'"+ result_List.get(i).getCalendar_end_date()	+"'" + "," + 
-								   "title:" 	    +"'"+ result_List.get(i).getCalendar_title() 		+"'" + "," +
-								   "color:" 	    +"'"+ result_List.get(i).getCalendar_color() 	    +"'" + "," +
-								   "description:" + "'" + result_List.get(i).getCalendar_content() +"'" 
-						  + "},";  
+				 jsonStr += "{" + "\"start\":"  	    +"\"" + result_List.get(i).getCalendar_start_date()  +"\"" + "," +
+								   "\"end\":"   	    +"\"" + result_List.get(i).getCalendar_end_date()	+"\"" + "," + 
+								   "\"title\":" 	    +"\"" + result_List.get(i).getCalendar_title() 		+"\"" + "," +
+								   "\"color\":" 	    +"\"" + result_List.get(i).getCalendar_color() 	    +"\"" + "," +
+								   "\"description\":"   +"\"" + result_List.get(i).getCalendar_content()    +"\"" + "," +
+								   "\"id\":"			+"\"" + result_List.get(i).getCalendar_no()  		+"\""
+						  + "}";  
+				 
+				 if(i < result_List.size()-1) {
+					 jsonStr += ",";
+				 }
 			}	  
 			jsonStr += "]";
-			 
 			System.out.println("vo에는 값이 들어가? 아니 여기는 오냐? : " + jsonStr);
-			
 			return jsonStr;  
-		}	
-		
-		
-		
+		}		
 		//addevent
 		@RequestMapping(value="/calendar/newData", method= RequestMethod.POST, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
 		public String ajaxString(AdminCalendarVO vo, HttpServletRequest request) {
 			
-			System.out.println(vo.getCalendar_color());
-			System.out.println(vo.getCalendar_start_date());
-			System.out.println(vo.getCalendar_title());
+			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_color());
+			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_start_date());
+			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_title());
 			
 			  
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.insertEvent(vo); 
 
-			String json_Str = "[{" + 
-			"title : " 	+ "'" + vo.getCalendar_title() 	 	 + "'" + "," +
-			"start : " 	+ "'" + vo.getCalendar_start_date()	 + "'" + "," +
-			"end : " 	+ "'" + vo.getCalendar_end_date()	 + "'" + "," +
-			"color : "  + "'" + vo.getCalendar_color() 		 + "'" + "}]";
-
+			String json_Str = "{" + 
+			"\"title\":\""  + vo.getCalendar_title()       + "\"" +
+			",\"start\":\"" + vo.getCalendar_start_date()  + "\"" +
+			",\"end\":\""   + vo.getCalendar_end_date()    + "\"" +
+			",\"color\":\"" +vo.getCalendar_color()        + "\"}";
+			
 			return json_Str;
 		}	
+		//editEvent
+		@RequestMapping(value="/calendar/editEvent",method= RequestMethod.POST, produces = "application/text; charset=UTF-8")  	 
+		@ResponseBody
+		public String ajaxEditEvent(AdminCalendarVO vo, HttpServletRequest request) {
+			String json_Str = "";
+			
+			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_start_date());
+			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_end_date());
+			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_date());
+			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_no());
+			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_title());
+			
+			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+			int result_Int = adminRegiInter.updateCalender(vo);
+			
+			return "수정완.";
+		}
+		//delEvent
+		@RequestMapping(value="/calendar/delEvent",method= RequestMethod.POST, produces = "application/text; charset=UTF-8")  	 
+		@ResponseBody
+		public String ajaxDelEvent(AdminCalendarVO vo, HttpServletRequest request) {
+			String json_Str = "";
+			
+			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_start_date());
+			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_end_date());
+			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_date());
+			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_no());
+			System.out.println("vo 확인 해봅시다 2: " + vo.getCalendar_title());
+			
+			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+			int result_Int = adminRegiInter.deleteCalender(vo);
+			
+			 
+			return "삭제 완.";
+		}  
+		//dropEvent
+		@RequestMapping(value="/calendar/dropUpdate")
+		@ResponseBody
+		public String ajaxDropUpdate(AdminCalendarVO vo, HttpServletRequest request) {	
+			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+
+			System.out.println("vo 값 확인 필요, 드랍 : " + vo.getCalendar_start_date());
+			System.out.println("vo 값 확인 필요, 드랍 : " + vo.getCalendar_end_date());
+			
+			int result_Int = adminRegiInter.dropUpdateCalender(vo);
+
+			return "드랍 수정 완";
+		}
+		
 		
 }//controller end
+
+

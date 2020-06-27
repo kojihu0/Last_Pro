@@ -3,24 +3,6 @@
 <%@ page session="true" %>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-    
-	<script src="/lms/js/jquery-3.4.1.js"></script>
-		
-	   <!-- chart js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-	
-	<!-- fullCalendar02 -->
-	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/core/main.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/daygrid/main.css" type="text/css"/>
-	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/timegrid/main.css" type="text/css"/>
-	
-<title>Insert title here</title>
-</head>
-<body> 
 <!--  -->    
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		
@@ -118,6 +100,7 @@
 	              		</div>
 	         	
 	              	<div id='calendar'>
+	              	
 	              	</div>
 					<div id="popup" class="bg-white rounded border-b-4 border-info-300">
 	    		 	 	<div class="modal_calendar p-3 text-center" id="modal_calendar"></div>
@@ -274,84 +257,13 @@
 	    </div>
 	</div>
   
-	<!--  -->
-	<script src="<%=projectPath %>/fullCalendar02/moment/main.js"></script>
-	<script src="<%=projectPath %>/js/bPopup.js"></script>
-	<script src="<%=projectPath %>/fullCalendar02/core/main.js"></script>
-	<script src="<%=projectPath %>/fullCalendar02/interaction/main.js"></script>
-	<script src="<%=projectPath %>/fullCalendar02/daygrid/main.js"></script>
-	<script src="<%=projectPath %>/fullCalendar02/timegrid/main.js"></script>
+
+
+
+
 <script>
-
-var startDate;
-var ednDate;
-var titelDate;
-var colorDate;
-var contentDate;
-var calendar;
-var fixeDate;
-var date;
-document.addEventListener('DOMContentLoaded', function() {
-	  var calendarEl  = document.getElementById('calendar');
-	  
-  	  calendar = new FullCalendar.Calendar(calendarEl, {
-		  
-		  plugins	    : [ 'interaction', 'dayGrid', 'timeGrid' ],
-		  defaultView   : 'dayGridMonth',
-		  defaultDate   : new Date(),
-		  selectable    : true,
-		  selectMirror  : true,
-		  selectHelper  : true,
-		  locale 		: 'ko',
-		  header: {
-			  left: 'prev,next today',
-			  center: 'title',
-			  right:  'listMonth'
-		  },
-		  views: {
-			    month: {
-			      columnFormat: 'dddd'
-			    },
-		  },   
-	      navLink		 : true,
-	      businessHours	 : true,
-	      editable		 : true,
-	      eventDrop: function(info) {
-	    	   
-	    	    alert(info.event.title + " was dropped on " + startDate.toISOString());
-
-	    	    if (!confirm("Are you sure about this change?")) {
-	    	      info.revert();
-	    	    }
-	    	  },
-	      events: function(info, successCallback, failureCallback){
-	    	  $.ajax({
-	    		  type:"GET",
-	    		  url: "<%=projectPath%>/calendar/base",
-	    		  success: function(result){
-	    			  fixeDate = result; 
-	    			  console.log(info.end + " :  info 결과값");
-	    			  console.log(successCallback + " : successCallback 결과값");  
-	    			  console.log(failureCallback + " : failureCallback 결과값");    			  
-	
-	    			  console.log(result + " : 결과값"); 
-	    			  console.log(fixeDate + " : fixeDate 결과값"); 	    			    
-	    		  },
-	    		  error:function(e){   
-	    			  console.log(e.responseText + " : 에러 ");
-	    		  }
-	    	  });
-	    	  
-	    	  return fixeDate;
-	      }
-	    	  
-	  	}); 
-	  //캘린더 그리기.
-	  calendar.render();
-});
-
-$(function(){
-
+$(function(){	
+	//=======================================================================
 	//일정등록 버튼 클릭시, 일정 등록.
 	$("#popover").on('click', function(){ 
 		var tag = "";
@@ -394,38 +306,34 @@ $(function(){
 				"</div>"	 ;
 					
 		tag += "<div class='text-right p-3'>" +
-					"<input type='submit'value='저장' />"+  
+					"<input type='submit' value='저장' id='btn' />"+  
 				"</div>";
 		tag	+=	"</form>";
 		
-		openPopup("일정관리", tag, 400)
+		openPopup("일정관리", tag, 400);
 	});//일정등록 창 end
 	
-	//add event 작업.
-	$(document).on('submit','#calendar_form', function(){
+	//==========
+
+	//add event 작업. 
+	$(document).on('submit', '#calendar_form', function(){ 
+		console.log("너 되니?");  
 	   var jsonData = $("#calendar_form").serialize();
-	   $.ajax({
+	   $.ajax({  
 			type:"POST",
 			async:false, 
 			url:"<%=projectPath%>/calendar/newData",
 			data: jsonData,  
 			success : function(result){	 
 				console.log("너 어디갔니?" + result);
-				//--------------------------- 
-				//eventSource.refetch();
-				calendar.refetchEvents();
-				//calendar.rerenderEvents();
-				//location.reload();
-				//---------------------------
-				//데이터 작업. 
+	 			calendar.refetchEvents();
 			}, error : function(e){ 
 				console.log("달력 이벤트 추가 에러" + e.responseText);
 			}
-		});
-	   closebPopup("popup")
-	   return false;   
+		}); 
+	   closebPopup("popup");
+	  return false;
 	});//이벤트영역	
-	
 	
 	//모달 작업.
 	function openPopup(subject, content, width){

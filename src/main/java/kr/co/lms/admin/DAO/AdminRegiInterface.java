@@ -82,7 +82,12 @@ public interface AdminRegiInterface {
 	//메인페이지 관련 데이터 뽑기.
 	public List<AdminCalendarVO> selectAllCalendar();
 	//이벤트 추가.
-	public int insertEvent(AdminCalendarVO vo); 
-	
+	public int insertEvent(AdminCalendarVO vo);
+	//이벤트 수정.
+	public int updateCalender(AdminCalendarVO vo);
+	//이벤트 삭제.
+	public int deleteCalender(AdminCalendarVO vo);
+	//드랍이벤트 수정
+	public int dropUpdateCalender(AdminCalendarVO vo);
 	
 }
