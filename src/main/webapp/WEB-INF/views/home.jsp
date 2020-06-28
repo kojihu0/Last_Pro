@@ -109,14 +109,10 @@
 				</div>
 				<div class="p-8">
 					<form method="post" action="/lms/registerOk" onsubmit="return basicFormValidate(this)">
-<<<<<<< HEAD
 						<p class="mb-4 flex">
-							<input type="text" name="userid"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
+							<input type="text" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
 							<input type="button" id="userIdChk" class="focus:outline-none cursor-pointer py-2 px-4 bg-black text-white focus:bg-brand-700" value="중복체크">
 						</p>
-=======
-						<p class="mb-4"><input type="text" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
->>>>>>> refs/remotes/origin/pro_J
 						<p class="mb-4"><input type="text" name="student_name_ko" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="text" name="student_email" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" name="student_pw" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>

@@ -163,7 +163,6 @@
 		    <version>3.5.3</version>
 		</dependency>
 		
-<<<<<<< HEAD
 		<!-- 이메일 발송 관련 라이브러리 -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -175,10 +174,6 @@
             <artifactId>spring-context-support</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
-=======
-		
-  
->>>>>>> refs/remotes/origin/pro_J
 		<!-- 구글 리캡차 관련 -->
 		<!-- https://mvnrepository.com/artifact/net.tanesha.recaptcha4j/recaptcha4j -->
 		<dependency>
@@ -242,16 +237,6 @@
 				
 		<!-- 추가 end -->
 		<!-- 이메일 발송 관련 라이브러리 -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4</version>
-        </dependency>
-  		<dependency> 
-			<groupId>org.springframework</groupId> 
-			<artifactId>spring-context-support</artifactId> 
-			<version>5.1.1.RELEASE</version>
-		 </dependency>
         <dependency> 
 	        <groupId>com.sun.mail</groupId>
 	        <artifactId>javax.mail</artifactId> 
