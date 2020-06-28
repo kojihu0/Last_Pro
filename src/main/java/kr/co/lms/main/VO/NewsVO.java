@@ -2,7 +2,7 @@ package kr.co.lms.main.VO;
 
 public class NewsVO {
 	private int admin_notice_no;
-	private int admin_Category;
+	private int admin_category;
 	private String admin_notice_title;
 	private String admin_notice_content;
 	private String admin_notice_img;
@@ -18,11 +18,12 @@ public class NewsVO {
 	public void setAdmin_notice_no(int admin_notice_no) {
 		this.admin_notice_no = admin_notice_no;
 	}
-	public int getAdmin_Category() {
-		return admin_Category;
+	
+	public int getAdmin_category() {
+		return admin_category;
 	}
-	public void setAdmin_Category(int admin_Category) {
-		this.admin_Category = admin_Category;
+	public void setAdmin_category(int admin_category) {
+		this.admin_category = admin_category;
 	}
 	public String getAdmin_notice_title() {
 		return admin_notice_title;

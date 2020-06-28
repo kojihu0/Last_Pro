@@ -6,14 +6,38 @@
  	<insert id="memberRegister" parameterType="kr.co.lms.main.VO.MemberVO">
  		<if test="usertel != null">
 	 		insert into student(student_no,student_id,student_pw,student_name_ko,student_tel_phone,student_email,student_regi_date)
-	 		values(student_sq.nextval,#{userid},#{student_pw},#{student_name_ko},#{usertel},#{useremail},sysdate)
+	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_tel_phone},#{student_email},sysdate)
  		</if>
  		<if test="usertel == null">
  			insert into student(student_no,student_id,student_pw,student_name_ko,student_email,student_regi_date)
-	 		values(student_sq.nextval,#{userid},#{student_pw},#{student_name_ko},#{useremail},sysdate)
+	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_email},sysdate)
  		</if>
  	</insert>
  	<select id="memberLogin" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
- 		select student_name_ko ,student_pw, student_no from student where student_id=#{userid} and student_pw=#{student_pw}	
+ 		select student_name_ko , student_id  student_pw, student_no from student where student_id=#{student_id}
  	</select>
+ 	<select id="idCheck" resultType="java.lang.Integer">
+ 		select count(student_id) from student where student_id=#{student_id}	
+ 	</select>
+	<select id="memberPwFind"  parameterType="kr.co.lms.main.VO.MemberVO" resultType="java.lang.String">
+ 		select student_pw from student where  student_name_ko=#{student_name_ko} and student_email=#{student_email} and student_id=#{student_id}
+ 	</select>
+	<select id="memberIdFind"  parameterType="kr.co.lms.main.VO.MemberVO" resultType="java.lang.String">
+ 		select student_id from student where  student_name_ko=#{student_name_ko} and student_email=#{student_email} 
+ 	</select>
+ 	<select id="memberDataSelect" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
+ 		select student_name_ko , student_info,student_img from student where student_no=#{student_no} 
+ 	</select>
+ 	<select id="memberPaymentRecord" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
+ 		select student_id, student_name_ko ,student_tel_phone, student_email ,student_no from student where student_no=#{student_no}
+ 	</select>
+ 	<update id="memberDataUpdate" parameterType="kr.co.lms.main.VO.MemberVO">
+ 	 	update student set student_name_ko=#{student_name_ko} , student_info=#{student_info} where student_no=#{student_no} 
+ 	</update>
+ 	<update id="memberImgDataSelect" parameterType="kr.co.lms.main.VO.MemberVO">
+ 	 	update student set student_img=#{student_img} where student_no=#{student_no} 
+ 	</update>
+ 	<update id="memberPasswordDataSelect" parameterType="kr.co.lms.main.VO.MemberVO">
+ 	 	update student set student_pw=#{student_pw} where student_no=#{student_no} 
+ 	</update>
 </mapper>

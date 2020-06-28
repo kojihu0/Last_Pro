@@ -109,12 +109,16 @@
 				</div>
 				<div class="p-8">
 					<form method="post" action="/lms/registerOk" onsubmit="return basicFormValidate(this)">
+<<<<<<< HEAD
 						<p class="mb-4 flex">
 							<input type="text" name="userid"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
 							<input type="button" id="userIdChk" class="focus:outline-none cursor-pointer py-2 px-4 bg-black text-white focus:bg-brand-700" value="중복체크">
 						</p>
+=======
+						<p class="mb-4"><input type="text" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+>>>>>>> refs/remotes/origin/pro_J
 						<p class="mb-4"><input type="text" name="student_name_ko" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="text" name="useremail" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
+						<p class="mb-4"><input type="text" name="student_email" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" name="student_pw" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="password" placeholder="패스워드 확인" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
 						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a class="text-danger-500" href="<%=ctx%>/termsOfService">사이트 이용약관</a> 및 <a class="text-danger-500" href="<%=ctx%>/privacyPolicy">개인정보 처리방침</a>에 동의합니다.</label></p>

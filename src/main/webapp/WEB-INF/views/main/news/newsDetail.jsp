@@ -6,10 +6,28 @@
 	</div>
 </div>
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
-<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Notice</span>
+<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;News</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<span class="font-bold text-xl">제목 : ${vo.admin_notice_title} </span><span class="text-lg float-right">등록일:${vo.admin_notice_date}</span>
 	<div class="border-t  border-b  mt-4 border-solid border-gray-500 h-64 mb-8">
 		<div class="m-0 m-auto mt-4 w-11/12 text-black">${vo.admin_notice_content}</div>
+	</div>
+	<div>
+		<c:if test="${pnVo.leadSubject!='이전글'}">
+		<p class="xi-angle-up text-brand-500 font-bold"></p>&nbsp;&nbsp;이전글&nbsp; :&nbsp;
+			<a class="hover:text-brand-500" href="<%=ctx%>/newsDetail?no=${pnVo.leadNo}&pageNum=${pVo.pageNum}">${pnVo.leadSubject}</a><br/>
+			<div id="hr" class="my-4 border-t border-brand-400 border-solid"></div>
+		</c:if> 
+		<c:if test="${pnVo.leadSubject!='다음글'}">
+		<div class="mb-8">
+		<p class="xi-angle-down text-brand-500 font-bold"></p>&nbsp;&nbsp;다음글&nbsp; :&nbsp;
+		 	<a class="hover:text-brand-500" href="<%=ctx%>/newsDetail?no=${pnVo.lagNo}&pageNum=${pVo.pageNum}">${pnVo.lagSubject}</a><br/>
+		 </div>	
+		</c:if>
+	 </div>
+	 	<div class="text-center mb-8">
+		<a href="<%=ctx%>/event">	
+			<input type="button" class="w-full focus:outline-none text-white cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="목록으로"/>
+		</a>
 	</div>
 </div>

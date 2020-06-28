@@ -53,7 +53,7 @@
 				<p class="text-2xl">Login with your site account</p>
 			</div>
 			<div>
-		      <input name="userid" class="appearance-none  w-1/2 bg-gray-200  text-gray-700 border border-gray-200 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-id" type="text" placeholder="ID">
+		      <input name="student_id" class="appearance-none  w-1/2 bg-gray-200  text-gray-700 border border-gray-200 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-id" type="text" placeholder="ID">
 		    </div>
 		    <div>
 		      <input name="student_pw" class="appearance-none w-1/2 bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="password" placeholder="PASSWORD">
@@ -62,7 +62,7 @@
 		    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=ctx %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
 		    </div>
 		    <div class="mb-4">
-		    	<input type="submit" id="loginBtn" value="login" class="text-2xl font-bold w-1/2 bg-brand-500 py-3 px-4"/>
+		    	<input type="submit" id="loginBtn" value="LOGIN" class="text-white text-2xl font-bold w-1/2 bg-brand-500 py-3 px-4"/>
 		    </div>
 		    <div class="mb-4">
 				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=ctx %>/register" class="text-brand-500 text-xs">Register now</a>
