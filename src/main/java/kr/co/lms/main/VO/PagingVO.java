@@ -2,13 +2,13 @@ package kr.co.lms.main.VO;
 
 public class PagingVO {
 	
-	private int pageNum = 1;		//í˜„ì¬ í˜ì´ì§€
-	private int onePageRecord = 4;	//í•œ í˜ì´ì§€ì— ë“¤ì–´ê°€ëŠ” ë ˆì½”ë“œì˜ ìˆ˜
-	private int totalPage;			//ì´ í˜ì´ì§€ì˜ ìˆ˜
-	private int totalRecord;		//ì´ ë ˆì½”ë“œì˜ ìˆ˜
-	private int startPage = 1;		//í˜ì´ì§€ ì‹œì‘
-	private int pageCount = 5;		//ì¶œë ¥ë˜ëŠ” í˜ì´ì§€ì˜ ìˆ˜
-	private int lastPageRecord = onePageRecord; //ë§ˆì§€ë§‰ í˜ì´ì§€ì— ë‚¨ì•„ìˆëŠ” ë ˆì½”ë“œì˜ ìˆ˜
+	private int pageNum = 1;		//ÇöÀç ÆäÀÌÁö
+	private int onePageRecord = 4;	//ÇÑ ÆäÀÌÁö¿¡ µé¾î°¡´Â ·¹ÄÚµåÀÇ ¼ö
+	private int totalPage;			//ÃÑ ÆäÀÌÁöÀÇ ¼ö
+	private int totalRecord;		//ÃÑ ·¹ÄÚµåÀÇ ¼ö
+	private int startPage = 1;		//ÆäÀÌÁö ½ÃÀÛ
+	private int pageCount = 5;		//Ãâ·ÂµÇ´Â ÆäÀÌÁöÀÇ ¼ö
+	private int lastPageRecord = onePageRecord; //¸¶Áö¸· ÆäÀÌÁö¿¡ ³²¾ÆÀÖ´Â ·¹ÄÚµåÀÇ ¼ö
 	private String search_text;
 	private int course_no;
 	private int category_no;
@@ -37,13 +37,13 @@ public class PagingVO {
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
 		totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
-		if(totalRecord % onePageRecord == 0) { //ë§ˆì§€ë§‰ í˜ì´ì§€ ë ˆì½”ë“œ ìˆ˜ êµ¬í•˜ê¸°
+		if(totalRecord % onePageRecord == 0) { //¸¶Áö¸· ÆäÀÌÁö ·¹ÄÚµå ¼ö ±¸ÇÏ±â
 			lastPageRecord = onePageRecord;
 		}else { 
 			lastPageRecord = totalRecord % onePageRecord;
 		}
-		System.out.println("ì´ë ˆì½”ë“œìˆ˜" + totalRecord);
-		System.out.println("ë§ˆì§€ë§‰ë ˆì½”ë“œìˆ˜" + lastPageRecord);
+		System.out.println("ÃÑ·¹ÄÚµå¼ö" + totalRecord);
+		System.out.println("¸¶Áö¸··¹ÄÚµå¼ö" + lastPageRecord);
 	}
 	public int getStartPage() {
 		return startPage;

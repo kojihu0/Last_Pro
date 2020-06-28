@@ -146,7 +146,7 @@
 				<div class="month">${evo.notice_month}월</div>
 			</div>
 			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0 flex-auto">
-				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="#">${evo.admin_notice_title}</a></h2>
+				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx %>/newsDetail?no=${evo.admin_notice_no}">${evo.admin_notice_title}</a></h2>
 				<div class="event-desc text-gray-700 mt-6">${fn:substring(evo.admin_notice_content,0,140)}</div>
 			</div>
 			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
@@ -176,11 +176,11 @@
 			<c:forEach var="nvo" items="${newsList}">
 			<div class="news-item px-4"><!-- news-item -->
 				<div class="news-img overflow-hidden">
-					<a href="<%=ctx %>/news/newsDetail?news_no=${nvo.admin_notice_no}"><img src="<%=ctx %>/img/${nvo.admin_notice_img}"></a>
+					<a href="<%=ctx %>/news/newsDetail?no=${nvo.admin_notice_no}"><img src="<%=ctx %>/img/${nvo.admin_notice_img}"></a>
 				</div>
 				<div class="news-content text-center -mt-4">
 					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">${nvo.admin_notice_date}</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="<%=ctx %>/news/newsDetail?news_no=${nvo.admin_notice_no}">${nvo.admin_notice_title}</a></h2>
+					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}">${nvo.admin_notice_title}</a></h2>
 				</div>
 			</div><!-- news-item -->
 			</c:forEach>

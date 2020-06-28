@@ -30,19 +30,6 @@
 			<div class="w-1/5 px-4 border-solid border-brand-500 border-l">5<br>확실한 취업보장</div>
 		</div>
 	</div>
-	<div class="mt-40">
-		<span class="text-danger font-bold">Unique Value</span>
-		<div class="w-full mt-3 flex">
-		<div class="w-1/2 text-4xl pr-5">
-			<span class="text-danger">ChariTree</span>는 좀 더 좋은 세상을 만들기 위해 후원받고 함께 성장해갑니다 
-		</div>
-		<div class="w-1/2 pl-10 pr-56 leading-10">
-			<span>사람들은 자신이 지지하는 기업에 투자합니다.<br>한 사람 한 사람의 투자가 모여<br>기업은 성장합니다.여기, 기업 하나가 출발선에 있습니다.<br>그는 자신의 가치를 증명하고<br>사람들이 그의 가치를 알아봅니다.<br>서로 지지하고 소통하고 공유하면서<br>
-					더 많은 사람들이 그를 알아봅니다.<br>그렇게 기업은 성장합니다.<br>또 다른 기업들이 용기를 얻고 출발선에 섭니다.<br>사람들의 지지를 받는 기업은 성장합니다.<br>세상에 자신만의 가치를 품은<br>기업이 많아집니다.<br>세상이 조금 더 나아집니다.</span>
-		<div class="text-danger mt-6 leading-8">Better Funding<br>Better business<br>Better Life</div>
-		</div>
-		</div>
-	</div>
 </div>
 <div class="w-full bg-gray-lightest text-center text-2xl my-40 font-bold">
 	<div style="line-height: 130px">"</div>
