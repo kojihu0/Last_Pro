@@ -53,4 +53,20 @@
 		p.payment_no = s.payment_no
 	WHERE  s.student_no = #{param1}
  	</select>
+ 	<select id="memberMypageDetailInfo"  resultType="kr.co.lms.main.VO.MypageVO">
+ 	SELECT 
+		e.employee_name, 
+		c.course_name,
+		to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
+		to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
+		s.rank, 
+		s.grade,
+		s.student_no
+		FROM   
+		employee e join course c on
+		e.employee_no = c.employee_no join payment p on 
+		c.course_no = p.course_no join student_course_state s on
+		p.payment_no = s.payment_no
+	WHERE  s.student_no = #{param1}
+ 	</select>
  </mapper>

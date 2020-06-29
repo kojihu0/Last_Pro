@@ -1,13 +1,8 @@
 package kr.co.lms.profile;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.MemberDAOImp;
@@ -39,6 +33,20 @@ public class ProfileController {
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	@RequestMapping(value="/myPageDetail", method=RequestMethod.GET)
+	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo,int no) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession s = req.getSession();
+		vo.setStudent_no((Integer)s.getAttribute("student_no"));
+		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
+		MemberDAOImp memDao = sqlSession.getMapper(MemberDAOImp.class);
+		MypageVO vo2 = dao.memberMypageDetailInfo(no);
+		MemberVO mVo = memDao.memberPaymentRecord(vo);
+		mav.addObject("vo",mVo);
+		mav.addObject("info",vo2);
+		mav.setViewName("main/profile/myPageDetail");
+		return mav;
 	}
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//¸ÊÇÎ
@@ -174,9 +182,7 @@ public class ProfileController {
 				if(fName1!=null) {
 					deleteFile(path,fName1);
 			}
-				
-			mav.setViewName("main/profile/profile");
-			
+				mav.setViewName("main/profile/profile");
 			}
 			return mav;
 		}

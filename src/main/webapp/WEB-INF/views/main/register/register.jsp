@@ -11,7 +11,7 @@
 				alert(msg);
 			}else if(result=="yes"){
 				$("#emailCheckResult").val("yes");
-				alert(msg);
+				swal(msg);
 			}else if(result=="no"){
 				alert("인증코드가 일치하지 않습니다.. 다시 시도해주세요.");
 			}

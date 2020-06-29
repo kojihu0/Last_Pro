@@ -23,4 +23,5 @@ public interface MemberDAOImp {
 	 public int memberImgDataSelect(MemberVO vo); 
 	//내정보 비밀번호 변경
 	public int memberPasswordDataSelect(MemberVO vo);
+
 }
