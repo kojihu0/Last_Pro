@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<select id="selectAdminAllRecord"
+			resultType="kr.co.lms.admin.VO.AdminTeacherVO">
+		SELECT 
+			employee_no,
+			employee_name,
+			employee_email,
+			employee_rank, 
+			employee_class,
+		 	admin_id,
+		 	employee_authority,
+		 	employee_state
+		  FROM employee
+		  ORDER BY employee_no DESC 
+	</select>
+	 
+	<select id="selectTeacherOverView"
+			resultType="kr.co.lms.admin.VO.AdminTeacherVO">
+		SELECT 
+			   		employee_no,
+					employee_name,
+					admin_id,
+					admin_pw,
+					employee_email,
+					employee_class,
+					employee_authority,
+					employee_tel,
+					employee_state,
+					employee_img,
+					employee_rank,
+					employee_overview 
+			    
+		FROM employee 
+		WHERE employee_no = #{employee_no}
+	</select> 
+	
+	<insert id="insertAdminTeacher"
+			parameterType="kr.co.lms.admin.VO.AdminTeacherVO">
+		INSERT INTO employee(
+					employee_no,
+					employee_name,
+					admin_id,
+					admin_pw,
+					employee_email,
+					employee_class,
+					employee_authority,
+					employee_tel,
+					employee_state,
+					employee_img,
+					employee_rank,
+					employee_overview)
+		VALUES(
+			employee_sq.nextval,
+			#{employee_name},
+			#{admin_id},
+			#{admin_pw},
+			#{employee_email},
+			#{employee_class},
+			#{employee_authority},
+			#{employee_tel},
+			#{employee_state},
+			#{employee_img},
+			#{employee_rank},
+			#{employee_overview}
+		)
+	
+	</insert>
+	
+	<update id="updateAdminTeacherEdit" 
+	parameterType="kr.co.lms.admin.VO.AdminTeacherVO"> 
+		UPDATE employee
+		SET
+			employee_email     = #{employee_email},
+			employee_class     = #{employee_class},
+			employee_authority = #{employee_authority},
+			employee_tel 	   = #{employee_tel},
+			employee_state     = #{employee_state},
+			employee_img       = #{employee_img},
+			employee_rank      = #{employee_rank},
+			employee_overview  = #{employee_overview}
+		WHERE
+			employee_no = #{employee_no}
+	</update>
+	
+	<delete id="deleteTeacher"
+			parameterType="kr.co.lms.admin.VO.AdminTeacherVO">
+		DELETE FROM employee 
+		WHERE employee_no = #{employee_no}
+	</delete>
+</mapper>

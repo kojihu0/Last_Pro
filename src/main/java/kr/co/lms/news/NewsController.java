@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.NewsDAOImp;
@@ -31,7 +32,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/event", method=RequestMethod.GET)
-	public ModelAndView event(NewsVO vo ,HttpServletRequest req){//이벤트 게시물
+	public ModelAndView event(NewsVO vo, HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//이벤트 게시물
 		PagingVO pvo = new PagingVO();
 		pvo.setCategory_no(2);
 		//한페이지에 보여줄 게시물 갯수 설정
@@ -42,9 +43,8 @@ public class NewsController {
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.eventGetTotalRecord());
-		String str = req.getParameter("pageNum");
-		if(str != null) {
-			pvo.setPageNum(Integer.parseInt(str));
+		if(pageNum>0) {
+			pvo.setPageNum(pageNum);
 		}else {
 			pvo.setPageNum(1);
 		}
@@ -73,7 +73,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/news", method=RequestMethod.GET)
-	public ModelAndView news(NewsVO vo ,HttpServletRequest req){//공지사항 게시물
+	public ModelAndView news(NewsVO vo ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//공지사항 게시물
 		ModelAndView mav = new ModelAndView();
 		PagingVO pvo = new PagingVO();
 		//한페이지에 보여줄 게시물의 수를 설정
@@ -81,10 +81,8 @@ public class NewsController {
 		//전체 페이지의 수를 구하고
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.newsGetTotalRecord());
-		String str = req.getParameter("pageNum");
-		 
-		if(str != null) {
-			pvo.setPageNum(Integer.parseInt(str));
+		if(pageNum>0) {
+			pvo.setPageNum(pageNum);
 		}else {
 			pvo.setPageNum(1);
 		}
@@ -114,7 +112,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/newsDetail", method=RequestMethod.GET)
-	public ModelAndView noticeForm(int no ,HttpServletRequest req){//공지사항 게시물 선택
+	public ModelAndView noticeForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//공지사항 게시물 선택
 		NewsVO vo = new	NewsVO();
 		PagingVO pVo = new PagingVO();
 		
@@ -122,7 +120,7 @@ public class NewsController {
 		
 		vo.setAdmin_notice_no(no);
 		System.out.println(no);
-		pVo.setPageNum(Integer.parseInt(req.getParameter("pageNum")));
+		pVo.setPageNum(pageNum);
 		System.out.println(req.getParameter("pageNum"));
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		
@@ -136,7 +134,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/eventDetail", method=RequestMethod.GET)
-	public ModelAndView eventForm(int no ,HttpServletRequest req){//이벤트 게시물 선택
+	public ModelAndView eventForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//이벤트 게시물 선택
 		NewsVO vo = new NewsVO();
 		PagingVO pVo = new PagingVO();	
 		ModelAndView mav = new ModelAndView();
@@ -144,7 +142,7 @@ public class NewsController {
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		
 		vo.setAdmin_notice_no(no);
-		pVo.setPageNum(Integer.parseInt(req.getParameter("pageNum")));
+		pVo.setPageNum(pageNum);
 		
 		NewsVO vo2 = dao.eventsSelectRecord(no);
 		

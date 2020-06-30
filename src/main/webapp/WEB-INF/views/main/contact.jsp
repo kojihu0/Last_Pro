@@ -56,7 +56,7 @@
 						<input type="email" name="contact_email" placeholder="이메일" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<p class="mb-4">
-						<input type="tel" name="contact_tel" placeholder="연락처" class="w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
+						<input type="tel" name="contact_tel" placeholder="연락처" class="number-only w-full p-4 border border-gray-500 focus:outline-none focus:border-brand-500">
 					</p>
 					<div class="mb-4">
 						<textarea name="contact_content" placeholder="상담내용을 입력해주세요." class="w-full h-40 p-4 border border-gray-500 focus:outline-none focus:border-brand-500"></textarea>

@@ -7,6 +7,8 @@ public class CourseVO {
 	private String course_name; //강좌명
 	private int employee_no; //강사번호
 	private String employee_name; //강사명
+	private String employee_img;
+	private String employee_overview;
 	private String admin_id; //강사아이디(이메일)
 	private int course_price; //강좌금액
 	private String course_reception_start;
@@ -46,6 +48,18 @@ public class CourseVO {
 	}
 	public void setEmployee_name(String employee_name) {
 		this.employee_name = employee_name;
+	}
+	public String getEmployee_img() {
+		return employee_img;
+	}
+	public void setEmployee_img(String employee_img) {
+		this.employee_img = employee_img;
+	}
+	public String getEmployee_overview() {
+		return employee_overview;
+	}
+	public void setEmployee_overview(String employee_overview) {
+		this.employee_overview = employee_overview;
 	}
 	public String getAdmin_id() {
 		return admin_id;

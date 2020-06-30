@@ -33,10 +33,15 @@
 <title>Insert title here</title>
 
 </head>
-<body>
+<body> 
 	<div id="loginArea" class="w-full flex justify-end h-6 align-center">
-		<a href="/lms/admin" class="pr-3">로그인 </a>
-		<a href="/lms/admimLogout"> 로그아웃</a>
+		<c:if test="${ admin_id == null || admin_id == ''}">
+			<a href="/lms/admin" class="pr-3">로그인 </a>
+		</c:if>
+		<c:if test="${ admin_id != null || admin_id != ''}">
+			<span>${employee_name }&nbsp;님&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="<%=projectPath %>/adminStart/adminLogout">로그아웃</a>
+		</c:if>
 	</div>
 	<ul id="menuList" class="h-20 w-full">
 		<li><a href="/lms/admin/adminMain">HOME</a></li>

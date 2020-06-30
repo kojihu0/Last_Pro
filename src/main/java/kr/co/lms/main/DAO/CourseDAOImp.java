@@ -5,6 +5,7 @@ import java.util.List;
 import kr.co.lms.main.VO.CourseReviewVO;
 import kr.co.lms.main.VO.CourseVO;
 import kr.co.lms.main.VO.PagingVO;
+import kr.co.lms.main.VO.WishVO;
 
 public interface CourseDAOImp {
 	//강좌리스트
@@ -13,16 +14,25 @@ public interface CourseDAOImp {
 	public CourseVO selectCourse(int course_no);
 	//강좌개수
 	public int getTotalCoureses(String search_text);
+	//구매번호 선택
+	public String selectPaymentNo(int course_no, int student_no);
 	//수강후기 리스트
 	public List<CourseReviewVO> reviewList(PagingVO rpvo);
+	//수강평 퍼센테이지
+	public List<CourseReviewVO> reviewRanks(int course_no);
+	//수강후기 개수
+	public int getTotalReviews(int course_no);
 	//수강후기 등록
 	public int insertReview(CourseReviewVO vo);
 	//수강후기 수정
 	public int updateReview(CourseReviewVO vo);
 	//수강후기 삭제
 	public int deleteReview(int review_no);
+	//위시리스트 존재
+	public int selectWishNo(int course_no, int student_no);
 	//위시리스트 추가
-	public int insertWish();
-	//구매번호 선택
-	public int selectPaymentNo(int course_no, int student_no);
+	public int insertWish(WishVO vo);
+	//위시리스트 삭제
+	public int deleteWish(WishVO vo);
+	
 }
