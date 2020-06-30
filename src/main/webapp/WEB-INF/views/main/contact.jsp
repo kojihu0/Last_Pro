@@ -131,11 +131,13 @@ $(function(){
 			return false;
 		}
 		else{
+			$('.ajax-overlay').removeClass('hidden').addClass('flex');
 			$.ajax({
 				url:$(this).attr('action'),
 				type: 'POST',
 				data: $(this).serialize(),
 				success: function(result){
+					$('.ajax-overlay').removeClass('flex').addClass('hidden');
 					if(result == 1){
 						$('.contactFormWrap').html('<p class="text-center font-bold py-8">문의가 접수되었습니다.</p>')
 					}

@@ -4,17 +4,17 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.main.DAO.MemberDAOImp">
  	<insert id="memberRegister" parameterType="kr.co.lms.main.VO.MemberVO">
- 		<if test="usertel != null">
+ 		<if test="student_tel_phone != null and student_tel_phone != ''">
 	 		insert into student(student_no,student_id,student_pw,student_name_ko,student_tel_phone,student_email,student_regi_date)
 	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_tel_phone},#{student_email},sysdate)
  		</if>
- 		<if test="usertel == null">
+ 		<if test="student_tel_phone == null or student_tel_phone == ''">
  			insert into student(student_no,student_id,student_pw,student_name_ko,student_email,student_regi_date)
 	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_email},sysdate)
  		</if>
  	</insert>
  	<select id="memberLogin" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
- 		select student_name_ko , student_id  student_pw, student_no from student where student_id=#{student_id}
+ 		select student_name_ko, student_id, student_pw, student_no from student where student_id=#{student_id}
  	</select>
  	<select id="idCheck" resultType="java.lang.Integer">
  		select count(student_id) from student where student_id=#{student_id}	

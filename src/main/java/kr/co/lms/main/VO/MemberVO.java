@@ -1,7 +1,5 @@
 package kr.co.lms.main.VO;
 
-
-
 public class MemberVO {
 	private int student_no;//학생번호 
 	private String student_id;//아이디
@@ -15,9 +13,6 @@ public class MemberVO {
 	private String writedate;//등록일 
 	private String logStatus = "N";//로그인상태
 	
-	
-
-
 	public int getStudent_no() {
 		return student_no;
 	}

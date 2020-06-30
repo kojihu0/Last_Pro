@@ -3,23 +3,25 @@
 <script>
     $(function(){ 
 	function email(url,params,msg){
-	$.ajax({
-		url : url,
-		data : params,
-		success : function(result){
-			if(result=="ok"){
-				alert(msg);
-			}else if(result=="yes"){
-				$("#emailCheckResult").val("yes");
-				alert(msg);
-			}else if(result=="no"){
-				alert("인증코드가 일치하지 않습니다.. 다시 시도해주세요.");
+		$('.ajax-overlay').removeClass('hidden').addClass('flex');
+		$.ajax({
+			url : url,
+			data : params,
+			success : function(result){
+				$('.ajax-overlay').removeClass('flex').addClass('hidden');
+				if(result=="ok"){
+					alert(msg);
+				}else if(result=="yes"){
+					$("#emailCheckResult").val("yes");
+					alert(msg);
+				}else if(result=="no"){
+					alert("인증코드가 일치하지 않습니다.. 다시 시도해주세요.");
+				}
+			},
+			error : function(){
+				console.log("이메일 에러 ...");
 			}
-		},
-		error : function(){
-			console.log("이메일 에러 ...");
-		}
-	});
+		});
 	}
 
 //이메일 인증코드 받기  
@@ -63,6 +65,7 @@
 	<div class="w-1/3 m-0 mb-4 m-auto mt-8"><p class="font-bold text-2xl">Register a new account</p></div>
 	<!-- 회원가입 폼  -->
 	<form method="post" action="/lms/registerOk" class="m-0 m-auto w-full max-w-xl">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	  <div class="flex flex-wrap -mx-3 mb-6">
 	    <div class="w-10/12 px-3">
 	      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="username">

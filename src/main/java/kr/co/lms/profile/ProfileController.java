@@ -1,26 +1,20 @@
 package kr.co.lms.profile;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.MemberDAOImp;
@@ -40,6 +34,10 @@ public class ProfileController {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//맵핑
 		ModelAndView mav = new ModelAndView();
@@ -142,66 +140,65 @@ public class ProfileController {
 		
 	}
 
-
-	  @RequestMapping(value="/profileImgUpdate", method=RequestMethod.POST) 
-	  public ModelAndView uploadOk1(@RequestParam("student_img") MultipartFile filename1,HttpServletRequest req) {
-			String path = req.getSession().getServletContext().getRealPath("/img");
-			System.out.println("path="+path);
-			//파일업로드
-			String paramName= filename1.getName();//매개변수
-			String fName1 = filename1.getOriginalFilename();//원래 파일명
-			System.out.println(paramName+"="+fName1);
-			
-			try {
-				if(fName1!=null) {
-				//파일업로드 
-				filename1.transferTo(new File(path,fName1));//파일업로드
-				}
-			}catch (Exception e){
-				e.printStackTrace();
+	@RequestMapping(value="/profileImgUpdate", method=RequestMethod.POST) 
+	public ModelAndView uploadOk1(@RequestParam("student_img") MultipartFile filename1,HttpServletRequest req) {
+		String path = req.getSession().getServletContext().getRealPath("/img");
+		System.out.println("path="+path);
+		//파일업로드
+		String paramName= filename1.getName();//매개변수
+		String fName1 = filename1.getOriginalFilename();//원래 파일명
+		System.out.println(paramName+"="+fName1);
+		
+		try {
+			if(fName1!=null) {
+			//파일업로드 
+			filename1.transferTo(new File(path,fName1));//파일업로드
 			}
-			MemberVO vo = new MemberVO();
-			vo.setStudent_img(fName1);
-			ModelAndView mav = new ModelAndView();
-			MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
-			HttpSession s = req.getSession();
-			vo.setStudent_no((Integer)s.getAttribute("student_no"));
-			int result = dao.memberImgDataSelect(vo);
-			
-			if(result>0) {
-				mav.setViewName("redirect:profile");
-			}else {//레코드 추가 실패시 파일 지우기
-				if(fName1!=null) {
-					deleteFile(path,fName1);
-			}
-				
-			mav.setViewName("main/profile/profile");
-			
-			}
-			return mav;
+		}catch (Exception e){
+			e.printStackTrace();
 		}
+		MemberVO vo = new MemberVO();
+		vo.setStudent_img(fName1);
+		ModelAndView mav = new ModelAndView();
+		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		HttpSession s = req.getSession();
+		vo.setStudent_no((Integer)s.getAttribute("student_no"));
+		int result = dao.memberImgDataSelect(vo);
+		
+		if(result>0) {
+			mav.setViewName("redirect:profile");
+		}else {//레코드 추가 실패시 파일 지우기
+			if(fName1!=null) {
+				deleteFile(path,fName1);
+		}
+			
+		mav.setViewName("main/profile/profile");
+		
+		}
+		return mav;
+	}
 	  
 	  
   	public void deleteFile(String p, String f) {
-			 File fn = new File(p,f);
-			 fn.delete();
-		}
+		File fn = new File(p,f);
+		fn.delete();
+	}
   	
   	
 	@RequestMapping(value="/profilePasswordUpdate",method=RequestMethod.POST)
 	@ResponseBody
 	public String profilePasswordUpdate(HttpServletRequest req, MemberVO vo,String student_pw) {//패스워드 수정 
 		String ok = "";
-		vo.setStudent_pw(student_pw);
+		vo.setStudent_pw(passwordEncoder.encode(student_pw));
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		int cnt = dao.memberPasswordDataSelect(vo);
-		if(cnt<0) {
-			ok="no";
-			System.out.println("패스워드 변경 실패!!");
+		if(cnt>0) {
+			ok="ok";
 		}else {
-			ok="ok";		
+			ok="no";
+			System.out.println("패스워드 변경 실패!!");		
 		}
 		return ok;
 	}

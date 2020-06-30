@@ -1,10 +1,15 @@
 package kr.co.lms.contact;
 
 import javax.inject.Inject;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,11 +43,11 @@ public class ContactController {
 	}
 	
 	@Inject
-	ContactEmailService contactService;
+	JavaMailSender mailSender;
 	
 	@RequestMapping(value = "/sendContactForm", method = RequestMethod.POST)
 	@ResponseBody
-	public int sendContactForm(@ModelAttribute ContactVO vo, HttpServletRequest req) {
+	public int sendContactForm(ContactVO vo, HttpServletRequest req) {
 		String gRecaptchaResponse = req.getParameter("g-recaptcha-response");
 		System.out.println(req.getParameter("g-recaptcha-response"));
 		ContactDAOImp dao = sqlSession.getMapper(ContactDAOImp.class);
@@ -51,8 +56,24 @@ public class ContactController {
 		try {
 			//구글캡차인증
 			if(VerifyRecaptcha.verify(gRecaptchaResponse)) {
-				contactService.sendContactMail(vo);
-				cnt = dao.insertContact(vo);
+				MimeMessage msg = mailSender.createMimeMessage(); //이메일객체
+				MimeMessageHelper helper = new MimeMessageHelper(msg, true, "utf-8");
+				String contactContent = "성함: " + vo.getContact_name() + "\r\n"
+						+ "이메일: " + vo.getContact_email() + "\r\n"
+						+ "연락처: " + vo.getContact_tel() + "\r\n"
+						+ "문의내용: " + vo.getContact_content();
+				//수신자
+				helper.setTo(new InternetAddress("fezze779@gmail.com"));
+				//발신자(이메일주소+이름)
+				helper.setFrom(new InternetAddress("fezze779@gmail.com", "Educamp"));
+				
+				//이메일 제목
+				helper.setSubject(vo.getContact_name()+"님으로부터 새로운 문의가 수신되었습니다.");
+				//이메일 본문
+				helper.setText(contactContent);
+				
+				mailSender.send(msg); //메일보내기
+				cnt = dao.insertContact(vo); //데이터베이스 처리
 				System.out.println(cnt);
 				if(cnt>0) {
 					res = 1;

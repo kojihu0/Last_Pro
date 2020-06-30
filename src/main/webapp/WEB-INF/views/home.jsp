@@ -176,7 +176,7 @@
 			<c:forEach var="nvo" items="${newsList}">
 			<div class="news-item px-4"><!-- news-item -->
 				<div class="news-img overflow-hidden">
-					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1"><img src="<%=ctx %>/img/${nvo.admin_notice_img}"></a>
+					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1"><img src="<%=ctx %>${nvo.admin_notice_img}"></a>
 				</div>
 				<div class="news-content text-center -mt-4">
 					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">${nvo.admin_notice_date}</div>

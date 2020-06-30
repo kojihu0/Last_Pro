@@ -1,15 +1,14 @@
 package kr.co.lms.register;
 
-
-
 import javax.inject.Inject;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,29 +31,35 @@ public class RegisterController {
 		this.sqlSession = sqlSession;
 	}
 
+	@Autowired
+	PasswordEncoder pwEncoder;
 	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String register() {
 		return"main/register/register";
 	}
+	
 	@RequestMapping(value="/registerOk", method=RequestMethod.POST)
 	public ModelAndView register(MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		
+		//패스워드 암호화
+		String get_studentPw = vo.getStudent_pw();
+		String student_pw = pwEncoder.encode(get_studentPw);
+		vo.setStudent_pw(student_pw);
+		
 		int cnt = dao.memberRegister(vo);
 		if(cnt>0) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:registerComplete");
 		}else {
 			mav.setViewName("redirect:register");
 		}
 		return mav;
 	}
 	
-	
-	
 	@RequestMapping(value="/idCheck" ,method=RequestMethod.GET)
-	public ModelAndView idCheck(String userid) {//아이디 중복 검사
+	public ModelAndView idCheck(String userid) {
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		
@@ -65,35 +70,34 @@ public class RegisterController {
 		return mav; 
 	}
 	
-
 	@RequestMapping("/emailSend")
 	@ResponseBody
 	public String sendMail(HttpServletRequest req){
 		String sesId = req.getSession().getId();
 		
-		String body ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다.\n 인증코드="+sesId;
-		String subject ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다. ";
+		String body ="EduCamp 인증코드="+sesId;
+		String subject ="EduCamp 회원가입 인증메일입니다. ";
 		String ok ="";
 		try {
-			
 			MimeMessage message = mailSender2.createMimeMessage();
-				String email = req.getParameter("student_email");
-				System.out.println(email);
-				MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
-				helper.setFrom("insunok0715@naver.com"); 
-				helper.setTo(email); 
-				helper.setSubject(subject); 
-				helper.setText(body); 
-				mailSender2.send(message);
-				
-				ok="ok";
-				System.out.println("이메일 전송 성공");
+			String email = req.getParameter("student_email");
+			System.out.println(email);
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
+			helper.setFrom(new InternetAddress("insunok0715@naver.com", "Educamp")); 
+			helper.setTo(new InternetAddress(email)); 
+			helper.setSubject(subject); 
+			helper.setText(body); 
+			mailSender2.send(message);
+			
+			ok="ok";
+			System.out.println("�씠硫붿씪 �쟾�넚 �꽦怨�");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 		return ok;	
 	}	
+	
 	@RequestMapping("/emailCodeCheck")
 	@ResponseBody
 	public String emailCodeCheck(HttpServletRequest req) {
@@ -109,15 +113,17 @@ public class RegisterController {
 		}
 		return yes;
 	}
+	
 	@RequestMapping("/registerComplete")
 	public String registerComplete() {
-		
 		return "main/register/registerComplete";
 	}
+	
 	@RequestMapping("/subjectRegister")
 	public String subjectRegister() {
 		return "admin/subjectRegister";
 	}
+	
 	@RequestMapping("/cancelRegister")
 	public String cancelRegister() {
 		return "admin/cancelRegister";

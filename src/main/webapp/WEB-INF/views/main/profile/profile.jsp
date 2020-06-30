@@ -15,17 +15,23 @@
 <script>
 
 $(function(){
-	function update(url,params,msg){
+	function update(url, params, msg, input){
 		$.ajax({
 			url : url,
 			data : params,
 			type : "POST",
 			success : function(result){
+				console.log(input)
 				if(result=="ok"){
 					alert(msg);
-					window.location.assign("<%=ctx%>/profile");
+					if(input=="password"){
+						window.location.assign("<%=ctx%>/logout");
+					}
+					else{
+						window.location.assign("<%=ctx%>/profile");
+					}
 				}else if(result=="no"){
-					alert("정보 변경이 정상 적으로 처리되지 못했습니다. \n 다시 시도해주세요.");
+					alert("정보 변경이 정상적으로 처리되지 못했습니다.\n다시 시도해주세요.");
 				}
 			},	
 			error : function(e){
@@ -33,19 +39,20 @@ $(function(){
 			}
 		});
 	}
-	$(document).on("click","#generalBtn",function(){//수정할 정보 보내기
+	$(document).on("click","#generalBtn",function(e){//수정할 정보 보내기
+		e.preventDefault();
 		var url = "<%=ctx%>/profileUpdate";
 		var params = $("#profileUpdate").serialize();
 		var msg = "정상적으로 정보수정이 완료되었습니다.";
 		update(url,params,msg);
 	});
 	
-	
-	$(document).on("click","#pwUpdateBtn",function(){//수정할 패스워드 보내기
+	$(document).on("click","#pwUpdateBtn",function(e){//수정할 패스워드 보내기
+		e.preventDefault();
 		var url = "<%=ctx%>/profilePasswordUpdate";
 		var params = "student_pw=" + $("#newPwd").val();
-		var msg = "정상적으로 패스워드 변경이 완료되었습니다.";
-		update(url,params,msg);
+		var msg = "정상적으로 패스워드 변경이 완료되었습니다.\r\n새로운 패스워드로 로그인해주세요.";
+		update(url,params,msg,"password");
 	});
 });
 

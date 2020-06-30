@@ -20,7 +20,7 @@ public interface MemberDAOImp {
 	//내정보에 들어갈 이름과 자기소개
 	public MemberVO  memberDataSelect(MemberVO vo);
 	//내정보 이미지 업데이트
-	 public int memberImgDataSelect(MemberVO vo); 
+	public int memberImgDataSelect(MemberVO vo); 
 	//내정보 비밀번호 변경
 	public int memberPasswordDataSelect(MemberVO vo);
 }

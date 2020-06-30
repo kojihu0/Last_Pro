@@ -47,6 +47,7 @@ $(function(){
 			
 			var tween = gsap.fromTo(el, zDuration,{
 								scrollTrigger: el,
+								toggleActtions:'play none none none',
 								css: {
 									autoAlpha: 0,
 									y: yValue,
@@ -55,6 +56,7 @@ $(function(){
 							},
 							{
 								scrollTrigger: el,
+								toggleActtions:'play none none none',
 								css: {
 									autoAlpha: 1,
 									y: 0,
