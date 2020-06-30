@@ -145,9 +145,9 @@ function preview(input, target) {
 					<div class="img_wrap my-4 ml-4 bg-gray-500">
 						<img src="" id="img01"/>
 					</div>
-					<input onchange="preview(this, $('#img01'));"id="input_img" name="student_img" type="file" value="Upload" class="xi-file-upload-o  text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
+					<input onchange="preview(this, $('#img01'));"id="input_img" name="student_img" type="file" value="Upload" class=" text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
 				</div>	
-				<input type="submit" value="변경하기" id="imgUploadBtn" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
+				<input type="submit" value="프로필 사진 등록" id="imgUploadBtn" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
 			</form>
 			
 			<form id="passwordUpdate"style="display:none">

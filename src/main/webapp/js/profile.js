@@ -195,35 +195,12 @@ $(function(){
 
 /*마이페이지(이름 및 자기소개 수정,비밀번호수정)유효성 검사 및 정규식 */
 $(function(){
-	$("#generalBtn").on('click',function(){
-		/*성 유효성 검사 */
-		if($("#firstName").val()==""){
-			alert("성을 입력해주세요.")
-			 return false;
-		}
-		/*이름 유효성 검사 */
-		if($("#lastName").val()==""){
-			alert("이름을 입력해주세요.")
-			return false;
-		}
-	});
+	
 	$("#pwUpdateBtn").on('click',function(){
-		/*현재 비밀번호 유효성 검사*/	
-		if($("#oldPwd").val()==""){
-			alert("현재비밀번호를 입력해주세요");
-			return false;
-		}
-		/*현재 비밀번호 정규식*/
-		var reg =/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-		if(!reg.test($("#oldPwd").val())){
-			alert("사용 중 이신 비밀번호가 일치하지 않습니다 \n 다시 입력해 주세요.");
-			return false;
-		}
 		/*변경 비밀번호 유효성 검사*/	
 		if($("#newPwd").val()==""){
 			alert("변경하실 비밀번호를 입력해주세요");
 			return false;
-			
 		}
 		/*변경 비밀번호 정규식*/
 		var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;

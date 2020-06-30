@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.main.DAO.paymentDAOImp">
+	<insert id="paymentInfoInsert" parameterType="kr.co.lms.main.VO.paymentVO">
+		insert into payment(payment_no,course_no,student_no,
+		payment_price,payment_name,payment_email,payment_phone,
+		payment_state,payment_date,payment_division)
+		values(payment_sq.nextval,#{course_no},#{student_no},
+		#{payment_price},#{payment_name},#{payment_email},#{payment_phone},
+		1,sysdate,'신규')
+	</insert>
+	<select id="paymentNumberRecord" parameterType="kr.co.lms.main.VO.paymentVO"  resultType="int">
+	select payment_no from payment where course_no =#{course_no} and student_no=#{student_no} 
+	</select>
+	<select id="paymentInfoRecord" parameterType="kr.co.lms.main.VO.paymentVO" resultType="kr.co.lms.main.VO.paymentVO">
+	SELECT c.course_name,p.payment_price, e.employee_name, p.payment_name, p.payment_date, p.payment_phone
+	FROM payment p
+		JOIN course  c ON p.course_no = c.course_no
+		JOIN student s ON p.student_no = s.student_no
+		JOIN employee e ON e.employee_no = c.employee_no where p.payment_no=#{payment_no}
+	</select>
+	
+</mapper>
