@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	      select: function(info) {
 	    	  console.log(info);
 	          if(confirm("일정을 등록 하시겠습니까?")){
-	         	 
 	        	 var momentStart 	   = info.startStr; 
 	 	         var end 			   = new Date(info.endStr);
 	 	    	 var endStrsubtraction = moment(end).subtract(1, "days");
@@ -103,12 +102,36 @@ document.addEventListener('DOMContentLoaded', function() {
 						allowHTML : true 
 			});
 	    },
-	      eventSources : [ 
+	    eventResize : function(info){ 
+	    	
+		     var resizeMomentStart 		 = moment(info.event.start).format('YYYY-MM-DD');
+	    	 var resizeMomentEnd 	     = moment(info.event.end).subtract(1, "days");
+	    	 var resizeMomentEndResult 	 = moment(resizeMomentEnd).format('YYYY-MM-DD'); 
+	    	 
+	    	 var resizeEditTitle 			= info.event.title;
+	    	 var resizeEditBackgroundColor 	= info.event.backgroundColor;
+	    	 var resizeEditContent 		 	= info.event.extendedProps.description;
+	    	 var resizeCalendar_no 		 	= info.event.id;
+
+	    	 alert("시작일 : " + resizeMomentStart + " ~ 종료일 : " + resizeMomentEndResult);
+	    	  
+	    	 var resizeParams = { 
+	    			 "calendar_title" 		: resizeEditTitle, 
+	    			 "calendar_color" 		: resizeEditBackgroundColor, 
+	    			 "calendar_content" 	: resizeEditContent,
+	    			 "calendar_start_date" 	: resizeMomentStart, 
+	    			 "calendar_end_date" 	: resizeMomentEndResult,
+	    			 "calendar_no"			: resizeCalendar_no  
+	    	 }; 
+	    	
+	    	 dropEventEdit(resizeParams);
+	    },
+	     eventSources : [ 
 	    	  {
 	    		  url: '/lms/calendar/base',
 	    		  method: 'GET',
 	    		  failure: function(e){
-	    			  alert('일정불러오기 실패' + e.responseText);
+	    			 console.log("일정 읽기 실패");
 	    		  }
 	    	  }
 	      ]

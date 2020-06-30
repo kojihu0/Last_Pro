@@ -2,16 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>TeacherList</title>
-
-</head>
-<body>
-
-
 	
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		
@@ -21,21 +11,21 @@
 		</div>
 		
 		<div class="p-3 searchDiv text-right bg-gray-200 border-solid border-4 border-gray-600 flex">  
-			<select class="mx-2">
-				<option>::직급::</option>
-				<option>관리자</option>
-				<option>강사</option>
-				<option>임시강사</option>
-			</select>
-			<select class="mx-2">
-				<option>::Class::</option>
-				<option>A</option>
-				<option>B</option>
-				<option>C</option>
-				<option>D</option>
-				<option>E</option>
+			<select name="employee_rank" class="mx-2" onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_class=${employee_class}&employee_rank='+ this.value">
+				<option value="::직급::"<c:if test="${employee_rank == '::직급::' }">selected</c:if>>::직급::</option>
+				<option value="평강사"   <c:if test="${employee_rank == '평강사' }">selected</c:if>>평강사</option>
+				<option value="임시강사"  <c:if test="${employee_rank == '임시강사' }">selected</c:if>>임시강사</option>
+				<option value="강사"     <c:if test="${employee_rank == '강사' }">selected</c:if>>강사</option>
 			</select> 
-			<input type="text" name="search" placeholder="검색어 입력" class="mx-2 border border-black"/>&nbsp;<a href="#"><i class="xi-search"></i></a>
+			<select name="employee_class" class="mx-2"  onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class='+ this.value">
+				<option value="::Class::">::Class::</option>
+				<option value="A" <c:if test="${employee_class == 'A' }">selected</c:if>>A</option>
+				<option value="B" <c:if test="${employee_class == 'B' }">selected</c:if>>B</option>
+				<option value="C" <c:if test="${employee_class == 'C' }">selected</c:if>>C</option>
+				<option value="D" <c:if test="${employee_class == 'D' }">selected</c:if>>D</option>
+				<option value="E" <c:if test="${employee_class == 'E' }">selected</c:if>>E</option> 
+			</select>  
+			<input type="text" name="nameS" placeholder="이름 검색" id="searchName" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
 		</div>
 			
 		<div class="p-3 bg-info-100">
@@ -60,7 +50,7 @@
 							<td  class="border text-center p-2">${vo.employee_name }</td>
 							<td  class="border text-center p-2">${vo.employee_rank }</td>
 							<td  class="border text-center p-2">${vo.employee_class }</td>
-							<td  class="border text-center p-2">직원</td>
+							<td  class="border text-center p-2">${vo.employee_rank }</td>
 							<td  class="border text-center p-2">${vo.admin_id }</td>
 							<td  class="border text-center p-2">${vo.employee_authority }</td> 
 							<td  class="border text-center p-2">${vo.employee_state }</td>     
@@ -74,13 +64,42 @@
 		<div class="p-3 text-right">  
 			<a class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded" href="<%=projectPath%>/admin/adminTeacherRegi">직원등록</a>
 		</div>	
+	<!-- page -->	
+	<div class="text-center">	
+	<!-- 현재 페이지 -->
+		<c:if test="${pageVo.pageNum == 1 }"> 
+			<i class="xi-angle-left text-xl"></i>
+		</c:if>	   
 		
+		<c:if test="${pageVo.pageNum > 1 }"> 
+			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+		</c:if>
 		
+		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
+			<c:if test="${i <= pageVo.totalPage }">
+				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+			</c:if>
+		</c:forEach>  
+		 
+		<!-- 현재 페이지가 마지막일 경우 -->
+		<c:if test="${pageVo.pageNum == pageVo.totalPage }">
+			<i class="xi-angle-right text-xl"></i> 
+		</c:if> 
+		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
+			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+		</c:if>
+	</div>
+		
+
 	</div>
 	
-
-
-
+	<script>
+	
+	$("#buttonName").on('click', function(){
+		var searchName = document.getElementById("searchName").value;
+		location.href="/lms/admin/adminTeacherList?employee_name=" + searchName;
+	});
+	</script>
 
 </body>
 </html>

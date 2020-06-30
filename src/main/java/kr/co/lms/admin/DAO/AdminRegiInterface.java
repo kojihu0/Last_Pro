@@ -7,6 +7,7 @@ import kr.co.lms.admin.VO.AdminCourseVO;
 import kr.co.lms.admin.VO.AdminManageInfoVO;
 import kr.co.lms.admin.VO.AdminNoticeVO;
 import kr.co.lms.admin.VO.AdminRegiVO;
+import kr.co.lms.admin.VO.AdminStudentPagingVO;
 import kr.co.lms.admin.VO.AdminTeacherVO;
 
 public interface AdminRegiInterface {
@@ -21,7 +22,9 @@ public interface AdminRegiInterface {
 	
 	
 	//직원 정보 뽑아오기.
-	public List<AdminRegiVO> selectAdminAllRecord();
+	public List<AdminTeacherVO> selectAdminAllRecord(AdminStudentPagingVO pVo);
+	//직원 청 레코드
+	public int selectTeacherTotal();
 	//직원 등록
 	public int insertAdminTeacher(AdminTeacherVO vo);
 	//직원 소개글 뽑아오기.
@@ -33,8 +36,15 @@ public interface AdminRegiInterface {
 
 	
 	
+	//업무일지 토탈 레코드 구하기.
+	public int selectTotalRecordManageInfo();
+	//업무일지 이름 뽑아오기.
+	public List<AdminManageInfoVO> selectManageInfoName();
+	//강사 번호, 이름 뽑아오기.
+	public AdminManageInfoVO selectManageinfoNameAndNo(String id);
+	
 	//업무일지 전부 보기
-	public List<AdminManageInfoVO> selectManageInfo();
+	public List<AdminManageInfoVO> selectManageInfo(AdminStudentPagingVO pVo);
 	//업무일지 하나만 보기
 	public AdminManageInfoVO selectOneRecord(int no);
 	//업무일지 등록.
@@ -46,15 +56,16 @@ public interface AdminRegiInterface {
 	
 	
 	
+	//총 강좌 수 구하기.
+	public int selectCourseTotal();
 	//강좌리스트
-	public List<AdminCourseVO> selectCourseAll();
+	public List<AdminCourseVO> selectCourseAll(AdminStudentPagingVO pVo);
 	//강좌 하나 선택.
 	public AdminCourseVO selectCourseOne(int course_no_check);
 	//강좌 수정
 	public int updateCourse(AdminCourseVO vo);
 	//강좌 삭제
 	public int delRecord(AdminCourseVO vo);
-	
 	//강사 아이디를 통해 넘버체크
 	public int checkTeacherId(String id);
 	//등록 -> 해당 강사가 로그인해서 하게끔. 세션에서 강사 이름과 아이디를 가져온다.
@@ -62,8 +73,9 @@ public interface AdminRegiInterface {
 	
 	
 	
+	public int selectNoticeTotalRecord();
 	//사내일정  리스트
-	public List<AdminNoticeVO> selectNoticeAll();
+	public List<AdminNoticeVO> selectNoticeAll(AdminStudentPagingVO pVo);
 	//사내일정 뷰
 	public AdminNoticeVO selectNoticeOne(int no);
 	//조회수 업.

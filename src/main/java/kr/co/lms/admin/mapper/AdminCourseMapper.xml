@@ -3,22 +3,51 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<select id="selectCourseTotal"
+			resultType="int">
+		SELECT
+			COUNT(course_no)
+		FROM 
+			course	
+	</select>
+
+
 	<select id="selectCourseAll" 
 			resultType="kr.co.lms.admin.VO.AdminCourseVO"> 
-		SELECT 
-			course_no,
-			course_name,
-			TO_CHAR(course_start_date, 'YYYY-MM-DD') course_start_date,
-			course_price,
-			course_state,
-			course_day, 
-			course_time,
-			course_stage
-		FROM 
-			course 
-		ORDER BY
-			 course_no
-		DESC
+		SELECT * FROM( 		
+			SELECT * FROM( 	
+						SELECT 
+							course_no,
+							course_name,
+							TO_CHAR(course_start_date, 'YYYY-MM-DD') course_start_date,
+							course_price,
+							course_state,
+							course_day, 
+							course_time,
+							course_stage
+						FROM 
+							course
+						<where> 
+							<if test="searchKey_01 != -1">
+							AND TO_CHAR(course_start_date, 'YYYY') = #{searchKey_01}  
+ 							</if>
+							<if test="searchKey_02 != '::상태::'">
+							AND course_state = #{searchKey_02} 
+							</if>
+						</where>		
+						ORDER BY 
+							 course_no
+						DESC
+						)
+			WHERE rownum  <![CDATA[<=]]> #{pageNum} * #{onePageRecord} ORDER BY course_no ASC)
+	<if test="pageNum == totalPage">
+		WHERE rownum <![CDATA[<=]]> #{lastPageRecords} ORDER BY course_no DESC
+	</if>
+	<if test="pageNum != totalPage"> 
+		WHERE rownum <![CDATA[<=]]> #{onePageRecord} ORDER BY course_no DESC
+	</if>  
+				
+				
 	</select>
 		<select id="selectCourseOne" 
 			resultType="kr.co.lms.admin.VO.AdminCourseVO"> 

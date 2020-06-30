@@ -3,19 +3,56 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	<select id="selectTeacherTotal"
+			resultType="int">
+		SELECT
+			COUNT(employee_no)
+		FROM
+			employee
+	 
+	</select>
+
+
 	<select id="selectAdminAllRecord"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="kr.co.lms.admin.VO.AdminTeacherVO">
-		SELECT 
-			employee_no,
-			employee_name,
-			employee_email,
-			employee_rank, 
-			employee_class,
-		 	admin_id,
-		 	employee_authority,
-		 	employee_state
-		  FROM employee
-		  ORDER BY employee_no DESC 
+		SELECT * FROM
+			(SELECT * FROM 
+					(SELECT 
+						employee_no,
+						employee_name,
+						employee_email,
+						employee_rank, 
+						employee_class,
+					 	admin_id,
+					 	employee_authority,
+					 	employee_state
+					FROM 
+					  	employee
+					
+					 <where>
+					  	<if test="searchKey != '::Class::'">
+					  		AND employee_class = #{searchKey}
+					  	</if>  
+						<if test="searchWord != '::직급::'">
+					  		AND employee_rank = #{searchWord}
+					  	</if>
+					  	<if test="searchKey_02 != null"> 
+					  		AND employee_name LIKE '%' || #{searchKey_02} || '%'
+					  	</if> 
+					 </where> 
+					
+					ORDER BY
+					  	employee_no
+					DESC)
+			WHERE rownum  <![CDATA[<=]]> #{pageNum} * #{onePageRecord} ORDER BY employee_no ASC)
+		<if test="pageNum == totalPage">
+			WHERE rownum <![CDATA[<=]]> #{lastPageRecords} ORDER BY employee_no DESC
+		</if>
+		<if test="pageNum != totalPage">
+			WHERE rownum <![CDATA[<=]]> #{onePageRecord} ORDER BY employee_no DESC
+		</if>   
+		
 	</select>
 	 
 	<select id="selectTeacherOverView"

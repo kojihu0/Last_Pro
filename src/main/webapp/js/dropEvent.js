@@ -11,10 +11,5 @@ function dropEventEdit(dropParams){
 		error :function(error){
 			
 		}
-		
-		
-		
-		
-		
 	});
 }

@@ -1,15 +1,8 @@
 package kr.co.lms.admin;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
+
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +16,9 @@ import kr.co.lms.admin.VO.AdminCalendarVO;
 
 @Controller
 public class AdminMainController {
-
 	//-------------------------------------------------------------
 		SqlSession sqlSession;
 		
-
 		public SqlSession getSqlSession() {
 			return sqlSession;
 		}
@@ -64,7 +55,7 @@ public class AdminMainController {
 				 
 				 if(i < result_List.size()-1) {
 					 jsonStr += ",";
-				 }
+				 } 
 			}	  
 			jsonStr += "]";
 			System.out.println("vo에는 값이 들어가? 아니 여기는 오냐? : " + jsonStr);
@@ -74,12 +65,7 @@ public class AdminMainController {
 		@RequestMapping(value="/calendar/newData", method= RequestMethod.POST, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
 		public String ajaxString(AdminCalendarVO vo, HttpServletRequest request) {
-			
-			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_color());
-			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_start_date());
-			System.out.println("추가 이벤트 확인 해봅시다 vo : " + vo.getCalendar_title());
-			
-			  
+  
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.insertEvent(vo); 
 
@@ -97,12 +83,7 @@ public class AdminMainController {
 		public String ajaxEditEvent(AdminCalendarVO vo, HttpServletRequest request) {
 			String json_Str = "";
 			
-			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_start_date());
-			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_end_date());
-			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_date());
-			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_no());
-			System.out.println("vo 확인 해봅시다 : " + vo.getCalendar_title());
-			
+
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.updateCalender(vo);
 			
@@ -113,17 +94,10 @@ public class AdminMainController {
 		@ResponseBody
 		public String ajaxDelEvent(AdminCalendarVO vo, HttpServletRequest request) {
 			String json_Str = "";
-			
-			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_start_date());
-			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_end_date());
-			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_date());
-			System.out.println("vo 확인 해봅시다2 : " + vo.getCalendar_no());
-			System.out.println("vo 확인 해봅시다 2: " + vo.getCalendar_title());
-			
+
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.deleteCalender(vo);
-			
-			 
+	
 			return "삭제 완.";
 		}  
 		//dropEvent
@@ -132,15 +106,10 @@ public class AdminMainController {
 		public String ajaxDropUpdate(AdminCalendarVO vo, HttpServletRequest request) {	
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 
-			System.out.println("vo 값 확인 필요, 드랍 : " + vo.getCalendar_start_date());
-			System.out.println("vo 값 확인 필요, 드랍 : " + vo.getCalendar_end_date());
-			
 			int result_Int = adminRegiInter.dropUpdateCalender(vo);
 
 			return "드랍 수정 완";
 		}
-		
-		
 }//controller end
 
 
