@@ -1,7 +1,7 @@
 package kr.co.lms.admin.VO;
 
 public class StudentClassInfoVO {
-	private int student_no;
+	private int student_no;//
 	private int payment_no;
 	private String course_name;
 	private String course_time;
