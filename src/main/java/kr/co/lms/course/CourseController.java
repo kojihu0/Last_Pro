@@ -40,22 +40,22 @@ public class CourseController {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		
 		PagingVO pvo = new PagingVO();
-		pvo.setOnePageRecord(8); //ÇÑÆäÀÌÁö´ç º¸¿©Áú °³¼ö
-		pvo.setPageCount(5); //ÇÑ¹ø¿¡ º¸¿©Áú ÆäÀÌÁö ¼ıÀÚ °³¼ö
+		pvo.setOnePageRecord(8); //í•œí˜ì´ì§€ë‹¹ ë³´ì—¬ì§ˆ ê°œìˆ˜
+		pvo.setPageCount(5); //í•œë²ˆì— ë³´ì—¬ì§ˆ í˜ì´ì§€ ìˆ«ì ê°œìˆ˜
 		
-		if(!search_text.isEmpty() && search_text!=null) { //°Ë»ö¾î°¡ Á¸ÀçÇÒ¶§ °Ë»ö¾î ¼ÂÆÃ
+		if(!search_text.isEmpty() && search_text!=null) { //ê²€ìƒ‰ì–´ê°€ ì¡´ì¬í• ë•Œ ê²€ìƒ‰ì–´ ì…‹íŒ…
 			pvo.setSearch_text(search_text);
 		}
 		
-		if(pageNum>0) { //ÆäÀÌÁö¹øÈ£  ¼¼ÆÃ
+		if(pageNum>0) { //í˜ì´ì§€ë²ˆí˜¸  ì„¸íŒ…
 			pvo.setPageNum(pageNum);
 		}
 		else {
 			pvo.setPageNum(1);
 		}
-		pvo.setTotalRecord(dao.getTotalCoureses(search_text)); //ÀüÃ¼ ·¹ÄÚµå ¼ö ¼¼ÆÃ
+		pvo.setTotalRecord(dao.getTotalCoureses(search_text)); //ì „ì²´ ë ˆì½”ë“œ ìˆ˜ ì„¸íŒ…
 		
-		if((pvo.getPageNum() < pvo.getTotalPage())) { //ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ¸¶Áö¸·ÆäÀÌÁö ¹øÈ£º¸´Ù ÀÛÀ» ¶§¸¸ lastPageRecord¿¡ onePageRecordÀû¿ë
+		if((pvo.getPageNum() < pvo.getTotalPage())) { //í˜„ì¬ í˜ì´ì§€ë²ˆí˜¸ê°€ ë§ˆì§€ë§‰í˜ì´ì§€ ë²ˆí˜¸ë³´ë‹¤ ì‘ì„ ë•Œë§Œ lastPageRecordì— onePageRecordì ìš©
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		}
 		
@@ -79,38 +79,38 @@ public class CourseController {
 		rpvo.setOnePageRecord(5);
 		rpvo.setCourse_no(course_no);
 		
-		if(reviewPageNum>0) { //ÆäÀÌÁö¹øÈ£  ¼¼ÆÃ
+		if(reviewPageNum>0) { //í˜ì´ì§€ë²ˆí˜¸  ì„¸íŒ…
 			rpvo.setPageNum(reviewPageNum);
 		}
 		else {
 			rpvo.setPageNum(1);
 		}
-		int totalReviews = dao.getTotalReviews(course_no); //ÀüÃ¼ ¼ö°­Æò ¼ö
+		int totalReviews = dao.getTotalReviews(course_no); //ì „ì²´ ìˆ˜ê°•í‰ ìˆ˜
 		rpvo.setTotalRecord(totalReviews);
 		
-		if((rpvo.getPageNum() < rpvo.getTotalPage())) { //ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ¸¶Áö¸·ÆäÀÌÁö ¹øÈ£º¸´Ù ÀÛÀ» ¶§¸¸ lastPageRecord¿¡ onePageRecordÀû¿ë
+		if((rpvo.getPageNum() < rpvo.getTotalPage())) { //í˜„ì¬ í˜ì´ì§€ë²ˆí˜¸ê°€ ë§ˆì§€ë§‰í˜ì´ì§€ ë²ˆí˜¸ë³´ë‹¤ ì‘ì„ ë•Œë§Œ lastPageRecordì— onePageRecordì ìš©
 			rpvo.setLastPageRecord(rpvo.getOnePageRecord());
 		}
 		
-		//¼¼¼Ç
+		//ì„¸ì…˜
 		HttpSession sess = req.getSession();
 		String logStatus = (String) sess.getAttribute("logStatus");
 		int student_no = 0;
 		int payment_no = 0;
 		int wish_no = 0;
-		if(logStatus!=null) { //·Î±×ÀÎ »óÅÂÀÏ¶§ ¼¼¼Ç¿¡¼­ ÇĞ»ı¹øÈ£¿Í ±¸¸Å¹øÈ£ °¡Á®¿À±â
+		if(logStatus!=null) { //ë¡œê·¸ì¸ ìƒíƒœì¼ë•Œ ì„¸ì…˜ì—ì„œ í•™ìƒë²ˆí˜¸ì™€ êµ¬ë§¤ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
 			if(logStatus.equals("Y")) {
 				student_no = (Integer)sess.getAttribute("student_no");
 				String strPayment_no = dao.selectPaymentNo(course_no, student_no); 
 				if(strPayment_no!=null) {
 					payment_no = Integer.parseInt(strPayment_no);
 				}
-				System.out.println("±¸¸Å¹øÈ£"+payment_no);
+				System.out.println("êµ¬ë§¤ë²ˆí˜¸"+payment_no);
 				wish_no = dao.selectWishNo(course_no, student_no);
 				
 			}
 		}
-		//¸®ºä ÆÛ¼¾Æ® ±¸ÇÏ±â
+		//ë¦¬ë·° í¼ì„¼íŠ¸ êµ¬í•˜ê¸°
 		int rankSum=0;
 		List<CourseReviewVO> reviewTmp = new ArrayList<CourseReviewVO>();
 		List<CourseReviewVO> review = dao.reviewRanks(course_no);
@@ -153,10 +153,10 @@ public class CourseController {
 		
 		String response;
 		if(cnt>0) {
-			response = "¼ö°­ÈÄ±â¸¦ µî·ÏÇß½À´Ï´Ù.";
+			response = "ìˆ˜ê°•í›„ê¸°ë¥¼ ë“±ë¡í–ˆìŠµë‹ˆë‹¤.";
 		}
 		else {
-			response = "¼ö°­ÈÄ±â µî·ÏÀ» ½ÇÆĞÇß½À´Ï´Ù.";
+			response = "ìˆ˜ê°•í›„ê¸° ë“±ë¡ì„ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -178,10 +178,10 @@ public class CourseController {
 		String response="";
 		String msg="";
 		if(cnt>0) {
-			msg = "¼ö°­ÈÄ±â¸¦ ¼öÁ¤Çß½À´Ï´Ù.";
+			msg = "ìˆ˜ê°•í›„ê¸°ë¥¼ ìˆ˜ì •í–ˆìŠµë‹ˆë‹¤.";
 		}
 		else {
-			msg = "¼ö°­ÈÄ±â ¼öÁ¤À» ½ÇÆĞÇß½À´Ï´Ù.";
+			msg = "ìˆ˜ê°•í›„ê¸° ìˆ˜ì •ì„ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 		}
 		
 		response="{\"msg\": \""+msg+"\", "
@@ -199,10 +199,10 @@ public class CourseController {
 		
 		String response;
 		if(cnt>0) {
-			response = "¼ö°­ÈÄ±â¸¦ »èÁ¦Çß½À´Ï´Ù.";
+			response = "ìˆ˜ê°•í›„ê¸°ë¥¼ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.";
 		}
 		else {
-			response = "¼ö°­ÈÄ±â »èÁ¦¸¦ ½ÇÆĞÇß½À´Ï´Ù.";
+			response = "ìˆ˜ê°•í›„ê¸° ì‚­ì œë¥¼ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -220,7 +220,7 @@ public class CourseController {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		
 		HttpSession sess = req.getSession();
-		int student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+		int student_no = ((Integer)sess.getAttribute("student_no"));
 		vo.setStudent_no(student_no);
 		System.out.println(wish_status);
 		int cnt = 0;
@@ -231,22 +231,22 @@ public class CourseController {
 			if(wish_cnt==0) {
 				cnt = dao.insertWish(vo);
 				if(cnt>0) {
-					msg = "°­ÁÂ¸¦ À§½Ã¸®½ºÆ®¿¡ Ãß°¡Çß½À´Ï´Ù.";
+					msg = "ê°•ì¢Œë¥¼ ìœ„ì‹œë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í–ˆìŠµë‹ˆë‹¤.";
 					vo.setWish_status("remove");
 				}
 				else {
-					msg = "À§½Ã¸®½ºÆ® Ãß°¡ ½ÇÆĞ";
+					msg = "ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì¶”ê°€ ì‹¤íŒ¨";
 				}
 			}
 		}
 		else if(wish_status.equals("remove")) {
 			cnt = dao.deleteWish(vo);
 			if(cnt>0) {
-				msg = "°­ÁÂ¸¦ À§½Ã¸®½ºÆ®¿¡¼­ »èÁ¦Çß½À´Ï´Ù.";
+				msg = "ê°•ì¢Œë¥¼ ìœ„ì‹œë¦¬ìŠ¤íŠ¸ì—ì„œ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.";
 				vo.setWish_status("add");
 			}
 			else {
-				msg = "À§½Ã¸®½ºÆ® »èÁ¦ ½ÇÆĞ";
+				msg = "ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì‚­ì œ ì‹¤íŒ¨";
 			}
 		}
 		

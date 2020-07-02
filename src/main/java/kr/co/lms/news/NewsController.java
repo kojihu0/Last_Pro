@@ -32,14 +32,11 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/event", method=RequestMethod.GET)
-	public ModelAndView event(NewsVO vo, HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//ÀÌº¥Æ® °Ô½Ã¹°
+	public ModelAndView event(NewsVO vo, HttpServletRequest req, 
+			@RequestParam(required = false, defaultValue = "1") int pageNum){//ì´ë²¤íŠ¸ ê²Œì‹œë¬¼
 		PagingVO pvo = new PagingVO();
 		pvo.setCategory_no(2);
-		//ÇÑÆäÀÌÁö¿¡ º¸¿©ÁÙ °Ô½Ã¹° °¹¼ö ¼³Á¤
 		pvo.setOnePageRecord(5);
-		System.out.println("1111111111111111"+pvo.getCategory_no());
-		//ÀüÃ¼ÆäÀÌÁö ¼ö ±¸ÇÏ±â 
-		
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.eventGetTotalRecord());
@@ -49,21 +46,19 @@ public class NewsController {
 			pvo.setPageNum(1);
 		}
 		System.out.println("=============================");
-		System.out.println("ÀÌº¥Æ® ÆäÀÌÁö ÀÛ¾÷");
-		System.out.println("ÇÑÆäÀÌÁö º¸¿©ÁÖ±â"+pvo.getOnePageRecord());
-		System.out.println("ÇöÀç ÆäÀÌÁö"+pvo.getPageNum());
-		System.out.println("ÃÑ ÆäÀÌÁö"+pvo.getTotalPage());
-		System.out.println("ÃÑ ·¹ÄÚµå"+pvo.getTotalRecord());
-		System.out.println("¸¶Áö¸· ÆäÀÌÁö ¹øÈ£"+pvo.getLastPageRecord());
+		System.out.println("ì´ë²¤íŠ¸ í˜ì´ì§€ ì‘ì—…");
+		System.out.println("í•œí˜ì´ì§€ ë³´ì—¬ì£¼ê¸°"+pvo.getOnePageRecord());
+		System.out.println("í˜„ì¬ í˜ì´ì§€"+pvo.getPageNum());
+		System.out.println("ì´ í˜ì´ì§€"+pvo.getTotalPage());
+		System.out.println("ì´ ë ˆì½”ë“œ"+pvo.getTotalRecord());
+		System.out.println("ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸"+pvo.getLastPageRecord());
 		System.out.println("=============================");
 		
-		//¶ó½ºÆ® ÆäÀÌÁö ÀÛ¾÷.
+		//ë¼ìŠ¤íŠ¸ í˜ì´ì§€ ì‘ì—….
 		pvo.setTotalRecord(dao.eventGetTotalRecord());
-		System.out.println(pvo.getCategory_no());
-		if((pvo.getPageNum() < pvo.getTotalPage())) { //ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ¸¶Áö¸·ÆäÀÌÁö ¹øÈ£º¸´Ù ÀÛÀ» ¶§
+		if((pvo.getPageNum() < pvo.getTotalPage())) { //í˜„ì¬ í˜ì´ì§€ë²ˆí˜¸ê°€ ë§ˆì§€ë§‰í˜ì´ì§€ ë²ˆí˜¸ë³´ë‹¤ ì‘ì„ ë•Œ
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		} 
-		System.out.println(pvo.getCategory_no());
 		List<NewsVO> eventsList = dao.eventsAllSelectRecord(pvo);
 		mav.addObject("pvo",pvo);
 		mav.addObject("crrPageNum", pvo.getPageNum());
@@ -73,12 +68,12 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/news", method=RequestMethod.GET)
-	public ModelAndView news(NewsVO vo ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//°øÁö»çÇ× °Ô½Ã¹°
+	public ModelAndView news(NewsVO vo ,HttpServletRequest req, 
+			@RequestParam(required = false, defaultValue = "1") int pageNum){//ê³µì§€ì‚¬í•­ ê²Œì‹œë¬¼
 		ModelAndView mav = new ModelAndView();
 		PagingVO pvo = new PagingVO();
-		//ÇÑÆäÀÌÁö¿¡ º¸¿©ÁÙ °Ô½Ã¹°ÀÇ ¼ö¸¦ ¼³Á¤
+		pvo.setCategory_no(1);
 		pvo.setOnePageRecord(5);
-		//ÀüÃ¼ ÆäÀÌÁöÀÇ ¼ö¸¦ ±¸ÇÏ°í
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.newsGetTotalRecord());
 		if(pageNum>0) {
@@ -88,18 +83,17 @@ public class NewsController {
 		}
  
 		System.out.println("=============================");
-		System.out.println("´º½º ÆäÀÌÁö ÀÛ¾÷");
-		System.out.println("ÇÑÆäÀÌÁö º¸¿©ÁÖ±â"+pvo.getOnePageRecord());
-		System.out.println("ÇöÀç ÆäÀÌÁö"+pvo.getPageNum());
-		System.out.println("ÃÑ ÆäÀÌÁö"+pvo.getTotalPage());
-		System.out.println("ÃÑ ·¹ÄÚµå"+pvo.getTotalRecord());
-		System.out.println("¸¶Áö¸· ÆäÀÌÁö ¹øÈ£"+pvo.getLastPageRecord());
+		System.out.println("ë‰´ìŠ¤ í˜ì´ì§€ ì‘ì—…");
+		System.out.println("í•œí˜ì´ì§€ ë³´ì—¬ì£¼ê¸°"+pvo.getOnePageRecord());
+		System.out.println("í˜„ì¬ í˜ì´ì§€"+pvo.getPageNum());
+		System.out.println("ì´ í˜ì´ì§€"+pvo.getTotalPage());
+		System.out.println("ì´ ë ˆì½”ë“œ"+pvo.getTotalRecord());
+		System.out.println("ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸"+pvo.getLastPageRecord());
 		System.out.println("=============================");
 		
-		//¶ó½ºÆ® ÆäÀÌÁö ÀÛ¾÷.
+		//ë¼ìŠ¤íŠ¸ í˜ì´ì§€ ì‘ì—….
 		pvo.setTotalRecord(dao.newsGetTotalRecord());
-		
-		if((pvo.getPageNum() < pvo.getTotalPage())) { //ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ¸¶Áö¸·ÆäÀÌÁö ¹øÈ£º¸´Ù ÀÛÀ» ¶§
+		if((pvo.getPageNum() < pvo.getTotalPage())) { //í˜„ì¬ í˜ì´ì§€ë²ˆí˜¸ê°€ ë§ˆì§€ë§‰í˜ì´ì§€ ë²ˆí˜¸ë³´ë‹¤ ì‘ì„ ë•Œ
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		} 
 	
@@ -112,7 +106,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/newsDetail", method=RequestMethod.GET)
-	public ModelAndView noticeForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//°øÁö»çÇ× °Ô½Ã¹° ¼±ÅÃ
+	public ModelAndView noticeForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//ê³µì§€ì‚¬í•­ ê²Œì‹œë¬¼ ì„ íƒ
 		NewsVO vo = new	NewsVO();
 		PagingVO pVo = new PagingVO();
 		
@@ -134,7 +128,7 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/eventDetail", method=RequestMethod.GET)
-	public ModelAndView eventForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//ÀÌº¥Æ® °Ô½Ã¹° ¼±ÅÃ
+	public ModelAndView eventForm(int no ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//ì´ë²¤íŠ¸ ê²Œì‹œë¬¼ ì„ íƒ
 		NewsVO vo = new NewsVO();
 		PagingVO pVo = new PagingVO();	
 		ModelAndView mav = new ModelAndView();

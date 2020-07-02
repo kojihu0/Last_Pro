@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="container my-0 mx-auto">
-	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
+	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Contact</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
 	<div class="lg:flex pt-12"><!-- contact-info -->
 		<div class="lg:w-1/2 pr-6 lg:pl-0 pl-6 mb-8">

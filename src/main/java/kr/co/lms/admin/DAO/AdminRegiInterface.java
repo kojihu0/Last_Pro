@@ -11,77 +11,77 @@ import kr.co.lms.admin.VO.AdminTeacherVO;
 
 public interface AdminRegiInterface {
 	
-	//·Î±×ÀÎ Ã¼Å©
+	//ë¡œê·¸ì¸ ì²´í¬
 	public AdminRegiVO selectAdminId(AdminRegiVO vo);
-	//°èÁ¤µî·Ï Àü, Áßº¹ÇÏ´Â ¾ÆÀÌµğ°¡ ÀÖ´ÂÁö Ã¼Å©
+	//ê³„ì •ë“±ë¡ ì „, ì¤‘ë³µí•˜ëŠ” ì•„ì´ë””ê°€ ìˆëŠ”ì§€ ì²´í¬
 	public AdminRegiVO selectAdminIdCheck(AdminRegiVO vo);
-	//admin °èÁ¤ µî·ÏÀ» À§ÇÑ °Í.
+	//admin ê³„ì • ë“±ë¡ì„ ìœ„í•œ ê²ƒ.
 	public int insertAdminID(AdminRegiVO vo);
 	 
 	
 	
-	//Á÷¿ø Á¤º¸ »Ì¾Æ¿À±â.
+	//ì§ì› ì •ë³´ ë½‘ì•„ì˜¤ê¸°.
 	public List<AdminRegiVO> selectAdminAllRecord();
-	//Á÷¿ø µî·Ï
+	//ì§ì› ë“±ë¡
 	public int insertAdminTeacher(AdminTeacherVO vo);
-	//Á÷¿ø ¼Ò°³±Û »Ì¾Æ¿À±â.
+	//ì§ì› ì†Œê°œê¸€ ë½‘ì•„ì˜¤ê¸°.
 	public AdminTeacherVO selectTeacherOverView(AdminTeacherVO vo);
-	//Á÷¿ø Á¤º¸ ¼öÁ¤
+	//ì§ì› ì •ë³´ ìˆ˜ì •
 	public int updateAdminTeacherEdit(AdminTeacherVO vo); 
-	//»èÁ¦
+	//ì‚­ì œ
 	public int deleteTeacher(AdminTeacherVO vo); 
 
 	
 	
-	//¾÷¹«ÀÏÁö ÀüºÎ º¸±â
+	//ì—…ë¬´ì¼ì§€ ì „ë¶€ ë³´ê¸°
 	public List<AdminManageInfoVO> selectManageInfo();
-	//¾÷¹«ÀÏÁö ÇÏ³ª¸¸ º¸±â
+	//ì—…ë¬´ì¼ì§€ í•˜ë‚˜ë§Œ ë³´ê¸°
 	public AdminManageInfoVO selectOneRecord(int no);
-	//¾÷¹«ÀÏÁö µî·Ï.
+	//ì—…ë¬´ì¼ì§€ ë“±ë¡.
 	public int insertAdminManageInfo(AdminManageInfoVO vo);
-	//¾÷¹«ÀÏÁö ¼öÁ¤
+	//ì—…ë¬´ì¼ì§€ ìˆ˜ì •
 	public int updateAdminManageInfo(AdminManageInfoVO vo);
-	//¾÷¹«ÀÏÁö °áÁ¦ ½ÂÀÎ.
+	//ì—…ë¬´ì¼ì§€ ê²°ì œ ìŠ¹ì¸.
 	public int updateAdminManageInfoOk(AdminManageInfoVO vo);
 	
 	
 	
-	//°­ÁÂ¸®½ºÆ®
+	//ê°•ì¢Œë¦¬ìŠ¤íŠ¸
 	public List<AdminCourseVO> selectCourseAll();
-	//°­ÁÂ ÇÏ³ª ¼±ÅÃ.
+	//ê°•ì¢Œ í•˜ë‚˜ ì„ íƒ.
 	public AdminCourseVO selectCourseOne(int course_no_check);
-	//°­ÁÂ ¼öÁ¤
+	//ê°•ì¢Œ ìˆ˜ì •
 	public int updateCourse(AdminCourseVO vo);
-	//°­ÁÂ »èÁ¦
+	//ê°•ì¢Œ ì‚­ì œ
 	public int delRecord(AdminCourseVO vo);
 	
-	//°­»ç ¾ÆÀÌµğ¸¦ ÅëÇØ ³Ñ¹öÃ¼Å©
+	//ê°•ì‚¬ ì•„ì´ë””ë¥¼ í†µí•´ ë„˜ë²„ì²´í¬
 	public int checkTeacherId(String id);
-	//µî·Ï -> ÇØ´ç °­»ç°¡ ·Î±×ÀÎÇØ¼­ ÇÏ°Ô²û. ¼¼¼Ç¿¡¼­ °­»ç ÀÌ¸§°ú ¾ÆÀÌµğ¸¦ °¡Á®¿Â´Ù.
+	//ë“±ë¡ -> í•´ë‹¹ ê°•ì‚¬ê°€ ë¡œê·¸ì¸í•´ì„œ í•˜ê²Œë”. ì„¸ì…˜ì—ì„œ ê°•ì‚¬ ì´ë¦„ê³¼ ì•„ì´ë””ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	public int insertCourse(AdminCourseVO vo); 
 	
 	
 	
-	//»ç³»ÀÏÁ¤  ¸®½ºÆ®
+	//ì‚¬ë‚´ì¼ì •  ë¦¬ìŠ¤íŠ¸
 	public List<AdminNoticeVO> selectNoticeAll();
-	//»ç³»ÀÏÁ¤ ºä
+	//ì‚¬ë‚´ì¼ì • ë·°
 	public AdminNoticeVO selectNoticeOne(int no);
-	//Á¶È¸¼ö ¾÷.
+	//ì¡°íšŒìˆ˜ ì—….
 	public int AdminNoticeHitUpdate(int no);
-	//µé¾î¿Â »ç¶÷ ÀÓÇÃ·ÎÀÌ ¹øÈ£ ±¸ÇÏ±â.
+	//ë“¤ì–´ì˜¨ ì‚¬ëŒ ì„í”Œë¡œì´ ë²ˆí˜¸ êµ¬í•˜ê¸°.
 	public int selectEmployeeNo(String id);
-	//»ç³»ÀÏÁ¤ µî·Ï.
+	//ì‚¬ë‚´ì¼ì • ë“±ë¡.
 	public int insertNotice(AdminNoticeVO vo);
-	//»ç³»ÀÏÁ¤ ¼öÁ¤
+	//ì‚¬ë‚´ì¼ì • ìˆ˜ì •
 	public int updateNotice(AdminNoticeVO vo);
-	//»ç³»ÀÏÁ¤ »èÁ¦.
+	//ì‚¬ë‚´ì¼ì • ì‚­ì œ.
 	public int delNotice(int no); 
 	
 	
 	
-	//¸ŞÀÎÆäÀÌÁö °ü·Ã µ¥ÀÌÅÍ »Ì±â.
+	//ë©”ì¸í˜ì´ì§€ ê´€ë ¨ ë°ì´í„° ë½‘ê¸°.
 	public List<AdminCalendarVO> selectAllCalendar();
-	//ÀÌº¥Æ® Ãß°¡.
+	//ì´ë²¤íŠ¸ ì¶”ê°€.
 	public int insertEvent(AdminCalendarVO vo); 
 	
 	

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+    
+<style>
+#notice_content p{
+width:500px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+</style>
 <body>
 	<div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 		<div class="container my-0 mx-auto">
@@ -27,6 +30,9 @@
 				  </li>
 				</ul> 					   
 			</nav><!-- notice-navigation end --> 
+			<c:if test="${empty notice_list}">
+					<p class="py-8 text-center text-lg font-bold">등록된 공지사항이 없습니다.</p>
+				</c:if>
 		<c:forEach var="vo" items="${notice_list}">
 			<!-- 공지사항 폼 -->
 				<div class="w-full my-0 mx-auto max-w-screen-lg" >  
@@ -37,7 +43,7 @@
 						</div>
 						<div class="flex-auto event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
 							<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx%>/newsDetail?no=${vo.admin_notice_no}&pageNum=${pvo.pageNum}">${vo.admin_notice_title}</a></h2>
-							<div class="event-desc text-gray-700 mt-6">
+							<div id="notice_content"class="event-desc text-gray-700 mt-6">
 							${vo.admin_notice_content }
 							</div>
 						</div>
@@ -53,7 +59,7 @@
 			<c:if test="${i<=pvo.totalPage}">
 			<li class="page-item">
 			<a class="pn page-link block py-1 px-2 hover:text-brand-500
-			<c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/newsDetail?pageNum=${i}">${i}
+			<c:if test="${i==crrPageNum}"> text-brand-500</c:if>" href="<%=ctx%>/news?pageNum=${i}">${i}
 			</a></li>
 			</c:if>
 			</c:forEach>

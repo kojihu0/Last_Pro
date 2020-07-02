@@ -55,31 +55,37 @@ $(function(){
 		update(url,params,msg,"password");
 	});
 });
-
-
 </script>
 <script>
 function preview(input, target) {
-    if(input.files && input.files[0]){
-      var fileName= input.files[0].name;
-      var ext=fileName.substr(fileName.length-3, fileName.length);
-      var isCheck=false; 
-          if(ext.toLowerCase()=='jpg' || ext.toLowerCase()=='gif' || ext.toLowerCase()=='png'){
-          isCheck=true;               
-      }
-      if(isCheck==false){
-          alert("이미지 파일 아님");
-          jQuery(input).val("");
-          return;
-      }
-      var reader = new FileReader();
-      reader.readAsDataURL(input.files[0]);          
-      reader.onload = function(e) {
-        jQuery(target).attr('src', e.target.result);
-      }
+  if(input.files && input.files[0]){
+    var fileName= input.files[0].name;
+    var ext=fileName.substr(fileName.length-3, fileName.length);
+    var isCheck=false; 
+        if(ext.toLowerCase()=='jpg' || ext.toLowerCase()=='gif' || ext.toLowerCase()=='png'){
+        isCheck=true;               
     }
+    if(isCheck==false){
+       alert("이미지 파일 아님");
+       jQuery(input).val("");
+        return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(input.files[0]);          
+    reader.onload = function(e) {
+      jQuery(target).attr('src', e.target.result);
+    }
+  }
 }
 </script>
+ <script>
+  $(function(){ 
+	$("#generalDelBtn").click(function(){
+		window.open("<%=ctx%>/registerDel ","generalDelBtn","width=600px , height=300px");
+		
+	});
+ });
+ </script>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
@@ -121,6 +127,9 @@ function preview(input, target) {
 			   <li class="mr-1">
 			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 			  </li>
+			   <li class="mr-1">
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+				  </li>
 			</ul>
 				
 			<ul class="flex roboto-slab mt-16 mb-4">
@@ -144,6 +153,7 @@ function preview(input, target) {
 					<input type="text" name="student_name_ko" id="firstName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
 				</div>
 				<input value="변경하기" id="generalBtn" type="button" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
+				<input value="회원탈퇴" id="generalDelBtn" type="button" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
 			</form>
 			
 			<!--이미지 업로드   -->
@@ -152,9 +162,9 @@ function preview(input, target) {
 					<div class="img_wrap my-4 ml-4 bg-gray-500">
 						<img src="" id="img01"/>
 					</div>
-					<input onchange="preview(this, $('#img01'));"id="input_img" name="student_img" type="file" value="Upload" class="xi-file-upload-o  text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
+					<input onchange="preview(this, $('#img01'));"id="input_img" name="student_img" type="file" value="Upload" class=" text-gray-800 my-4 ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  inline-flex items-center">
 				</div>	
-				<input type="submit" value="변경하기" id="imgUploadBtn" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
+				<input type="submit" value="프로필 사진 등록" id="imgUploadBtn" class="cursor-pointer focus:outline-none my-5 py-3 px-5 bg-brand-500 text-black font-bold">				
 			</form>
 			
 			<form id="passwordUpdate"style="display:none">

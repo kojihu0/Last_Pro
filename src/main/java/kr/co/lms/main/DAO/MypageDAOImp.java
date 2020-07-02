@@ -4,14 +4,23 @@ import java.util.List;
 
 import kr.co.lms.main.VO.CourseVO;
 import kr.co.lms.main.VO.MypageVO;
+import kr.co.lms.main.VO.WishListVO;
 
 public interface MypageDAOImp {
-	//¼ö°­ÁßÀÎ °­ÁÂ ¸ñ·Ï °¡Á®¿À±â
+	//ìˆ˜ê°•ì¤‘ì¸ ê°•ì¢Œ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
 	public List<MypageVO> courseRecord(int no);
-	//¼ö·áÇÑ °­ÁÂ ¸ñ·Ï °¡Á®¿À±â
+	//ìˆ˜ë£Œí•œ ê°•ì¢Œ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
 	public List<MypageVO> completionCourseRecord(int no);
-	//¹Ì¼ö·áÇÑ °­ÁÂ ¸ñ·Ï °¡Á®¿À±â 
+	//ë¯¸ìˆ˜ë£Œí•œ ê°•ì¢Œ ëª©ë¡ ê°€ì ¸ì˜¤ê¸° 
 	public List<MypageVO> inCompleteCourseRecord(int no);
-	//½Ã°£Ç¥
+	//ì‹œê°„í‘œ
 	public List<CourseVO> selectTimeTable(int student_no);
+	//ìˆ˜ê°•ìƒì„¸í˜ì´ì§€ì—ì„œ í•™ìƒì •ë³´ì™€ ê°•ì‚¬ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+	public MypageVO memberMypageDetailInfo(int no);
+	//ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
+	public List<WishListVO> wishListRecord(WishListVO wVO);
+	//ë“±ë¡ë‚ ì§œ ì¦ê°
+	public void updateSysdate();
+	//ë‚ ì§œì°¨ì´ 
+	public MypageVO courseProgess(int no);
 }

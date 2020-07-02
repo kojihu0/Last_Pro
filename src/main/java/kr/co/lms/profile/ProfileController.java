@@ -1,6 +1,7 @@
 package kr.co.lms.profile;
 
 import java.io.File;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,12 @@ import com.google.gson.JsonObject;
 
 import kr.co.lms.main.DAO.MemberDAOImp;
 import kr.co.lms.main.DAO.MypageDAOImp;
+import kr.co.lms.main.DAO.paymentDAOImp;
 import kr.co.lms.main.VO.CourseVO;
 import kr.co.lms.main.VO.MemberVO;
 import kr.co.lms.main.VO.MypageVO;
+import kr.co.lms.main.VO.WishListVO;
+import kr.co.lms.main.VO.paymentVO;
 
 
 @Controller
@@ -43,10 +47,26 @@ public class ProfileController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	@RequestMapping(value="/myPageDetail", method=RequestMethod.GET)
+	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo,int no) {
+		ModelAndView mav = new ModelAndView();	
+		HttpSession s = req.getSession();
+		vo.setStudent_no((Integer)s.getAttribute("student_no"));
+		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
+		MemberDAOImp memDao = sqlSession.getMapper(MemberDAOImp.class);
+		MypageVO vo2 = dao.memberMypageDetailInfo(no);
+		MemberVO mVo = memDao.memberPaymentRecord(vo);
+		mav.addObject("vo",mVo);
+		mav.addObject("info",vo2);
+		mav.setViewName("main/profile/myPageDetail");
+		return mav;
+	}
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
-	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//¸ÊÇÎ
+	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//ë§µí•‘
+		
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = dao.memberDataSelect(vo);
@@ -57,17 +77,19 @@ public class ProfileController {
 		return mav;
 	}
 	@RequestMapping(value="/courseOfStudy",method=RequestMethod.GET)
-	public ModelAndView courseOfStudy(HttpServletRequest req, int no,MemberVO vo){//¼ö°­ÁßÀÎ°­ÁÂ
+	public ModelAndView courseOfStudy(HttpServletRequest req, int no ,MemberVO vo){//ìˆ˜ê°•ì¤‘ì¸ê°•ì¢Œ
+
 		ModelAndView mav = new ModelAndView();
+		
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class); 
 		List<MypageVO> courseList =dao.courseRecord(no);
-		
+		MypageVO mVO = new MypageVO();
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
+		MypageVO course_progress = dao.courseProgess(no);
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
-		
-		
+		mav.addObject("course_progress",course_progress);
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
 		mav.addObject("student_img",vo2.getStudent_img());
@@ -77,7 +99,7 @@ public class ProfileController {
 				
 	}
 	@RequestMapping(value="/completionCourse",method=RequestMethod.GET)
-	public ModelAndView completionCourse(HttpServletRequest req, int no,MemberVO vo) {//¼ö·á°­ÁÂ
+	public ModelAndView completionCourse(HttpServletRequest req, int no,MemberVO vo) {//ìˆ˜ë£Œê°•ì¢Œ
 		ModelAndView mav = new ModelAndView();
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
 		List<MypageVO> completionCourse = dao.completionCourseRecord(no);
@@ -94,9 +116,10 @@ public class ProfileController {
 		return mav;
 	}
 	@RequestMapping(value="/inCompletionCourse",method=RequestMethod.GET)
-	public ModelAndView inCompletionCourse(HttpServletRequest req, int no,MemberVO vo) {//¹Ì¼ö·á°­ÁÂ
+	public ModelAndView inCompletionCourse(HttpServletRequest req, int no,MemberVO vo) {//ë¯¸ìˆ˜ë£Œê°•ì¢Œ
 		ModelAndView mav = new ModelAndView();
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		
 		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord(no);
 		
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
@@ -113,7 +136,7 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="/schedule", method=RequestMethod.GET)
-	public ModelAndView schedule(HttpServletRequest req,MemberVO vo) {//½Ã°£Ç¥
+	public ModelAndView schedule(HttpServletRequest req,MemberVO vo) {//ì‹œê°„í‘œ
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
@@ -157,7 +180,7 @@ public class ProfileController {
 	
 	@RequestMapping(value="/profileUpdate", method=RequestMethod.POST)
 	@ResponseBody
-	public String profileUpdate(HttpServletRequest req, MemberVO vo) {//³»Á¤º¸ º¯°æ 
+	public String profileUpdate(HttpServletRequest req, MemberVO vo) {//ë‚´ì •ë³´ ë³€ê²½ 
 		String ok = "";
 		
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
@@ -166,7 +189,7 @@ public class ProfileController {
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		int cnt = dao.memberDataUpdate(vo);
 		if(cnt<0) {
-			System.out.println("³»Á¤º¸ ¼öÁ¤ ½ÇÆĞ!!!");
+			System.out.println("ë‚´ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨!!!");
 		}else {
 			ok="ok";			
 		}
@@ -178,15 +201,15 @@ public class ProfileController {
 	public ModelAndView uploadOk1(@RequestParam("student_img") MultipartFile filename1,HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("/img");
 		System.out.println("path="+path);
-		//ÆÄÀÏ¾÷·Îµå
-		String paramName= filename1.getName();//¸Å°³º¯¼ö
-		String fName1 = filename1.getOriginalFilename();//¿ø·¡ ÆÄÀÏ¸í
+		//íŒŒì¼ì—…ë¡œë“œ
+		String paramName= filename1.getName();//ë§¤ê°œë³€ìˆ˜
+		String fName1 = filename1.getOriginalFilename();//ì›ë˜ íŒŒì¼ëª…
 		System.out.println(paramName+"="+fName1);
 		
 		try {
 			if(fName1!=null) {
-			//ÆÄÀÏ¾÷·Îµå 
-			filename1.transferTo(new File(path,fName1));//ÆÄÀÏ¾÷·Îµå
+			//íŒŒì¼ì—…ë¡œë“œ 
+			filename1.transferTo(new File(path,fName1));//íŒŒì¼ì—…ë¡œë“œ
 			}
 		}catch (Exception e){
 			e.printStackTrace();
@@ -201,27 +224,25 @@ public class ProfileController {
 		
 		if(result>0) {
 			mav.setViewName("redirect:profile");
-		}else {//·¹ÄÚµå Ãß°¡ ½ÇÆĞ½Ã ÆÄÀÏ Áö¿ì±â
+		}else {//ë ˆì½”ë“œ ì¶”ê°€ ì‹¤íŒ¨ì‹œ íŒŒì¼ ì§€ìš°ê¸°
 			if(fName1!=null) {
 				deleteFile(path,fName1);
-		}
+			}
 			
-		mav.setViewName("main/profile/profile");
+			mav.setViewName("main/profile/profile");
 		
 		}
 		return mav;
 	}
-	  
 	  
   	public void deleteFile(String p, String f) {
 		File fn = new File(p,f);
 		fn.delete();
 	}
   	
-  	
 	@RequestMapping(value="/profilePasswordUpdate",method=RequestMethod.POST)
 	@ResponseBody
-	public String profilePasswordUpdate(HttpServletRequest req, MemberVO vo,String student_pw) {//ÆĞ½º¿öµå ¼öÁ¤ 
+	public String profilePasswordUpdate(HttpServletRequest req, MemberVO vo,String student_pw) {//íŒ¨ìŠ¤ì›Œë“œ ìˆ˜ì • 
 		String ok = "";
 		vo.setStudent_pw(passwordEncoder.encode(student_pw));
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
@@ -232,18 +253,23 @@ public class ProfileController {
 			ok="ok";
 		}else {
 			ok="no";
-			System.out.println("ÆĞ½º¿öµå º¯°æ ½ÇÆĞ!!");		
+			System.out.println("íŒ¨ìŠ¤ì›Œë“œ ë³€ê²½ ì‹¤íŒ¨!!");		
 		}
 		return ok;
 	}
 	@RequestMapping(value="/wishList", method=RequestMethod.GET)
-	public ModelAndView wishList(MemberVO vo ,HttpServletRequest req) {//Âò¸ñ·Ï
+	public ModelAndView wishList(MemberVO vo ,HttpServletRequest req) {//ì°œëª©ë¡
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
+		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		WishListVO wVO = new WishListVO();
+		wVO.setStudent_no((Integer)ses.getAttribute("student_no"));
+		List<WishListVO> list = dao.wishListRecord(wVO);
 		
+		mav.addObject("list",list);
 		mav.addObject("student_img",vo2.getStudent_img());
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
@@ -251,4 +277,39 @@ public class ProfileController {
 		return mav;
 	}
 	
+	
+	@RequestMapping(value="/paymentHistory", method=RequestMethod.GET)
+	public ModelAndView paymentHistory(HttpServletRequest req,MemberVO vo,int no) {
+		ModelAndView mav = new ModelAndView();
+		paymentVO pVO = new paymentVO();
+		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
+		paymentDAOImp paymentDao = sqlSession.getMapper(paymentDAOImp.class);
+		HttpSession ses = req.getSession();
+		
+		pVO.setStudent_no((Integer)ses.getAttribute("student_no"));//ê²°ì œë‚´ì—­ì— í•„ìš”í•œ í•™ìƒë²ˆí˜¸ 
+		
+		vo.setStudent_no((Integer)ses.getAttribute("student_no"));//í”„ë¡œí•„ ì •ë³´ì— í•„ìš”í•œ í•™ìƒë²ˆí˜¸ 
+		MemberVO vo2 = memberDao.memberDataSelect(vo);
+		List<paymentVO> pList = paymentDao.paymentHistoryRecord(pVO);//ê²°ì œë‚´ì—­ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ê¸° 
+		mav.addObject("pList",pList);//ê²°ì œë‚´ì—­ ë¦¬ìŠ¤íŠ¸ 
+		//í”„ë¡œí•„ ì‚¬ì§„, ì´ë¦„ , ìê¸°ì†Œê°œ 
+		mav.addObject("student_img",vo2.getStudent_img());
+		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
+		mav.addObject("student_info",vo2.getStudent_info());
+		//í´ë¼ì´ì–¸íŠ¸ ì£¼ì†Œ 
+		mav.setViewName("main/profile/paymentHistory");
+		return mav;
+		}
+	//ê²°ì œë‚´ì—­ ìƒì„¸í˜ì´ì§€ 
+	@RequestMapping(value="/paymentDetail", method=RequestMethod.GET)
+	public ModelAndView paymentDetail(int no) {
+		ModelAndView mav = new ModelAndView();
+		paymentVO pVO = new paymentVO();
+		pVO.setPayment_no(no);
+		paymentDAOImp paymentDao =  sqlSession.getMapper(paymentDAOImp.class);
+		
+		mav.addObject("pList",paymentDao.paymentDetailRecord(pVO));
+		mav.setViewName("main/profile/paymentDetail");
+		return mav ; 
+	}
 }

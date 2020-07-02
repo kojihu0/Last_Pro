@@ -4,37 +4,37 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.co.lms.main.DAO.MypageDAOImp">
  	<select id="courseRecord"  resultType="kr.co.lms.main.VO.MypageVO">
- 	SELECT 
-		e.employee_name, 
-		c.course_name,
-		to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
-		to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
-		s.rank, 
-		s.grade,
-		s.student_no
-		FROM   
-		employee e join course c on
-		e.employee_no = c.employee_no join payment p on 
-		c.course_no = p.course_no join student_course_state s on
-		p.payment_no = s.payment_no
-	WHERE  s.student_no = #{param1}
+	 	SELECT 
+			e.employee_name, 
+			c.course_name,
+			to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
+			to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
+			s.rank, 
+			s.grade,
+			s.student_no
+			FROM   
+			employee e join course c on
+			e.employee_no = c.employee_no join payment p on 
+			c.course_no = p.course_no join student_course_state s on
+			p.payment_no = s.payment_no
+		WHERE  s.student_no = #{param1} and s.state=0
  	</select>
  	<select id="completionCourseRecord"  resultType="kr.co.lms.main.VO.MypageVO">
- 	SELECT 
-		e.employee_name, 
-		c.course_name,
-		to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
-		to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
-		s.rank, 
-		s.grade,
-		s.student_no,
-		s.state
-		FROM   
-		employee e join course c on
-		e.employee_no = c.employee_no join payment p on 
-		c.course_no = p.course_no join student_course_state s on
-		p.payment_no = s.payment_no
-	WHERE  s.student_no = #{param1}
+	 	SELECT 
+			e.employee_name, 
+			c.course_name,
+			to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
+			to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
+			s.rank, 
+			s.grade,
+			s.student_no,
+			s.state
+			FROM   
+			employee e join course c on
+			e.employee_no = c.employee_no join payment p on 
+			c.course_no = p.course_no join student_course_state s on
+			p.payment_no = s.payment_no
+		WHERE  s.student_no = #{param1}
  	</select>
  	<select id="inCompleteCourseRecord"  resultType="kr.co.lms.main.VO.MypageVO">
  	SELECT 
@@ -57,5 +57,37 @@
  	select p.course_no ,course_name, to_char(course_start_date, 'yyyy-mm-dd') course_start_date, to_char(course_end_date, 'yyyy-mm-dd') course_end_date
 	from payment p join course c on p.course_no=c.course_no
 	where student_no=2
+ 	<select id="memberMypageDetailInfo"  resultType="kr.co.lms.main.VO.MypageVO">
+	 	SELECT 
+			e.employee_name, 
+			c.course_name,
+			to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
+			to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
+			s.rank, 
+			s.grade,
+			s.student_no
+			FROM   
+			employee e join course c on
+			e.employee_no = c.employee_no join payment p on 
+			c.course_no = p.course_no join student_course_state s on
+			p.payment_no = s.payment_no
+		WHERE  s.student_no = #{param1}
+ 	</select>
+ 	<select id="wishListRecord" parameterType="kr.co.lms.main.VO.WishListVO" resultType="kr.co.lms.main.VO.WishListVO" >
+	 	select 
+	    	c.course_name , c.course_img, e.employee_name, c.course_price, w.course_no
+		from 
+		    wish_List w 
+		    join course   c  on w.course_no   = c.course_no 
+		    JOIN employee e  ON e.employee_no = c.employee_no
+		where 
+   			student_no = #{student_no}
+ 	
+ 	</select>
+ 	<update id="updateSysdate">
+ 	update course set COURSE_PROGRESS = sysdate 
+ 	</update>
+ 	<select id="courseProgess"  resultType="kr.co.lms.main.VO.MypageVO">
+ 	SELECT  to_date(course_end_date, 'YYYY-MM-DD') - to_date(course_progress,'YYYY-MM-DD')course_progress FROM  course where course_no=#{param1}
  	</select>
  </mapper>

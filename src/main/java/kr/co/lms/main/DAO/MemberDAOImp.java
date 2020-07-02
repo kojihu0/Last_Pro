@@ -3,26 +3,26 @@ package kr.co.lms.main.DAO;
 import kr.co.lms.main.VO.MemberVO;
 
 public interface MemberDAOImp {
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public int memberRegister(MemberVO vo);
-	//¾ÆÀÌµğ Áßº¹Ã¼Å©
+	//ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	public int idCheck(String userid);
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public MemberVO memberLogin(MemberVO vo);
-	//À¯Àú ¾ÆÀÌµğ Ã£±â
+	//ìœ ì € ì•„ì´ë”” ì°¾ê¸°
 	public String memberIdFind(MemberVO vo);
-	//À¯Àú ºñ¹Ğ¹øÈ£ Ã£±â
+	//ìœ ì € ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	public String memberPwFind(MemberVO vo);
-	//À¯Àú Á¤º¸ ¼öÁ¤
+	//ìœ ì € ì •ë³´ ìˆ˜ì •
 	public int memberDataUpdate(MemberVO vo);
-	//°áÁ¦¿¹Á¤ÀÚ Á¤º¸ °¡Á®¿À±â 
+	//ê²°ì œì˜ˆì •ì ì •ë³´ ê°€ì ¸ì˜¤ê¸° 
 	public MemberVO memberPaymentRecord(MemberVO vo2);
-	//³»Á¤º¸¿¡ µé¾î°¥ ÀÌ¸§°ú ÀÚ±â¼Ò°³
+	//ë‚´ì •ë³´ì— ë“¤ì–´ê°ˆ ì´ë¦„ê³¼ ìê¸°ì†Œê°œ
 	public MemberVO  memberDataSelect(MemberVO vo);
-	//³»Á¤º¸ ÀÌ¹ÌÁö ¾÷µ¥ÀÌÆ®
+	//ë‚´ì •ë³´ ì´ë¯¸ì§€ ì—…ë°ì´íŠ¸
 	public int memberImgDataSelect(MemberVO vo); 
-	//³»Á¤º¸ ºñ¹Ğ¹øÈ£ º¯°æ
+	//ë‚´ì •ë³´ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 	public int memberPasswordDataSelect(MemberVO vo);
-	//ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©
+	//ì´ë©”ì¼ ì¤‘ë³µì²´í¬
 	public int emailCheck(String student_email);
 }

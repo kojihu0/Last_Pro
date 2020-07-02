@@ -125,7 +125,11 @@ public class RegisterController {
 	public String registerComplete() {
 		return "main/register/registerComplete";
 	}
-	
+	@RequestMapping("/registerDel")
+	public String registerDel() {
+		
+		return "main/register/registerDel";
+	}
 	@RequestMapping("/subjectRegister")
 	public String subjectRegister() {
 		return "admin/subjectRegister";

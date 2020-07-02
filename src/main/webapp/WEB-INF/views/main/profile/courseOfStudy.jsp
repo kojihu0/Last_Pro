@@ -41,6 +41,9 @@
 			   <li class="mr-1">
 			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 			  </li>
+			   <li class="mr-1">
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+				  </li>
 			</ul>
 			<ul class="flex roboto-slab mt-16">
 			  <li id="course" class="-mb-px mr-1">
@@ -56,16 +59,16 @@
 				<li class="text-white text-xl w-1/3">Course</li>
 				<li class="text-white text-xl w-1/6">Start Date</li>
 				<li class="text-white text-xl w-1/6">End Date</li>
-				<li class="text-white text-xl">Passing Grade</li>
+				<li class="text-white text-xl">Course Progress</li>
 				
 			</ul>
 			<c:forEach var ="courseList" items="${courseList}">
 				<ul class="flex my-4 roboto-slab ">
 					<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${courseList.employee_name}</a></li>
-					<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${courseList.course_name}</a></li>
+					<li class="text-black text-xl w-1/3"><a href="<%=ctx%>/myPageDetail?no=${student_no}" class="hover:text-cta-500">${courseList.course_name}</a></li>
 					<li class="text-black text-xl w-1/6">${courseList.course_start_date}</li>
 					<li class="text-black text-xl w-1/6">${courseList.course_end_date}</li>
-					<li class="text-black text-xl w-1/6 text-center">1%</li>
+					<li class="text-black text-xl w-1/6 text-center">${course_progress.course_progress}일</li>
 				</ul>
 				<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
 			</c:forEach>
@@ -79,15 +82,14 @@
 					<li class="text-white text-xl w-1/6">Rating</li>
 					<li class="text-white text-xl">Test Date</li>
 				</ul>
-				<c:forEach var ="courseList" items="${courseList}">
-				
-				<ul class="flex my-4 roboto-slab ">
-					<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${courseList.employee_name}</a></li>
-					<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${courseList.course_name}</a></li>
-					<li class="text-black text-xl w-1/6">${courseList.grade}등급</li>
-					<li class="text-black text-xl w-1/6">${courseList.rank}등급</li>
-					<li class="text-black text-xl ">2020-06-10</li>
-				</c:forEach>
+				<ul class="flex my-4 roboto-slab">
+					<c:forEach var ="courseList" items="${courseList}">
+						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${courseList.employee_name}</a></li>
+						<li class="text-black text-xl w-1/3"><a href="<%=ctx%>/myPageDetail?no=${student_no}" class="hover:text-cta-500">${courseList.course_name}</a></li>
+						<li class="text-black text-xl w-1/6">${courseList.grade}등급</li>
+						<li class="text-black text-xl w-1/6">${courseList.rank}등급</li>
+						<li class="text-black text-xl ">2020-06-10</li>
+					</c:forEach>
 				</ul>
 				<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
 			</div>

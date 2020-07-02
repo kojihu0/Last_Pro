@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
-		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;WISH  LIST</h1>
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PAYMENT HISTORY</h1>
 	</div>
 </div>
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
@@ -40,41 +40,38 @@
 					<a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
+				    <a  class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold"href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
 				  </li>
+			</ul>
+			<div id="gradeList" >
+				<ul class="flex mt-8 roboto-slab bg-gray-500">
+					<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
+					<li class="text-white text-xl w-1/3">Course</li>
+					<li class="text-white text-xl w-1/6">Start Date</li>
+					<li class="text-white text-xl w-1/6">Price</li>
+					<li class="text-white text-xl">Payment Date</li>
 				</ul>
-				<div class="best-section my-0 mx-auto py-16">
-					<div class="flex justify-between relative pb-4 mb-10">
-						<div>
-							<h1 class="roboto-slab font-bold">FAVORITE COURSES</h1>
-						</div>
-						<div class="carou-btn" >
-							<button class="slide-arrow arrow-prev focus:outline-none border border-black duration-300 hover:border-brand-500 hover:text-brand-500"><i class="xi-angle-left"></i></button>
-							<button class="slide-arrow arrow-next focus:outline-none border border-black duration-300 hover:border-brand-500 hover:text-brand-500"><i class="xi-angle-right"></i></button>
-						</div>
-						<span class="heading-line bg-black absolute bottom-0 left-0"></span>
-					</div>
-				<div id="wishListCourseCarousel" class="-mx-4 overflow-hidden">
-					<c:forEach var="list" items="${list}">
-						<div class="course-item px-4 text-center"><!-- course-item -->
-							<div class="course-image relative overflow-hidden border border-gray-300">
-								<img class="duration-300" src="<%=ctx %>/img/${list.course_img}">
-								<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${list.course_no}">READ MORE</a>
-							</div>
-							<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-								<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-									<a href="<%=ctx %>/course/courseDetail?course_no=${list.course_no}">${list.course_name}</a>
-								</h2>
-								<div class="course-author text-gray-900 mb-4">${list.employee_name}</div>
-								<div class="course-price text-danger-500 relative py-4">${list.course_price}<span>원</span></div>
-							</div>
-						</div><!-- course-item -->
+				
+				
+					<c:forEach var ="vo" items="${pList}">
+					<ul class="flex my-4 roboto-slab">
+						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${vo.employee_name}</a></li>
+						<li class="text-black text-xl w-1/3">
+							<a href="<%=ctx%>/paymentDetail?no=${vo.payment_no}" class="hover:text-cta-500">${vo.course_name}</a>
+						</li>
+						<li class="text-black text-xl w-1/6">${vo.course_start_date}</li>
+						<li class="text-black text-xl w-1/6">${vo.payment_price}원</li>
+						<li class="text-black text-xl ">${vo.payment_date}</li>
+						</ul>
+						<div id="hr" class="my-4 border-gray-500 border-t border-solid"></div>
 					</c:forEach>
-				</div>
 			</div>
 		</div>
+			
+		
 	</div>
-</div><!--end  -->
+</div>
+				

@@ -1,15 +1,19 @@
 package kr.co.lms.main.VO;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class MypageVO {
-	private String Student_no;//µî·ÏµÈÇĞ»ı¹øÈ£ 
-	private String employee_name;//°­»ç¸í
-	private String course_name;//°­ÁÂ¸í
-	private String course_start_date;//½ÃÀÛÀÏ
-	private String course_end_date;//Á¾·áÀÏ
-	private String passingGrade;//ÆÛ¼¾Æ®À²
-	private String grade;//¼ºÀû
-	private String rank;//¼øÀ§
-	private String state;//¼ö·á»óÅÂ
+	private String Student_no;//ë“±ë¡ëœí•™ìƒë²ˆí˜¸ 
+	private String employee_name;//ê°•ì‚¬ëª…
+	private String course_name;//ê°•ì¢Œëª…
+	private String course_start_date;//ì‹œì‘ì¼
+	private String course_end_date;//ì¢…ë£Œì¼
+	private String course_progress;//í¼ì„¼íŠ¸ìœ¨
+	private String grade;//ì„±ì 
+	private String rank;//ìˆœìœ„
+	private String state;//ìˆ˜ë£Œìƒíƒœ
 	
 	
 	public String getStudent_no() {
@@ -45,11 +49,12 @@ public class MypageVO {
 	public void setCourse_end_date(String course_end_date) {
 		this.course_end_date = course_end_date;
 	}
-	public String getPassingGrade() {
-		return passingGrade;
+	
+	public String getCourse_progress() {
+		return course_progress;
 	}
-	public void setPassingGrade(String passingGrade) {
-		this.passingGrade = passingGrade;
+	public void setCourse_progress(String course_progress) {
+		this.course_progress = course_progress;
 	}
 	public String getGrade() {
 		return grade;
@@ -69,11 +74,5 @@ public class MypageVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
-
-	
-	
-	
-	
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.HomeDAOImp;
+import kr.co.lms.main.DAO.MypageDAOImp;
 import kr.co.lms.main.VO.HomeVO;
 
 @Controller
@@ -29,6 +30,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		HomeDAOImp dao = sqlSession.getMapper(HomeDAOImp.class);
+		MypageDAOImp dao2 =sqlSession.getMapper(MypageDAOImp.class); 
+		dao2.updateSysdate();
 		List<HomeVO> homeCourseList = dao.homeCourseList();
 		List<HomeVO> homeEventList = dao.homeEventList();
 		List<HomeVO> homeNewsList = dao.homeNewsList();
@@ -55,14 +58,14 @@ public class HomeController {
 		return "main/terms/privacyPolicy";
 	}
 	
-	//Ä¸Â÷
+	//ìº¡ì°¨
 //	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
 //	@ResponseBody
 //    public int VerifyRecaptcha(HttpServletRequest request) {
 //        VerifyRecaptcha.setSecretKey("6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe");
 //        String gRecaptchaResponse = request.getParameter("recaptcha");
 //        System.out.println(gRecaptchaResponse);
-//        //0 = ¼º°ø, 1 = ½ÇÆÐ, -1 = ¿À·ù
+//        //0 = ì„±ê³µ, 1 = ì‹¤íŒ¨, -1 = ì˜¤ë¥˜
 //        try {
 //            if(VerifyRecaptcha.verify(gRecaptchaResponse))
 //                return 0;

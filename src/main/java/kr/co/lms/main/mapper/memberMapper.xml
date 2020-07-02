@@ -29,7 +29,7 @@
  		select student_name_ko , student_info,student_img from student where student_no=#{student_no} 
  	</select>
  	<select id="memberPaymentRecord" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
- 		select student_id, student_name_ko ,student_tel_phone, student_email ,student_no from student where student_no=#{student_no}
+ 		select student_id,student_info, student_name_ko ,student_tel_phone, student_email ,student_no from student where student_no=#{student_no}
  	</select>
  	<update id="memberDataUpdate" parameterType="kr.co.lms.main.VO.MemberVO">
  	 	update student set student_name_ko=#{student_name_ko} , student_info=#{student_info} where student_no=#{student_no} 

@@ -197,21 +197,68 @@ $(function(){
 		return true;
 	}
 });
-
-/*마이페이지(이름 및 자기소개 수정,비밀번호수정)유효성 검사 및 정규식 */
+/*결제창 유효성 검사*/
 $(function(){
-	$("#generalBtn").on('click',function(){
-		/*성 유효성 검사 */
-		if($("#firstName").val()==""){
-			alert("성을 입력해주세요.")
-			 return false;
-		}
-		/*이름 유효성 검사 */
-		if($("#lastName").val()==""){
-			alert("이름을 입력해주세요.")
+	$("#payReser").click(function(){
+		if($("#paymentName").val()==""){
+			alert("이름을 입력해주세요.");
 			return false;
 		}
+		/*이름 정규식*/
+		var  reg = /^[가-힣]{2,7}$/;
+		if(!reg.test($("#paymentName").val())){
+			alert("이름을 입력해주세요.");
+			return false;
+		}
+		if($("#paymentId").val()==""){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		var reg = /^[a-zA-Z]{1}\w{7,20}$/;
+		if(!reg.test($("#paymentId").val())){
+			alert("아이디를 다시입력해주세요.");
+				return false;
+		}
+		if($("#paymentEmail").val()==""){
+			alert("이메일을 입력해주세요.");
+			return false;
+		}
+		/*이메일 정규식*/
+		var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
+		if(!reg.test($("#paymentEmail").val())){
+			alert("잘못된 이메일 입니다. 다시 입력해 주세요.");
+			return false;
+		}
+		if($("#paymentTel").val()==""){
+			alert("전화번호를 입력해주세요.");
+			return false;
+		}
+		var reg =  /^\d{3}-\d{3,4}-\d{4}$/;
+		if(!reg.test($("#paymentTel").val())){
+			alert("잘못된 전화번호 입니다. 다시 입력해주세요.");
+			return false;
+		}
+		
+		var Chk = false;
+	    var chk = document.getElementsByName("chk");
+	    for(var i=0;i<chk.length;i++){
+	        if(chk[i].checked == true) {
+	        	Chk = true;
+	            break;
+	        }
+	    }
+	    if(!Chk){
+	        alert("약관동의를 체크해주세요.");
+	        return false;
+	    }else{
+	    	
+	    }
+		
 	});
+});
+/*마이페이지(이름 및 자기소개 수정,비밀번호수정)유효성 검사 및 정규식 */
+$(function(){
+	
 	$("#pwUpdateBtn").on('click',function(){
 //		/*현재 비밀번호 유효성 검사*/	
 //		if($("#oldPwd").val()==""){
@@ -228,7 +275,6 @@ $(function(){
 		if($("#newPwd").val()==""){
 			alert("변경하실 비밀번호를 입력해주세요");
 			return false;
-			
 		}
 		/*변경 비밀번호 정규식*/
 		var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
@@ -254,7 +300,6 @@ $(function(){
 		}
 	});
 });
-/*결제창 유효성 검사 및 정규식 검사*/
 //=======================================================유효성 검사 및 정규식 END===========================================================================
 
 /*마이페이지 위시리스트 이미지 슬라이드 */
@@ -437,3 +482,66 @@ $(function(){
 		}
 	});
 });
+$(function(){
+	$('#ajaxButton1').click(function () {  
+	    if($("#pContent1").css("display") == "none"){ 
+	       $("#ajaxButton1").val("내용닫기");
+	       $('#pContent1').show();  
+	    } else {  
+	    	$("#ajaxButton1").val("내용보기");
+	        $('#pContent1').hide();  
+	    }  
+	})
+	$('#ajaxButton2').click(function () {  
+	    if($("#pContent2").css("display") == "none"){   
+	       $("#ajaxButton2").val("내용닫기");
+	       $('#pContent2').show();  
+	    } else {  
+	    	$("#ajaxButton2").val("내용보기");
+	        $('#pContent2').hide();  
+	    }  
+	})
+	$('#ajaxButton3').click(function () {  
+	    if($("#pContent3").css("display") == "none"){   
+	       $('#pContent3').show();  
+	       $("#ajaxButton3").val("내용닫기");
+	    } else {  
+	        $('#pContent3').hide();  
+	    	$("#ajaxButton3").val("내용보기");
+	    }  
+	})
+});
+
+$(document).ready(function(){
+	 $("#check_all").click(function(){
+		  if($("#check_all").prop("checked")){
+			  
+			  $("input[name=chk]").prop("checked",true);
+		  }else{
+			   $("input[name=chk]").prop("checked",false);
+		  }
+		 
+	 })
+})
+$(function(){
+	$("#radioCash").click(function(){
+		    if($("#cash").css("display") == "none"){   
+		       $('#cash').show(); 
+		       $('#import').hide();
+		    } 
+		     
+		    
+	   $("#trans,#card").click(function(){
+	    if($("#cash").css("display") == "block"){   
+		       $('#cash').hide();  
+		        $('#import').show();  
+		    }  
+		})
+	})
+})
+
+
+        
+
+
+

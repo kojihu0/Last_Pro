@@ -37,7 +37,7 @@ public class AdminMainController {
 		}
 		
 	//-------------------------------------------------------------
-		//¾îµå¹Î ¸ŞÀÎ ÀÌµ¿
+		//ì–´ë“œë¯¼ ë©”ì¸ ì´ë™
 		@RequestMapping(value="/admin/adminMain", method=RequestMethod.GET)
 		public ModelAndView adminMain(AdminCalendarVO vo, HttpServletRequest request) {
 			ModelAndView mav = new ModelAndView();
@@ -47,8 +47,7 @@ public class AdminMainController {
 			String jsonStr = "";
 			 
 			for(int i = 0; i < result_List.size(); i++) {  
-
-				//jsonÇü½ÄÀ¸·Î ¹®ÀÚ¿­ »ı¼º->javascript ÇÊµå¿¡¼­ ÀÛ¾÷ÇÒ °Í.
+				//jsoní˜•ì‹ìœ¼ë¡œ ë¬¸ìì—´ ìƒì„±->javascript í•„ë“œì—ì„œ ì‘ì—…í•  ê²ƒ.
 				 jsonStr += "{" + "start :"  +"'"+ result_List.get(i).getCalendar_start_date()  +"'" + "," +
 								  "end : "   +"'"+ result_List.get(i).getCalendar_end_date()	+"'" + "," + 
 								  "title : " +"'"+ result_List.get(i).getCalendar_title() 		+"'" + "," +
@@ -76,7 +75,7 @@ public class AdminMainController {
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
 
-				//jsonÇü½ÄÀ¸·Î ¹®ÀÚ¿­ »ı¼º->javascript ÇÊµå¿¡¼­ ÀÛ¾÷ÇÒ °Í.
+				//jsoní˜•ì‹ìœ¼ë¡œ ë¬¸ìì—´ ìƒì„±->javascript í•„ë“œì—ì„œ ì‘ì—…í•  ê²ƒ.
 				 jsonStr += "{" + "start:"  	    +"'"+ result_List.get(i).getCalendar_start_date()  +"'" + "," +
 								   "end:"   	    +"'"+ result_List.get(i).getCalendar_end_date()	+"'" + "," + 
 								   "title:" 	    +"'"+ result_List.get(i).getCalendar_title() 		+"'" + "," +
@@ -86,7 +85,7 @@ public class AdminMainController {
 			}	  
 			jsonStr += "]";
 			 
-			System.out.println("vo¿¡´Â °ªÀÌ µé¾î°¡? ¾Æ´Ï ¿©±â´Â ¿À³Ä? : " + jsonStr);
+			System.out.println("voì—ëŠ” ê°’ì´ ë“¤ì–´ê°€? ì•„ë‹ˆ ì—¬ê¸°ëŠ” ì˜¤ëƒ? : " + jsonStr);
 			
 			return jsonStr;  
 		}	
