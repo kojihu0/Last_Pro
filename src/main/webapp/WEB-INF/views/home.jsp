@@ -34,7 +34,7 @@
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-graduation-cap.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">ABOUT US</h1>
-					<p>소개</p>
+					<p>학원 소개</p>
 					<a class="text-xs text-brand-500" href="<%=ctx%>/aboutUs">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-book.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">COURSES INFO</h1>
-					<p>소개</p>
+					<p>강좌 소개</p>
 					<a class="text-xs text-brand-500" href="<%=ctx%>/course/coureseList">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-teacher.png"></div>
 				<div>
 					<h1 class="roboto-slab font-bold">INSTRUCTOR INFO</h1>
-					<p>소개</p>
+					<p>강사진 소개</p>
 					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
@@ -96,31 +96,14 @@
 </div>
 <!-- 베스트강의 -->
 <!-- 가입하기 -->
-<div class="register-section w-full bg-cover bg-center relative" style="background-image:url('<%=ctx %>/img/register.jpg')">
-	<div class="container my-0 mx-auto py-16 px-4 lg:px-0">
+<div class="pSection register-section w-full bg-cover bg-center relative bg-black shadow-inner overflow-hidden">
+	<img src="<%=ctx %>/img/register.jpg" class="pImage absolute max-w-none w-auto h-screen lg:max-w-full lg:w-full lg:h-auto top-0 left-0 opacity-75">
+	<div class="pContent container my-0 mx-auto py-20 lg:py-32 px-4 lg:px-0">
 		<div class="w-full lg:flex items-center">
-			<div class="w-full lg:w-2/3 relative pr-12 text-white mb-8 fadeRight">
-				<p class="text-lg">인간의 거선의 속잎나고, 방황하였으며, 청춘에서만 되는 곧 두기 있다.<br>청춘은 행복스럽고 이상을 노년에게서 어디 대고, 힘있다.</p>
-				<h1 class="roboto-slab font-bold text-6xl">REGISTER NOW</h1>
-			</div>
-			<div class="w-full lg:w-1/3 bg-white relative fadeLeft">
-				<div class="bg-brand-500 text-white text-center py-6">
-					<h1>간편 회원가입</h1>
-				</div>
-				<div class="p-8">
-					<form method="post" action="/lms/registerOk" onsubmit="return basicFormValidate(this)">
-						<p class="mb-4 flex">
-							<input type="text" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
-							<input type="button" id="userIdChk" class="focus:outline-none cursor-pointer py-2 px-4 bg-black text-white focus:bg-brand-700" value="중복체크">
-						</p>
-						<p class="mb-4"><input type="text" name="student_name_ko" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="text" name="student_email" placeholder="이메일" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="password" name="student_pw" placeholder="패스워드" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="password" placeholder="패스워드 확인" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>
-						<p class="mb-4"><input type="checkbox" value="동의" id="accept_policy" class="mr-2"><label for="accept_policy" class="text-sm"><a class="text-danger-500" href="<%=ctx%>/termsOfService">사이트 이용약관</a> 및 <a class="text-danger-500" href="<%=ctx%>/privacyPolicy">개인정보 처리방침</a>에 동의합니다.</label></p>
-						<input type="submit" value="가입하기" class="w-full outline-none bg-black text-white py-2 px-4">
-					</form>
-				</div>
+			<div class="w-full relative text-white text-center">
+				<p class="text-2xl fadeUp"><span class="text-brand-500 font-bold">Educamp</span>에서 여러분을 기다립니다.</p>
+				<h1 class="roboto-slab font-bold text-6xl mb-8 fadeUp">REGISTER NOW</h1>
+				<a class="inline-block py-2 px-8 bg-brand-500 rounded-full duration-300 text-xl font-bold shadow-md hover:bg-brand-600 fadeUp" href="<%=ctx%>/register">가입하러가기</a>
 			</div>
 		</div>
 	</div>

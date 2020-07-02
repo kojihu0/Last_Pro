@@ -16,7 +16,7 @@
 		payment_price,payment_name,payment_email,payment_phone,payment_method,
 		payment_state,payment_date,payment_division)
 		values(payment_sq.nextval,#{course_no},#{student_no},
-		#{payment_price},#{dsapayment_name},#{payment_email},#{payment_phone},#{payment_method},
+		#{payment_price},#{payment_name},#{payment_email},#{payment_phone},#{payment_method},
 		0,sysdate,'신규')
 	</insert>
 	<select id="paymentNumberRecord" parameterType="kr.co.lms.main.VO.paymentVO"  resultType="int">

@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+	var calendarEl = document.getElementById('courseSchedule');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+		plugins: [ 'dayGrid' ],
+		locale: 'ko',
+		eventSources: [
+			{
+				url: '<%=ctx%>/schedule/getTimeTable',
+				method: 'POST',
+				failure: function(){
+					console.log('시간표 불러오기 실패');
+				}
+		    }
+		]
+	});
+	calendar.render();
+});
+</script>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
