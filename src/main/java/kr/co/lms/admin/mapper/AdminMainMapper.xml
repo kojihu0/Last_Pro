@@ -19,4 +19,50 @@
 			calendar
 	</select>
 
+	<select id="totalPrice"
+			resultType="int">
+		SELECT SUM(payment_price) FROM payment
+	</select>
+	<select id="totalTeacher"
+			resultType="int">
+		SELECT COUNT(rownum) FROM employee
+	</select>
+	<select id="totalStudent"
+			resultType="int">
+		SELECT COUNT(rownum) FROM student
+	</select>
+	<select id="totalCourse"
+			resultType="int">
+		SELECT COUNT(rownum) FROM course
+	</select>
+	
+	<select id="paymentTeacher"
+			resultType="kr.co.lms.admin.VO.AdminMainHomeVO">
+		SELECT 
+			payment_name, 
+			COUNT(*) payment_num 
+		FROM 
+			payment
+		GROUP BY 
+			payment_name
+		ORDER BY 
+			payment_num
+		DESC
+	</select>
+	<select id="paymentCourse"
+			resultType="kr.co.lms.admin.VO.AdminMainHomeVO">
+		SELECT 
+			c.course_name,
+		 	COUNT(*) course_num
+		FROM 
+			payment p JOIN course c ON p.course_no = c.course_no
+		GROUP BY
+			c.course_name 
+		ORDER BY
+			course_num
+		DESC
+	</select>	
+	
+		
+
 </mapper> 

@@ -63,8 +63,8 @@
 							<td class="border border-black bg-white w-32 p-2">${vo.course_price }</td> 
 							<td class="border border-black bg-white w-32 p-2">${vo.course_state }</td>
 							<td class="border border-black bg-white w-32 p-2">
-								<a class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded" href="<%=projectPath%>/admin/adminCourseEdit?course_no=${vo.course_no }">수정</a>
-								<button data-course_no ="${vo.course_no}" onclick= "delCheck(this)" class="bg-info-200 hover:bg-blue-700 border border-black text-x  rounded">삭제</button>
+								<button data-course_no ="${vo.course_no}" onclick= "editCheck(this)" class="bg-info-200 hover:bg-blue-700 border border-black rounded">수정</button>
+								<button data-course_no ="${vo.course_no}" onclick= "delCheck(this)"  class="bg-info-200 hover:bg-blue-700 border border-black rounded">삭제</button>
 							</td>
 							<td class="border border-black bg-white w-32 p-2">${vo.course_day }</td>
 							<td class="border border-black bg-white w-32 p-2">${vo.course_time }</td>
@@ -107,6 +107,12 @@
 	
 	<!-- ----------------------------------------------------------------------------------- -->
 	<script>
+		function editCheck(num){ 
+			var $course_no = $(num).data("course_no");
+			if(confirm("수정 하시겠습니까?")){  
+				 location.href="<%=projectPath%>/admin/adminCourseEdit?course_no=" +  $course_no; 
+			}
+		}
 		function delCheck(num){ 
 			var $course_no = $(num).data("course_no");
 			if(confirm("삭제 하시겠습니까?")){  

@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.lms.admin.VO.AdminCalendarVO;
 import kr.co.lms.admin.VO.AdminCourseVO;
+import kr.co.lms.admin.VO.AdminMainHomeVO;
 import kr.co.lms.admin.VO.AdminManageInfoVO;
 import kr.co.lms.admin.VO.AdminNoticeVO;
 import kr.co.lms.admin.VO.AdminRegiVO;
@@ -11,6 +12,17 @@ import kr.co.lms.admin.VO.AdminStudentPagingVO;
 import kr.co.lms.admin.VO.AdminTeacherVO;
 
 public interface AdminRegiInterface {
+	
+	//main에서 구할 것들.
+	public int totalPrice();
+	public int totalTeacher();
+	public int totalStudent();
+	public int totalCourse();
+	
+	public List<AdminMainHomeVO> paymentTeacher();
+	public List<AdminMainHomeVO> paymentCourse();
+	
+	
 	
 	//로그인 체크
 	public AdminRegiVO selectAdminId(AdminRegiVO vo);
@@ -23,8 +35,8 @@ public interface AdminRegiInterface {
 	
 	//직원 정보 뽑아오기.
 	public List<AdminTeacherVO> selectAdminAllRecord(AdminStudentPagingVO pVo);
-	//직원 청 레코드
-	public int selectTeacherTotal();
+	//직원 총 레코드
+	public int selectTeacherTotal(AdminStudentPagingVO pVo);
 	//직원 등록
 	public int insertAdminTeacher(AdminTeacherVO vo);
 	//직원 소개글 뽑아오기.
@@ -37,7 +49,7 @@ public interface AdminRegiInterface {
 	
 	
 	//업무일지 토탈 레코드 구하기.
-	public int selectTotalRecordManageInfo();
+	public int selectTotalRecordManageInfo(AdminStudentPagingVO pVo);
 	//업무일지 이름 뽑아오기.
 	public List<AdminManageInfoVO> selectManageInfoName();
 	//강사 번호, 이름 뽑아오기.
@@ -73,7 +85,8 @@ public interface AdminRegiInterface {
 	
 	
 	
-	public int selectNoticeTotalRecord();
+	//총 레코드
+	public int selectNoticeTotalRecord(AdminStudentPagingVO pVo);
 	//사내일정  리스트
 	public List<AdminNoticeVO> selectNoticeAll(AdminStudentPagingVO pVo);
 	//사내일정 뷰

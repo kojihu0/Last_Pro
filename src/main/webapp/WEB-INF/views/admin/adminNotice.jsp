@@ -71,12 +71,12 @@
 		</c:if>	  
 		
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminNotice?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminNotice?pageNum=${pageVo.pageNum -1}<c:if test="${searchKey != null}">&searchKey=${pageVo.searchKey }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminNotice?pageNum=${i}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminNotice?pageNum=${i}<c:if test="${searchKey != null}">&searchKey=${pageVo.searchKey }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-bottom:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -85,11 +85,11 @@
 			<i class="xi-angle-right text-xl"></i> 
 		</c:if>
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminNotice?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminNotice?pageNum=${pageVo.pageNum + 1}<c:if test="${searchKey != null}">&searchKey=${pageVo.searchKey }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
 		</c:if>
 	</div>
 		
-		
+		 
 </div>
 	
 		

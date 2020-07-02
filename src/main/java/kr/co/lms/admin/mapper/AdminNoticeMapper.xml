@@ -6,12 +6,23 @@
 
 
 	<select id="selectNoticeTotalRecord"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO" 
 			resultType="int">
 		SELECT
 			COUNT(admin_notice_no)
 		FROM
 			admin_notice
-	
+				
+		<where>
+			<if test="searchKey == 2">
+				AND 
+					n.admin_category = 2 
+			</if>
+			<if test="searchKey == 1">
+				AND  
+					n.admin_category = 1 
+			</if>
+		</where>
 	</select>
 	<select id="selectNoticeAll"
 			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.admin.DAO.AdminRegiInterface;
 import kr.co.lms.admin.VO.AdminCalendarVO;
+import kr.co.lms.admin.VO.AdminMainHomeVO;
 
 @Controller
 public class AdminMainController {
@@ -30,9 +31,46 @@ public class AdminMainController {
 	//-------------------------------------------------------------
 		//어드민 메인 이동
 		@RequestMapping(value="/admin/adminMain", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=UTF-8")
-		public ModelAndView adminMain(AdminCalendarVO vo, HttpServletRequest request) { 
+		public ModelAndView adminMain(AdminMainHomeVO amVo, AdminCalendarVO vo, HttpServletRequest request) { 
 			ModelAndView mav = new ModelAndView();
+			
+			AdminRegiInterface adminReginInter = sqlSession.getMapper(AdminRegiInterface.class);
+		
+			int totalPrice 		= adminReginInter.totalPrice();
+			int totalTeacher 	= adminReginInter.totalTeacher();
+			int totalStudent 	= adminReginInter.totalStudent();
+			int totalCourse 	= adminReginInter.totalCourse();
 
+			
+			amVo.setTotalPrice(totalPrice);
+			amVo.setTotalStudent(totalStudent);
+			amVo.setTotalTeacher(totalTeacher);
+			amVo.setTotalCourse(totalCourse);
+			
+			List<AdminMainHomeVO> tempListT = adminReginInter.paymentTeacher();
+			List<AdminMainHomeVO> tempListC = adminReginInter.paymentCourse();
+			
+			
+			String 	teacherName[] 		= new String[tempListT.size()];
+			String	courseName[] 		= new String[tempListC.size()];
+			int 	payment_Num_T[] 	= new int[tempListT.size()];
+			int 	payment_Num_C[] 	= new int[tempListC.size()]; 
+			//가장 많이 팔린 강좌의 선생 정보
+			for(int i = 0; i<tempListT.size(); i++) {
+				teacherName[i] 		= tempListT.get(i).getPayment_name();
+				payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
+			} 
+			//가장 많이 팔린 강좌 정보
+			for(int i = 0; i<tempListC.size(); i++) {
+				courseName[i] 		= tempListC.get(i).getCourse_name();
+				payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
+			}
+			mav.addObject("amVo", amVo);
+			mav.addObject("teacherName", teacherName);
+			mav.addObject("courseName", courseName);
+			mav.addObject("payment_Num_T", payment_Num_T);
+			mav.addObject("payment_Num_C", payment_Num_C);
+			
 			mav.setViewName("/admin/adminMain");		
 			return mav;  
 		}

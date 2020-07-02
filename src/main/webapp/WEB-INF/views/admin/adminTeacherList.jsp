@@ -71,15 +71,15 @@
 	<!-- 현재 페이지 -->
 		<c:if test="${pageVo.pageNum == 1 }"> 
 			<i class="xi-angle-left text-xl"></i>
-		</c:if>	   
-		
+		</c:if>	    
+		 
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount-1}" > 
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -88,7 +88,7 @@
 			<i class="xi-angle-right text-xl"></i> 
 		</c:if> 
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
 		</c:if>
 	</div>
 		
@@ -98,8 +98,8 @@
 	<script>
 	$(function(){
 		$("#buttonName").on('click', function(){
-			var searchName = document.getElementById("searchName").value;
-			location.href="/lms/admin/adminTeacherList?employee_name=" + searchName;
+			var searchName = document.getElementById("searchName").value; 
+			location.href="/lms/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class=${employee_class}&employee_name=" + searchName;
 		});
 		
 		var userName = '${employee_name}';

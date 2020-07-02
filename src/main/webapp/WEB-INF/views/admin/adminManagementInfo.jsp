@@ -21,8 +21,8 @@
 			
 			<div class="border-solid border-4 border-gray-600 p-3 bg-gray-200 w-full flex">
 					<select name="employee_no" onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?admin_manageinfo_ok=${selectOk}&admin_manageinfo_subject=${selectSubject }&employee_no='+ this.value"   class="border flex-initial mx-2">
-						<option value="-1">::강사::</option>
-						<c:forEach var="i" items="${nameList}">  
+						<option value="-1" <c:if test="${i.employee_no == selectNo}">selected</c:if>>::강사::</option>
+						<c:forEach var="i" items="${nameList}">    
 							<option value="${i.employee_no}" <c:if test="${i.employee_no == selectNo}">selected</c:if>>${i.employee_name}</option>		 			
 						</c:forEach>
 					</select>
@@ -90,12 +90,12 @@
 		</c:if>	  
 		
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${i}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		
@@ -104,7 +104,7 @@
 			<i class="xi-angle-right text-xl"></i> 
 		</c:if>
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminManagementInfo?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminManagementInfo?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
 		</c:if>
 	</div>
 			

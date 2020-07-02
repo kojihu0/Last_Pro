@@ -23,13 +23,29 @@
 			employee 
 	</select>
 	
+	
 	<select id="selectTotalRecordManageInfo"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="int">
 		SELECT
 			COUNT(admin_manageinfo_no)
 		FROM
 			admin_manageinfo
+		<where> 
+			<if test="searchKey_03 == 0 or searchKey_03 == 1">
+			 AND admin_manageinfo_ok = #{searchKey_03} 
+			</if>
+	  		<if test="searchKey_01 != -1"> 
+		    	AND employee_no = #{searchKey_01}  
+		    </if>   	      
+		    <if test="searchKey_02 != '::과목::'"> 
+		    	AND admin_manageinfo_subject = #{searchKey_02} 
+		    </if>
+		</where>
 	</select>
+	
+	
+	
 	<select id="selectOneRecord"
 			resultType="kr.co.lms.admin.VO.AdminManageInfoVO">
 	 	SELECT 
@@ -55,7 +71,7 @@
 			admin_manageinfo_opinion,
 			admin_manageinfo_file,
 			admin_manageinfo_ok
-		FROM 
+		FROM  
 			admin_manageinfo
 		WHERE 
 			admin_manageinfo_no = #{param1}
@@ -76,18 +92,19 @@
 				        admin_manageinfo_opinion      
 			     FROM 
 			     		admin_manageinfo
-			    
-			     WHERE 
-			    	admin_manageinfo_ok = #{searchKey_03} 
 
-			    <if test="searchKey_01 != -1"> 
-			    	AND 
-			    		employee_no = #{searchKey_01}  
+			<where>
+				<if test="searchKey_03 == 0 or searchKey_03 == 1">
+				 AND admin_manageinfo_ok = #{searchKey_03} 
+				</if>
+		  		<if test="searchKey_01 != -1">  
+			    	AND employee_no = #{searchKey_01}  
 			    </if>   	      
-			    <if test="searchKey_02 != '::과목::'">
-			    	AND   
-			    		admin_manageinfo_subject = #{searchKey_02} 
+			    <if test="searchKey_02 != '::과목::'"> 
+			    	AND admin_manageinfo_subject = #{searchKey_02} 
 			    </if>
+			</where>
+			 
     
 			     ORDER BY admin_manageinfo_no DESC
 			     )

@@ -69,10 +69,10 @@ public class AdminController {
 			
 			sess.setAttribute("employee_name", resultVo.getEmployee_name());
 			sess.setAttribute("admin_id", resultVo.getAdmin_id());	
-		 
+		  
 			mav.setViewName("redirect:/admin/adminMain"); 
 		}else {
-			mav.setViewName("redirect:/admin");  
+			mav.setViewName("adminStart/adminLoginFail");   
 		} 
 		
 		return mav;
@@ -129,22 +129,24 @@ public class AdminController {
 	public ModelAndView adminManagementInfo(AdminManageInfoVO vo, AdminStudentPagingVO pVo, HttpServletRequest request) { 
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-		
-		int 	selectNo 	  = 0;
+		 
+		int 	selectNo 	  = 0;  
 		String  selectSubject = "::과목::";
 		int		selectOk 	  = vo.getAdmin_manageinfo_ok();
-		  
+		
 		if(vo.getAdmin_manageinfo_subject() == null) { 
 			selectSubject = "::과목::";
 			pVo.setSearchKey_02(selectSubject);  
 		} 
-		if(vo.getEmployee_no() == -1) {
-			selectNo = -1; 
+		if(vo.getEmployee_no() == 0) {
+		
+			selectNo = -1;  
 			pVo.setSearchKey_01(selectNo);
+			vo.setEmployee_no(selectNo);
 		}
 		 
 		if(vo.getEmployee_no() != -1) { 
-			selectNo = vo.getEmployee_no();
+			selectNo = vo.getEmployee_no(); 
 			pVo.setSearchKey_01(selectNo);
 		}
 			
@@ -156,7 +158,7 @@ public class AdminController {
 		pVo.setSearchKey_03(vo.getAdmin_manageinfo_ok());
 		
 		//페이지 설정.
-		int result_totalPage = adminRegiInter.selectTotalRecordManageInfo();
+		int result_totalPage = adminRegiInter.selectTotalRecordManageInfo(pVo);
 		
 		//강사 이름 전원 뽑아오기.
 		List<AdminManageInfoVO> nameList = adminRegiInter.selectManageInfoName();
@@ -323,19 +325,21 @@ public class AdminController {
 	@RequestMapping("/admin/adminNotice")
 	public ModelAndView adminNotice(AdminNoticeVO vo, AdminStudentPagingVO pVo, HttpServletRequest request) { 
 		ModelAndView mav = new ModelAndView();
+		
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+		 
+		//한페이지에 보이는 숫자 확인.
+		pVo.setOnePageRecord(5);
 		
 		System.out.println("adminNotice 에러" + pVo.getSearchKey());
-		
-		int result_totalPage = adminRegiInter.selectNoticeTotalRecord();
 		int searchKeyInt = -1;
-		
 		if(pVo.getSearchKey() != null) {
 			searchKeyInt = Integer.parseInt(pVo.getSearchKey()); 
 		}
 		
-		//한페이지에 보이는 숫자 확인.
-		pVo.setOnePageRecord(5);
+		int result_totalPage = adminRegiInter.selectNoticeTotalRecord(pVo);
+		
+
 		//토탈 레코드 확인.
 		pVo.setTotalRecord(result_totalPage);
 		
@@ -463,8 +467,6 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 	
-		
-		
 		pVo.setOnePageRecord(4);
 		pVo.setOnePageCount(5); 
 		if(vo.getEmployee_class() == null) {
@@ -473,17 +475,16 @@ public class AdminController {
 		if(vo.getEmployee_rank() == null) {
 			vo.setEmployee_rank("::직급::");
 		}
-		
-		int result_Total = adminRegiInter.selectTeacherTotal();
-		
-		pVo.setTotalRecord(result_Total);
+	
 		pVo.setSearchKey(vo.getEmployee_class());
 		pVo.setSearchWord(vo.getEmployee_rank());
 		pVo.setSearchKey_02(vo.getEmployee_name());
+	
+		int result_Total = adminRegiInter.selectTeacherTotal(pVo);
+		
+		pVo.setTotalRecord(result_Total);
 		
 		List<AdminTeacherVO> resultList = adminRegiInter.selectAdminAllRecord(pVo);
-		
-	
 		
 		if(resultList != null) {
 			System.out.println("성공");

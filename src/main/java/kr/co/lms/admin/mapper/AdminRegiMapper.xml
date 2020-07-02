@@ -5,7 +5,18 @@
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
 	<insert id="insertAdminID"
 			parameterType="kr.co.lms.admin.VO.AdminRegiVO">
-			INSERT INTO employee(employee_no, employee_name, admin_id, admin_pw, employee_date)
-			VALUES(employee_sq.nextval, #{employee_name}, #{admin_id}, #{admin_pw}, SYSDATE)			
+			INSERT INTO 
+				employee(
+						employee_no,
+						employee_name,
+						admin_id, admin_pw, 
+						employee_date
+						)
+			VALUES(
+				employee_sq.nextval, 
+				#{employee_name}, 
+				#{admin_id}, 
+				#{admin_pw}, 
+				SYSDATE)			
 	</insert> 
 </mapper>
