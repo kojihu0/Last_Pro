@@ -41,6 +41,7 @@ public class CourseController {
 		
 		PagingVO pvo = new PagingVO();
 		pvo.setOnePageRecord(8); //한페이지당 보여질 개수
+		pvo.setPageCount(5); //한번에 보여질 페이지 숫자 개수
 		
 		if(!search_text.isEmpty() && search_text!=null) { //검색어가 존재할때 검색어 셋팅
 			pvo.setSearch_text(search_text);

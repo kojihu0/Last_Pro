@@ -38,6 +38,9 @@
  	 	update student set student_img=#{student_img} where student_no=#{student_no} 
  	</update>
  	<update id="memberPasswordDataSelect" parameterType="kr.co.lms.main.VO.MemberVO">
- 	 	update student set student_pw=#{student_pw} where student_no=#{student_no} 
+ 	 	update student set student_pw=#{student_pw} where student_id=#{student_id} 
  	</update>
+ 	<select id="emailCheck" resultType="java.lang.Integer">
+ 		select count(student_email) from student where student_email=#{student_email}	
+ 	</select>
 </mapper>

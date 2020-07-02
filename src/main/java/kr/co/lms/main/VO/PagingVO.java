@@ -7,7 +7,7 @@ public class PagingVO {
 	private int totalPage;			//총 페이지의 수
 	private int totalRecord;		//총 레코드의 수
 	private int startPage = 1;		//페이지 시작
-	private int pageCount = 5;		//출력되는 페이지의 수
+	private int pageCount = 2;		//출력되는 페이지의 수
 	private int lastPageRecord = onePageRecord; //마지막 페이지에 남아있는 레코드의 수
 	private String search_text;
 	private int course_no;
@@ -18,6 +18,7 @@ public class PagingVO {
 	}
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
+		startPage = ((pageNum - 1) / pageCount ) * pageCount + 1;
 	}
 	public int getOnePageRecord() {
 		return onePageRecord;
@@ -42,15 +43,16 @@ public class PagingVO {
 		}else { 
 			lastPageRecord = totalRecord % onePageRecord;
 		}
-		System.out.println("총레코드수" + totalRecord);
-		System.out.println("마지막레코드수" + lastPageRecord);
+//		System.out.println("총레코드수" + totalRecord);
+//		System.out.println("마지막레코드수" + lastPageRecord);
+//		System.out.println("시작페이지" + startPage);
+//		System.out.println("현재페이지" + pageNum);
 	}
 	public int getStartPage() {
 		return startPage;
 	}
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
-		startPage = ((pageNum - 1) / pageCount ) * pageCount + 1;
 	}
 	public int getPageCount() {
 		return pageCount;

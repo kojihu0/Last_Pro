@@ -73,29 +73,36 @@ public class RegisterController {
 	@RequestMapping("/emailSend")
 	@ResponseBody
 	public String sendMail(HttpServletRequest req){
-		String sesId = req.getSession().getId();
-		
-		String body ="EduCamp 인증코드="+sesId;
-		String subject ="EduCamp 회원가입 인증메일입니다. ";
-		String ok ="";
-		try {
-			MimeMessage message = mailSender2.createMimeMessage();
-			String email = req.getParameter("student_email");
-			System.out.println(email);
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
-			helper.setFrom(new InternetAddress("insunok0715@naver.com", "Educamp")); 
-			helper.setTo(new InternetAddress(email)); 
-			helper.setSubject(subject); 
-			helper.setText(body); 
-			mailSender2.send(message);
-			
-			ok="ok";
-			System.out.println("�씠硫붿씪 �쟾�넚 �꽦怨�");
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
+		String email = req.getParameter("student_email");
+		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		int cnt = dao.emailCheck(email);
+		String response ="error";
+		if(cnt>0) {
+			response="duplicate";
+		}
+		else {
+			String sesId = req.getSession().getId();
+			String body ="EduCamp 인증코드="+sesId;
+			String subject ="EduCamp 회원가입 인증메일입니다. ";
+			try {
+				MimeMessage message = mailSender2.createMimeMessage();
+				System.out.println(email);
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); 
+				helper.setFrom(new InternetAddress("insunok0715@naver.com", "Educamp")); 
+				helper.setTo(new InternetAddress(email)); 
+				helper.setSubject(subject); 
+				helper.setText(body); 
+				mailSender2.send(message);
+				
+				response="ok";
+				System.out.println("이메일 발송함");
+			}catch(Exception e) {
+				response="error";
+				System.out.println(e.getMessage());
+			}
 		}
 		
-		return ok;	
+		return response;	
 	}	
 	
 	@RequestMapping("/emailCodeCheck")

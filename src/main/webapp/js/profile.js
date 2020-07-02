@@ -127,70 +127,75 @@ $(function(){
 			}
 			
 		});
+		//사이트 이용약관 체크
+		if($('#accept_policy').prop('checked')==false){
+			alert("사이트 이용약관 및 개인정보 처리방침에 동의해주세요.");
+			return false;
+		}
 	});
 });
 /*아이디 및 비밀번호 찾기 유효성검사 및 정규식*/
 $(function(){
-	/*이름 유효성 검사*/
-	$("#idFindBtn").on('click',function(){
-		if($("#userName").val()==""){
+	$('.find-userinfo').on('submit', function(e){
+		var validate = findUserInfoValidate(this);
+		var formData = $(this).serialize();
+		var url = $(this).attr('action');
+		if(validate == true){
+			$('.ajax-overlay').removeClass('hidden').addClass('flex');
+			$.ajax({
+				url: url,
+				method: 'POST',
+				data: formData,
+				success: function(result){
+					$('.ajax-overlay').removeClass('flex').addClass('hidden');
+					$('.find-userinfo input[type="text"]').val("");
+					alert(result);
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		}
+		return false;
+	});
+	
+	function findUserInfoValidate(form){
+		/*이름 유효성 검사*/
+		if($(form).find("input[name='student_name_ko']").val()==""){
 			alert("이름을 입력해주세요.");
 			return false;
 		}
 		/*이름 정규식*/
 		var reg = /^[가-힣]{2,7}$/;
-		if(!reg.test($("#userName").val())){
+		if(!reg.test($(form).find("input[name='student_name_ko']").val())){
 			alert("이름은 2~7글자까지 입력 가능합니다.");
 			return false;
 		}
-		/*이름 유효성 검사*/
-		if($("#userEmail").val()==""){
-			alert("이메일을 입력해주세요.");
-			return false;
-		}
-		/*이름 정규식*/
-		var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
-		if(!reg.test($("#userEmail").val())){
-			alert("잘못된 이메일 입니다. 다시 입력해주세요..");
-			return false;
-		}
-	});
-	/*비밀번호 찾기*/
-	$("#pwFindBtn").on('click',function(){
-		/*이름 유효성 검사*/
-		if($("#username").val()==""){
-			alert("이름을 입력해주세요.");
-			return false;
-		}
-		/*이름 정규식*/
-		var  reg = /^[가-힣]{2,7}$/;
-		if(!reg.test($("#username").val())){
-			alert("이름을 입력해주세요.");
-			return false;
-		}
-		/*아이디 유효성 검사*/
-		if($("#userid").val()==""){
-			alert("아이디를 입력해주세요.");
-			return false;
-		}
-		/*아이디 정규식*/
-		var reg = /^[a-zA-Z]{1}\w{7,20}$/;
-		if(!reg.test($("#userid").val())){
-			alert("아이디는 영어만 입력가능하며 \n최소 2글자부터 최대 20글자 까지입니다 .");
-				return false;
-		}
 		/*이메일 유효성 검사*/
-		if($("#useremail").val()==""){
+		if($(form).find("input[name='student_email']").val()==""){
 			alert("이메일을 입력해주세요.");
 			return false;
 		}
 		/*이메일 정규식*/
 		var reg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
-		if(!reg.test($("#useremail").val())){
-			alert("잘못된 이메일 입니다. 다시 입력해 주세요.");
+		if(!reg.test($(form).find("input[name='student_email']").val())){
+			alert("잘못된 이메일 입니다. 다시 입력해주세요..");
 			return false;
 		}
-	});
+		/*아이디 유효성 검사*/
+		if($(form).find("input[name='student_id']").val()==""){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		/*아이디 정규식*/
+		var reg = /^[a-zA-Z]{1}\w{7,20}$/;
+		if(!reg.test($(form).find("input[name='student_id']").val())){
+			alert("아이디는 영어만 입력가능하며 \n최소 2글자부터 최대 20글자 까지입니다 .");
+				return false;
+		}
+		
+		return true;
+	}
 });
 
 /*마이페이지(이름 및 자기소개 수정,비밀번호수정)유효성 검사 및 정규식 */
@@ -385,9 +390,6 @@ $(function(){
 		if($("#userEmail").val()=="" || !reg.test($("#userEmail").val())){
 			alert("잘못된 이메일 입니다 다시 입력해 주세요.");
 				return false;
-		}else{
-			$("#userEmailText").css("display","none");
-			$("#userEmailCodeText").css("display","block");
 		}
 	});
 });

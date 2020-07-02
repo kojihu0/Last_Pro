@@ -192,7 +192,7 @@ public class ProfileController {
 		vo.setStudent_pw(passwordEncoder.encode(student_pw));
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
-		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
+		vo.setStudent_id((String)ses.getAttribute("student_id"));
 		int cnt = dao.memberPasswordDataSelect(vo);
 		if(cnt>0) {
 			ok="ok";

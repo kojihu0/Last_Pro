@@ -23,4 +23,6 @@ public interface MemberDAOImp {
 	public int memberImgDataSelect(MemberVO vo); 
 	//내정보 비밀번호 변경
 	public int memberPasswordDataSelect(MemberVO vo);
+	//이메일 중복체크
+	public int emailCheck(String student_email);
 }

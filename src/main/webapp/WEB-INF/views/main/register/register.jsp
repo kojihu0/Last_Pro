@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script>
-    $(function(){ 
+$(function(){ 
 	function email(url,params,msg){
 		$('.ajax-overlay').removeClass('hidden').addClass('flex');
 		$.ajax({
@@ -11,10 +11,19 @@
 				$('.ajax-overlay').removeClass('flex').addClass('hidden');
 				if(result=="ok"){
 					alert(msg);
-				}else if(result=="yes"){
+					$("#userEmailText").addClass("hidden");
+					$("#userEmailCodeText").removeClass("hidden");
+				}
+				else if(result=="duplicate"){
+					alert("이미 존재하는 이메일입니다. 다른 이메일을 입력해주세요.");
+				}
+				else if(result=="yes"){
 					$("#emailCheckResult").val("yes");
+					$('#emailCodeCompleteBtn').prop('disabled', true);
+					$("#userEmailCode").prop('disabled', true);
 					alert(msg);
-				}else if(result=="no"){
+				}
+				else if(result=="error"){
 					alert("인증코드가 일치하지 않습니다.. 다시 시도해주세요.");
 				}
 			},
@@ -38,18 +47,15 @@
 		var msg = "이메일 인증이 완료 되었습니다.";
 		email(url,params,msg);
 	});
-});
-	</script>
- <script>
-  $(function(){ 
+	
 	$("#userIdChk").click(function(){
 		reg = /^[a-zA-Z]{1}\w{7,11}$/; //[a-zA-Z0-9_] = \w: 영어 대소문자, 숫자,_		
 		if (!reg.test($("#userId").val())) {
 			alert("아이디는 첫번째 문자는 영문자 ,영,숫자,_만 허용 , 8~12글자까지 허용합니다...");
 			return false;
 		}else{
-		//아이디 중복 체크 
-		window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=300px");
+			//아이디 중복 체크 
+			window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=300px");
 		}
 	});
 });
@@ -108,7 +114,7 @@
 	    </div>
 	  </div>
 	  
-	  <div id="userEmailText" style="display:block" class="flex flex-wrap -mx-3 mb-6">
+	  <div id="userEmailText" class="flex flex-wrap -mx-3 mb-6">
 	    <div class="w-10/12 px-3">
 	      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="userEmail">
 	      	Email
@@ -123,7 +129,7 @@
 	    </div>
 	  </div>
 	  
-	  <div id="userEmailCodeText" style="display:none" class="flex flex-wrap -mx-3 mb-6">
+	  <div id="userEmailCodeText" class="flex flex-wrap -mx-3 mb-6 hidden">
 	    <div class="w-10/12 px-3">
 	      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="userEmail">
 	      	Email Code
@@ -145,6 +151,10 @@
 	      <input id="userTel" name="student_tel_phone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200   py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500"  type="text" >
 	        <div class="text-brand-500 text-sm" >전화번호를 입력시  &nbsp;'-' &nbsp;를 입력해주세요.</div>
 	    </div>
+	  </div>
+	  <div class="mb-4">
+	  <input type="checkbox" value="동의" id="accept_policy" class="align-middle" class="mr-2">
+	  <label for="accept_policy" class="text-sm"><a class="text-danger-500" href="/lms/termsOfService" target="_blank">사이트 이용약관</a> 및 <a class="text-danger-500" href="/lms/privacyPolicy" target="_blank">개인정보 처리방침</a>에 동의합니다.</label>
 	  </div>
 	  <div class="w-10/12 h-20 mt-8" >
 		<input type="submit" id="registerBtn" class="w-full focus:outline-none text-white cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="회원가입"/>
