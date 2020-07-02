@@ -45,7 +45,7 @@ $(function(){
 			alert("2글자 이상 한글이름을 입력해주세요.");
 			return false;
 		}else if(!engName.test($(".engName").val()) || $(".engName").val()==""){
-			alert("영문이름을 입력해주세요.");
+			alert("영문이름을 입력해주세요.");ㅇ
 			return false;
 		}else if($(".birthYear option:selected").val()=="선택" || $(".birthMonth option:selected").val()=="선택" || $(".birthDay option:selected").val()=="선택"){
 			alert("생년월일을 선택해주세요.");
