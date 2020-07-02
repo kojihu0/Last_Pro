@@ -106,10 +106,10 @@
 							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_opinion }</td> 
 						</tr>
 						<tr>  
-							<th class="bg-info-300 py-2 text-center">첨부파일</th>
-							<td class="border  bg-white px-32 py-2 text-left"><a href="#" download>${result_Vo.admin_manageinfo_file }</a></td>		
+							<th class="bg-info-300 py-2 text-center">첨부파일</th> 
+							<td class="bg-white px-4 py-2 text-left"><a class="border-b-2 border-black" href="/lms/adminManagementUpload/${result_Vo.admin_manageinfo_file }" download>${result_Vo.admin_manageinfo_file }</a></td>		
 						</tr>
-					</thead>  
+					</thead>   
 				</table>  
 				
 				<div class="p-3"></div>

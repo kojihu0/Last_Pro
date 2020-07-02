@@ -42,7 +42,6 @@ public int getPageNum() {
    }
    public void setPageNum(int pageNum) {
       this.pageNum = pageNum;
-      
       startPage = ((pageNum-1)/onePageCount)*onePageCount+1;
    }
    public int getOnePageRecord() {

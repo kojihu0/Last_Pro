@@ -32,7 +32,7 @@
 					<option value="폐강"  <c:if test="${searchKey_State == '폐강'}">selected</c:if>>폐강</option>
 					<option value="대기"  <c:if test="${searchKey_State == '대기'}">selected</c:if>>대기</option>
 				</select> 
-				<input type="text" name="search" placeholder="검색어 입력" class="mx-2 border border-black"/>&nbsp;<a href="#"><i class="xi-search"></i></a>
+				<input type="text" id="courseNameS" name="courseNameS" placeholder="강좌 명 검색" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
 			</div>
 			
 				
@@ -87,12 +87,12 @@
 		</c:if>	  
 		
 		<c:if test="${pageVo.pageNum > 1 }">  
-			<a href="<%=projectPath %>/admin/adminCourseList?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminCourseList?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchWord != null}" >&searchKey_01=${pageVo.searchKey_01 }&searchKey_02=${pageVo.searchKey_02 }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminCourseList?pageNum=${i}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminCourseList?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchWord != null}">&searchKey_01=${pageVo.searchKey_01 }&searchKey_02=${pageVo.searchKey_02 }&searchWord=${pageVo.searchWord } }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-bottom:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -101,12 +101,11 @@
 			<i class="xi-angle-right text-xl"></i> 
 		</c:if>
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminCourseList?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminCourseList?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchWord != null}">&searchKey_01=${pageVo.searchKey_01 }&searchKey_02=${pageVo.searchKey_02 }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
 		</c:if>
 	</div>
 	
-	
-	
+	<!-- ----------------------------------------------------------------------------------- -->
 	<script>
 		function delCheck(num){ 
 			var $course_no = $(num).data("course_no");
@@ -114,9 +113,12 @@
 				 location.href="<%=projectPath%>/admin/adminCourseDel?course_no=" +  $course_no; 
 			}
 		}
-	
+		$(function(){
+			$("#buttonName").on('click', function(){
+				var searchName = document.getElementById("courseNameS").value; 
+				location.href="/lms/admin/adminCourseList?searchKey_01=${searchKey_Year}&searchKey_02=${searchKey_State}&course_name=" + searchName;
+			});
+		});
 	</script>
-	
-	
 </body>
 </html>

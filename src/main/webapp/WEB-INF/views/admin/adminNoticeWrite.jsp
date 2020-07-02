@@ -26,7 +26,7 @@
 		
 		
 		<div class="p-3 bg-gray-100 tableDiv border border-cta-900">
-		<form method="post" action="<%=projectPath%>/admin/adminNoticeWriteOk" onsubmit="return noticeRegiCheck()">
+		<form method="post" action="<%=projectPath%>/admin/adminNoticeWriteOk" enctype="multipart/form-data" onsubmit="return noticeRegiCheck()">
 			<table class=" my-0 mx-auto"> 
 				<thead>
 					<tr>
@@ -61,7 +61,7 @@
 					<tr>
 						<th class="bg-info-300 border border-black p-3 w-32">강의 이미지</th>
 						<td class="p-3 border border-black">  
-							<input class="border border-black" type="file" name="admin_notice_img"/> 
+							<input class="border border-black" type="file" name="admin_notice_img_m"/> 
 						</td>
 					</tr>
 				</tbody>
@@ -96,6 +96,7 @@
 $(function(){
 	CKEDITOR.replace('noticeWriteContent',
 					 {height: 350 })
+	
 });
 
 </script>

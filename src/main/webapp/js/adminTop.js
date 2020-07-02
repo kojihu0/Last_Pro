@@ -211,6 +211,7 @@ $(function(){
 });
 /////////student_detail 이미지 업로드
 var sel_file;
+
 function imgFileSelect(e){
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);

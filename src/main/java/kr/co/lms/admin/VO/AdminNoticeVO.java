@@ -1,5 +1,7 @@
 package kr.co.lms.admin.VO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdminNoticeVO {
 
 	private int 	admin_notice_no;	 //nn
@@ -9,9 +11,16 @@ public class AdminNoticeVO {
 	private String 	admin_notice_title;	 //nn
 	private String 	admin_notice_content;//nn
 	private String 	admin_notice_img;
+	private MultipartFile admin_notice_img_m;
 	private String 	admin_notice_date;
 	private int     admin_notice_hit;
 	
+	public MultipartFile getAdmin_notice_img_m() {
+		return admin_notice_img_m;
+	}
+	public void setAdmin_notice_img_m(MultipartFile admin_notice_img_m) {
+		this.admin_notice_img_m = admin_notice_img_m;
+	}
 	public String getEmployee_name() {
 		return employee_name;
 	}

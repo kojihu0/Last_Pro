@@ -16,6 +16,7 @@
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/img/**" location="/img/" />
+	<resources mapping="/adminManagementUpload/**" location="/adminManagementUpload/" />
 	<resources mapping="/fullCalendar02/**" location="/fullCalendar02/"/>
 	<resources mapping="/ckeditor/**" location="/ckeditor/"/> 
 
@@ -49,5 +50,7 @@
         <beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
     </beans:bean>
 	<!--  -->
+	    <!-- File Upload 를 위한 세팅 -->
+
 	
 </beans:beans>

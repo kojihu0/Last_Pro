@@ -441,13 +441,13 @@
 						<tr>
 							<th class="bg-info-300 p-3 w-32">강좌개요</th>
 							<td class="p-3">
-								<textarea id="courseStory" class="border border-black" rows="7" cols="100" style="resize: none;" name="course_content">${vo.course_content }</textarea>
+								<textarea id="courseStory" class="border border-black" rows="7" cols="100" style="resize: none;" name="course_overview">${vo.course_overview }</textarea>
 							</td>
 						</tr>
 						<tr>
 							<th class="bg-info-300 p-3 w-32">강좌소개</th>
 							<td class="p-3"> 
-								<textarea rows="" cols="" id="courseEditContent" name="course_overview" class="courseEditContent">${vo.course_overview }</textarea>	
+								<textarea rows="" cols="" id="courseEditContent" name="course_content" class="courseEditContent">${vo.course_content }</textarea>	
 							</td>
 						</tr>
 						<tr>
@@ -455,7 +455,7 @@
 							<td class="p-3">
 								<input class="border border-black" type="text" name="course_textbook" value="${vo.course_textbook }"/>
 							</td>
-						</tr>
+						</tr> 
 						<tr>
 							<th class="bg-info-300 p-3 w-32">강의 이미지</th>
 							<td class="p-3">

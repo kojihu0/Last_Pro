@@ -57,7 +57,7 @@ public interface AdminRegiInterface {
 	
 	
 	//총 강좌 수 구하기.
-	public int selectCourseTotal();
+	public int selectCourseTotal(AdminStudentPagingVO pVo);
 	//강좌리스트
 	public List<AdminCourseVO> selectCourseAll(AdminStudentPagingVO pVo);
 	//강좌 하나 선택.

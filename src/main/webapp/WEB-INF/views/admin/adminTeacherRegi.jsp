@@ -15,7 +15,7 @@
 				<i class="xi-school"></i>&nbsp;직원등록
 			</div>
 
-		<form method="post" action="<%=projectPath%>/admin/adminTeacherRegiOk" onsubmit="return teacherRegiCheck()">
+		<form method="post" action="<%=projectPath%>/admin/adminTeacherRegiOk" enctype="multipart/form-data" onsubmit="return teacherRegiCheck()">
 			<div class="p-3 my-0 mx-auto flex justify-center">  
 			<table>
 				<thead>
@@ -24,11 +24,11 @@
 						<th class="p-3 w-32 border border-black text-l">    
 							<div class="">
 								<div class="p-3 img_wrap border-solid border-2 border-gray-600" style="width:200px; height:250px; margin:0 auto"> 
-									<img id="img"src=""/>  
+									<img id="img" src="/lms/${employee_img}"/>  
 								</div> 
 								<div class="p-3"> 
 									<input type="hidden" value=""/>
-									<input type="file" id="input_img" name="employee_img" class="hidden" />
+									<input type="file" id="input_img" name="employee_img_m" class="hidden" />
 									<button id="button_img" class=" border-solid border-2 border-gray-600 rounded bg-info-200">사진등록</button>
 								</div>
 							</div>
@@ -54,6 +54,18 @@
 								<option value="C">C</option>
 								<option value="D">D</option>
 								<option value="E">E</option> 
+							</select>
+						</td>
+					</tr>
+					<tr> 
+						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">전  공</th>
+						<td colspan="3" class="p-3 border border-black">
+							<select name="employee_subject" class="border border-black h-8">   
+								<option value="" selected="selected">::과목::</option>  
+								<option value="JAVA" >JAVA</option>
+								<option value="javascript">javascript</option> 
+								<option value="Html/CSS">Html/CSS</option>
+								<option value="Spring">Spring</option>	 
 							</select>
 						</td>
 					</tr>
@@ -121,7 +133,7 @@
 		</div>
 		<div class="p-3 text-center"> 
 			<input type="submit" value="등록 " class="bg-info-200 border-black border font-bold py-2 px-4 rounded"/> 
-			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherRegiOk">등록취소</a>
+			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">등록취소</a>
 		</div>
 	</form>
 </div> 

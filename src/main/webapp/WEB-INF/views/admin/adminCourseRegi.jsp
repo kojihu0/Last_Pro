@@ -126,7 +126,7 @@
 							<td class="p-3"> 
 								<textarea name="course_content" rows="" cols="" id="courseRegiContent" id="courseRegiContent" class="courseRegiContent"></textarea>	
 							</td>
-						</tr>
+						</tr> 
 						<tr>
 							<th class="bg-info-300 p-3 w-32">사용교재</th>
 							<td class="p-3">

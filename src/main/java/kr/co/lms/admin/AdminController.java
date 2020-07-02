@@ -2,9 +2,12 @@ package kr.co.lms.admin;
 
 
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.admin.DAO.AdminRegiInterface;
@@ -128,10 +134,8 @@ public class AdminController {
 		String  selectSubject = "::과목::";
 		int		selectOk 	  = vo.getAdmin_manageinfo_ok();
 		  
-		
 		if(vo.getAdmin_manageinfo_subject() == null) { 
 			selectSubject = "::과목::";
-			System.out.println(selectSubject + "::::selectSubject");
 			pVo.setSearchKey_02(selectSubject);  
 		} 
 		if(vo.getEmployee_no() == -1) {
@@ -176,7 +180,7 @@ public class AdminController {
  
 		return mav;
 	}
-		//업무일지 보러가는 곳.
+	//업무일지 보러가는 곳.
 	@RequestMapping("/admin/adminManageView")
 	public ModelAndView adminManageView(AdminManageInfoVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -189,7 +193,7 @@ public class AdminController {
 		
 		return mav;
 	}
-		//업무일지 등록하는 곳으로 이동.
+	//업무일지 등록하는 곳으로 이동.
 	@RequestMapping("/admin/adminManageRegi")
 	public String adminManageRegi(){
 		
@@ -198,15 +202,34 @@ public class AdminController {
 
 		//업무일지 등록OK
 	@RequestMapping(value="/admin/adminMangeRegiOk", method=RequestMethod.POST)
-	public ModelAndView adminManageRegiOk(AdminManageInfoVO vo, HttpServletRequest request) {
-		
+	public ModelAndView adminManageRegiOk(AdminManageInfoVO vo,
+										  HttpServletRequest request) {
+		//모델앤뷰
 		ModelAndView mav = new ModelAndView();
+		//인터페이스, sql세션으로 가져오기.
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-		
+		//작성자를 위한 아이디 정보
 		HttpSession sess = request.getSession();
-		
+		//아이디 정보 저장.
 		String admin_Id = (String)sess.getAttribute("admin_id");
-		System.out.println("id" + admin_Id);
+		
+		//---------------------------------
+			//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/adminManagementUpload");
+	      int	 maxSize 		= 1024*1024*100;//100 메가 바이트
+	      String paramName 		= vo.getAdmin_manageinfo_file_m().getName();
+	      String txt 			= vo.getAdmin_manageinfo_file_m().getOriginalFilename();
+	      
+		 
+	      try {
+		      if(txt != null) {
+		    	  vo.getAdmin_manageinfo_file_m().transferTo(new File(path, txt));
+		      }
+	      }catch(Exception e) {
+	    	  
+	      }
+	      vo.setAdmin_manageinfo_file(txt);
+
 		
 		AdminManageInfoVO tempVo = adminRegiInter.selectManageinfoNameAndNo(admin_Id);
 
@@ -216,15 +239,17 @@ public class AdminController {
 		int result_Int = adminRegiInter.insertAdminManageInfo(vo);
 		
 		if(result_Int > 0) {
-			System.out.println("업무일지 등록 성공");
 			mav.setViewName("redirect:/admin/adminManagementInfo");
 		}else {
-			System.out.println("업무일지 등록 실패");
+			if(txt != null) {
+				deleteFile(path, txt);
+			}
 			mav.setViewName("/admin/adminManagementInfo"); 
 		}
 		return mav;
 	}
 	
+
 	//수정폼에서, 데이터 불러오기.
 	@RequestMapping(value="/admin/adminManageEdit", method= {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView adminMangeEdit(AdminManageInfoVO vo, HttpServletRequest request) {
@@ -245,11 +270,33 @@ public class AdminController {
 			ModelAndView mav = new ModelAndView();
 			AdminRegiInterface  adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			
+			
+		//============================
+			//파일 업로드를 위한 작업.
+			  String path 	 		= request.getSession().getServletContext().getRealPath("/adminManagementUpload");
+		      int	 maxSize 		= 1024*1024*100;//100 메가 바이트
+		      String paramName 		= vo.getAdmin_manageinfo_file_m().getName();
+		      String txt 			= vo.getAdmin_manageinfo_file_m().getOriginalFilename();
+		      
+			 
+		      try {
+			      if(txt != null) {
+			    	  vo.getAdmin_manageinfo_file_m().transferTo(new File(path, txt));
+			      }
+		      }catch(Exception e) {
+		    	  
+		      }
+		      vo.setAdmin_manageinfo_file(txt);
+
+		//============================ 
 			int result_Int = adminRegiInter.updateAdminManageInfo(vo);
 			
 			if(result_Int > 0) {
 				mav.setViewName("redirect:/admin/adminManagementInfo"); 
 			}else {
+				if(txt != null) {
+					deleteFile(path, txt);
+				}
 				mav.setViewName("redirect:/admin/adminManageEdit"); 
 			}
 		return mav;
@@ -321,6 +368,22 @@ public class AdminController {
 		
 		String admin_Id		 = (String)sess.getAttribute("admin_id");
 		String employee_Name = (String)sess.getAttribute("employee_name");
+		//==============================================
+		//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+	      String paramName 		= vo.getAdmin_notice_img_m().getName();
+	      String img 			= vo.getAdmin_notice_img_m().getOriginalFilename();
+	      
+	      try {
+		      if(img != null) {
+		    	  vo.getAdmin_notice_img_m().transferTo(new File(path, img));
+		      }
+	      }catch(Exception e) {
+	    	  
+	      }
+	      vo.setAdmin_notice_img(img);
+	      
+		//============================================
 		//임플로이 넘버 구하기.
 		int adminNo = adminRegiInter.selectEmployeeNo(admin_Id);
 		
@@ -328,9 +391,12 @@ public class AdminController {
 
 		int result_Int = adminRegiInter.insertNotice(vo); 
 		
-		if(result_Int>0) {
+		if(result_Int > 0) {
 			mav.setViewName("redirect:/admin/adminNotice");
 		}else {
+			if(img != null) {
+				deleteFile(path, img);
+			}
 			mav.setViewName("redirect:/admin/adminNotice");
 		}
 
@@ -397,14 +463,17 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 	
-		pVo.setOnePageRecord(5);
 		
+		
+		pVo.setOnePageRecord(4);
+		pVo.setOnePageCount(5); 
 		if(vo.getEmployee_class() == null) {
 			vo.setEmployee_class("::Class::");
 		} 
 		if(vo.getEmployee_rank() == null) {
 			vo.setEmployee_rank("::직급::");
 		}
+		
 		int result_Total = adminRegiInter.selectTeacherTotal();
 		
 		pVo.setTotalRecord(result_Total);
@@ -413,6 +482,8 @@ public class AdminController {
 		pVo.setSearchKey_02(vo.getEmployee_name());
 		
 		List<AdminTeacherVO> resultList = adminRegiInter.selectAdminAllRecord(pVo);
+		
+	
 		
 		if(resultList != null) {
 			System.out.println("성공");
@@ -430,8 +501,11 @@ public class AdminController {
 	}
 	//강사 등록.
 	@RequestMapping("/admin/adminTeacherRegi")
-	public String adminTeacherRegi() {
-		return "admin/adminTeacherRegi";
+	public ModelAndView adminTeacherRegi(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+
+			mav.setViewName("admin/adminTeacherRegi");
+		return mav;
 	}
 	//강사 등록ok.
 	@RequestMapping(value="/admin/adminTeacherRegiOk", method= {RequestMethod.GET ,RequestMethod.POST})
@@ -444,16 +518,29 @@ public class AdminController {
 		String 		check = (String)sess.getAttribute("employee_name");
 		
 		
-		if(check.equals("관리자")) { 
+
+		//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+	      String paramName 		= vo.getEmployee_img_m().getName();
+	      String img 			= vo.getEmployee_img_m().getOriginalFilename();
+	      
+	      try {
+		      if(img != null) {
+		    	  vo.getEmployee_img_m().transferTo(new File(path, img));
+		      }
+	      }catch(Exception e) {
+	    	  
+	      }
+	      vo.setEmployee_img(img); 
+		
 			int insertResult = adminRegiInter.insertAdminTeacher(vo);			 
 			if(insertResult > 0) {
 				 mav.setViewName("redirect:/admin/adminTeacherList");
 			}else {
+				deleteFile(path, img);
 				mav.setViewName("/admin/adminTeacherRegi");
 			}
-		}else{
-			mav.setViewName("redirect:/admin");
-		}
+		
 		return mav;
 	}
 	//강사 정보 수정 폼
@@ -466,14 +553,18 @@ public class AdminController {
 		//수정해야하는 사람의 정보를  가져옴.
 		
 		AdminTeacherVO tempVo = adminRegiInter.selectTeacherOverView(vo);
-		System.out.println("tempVo " + tempVo);
-		System.out.println("tempVo.getEmployee_email() " + tempVo.getEmployee_email());
+		
+		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_email());
+		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_class());
+		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_subject());
+		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_img());
 		 
+	
 		if(tempVo != null) { 
 			vo.setEmployee_overview(tempVo.getEmployee_overview() ); 
 			//도메인, 아이디 분리.
-			String email = tempVo.getEmployee_email(); 
-			int      cut   = email.indexOf("@");
+			String 	 email = tempVo.getEmployee_email(); 
+			int        cut = email.indexOf("@");
 			String emailId = email.substring(0,cut); 
 			String  domain = email.substring(cut+1); 
 			
@@ -492,7 +583,7 @@ public class AdminController {
 		
 		}
 	
-		mav.addObject("vo", vo);
+		mav.addObject("vo", tempVo); 
 		mav.setViewName("/admin/adminTeacherEdit");  
 		
 		return mav;
@@ -505,11 +596,29 @@ public class AdminController {
 		
 		AdminRegiInterface adminRegiInter	= sqlSession.getMapper(AdminRegiInterface.class);
 		
+		//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+	      String paramName 		= vo.getEmployee_img_m().getName();
+	      String img 			= vo.getEmployee_img_m().getOriginalFilename();
+	      
+	      try {
+		      if(img != null) {
+		    	  vo.getEmployee_img_m().transferTo(new File(path, img));
+		      }
+	      }catch(Exception e) {
+	    	  
+	      }
+	      vo.setEmployee_img(img); 
+		
 		int result_Int = adminRegiInter.updateAdminTeacherEdit(vo);
+		
+		
+		
 		
 		if(result_Int > 0) {  
 			mav.setViewName("redirect:/admin/adminTeacherList");	
 		}else {
+			deleteFile(path, img);
 			mav.setViewName("redirect:/admin/adminTeacherEdit"); 
 		}
 		
@@ -539,11 +648,9 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 
-		System.out.println("확인 : "+ pVo.getSearchKey_01());
-		System.out.println("확인 : "+ pVo.getSearchKey_02());
-		
 		//한페이지당 보여줄 레코드 수 설정.
 		pVo.setOnePageRecord(10);
+		pVo.setOnePageCount(3);
 				
 		int 	searchKey_Year = -1;
 		String  searchKey_State = "::상태::";
@@ -554,23 +661,21 @@ public class AdminController {
 		if(pVo.getSearchKey_02() == null) {
 			pVo.setSearchKey_02(searchKey_State); 
 		}
-		 
-		System.out.println("확인 후 : "+ pVo.getSearchKey_01());
-		System.out.println("확인  후: "+ pVo.getSearchKey_02());
-		
-		
-		//토탈 레코드
-		int result_Int = adminRegiInter.selectCourseTotal();
-		//토탈 레코드 세팅.
-		pVo.setTotalRecord(result_Int);
-		
-		
+		if(vo.getCourse_name() != null) { 
+			pVo.setSearchWord(vo.getCourse_name());
+		}
+
 		searchKey_Year  = pVo.getSearchKey_01(); 
 		searchKey_State = pVo.getSearchKey_02(); 
 		
 		pVo.setSearchKey_01(searchKey_Year);
 		pVo.setSearchKey_02(searchKey_State);
-
+		
+		//토탈 레코드
+		int result_Int = adminRegiInter.selectCourseTotal(pVo);
+		//토탈 레코드 세팅.
+		pVo.setTotalRecord(result_Int);
+		
 		//리스트 목록 세팅.
 		List<AdminCourseVO> courseList = adminRegiInter.selectCourseAll(pVo);
 		
@@ -597,7 +702,7 @@ public class AdminController {
 		
 		return mav;  
 	}
-	
+	//강좌 수정하기 ok
 	@RequestMapping(value="/admin/adminCourseEditOk", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView adminCourseEditOk(AdminCourseVO vo, HttpServletRequest request){
 		
@@ -619,7 +724,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	
+	//강좌 삭제하기.
 	@RequestMapping("/admin/adminCourseDel")
 	public ModelAndView adminCourseDel(AdminCourseVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -636,12 +741,12 @@ public class AdminController {
 		
 		return mav;
 	}
-	
+	//강좌 등록하기 폼으로 이동.
 	@RequestMapping("/admin/adminCourseRegi")
 	public String adminCourseRegi() {
 		return "admin/adminCourseRegi";
 	}
-	
+	//강좌 등록 ok
 	@RequestMapping(value="/admin/adminCourseRegiOk", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView adminCourseRegiOk(AdminCourseVO vo, HttpServletRequest request) {
 		
@@ -680,5 +785,12 @@ public class AdminController {
 		return mav;
 	}
 //------------------------------------------------------------
- 	
+	//파일 업로드 삭제
+	public void deleteFile(String path, String txt) {
+		File f = new File(path, txt);
+		f.delete();
+	}
+	
+	
+	
 }//controller end

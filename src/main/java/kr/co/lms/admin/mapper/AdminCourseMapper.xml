@@ -4,15 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
 	<select id="selectCourseTotal"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="int">
 		SELECT
 			COUNT(course_no)
 		FROM 
-			course	
+			course
+		<where>
+			<if test="searchKey_01 != -1">
+				AND TO_CHAR(course_start_date, 'YYYY') = #{searchKey_01}  
+ 			</if>
+			<if test="searchKey_02 != '::상태::'">
+				AND course_state = #{searchKey_02} 
+			</if>   
+			<if test="searchWord != null"> 
+				AND course_name LIKE '%' || #{searchWord}  || '%'
+			</if>
+		</where>
 	</select>
 
 
-	<select id="selectCourseAll" 
+	<select id="selectCourseAll"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="kr.co.lms.admin.VO.AdminCourseVO"> 
 		SELECT * FROM( 		
 			SELECT * FROM( 	
@@ -29,10 +42,13 @@
 							course
 						<where> 
 							<if test="searchKey_01 != -1">
-							AND TO_CHAR(course_start_date, 'YYYY') = #{searchKey_01}  
+								AND TO_CHAR(course_start_date, 'YYYY') = #{searchKey_01}  
  							</if>
 							<if test="searchKey_02 != '::상태::'">
-							AND course_state = #{searchKey_02} 
+								AND course_state = #{searchKey_02} 
+							</if>   
+							<if test="searchWord != null"> 
+								AND course_name LIKE '%' || #{searchWord}  || '%'
 							</if>
 						</where>		
 						ORDER BY 

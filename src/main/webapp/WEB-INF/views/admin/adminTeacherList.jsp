@@ -33,10 +33,11 @@
 				<thead>
 					<tr>   
 						<th class="border-b-4 border-info-700 bg-info-300 w-16">번호</th>
+						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">사진</th>
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">이름</th>
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">직급</th>
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-64">담당</th> 
-						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">구분</th>
+						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">등록일</th>
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">ID</th>
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">권한</th> 
 						<th class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">비고</th>  
@@ -47,10 +48,11 @@
 					<c:forEach var="vo" items="${list }">
 						<tr class="bg-white">
 							<td  class="border text-center p-2">${vo.employee_no}</td>
-							<td  class="border text-center p-2">${vo.employee_name }</td>
+							<td  class="border text-center p-2 h-32"><img class="object-cover h-32 w-full" src="/lms/img/${vo.employee_img}"/></td>
+							<td  class="border text-center p-2">${vo.employee_name }</td> 
 							<td  class="border text-center p-2">${vo.employee_rank }</td>
-							<td  class="border text-center p-2">${vo.employee_class }</td>
-							<td  class="border text-center p-2">${vo.employee_rank }</td>
+							<td  class="border text-center p-2">${vo.employee_subject }/${vo.employee_class }</td>
+							<td  class="border text-center p-2">${vo.employee_date }</td>
 							<td  class="border text-center p-2">${vo.admin_id }</td>
 							<td  class="border text-center p-2">${vo.employee_authority }</td> 
 							<td  class="border text-center p-2">${vo.employee_state }</td>     
@@ -62,7 +64,7 @@
 		</div>
 		
 		<div class="p-3 text-right">  
-			<a class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded" href="<%=projectPath%>/admin/adminTeacherRegi">직원등록</a>
+			<button id="teacherRegiButtoon" class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">직원등록</button>
 		</div>	
 	<!-- page -->	
 	<div class="text-center">	
@@ -75,9 +77,9 @@
 			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}" >&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
-		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
+		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount-1}" > 
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${pageVo.searchKey != null && pageVo.searchWord != null}">&searchKey=${pageVo.searchKey }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -94,10 +96,23 @@
 	</div>
 	
 	<script>
-	
-	$("#buttonName").on('click', function(){
-		var searchName = document.getElementById("searchName").value;
-		location.href="/lms/admin/adminTeacherList?employee_name=" + searchName;
+	$(function(){
+		$("#buttonName").on('click', function(){
+			var searchName = document.getElementById("searchName").value;
+			location.href="/lms/admin/adminTeacherList?employee_name=" + searchName;
+		});
+		
+		var userName = '${employee_name}';
+		
+		$("#teacherRegiButtoon").on('click', function(){
+			if(userName != '관리자'){
+				alert("관리자 전용 페이지 입니다. 로그인 창으로 돌아갑니다.(자동으로 로그아웃 됩니다.)");
+				location.href="<%=projectPath%>/adminStart/adminLogout";
+			}
+			if(userName == '관리자'){
+				location.href="<%=projectPath%>/admin/adminTeacherRegi";
+			}
+		}); 
 	});
 	</script>
 

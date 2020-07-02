@@ -25,8 +25,11 @@
 						employee_rank, 
 						employee_class,
 					 	admin_id,
+					 	employee_subject,
 					 	employee_authority,
-					 	employee_state
+					 	employee_state, 
+					 	employee_date, 
+					 	employee_img 
 					FROM 
 					  	employee
 					
@@ -41,7 +44,6 @@
 					  		AND employee_name LIKE '%' || #{searchKey_02} || '%'
 					  	</if> 
 					 </where> 
-					
 					ORDER BY
 					  	employee_no
 					DESC)
@@ -64,6 +66,7 @@
 					admin_pw,
 					employee_email,
 					employee_class,
+					employee_subject,
 					employee_authority,
 					employee_tel,
 					employee_state,
@@ -84,6 +87,7 @@
 					admin_pw,
 					employee_email,
 					employee_class,
+					employee_subject,
 					employee_authority,
 					employee_tel,
 					employee_state,
@@ -96,7 +100,8 @@
 			#{admin_id},
 			#{admin_pw},
 			#{employee_email},
-			#{employee_class},
+			#{employee_class}, 
+			#{employee_subject},
 			#{employee_authority},
 			#{employee_tel},
 			#{employee_state},

@@ -20,9 +20,9 @@
 			<div class="text-xl p-3 mx-16 ">  
 				<i class="xi-school"></i>&nbsp;직원-정보수정
 			</div>
- 
-		<form method="post" action="<%=projectPath %>/admin/adminTeacherEditOk?employee_no=${vo.employee_no}" onsubmit="return teacherEditCheck()">
-			<div class="p-3 my-0 mx-auto flex justify-center">  
+  
+		<form method="post" action="<%=projectPath %>/admin/adminTeacherEditOk?employee_no=${vo.employee_no}"  enctype="multipart/form-data"    onsubmit="return teacherEditCheck()">
+			<div class="p-3 my-0 mx-auto flex justify-center">
 			<table>
 			<thead>
 					<tr>
@@ -30,11 +30,11 @@
 						<th class="p-3 w-32 border border-black text-l">    
 							<div class="">
 								<div class="p-3 img_wrap border-solid border-2 border-gray-600" style="width:200px; height:250px; margin:0 auto"> 
-									<img id="img"src="<%=projectPath %>/img/${vo.employee_img }"/>  
-								</div> 
-								<div class="p-3"> 
+									<img id="img" class="object-cover" src="<%=projectPath %>/img/${vo.employee_img }"/>  
+								</div>  
+								<div class="p-3">  
 									<input type="hidden" value=""/>
-									<input type="file" id="input_img" name="employee_img" class="hidden" />
+									<input type="file" id="input_img" name="employee_img_m" class="hidden" />
 									<button id="button_img" class=" border-solid border-2 border-gray-600 rounded bg-info-200">사진등록</button>
 								</div>
 							</div>

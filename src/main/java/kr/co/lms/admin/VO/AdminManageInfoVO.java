@@ -1,5 +1,7 @@
 package kr.co.lms.admin.VO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdminManageInfoVO {
 	private int 	admin_manageinfo_no;
 	private int 	employee_no;
@@ -25,12 +27,22 @@ public class AdminManageInfoVO {
 	
 	private String 	admin_manageinfo_work;
 	private String 	admin_manageinfo_opinion;
+	
 	private String 	admin_manageinfo_file;
+	private MultipartFile admin_manageinfo_file_m;
 	
 	private int     admin_manageinfo_ok;
 	
 	
 	//--------------------------------------
+	
+	public MultipartFile getAdmin_manageinfo_file_m() {
+		return admin_manageinfo_file_m;
+	}
+	public void setAdmin_manageinfo_file_m(MultipartFile admin_manageinfo_file_m) {
+		this.admin_manageinfo_file_m = admin_manageinfo_file_m;
+	}
+	
 	
 	public int getAdmin_manageinfo_no() {
 		return admin_manageinfo_no;
