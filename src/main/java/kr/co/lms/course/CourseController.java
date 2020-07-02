@@ -99,7 +99,7 @@ public class CourseController {
 		int wish_no = 0;
 		if(logStatus!=null) { //로그인 상태일때 세션에서 학생번호와 구매번호 가져오기
 			if(logStatus.equals("Y")) {
-				student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+				student_no = ((Integer)sess.getAttribute("student_no"));
 				String strPayment_no = dao.selectPaymentNo(course_no, student_no); 
 				if(strPayment_no!=null) {
 					payment_no = Integer.parseInt(strPayment_no);
@@ -219,7 +219,7 @@ public class CourseController {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		
 		HttpSession sess = req.getSession();
-		int student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+		int student_no = ((Integer)sess.getAttribute("student_no"));
 		vo.setStudent_no(student_no);
 		System.out.println(wish_status);
 		int cnt = 0;

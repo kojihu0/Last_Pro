@@ -33,7 +33,7 @@
 </div>
 <div class="w-full bg-gray-lightest text-center text-2xl my-40 font-bold">
 	<div style="line-height: 130px">"</div>
-	<div class="px-64 -mt-10"><span class="text-danger">ChariTree</span>는 대한민국에서 새로운 도전이 자연스러운 환경을 만들고자 합니다.<br>이를 위해 리테일, 트레이더스, 벤처스 등 새로운 사업 영역을 확대하며 스타트업을 위한<br>종합 지원 플랫폼으로 나아가고 있습니다.</div>
+	<div class="px-64 -mt-10"><span class="text-danger">EduCamp</span>는 대한민국에서 새로운 도전이 자연스러운 환경을 만들고자 합니다.<br>이를 위해 리테일, 트레이더스, 벤처스 등 새로운 사업 영역을 확대하며 스타트업을 위한<br>종합 지원 플랫폼으로 나아가고 있습니다.</div>
 	<div style="line-height: 110px">"</div>
 </div>
 <div class="w-full max-w-screen-xl my-0 mx-auto ">
@@ -41,7 +41,7 @@
 		<span class="text-danger font-bold">Brand Mission</span>
 		<div class="w-full mt-3 flex">
 			<span class="font-bold text-2xl w-1/2">올바른 생각이 신뢰를 바탕으로<br> 성장하는 세상을 만들고자 합니다</span>
-			<div class="text-lg w-1/2"><span class="text-danger">ChariTree</span> 업의 본질은 단순히 자금을 모으는 것이 아닙니다. 금융시장의 자금이 창업 기업이나 스타트업 등 꼭 필요한 곳에 흘러가도록 하여, 더욱 성장하는 세상을 만드는 것이 우리의 미션입니다.</div>
+			<div class="text-lg w-1/2"><span class="text-danger">EduCamp</span> 업의 본질은 단순히 자금을 모으는 것이 아닙니다. 금융시장의 자금이 창업 기업이나 스타트업 등 꼭 필요한 곳에 흘러가도록 하여, 더욱 성장하는 세상을 만드는 것이 우리의 미션입니다.</div>
 	    </div>
     </div>
 </div>  
@@ -50,8 +50,8 @@
 	<div>
 		<span class="text-danger font-bold">Brand Vision</span>
 		<div class="w-full mt-3 flex">
-			<span class="font-bold text-2xl w-1/2"><span class="text-danger">ChariTree</span>는 신뢰를 바탕으로<br>소통하며 협력하는<br>Trust Capitalist Group입니다</span>
-			<div class="text-lg w-1/2"><span class="text-danger">ChariTree</span> 업의 본질은 단순히 자금을 모으는 것이 아닙니다. 금융시장의 자금이 창업 기업이나 스타트업 등 꼭 필요한 곳에 흘러가도록 하여, 더욱 성장하는 세상을 만드는 것이 우리의 미션입니다.</div>
+			<span class="font-bold text-2xl w-1/2"><span class="text-danger">EduCamp</span>는 신뢰를 바탕으로<br>소통하며 협력하는<br>Trust Capitalist Group입니다</span>
+			<div class="text-lg w-1/2"><span class="text-danger">EduCamp</span> 업의 본질은 단순히 자금을 모으는 것이 아닙니다. 금융시장의 자금이 창업 기업이나 스타트업 등 꼭 필요한 곳에 흘러가도록 하여, 더욱 성장하는 세상을 만드는 것이 우리의 미션입니다.</div>
 	    </div>
 	 </div>
 </div>

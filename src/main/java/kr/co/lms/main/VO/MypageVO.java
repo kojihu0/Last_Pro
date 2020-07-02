@@ -1,12 +1,16 @@
 package kr.co.lms.main.VO;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class MypageVO {
 	private String Student_no;//등록된학생번호 
 	private String employee_name;//강사명
 	private String course_name;//강좌명
 	private String course_start_date;//시작일
 	private String course_end_date;//종료일
-	private String passingGrade;//퍼센트율
+	private String course_progress;//퍼센트율
 	private String grade;//성적
 	private String rank;//순위
 	private String state;//수료상태
@@ -45,11 +49,12 @@ public class MypageVO {
 	public void setCourse_end_date(String course_end_date) {
 		this.course_end_date = course_end_date;
 	}
-	public String getPassingGrade() {
-		return passingGrade;
+	
+	public String getCourse_progress() {
+		return course_progress;
 	}
-	public void setPassingGrade(String passingGrade) {
-		this.passingGrade = passingGrade;
+	public void setCourse_progress(String course_progress) {
+		this.course_progress = course_progress;
 	}
 	public String getGrade() {
 		return grade;
@@ -69,11 +74,5 @@ public class MypageVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
-
-	
-	
-	
-	
 	
 }

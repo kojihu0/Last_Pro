@@ -41,6 +41,9 @@
 			   <li class="mr-1">
 			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
 			  </li>
+			   <li class="mr-1">
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+				  </li>
 			</ul>
 			<table class="text-white border text-xl text-center mt-8 mb-8 bg-cta-500 w-10/12 border-gray-500">
 				<tbody >

@@ -11,8 +11,7 @@ public class paymentVO {
 		private String payment_phone;
 		private String payment_method;
 		private String payment_date;
-		
-		
+		private String course_start_date;
 		private String employee_name;
 		private String course_name;
 		
@@ -78,6 +77,13 @@ public class paymentVO {
 		}
 		public void setPayment_date(String payment_date) {
 			this.payment_date = payment_date;
+		}
+		
+		public String getCourse_start_date() {
+			return course_start_date;
+		}
+		public void setCourse_start_date(String course_start_date) {
+			this.course_start_date = course_start_date;
 		}
 		public String getEmployee_name() {
 			return employee_name;

@@ -44,7 +44,7 @@ public class RegisterController {
 		
 		int cnt = dao.memberRegister(vo);
 		if(cnt>0) {
-			mav.setViewName("redirect:/");
+			mav.setViewName("main/register/registerComplete");
 		}else {
 			mav.setViewName("redirect:register");
 		}
@@ -54,7 +54,7 @@ public class RegisterController {
 	
 	
 	@RequestMapping(value="/idCheck" ,method=RequestMethod.GET)
-	public ModelAndView idCheck(String userid) {//아이디 중복 검사
+	public ModelAndView idCheck(String userid) {
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		
@@ -71,8 +71,8 @@ public class RegisterController {
 	public String sendMail(HttpServletRequest req){
 		String sesId = req.getSession().getId();
 		
-		String body ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다.\n 인증코드="+sesId;
-		String subject ="EduCamp 회원가입에 필요한 이메일 인증 코드 입니다. ";
+		String body ="EduCamp �쉶�썝媛��엯�뿉 �븘�슂�븳 �씠硫붿씪 �씤利� 肄붾뱶 �엯�땲�떎.\n �씤利앹퐫�뱶="+sesId;
+		String subject ="EduCamp �쉶�썝媛��엯�뿉 �븘�슂�븳 �씠硫붿씪 �씤利� 肄붾뱶 �엯�땲�떎. ";
 		String ok ="";
 		try {
 			
@@ -87,7 +87,7 @@ public class RegisterController {
 				mailSender2.send(message);
 				
 				ok="ok";
-				System.out.println("이메일 전송 성공");
+				System.out.println("�씠硫붿씪 �쟾�넚 �꽦怨�");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -113,6 +113,11 @@ public class RegisterController {
 	public String registerComplete() {
 		
 		return "main/register/registerComplete";
+	}
+	@RequestMapping("/registerDel")
+	public String registerDel() {
+		
+		return "main/register/registerDel";
 	}
 	@RequestMapping("/subjectRegister")
 	public String subjectRegister() {

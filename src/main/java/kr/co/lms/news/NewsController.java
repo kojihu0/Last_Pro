@@ -32,14 +32,11 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/event", method=RequestMethod.GET)
-	public ModelAndView event(NewsVO vo, HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//이벤트 게시물
+	public ModelAndView event(NewsVO vo, HttpServletRequest req, 
+			@RequestParam(required = false, defaultValue = "1") int pageNum){//이벤트 게시물
 		PagingVO pvo = new PagingVO();
 		pvo.setCategory_no(2);
-		//한페이지에 보여줄 게시물 갯수 설정
 		pvo.setOnePageRecord(5);
-		System.out.println("1111111111111111"+pvo.getCategory_no());
-		//전체페이지 수 구하기 
-		
 		ModelAndView mav = new ModelAndView();
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.eventGetTotalRecord());
@@ -59,11 +56,9 @@ public class NewsController {
 		
 		//라스트 페이지 작업.
 		pvo.setTotalRecord(dao.eventGetTotalRecord());
-		System.out.println(pvo.getCategory_no());
 		if((pvo.getPageNum() < pvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		} 
-		System.out.println(pvo.getCategory_no());
 		List<NewsVO> eventsList = dao.eventsAllSelectRecord(pvo);
 		mav.addObject("pvo",pvo);
 		mav.addObject("crrPageNum", pvo.getPageNum());
@@ -73,12 +68,12 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/news", method=RequestMethod.GET)
-	public ModelAndView news(NewsVO vo ,HttpServletRequest req, @RequestParam(required = false, defaultValue = "1") int pageNum){//공지사항 게시물
+	public ModelAndView news(NewsVO vo ,HttpServletRequest req, 
+			@RequestParam(required = false, defaultValue = "1") int pageNum){//공지사항 게시물
 		ModelAndView mav = new ModelAndView();
 		PagingVO pvo = new PagingVO();
-		//한페이지에 보여줄 게시물의 수를 설정
+		pvo.setCategory_no(1);
 		pvo.setOnePageRecord(5);
-		//전체 페이지의 수를 구하고
 		NewsDAOImp dao = sqlSession.getMapper(NewsDAOImp.class);
 		pvo.setTotalRecord(dao.newsGetTotalRecord());
 		if(pageNum>0) {
@@ -98,7 +93,6 @@ public class NewsController {
 		
 		//라스트 페이지 작업.
 		pvo.setTotalRecord(dao.newsGetTotalRecord());
-		
 		if((pvo.getPageNum() < pvo.getTotalPage())) { //현재 페이지번호가 마지막페이지 번호보다 작을 때
 			pvo.setLastPageRecord(pvo.getOnePageRecord());
 		} 

@@ -75,19 +75,19 @@
 	</div>
 	<div id="courseCarousel" class="-mx-4 fadeUp">
 		<c:forEach var="cvo" items="${courseList}">
-		<div class="course-item px-4 text-center"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<img class="duration-300" src="<%=ctx %>/img/${cvo.course_img}">
-				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">READ MORE</a>
-			</div>
-			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-					<a href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">${cvo.course_name}</a>
-				</h2>
-				<div class="course-author text-gray-900 mb-4">${cvo.employee_name}</div>
-				<div class="course-price text-danger-500 relative py-4">${cvo.course_price_format}<span>원</span></div>
-			</div>
-		</div><!-- course-item -->
+			<div class="course-item px-4 text-center"><!-- course-item -->
+				<div class="course-image relative overflow-hidden border border-gray-300">
+					<img class="duration-300" src="<%=ctx %>/img/${cvo.course_img}">
+					<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">READ MORE</a>
+				</div>
+				<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
+					<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
+						<a href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">${cvo.course_name}</a>
+					</h2>
+					<div class="course-author text-gray-900 mb-4">${cvo.employee_name}</div>
+					<div class="course-price text-danger-500 relative py-4">${cvo.course_price_format}<span>원</span></div>
+				</div>
+			</div><!-- course-item -->
 		</c:forEach>
 	</div>
 	<div class="text-center mt-8 mb-2">

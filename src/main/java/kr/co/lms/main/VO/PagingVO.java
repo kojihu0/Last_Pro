@@ -1,5 +1,6 @@
 package kr.co.lms.main.VO;
 
+
 public class PagingVO {
 	
 	private int pageNum = 1;		//현재 페이지
@@ -12,7 +13,6 @@ public class PagingVO {
 	private String search_text;
 	private int course_no;
 	private int category_no;
-	
 	public int getPageNum() {
 		return pageNum;
 	}

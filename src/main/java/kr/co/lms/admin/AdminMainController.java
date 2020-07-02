@@ -47,7 +47,6 @@ public class AdminMainController {
 			String jsonStr = "";
 			 
 			for(int i = 0; i < result_List.size(); i++) {  
-
 				//json형식으로 문자열 생성->javascript 필드에서 작업할 것.
 				 jsonStr += "{" + "start :"  +"'"+ result_List.get(i).getCalendar_start_date()  +"'" + "," +
 								  "end : "   +"'"+ result_List.get(i).getCalendar_end_date()	+"'" + "," + 

@@ -13,7 +13,7 @@
 		<c:if test="${student_img != null }">
 			<img src="<%=ctx%>/img/${student_img}">
 		</c:if >
-		<c:if test="${student_img == null }">
+		<c:if test="${empty student_img}">
 			<img src="<%=ctx%>/img/user-avatar.png">
 		</c:if>
 			<div id="hr" class="my-8 border-t border-solid"></div>
@@ -40,6 +40,9 @@
 				  </li>
 				   <li class="mr-1">
 				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
+				  </li>
+				  <li class="mr-1">
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
 				  </li>
 				</ul>
 				

@@ -37,7 +37,7 @@
 		select  count(admin_notice_no) from admin_notice where admin_category=1
 	</select>
 	<select id="eventGetTotalRecord" resultType="java.lang.Integer">
-		select  count(admin_notice_no) from admin_notice where admin_category=1
+		select  count(admin_notice_no) from admin_notice where admin_category=2
 	</select>
 	<select id="eventRecordList" resultType="kr.co.lms.main.VO.LeadLagVO">
 	select * from(select admin_notice_no, lead(admin_notice_no, 1) over(order by admin_notice_no desc) leadNo, 
@@ -47,7 +47,8 @@
                     where admin_notice_no = #{param1}
 	</select>
 	<select id="newsRecordList" resultType="kr.co.lms.main.VO.LeadLagVO">
-	select * from(select admin_notice_no, lead(admin_notice_no, 1) over(order by admin_notice_no desc) leadNo, 
+	select * from(select admin_notice_no, 
+					lead(admin_notice_no, 1) over(order by admin_notice_no desc) leadNo, 
 					lead(admin_notice_title, 1, '이전글') over(order by admin_notice_no desc) leadSubject, 
 					lag(admin_notice_no, 1) over(order by admin_notice_no desc) lagNo, 
 					lag(admin_notice_title, 1, '다음글') over(order by admin_notice_no desc) lagSubject from admin_notice where admin_category=1)

@@ -11,7 +11,7 @@
 				alert(msg);
 			}else if(result=="yes"){
 				$("#emailCheckResult").val("yes");
-				swal(msg);
+				alert(msg);
 			}else if(result=="no"){
 				alert("인증코드가 일치하지 않습니다.. 다시 시도해주세요.");
 			}
@@ -47,7 +47,7 @@
 			return false;
 		}else{
 		//아이디 중복 체크 
-		window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=300px");
+		window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=450px, height=300px");
 		}
 	});
 });
@@ -104,7 +104,6 @@
       	  <div class="text-danger-500 text-sm" id="registerPwChk">비밀번호가 일치하지 않습니다.</div>
 	    </div>
 	  </div>
-	  
 	  <div id="userEmailText" style="display:block" class="flex flex-wrap -mx-3 mb-6">
 	    <div class="w-10/12 px-3">
 	      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="userEmail">

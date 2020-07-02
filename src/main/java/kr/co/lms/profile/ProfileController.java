@@ -19,8 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.main.DAO.MemberDAOImp;
 import kr.co.lms.main.DAO.MypageDAOImp;
+import kr.co.lms.main.DAO.paymentDAOImp;
 import kr.co.lms.main.VO.MemberVO;
 import kr.co.lms.main.VO.MypageVO;
+import kr.co.lms.main.VO.WishListVO;
+import kr.co.lms.main.VO.paymentVO;
 
 
 @Controller
@@ -36,7 +39,11 @@ public class ProfileController {
 	}
 	@RequestMapping(value="/myPageDetail", method=RequestMethod.GET)
 	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo,int no) {
+	
 		ModelAndView mav = new ModelAndView();
+		
+		
+		
 		HttpSession s = req.getSession();
 		vo.setStudent_no((Integer)s.getAttribute("student_no"));
 		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
@@ -50,8 +57,10 @@ public class ProfileController {
 	}
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//맵핑
+		
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = dao.memberDataSelect(vo);
@@ -62,17 +71,19 @@ public class ProfileController {
 		return mav;
 	}
 	@RequestMapping(value="/courseOfStudy",method=RequestMethod.GET)
-	public ModelAndView courseOfStudy(HttpServletRequest req, int no,MemberVO vo){//수강중인강좌
+	public ModelAndView courseOfStudy(HttpServletRequest req, int no ,MemberVO vo){//수강중인강좌
+
 		ModelAndView mav = new ModelAndView();
+		
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class); 
 		List<MypageVO> courseList =dao.courseRecord(no);
-		
+		MypageVO mVO = new MypageVO();
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
+		MypageVO course_progress = dao.courseProgess(no);
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
-		
-		
+		mav.addObject("course_progress",course_progress);
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
 		mav.addObject("student_img",vo2.getStudent_img());
@@ -102,6 +113,7 @@ public class ProfileController {
 	public ModelAndView inCompletionCourse(HttpServletRequest req, int no,MemberVO vo) {//미수료강좌
 		ModelAndView mav = new ModelAndView();
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		
 		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord(no);
 		
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
@@ -218,7 +230,12 @@ public class ProfileController {
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
+		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		WishListVO wVO = new WishListVO();
+		wVO.setStudent_no((Integer)ses.getAttribute("student_no"));
+		List<WishListVO> list = dao.wishListRecord(wVO);
 		
+		mav.addObject("list",list);
 		mav.addObject("student_img",vo2.getStudent_img());
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
@@ -226,4 +243,39 @@ public class ProfileController {
 		return mav;
 	}
 	
+	
+	@RequestMapping(value="/paymentHistory", method=RequestMethod.GET)
+	public ModelAndView paymentHistory(HttpServletRequest req,MemberVO vo,int no) {
+		ModelAndView mav = new ModelAndView();
+		paymentVO pVO = new paymentVO();
+		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
+		paymentDAOImp paymentDao = sqlSession.getMapper(paymentDAOImp.class);
+		HttpSession ses = req.getSession();
+		
+		pVO.setStudent_no((Integer)ses.getAttribute("student_no"));//결제내역에 필요한 학생번호 
+		
+		vo.setStudent_no((Integer)ses.getAttribute("student_no"));//프로필 정보에 필요한 학생번호 
+		MemberVO vo2 = memberDao.memberDataSelect(vo);
+		List<paymentVO> pList = paymentDao.paymentHistoryRecord(pVO);//결제내역리스트 가져오기 
+		mav.addObject("pList",pList);//결제내역 리스트 
+		//프로필 사진, 이름 , 자기소개 
+		mav.addObject("student_img",vo2.getStudent_img());
+		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
+		mav.addObject("student_info",vo2.getStudent_info());
+		//클라이언트 주소 
+		mav.setViewName("main/profile/paymentHistory");
+		return mav;
+		}
+	//결제내역 상세페이지 
+	@RequestMapping(value="/paymentDetail", method=RequestMethod.GET)
+	public ModelAndView paymentDetail(int no) {
+		ModelAndView mav = new ModelAndView();
+		paymentVO pVO = new paymentVO();
+		pVO.setPayment_no(no);
+		paymentDAOImp paymentDao =  sqlSession.getMapper(paymentDAOImp.class);
+		
+		mav.addObject("pList",paymentDao.paymentDetailRecord(pVO));
+		mav.setViewName("main/profile/paymentDetail");
+		return mav ; 
+	}
 }
