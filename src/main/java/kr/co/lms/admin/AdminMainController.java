@@ -29,7 +29,7 @@ public class AdminMainController {
 		}
 		
 	//-------------------------------------------------------------
-		//¾îµå¹Î ¸ŞÀÎ ÀÌµ¿
+		//ì–´ë“œë¯¼ ë©”ì¸ ì´ë™
 		@RequestMapping(value="/admin/adminMain", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=UTF-8")
 		public ModelAndView adminMain(AdminMainHomeVO amVo, AdminCalendarVO vo, HttpServletRequest request) { 
 			ModelAndView mav = new ModelAndView();
@@ -55,12 +55,13 @@ public class AdminMainController {
 			String	courseName[] 		= new String[tempListC.size()];
 			int 	payment_Num_T[] 	= new int[tempListT.size()];
 			int 	payment_Num_C[] 	= new int[tempListC.size()]; 
-			//°¡Àå ¸¹ÀÌ ÆÈ¸° °­ÁÂÀÇ ¼±»ı Á¤º¸
+			
+			//ê°€ì¥ ë§ì´ íŒ”ë¦° ê°•ì¢Œì˜ ì„ ìƒ ì •ë³´
 			for(int i = 0; i<tempListT.size(); i++) {
 				teacherName[i] 		= tempListT.get(i).getPayment_name();
 				payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
 			} 
-			//°¡Àå ¸¹ÀÌ ÆÈ¸° °­ÁÂ Á¤º¸
+			//ê°€ì¥ ë§ì´ íŒ”ë¦° ê°•ì¢Œ ì •ë³´
 			for(int i = 0; i<tempListC.size(); i++) {
 				courseName[i] 		= tempListC.get(i).getCourse_name();
 				payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
@@ -74,7 +75,7 @@ public class AdminMainController {
 			mav.setViewName("/admin/adminMain");		
 			return mav;  
 		}
-		//DB¿¡¼­ ÀÏÁ¤ ÀĞ¾î¿À±â;
+		//DBì—ì„œ ì¼ì • ì½ì–´ì˜¤ê¸°;
 		@RequestMapping(value="/calendar/base", method={RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
 		public String base(AdminCalendarVO vo, HttpServletRequest request) {
@@ -82,7 +83,7 @@ public class AdminMainController {
 			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
-				//jsonÇü½ÄÀ¸·Î ¹®ÀÚ¿­ »ı¼º->javascript ÇÊµå¿¡¼­ ÀÛ¾÷ÇÒ °Í.
+				//jsoní˜•ì‹ìœ¼ë¡œ ë¬¸ìì—´ ìƒì„±->javascript í•„ë“œì—ì„œ ì‘ì—…í•  ê²ƒ.
 				 jsonStr += "{" + "\"start\":"  	    +"\"" + result_List.get(i).getCalendar_start_date()  +"\"" + "," +
 								   "\"end\":"   	    +"\"" + result_List.get(i).getCalendar_end_date()	+"\"" + "," + 
 								   "\"title\":" 	    +"\"" + result_List.get(i).getCalendar_title() 		+"\"" + "," +
@@ -96,7 +97,7 @@ public class AdminMainController {
 				 } 
 			}	  
 			jsonStr += "]";
-			System.out.println("vo¿¡´Â °ªÀÌ µé¾î°¡? ¾Æ´Ï ¿©±â´Â ¿À³Ä? : " + jsonStr);
+			System.out.println("voì—ëŠ” ê°’ì´ ë“¤ì–´ê°€? ì•„ë‹ˆ ì—¬ê¸°ëŠ” ì˜¤ëƒ? : " + jsonStr);
 			return jsonStr;  
 		}		
 		//addevent
@@ -125,7 +126,7 @@ public class AdminMainController {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.updateCalender(vo);
 			
-			return "¼öÁ¤¿Ï.";
+			return "ìˆ˜ì •ì™„.";
 		}
 		//delEvent
 		@RequestMapping(value="/calendar/delEvent",method= RequestMethod.POST, produces = "application/text; charset=UTF-8")  	 
@@ -136,7 +137,7 @@ public class AdminMainController {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int result_Int = adminRegiInter.deleteCalender(vo);
 	
-			return "»èÁ¦ ¿Ï.";
+			return "ì‚­ì œ ì™„.";
 		}  
 		//dropEvent
 		@RequestMapping(value="/calendar/dropUpdate")
@@ -146,7 +147,7 @@ public class AdminMainController {
 
 			int result_Int = adminRegiInter.dropUpdateCalender(vo);
 
-			return "µå¶ø ¼öÁ¤ ¿Ï";
+			return "ë“œë ìˆ˜ì • ì™„";
 		}
 }//controller end
 
