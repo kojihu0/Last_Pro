@@ -53,4 +53,9 @@
 		p.payment_no = s.payment_no
 	WHERE  s.student_no = #{param1}
  	</select>
+ 	<select id="selectTimeTable" resultType="kr.co.lms.main.VO.CourseVO">
+ 	select p.course_no ,course_name, to_char(course_start_date, 'yyyy-mm-dd') course_start_date, to_char(course_end_date, 'yyyy-mm-dd') course_end_date
+	from payment p join course c on p.course_no=c.course_no
+	where student_no=2
+ 	</select>
  </mapper>

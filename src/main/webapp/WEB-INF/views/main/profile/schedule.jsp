@@ -22,111 +22,30 @@
 			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
-		<ul class="flex roboto-slab">
-			  <li class="-mb-px mr-1">
-			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
-			  </li> 
-			  <li class="mr-1">
-			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
-			  </li>
-			  <li class="mr-1">
-			   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
-			  </li>
-			  <li class="mr-1">
-			    <a class="bg-white border-brand-500 border-b border-l border-t-4 border-r  py-3 px-4 text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
-			  </li>
-			  <li class="mr-1">
-			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
-			  </li>
-			   <li class="mr-1">
-			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
-			  </li>
+			<ul class="flex roboto-slab">
+				<li class="-mb-px mr-1">
+			    	<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
+			  	</li> 
+			  	<li class="mr-1">
+			    	<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
+			  	</li>
+			  	<li class="mr-1">
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
+			  	</li>
+			  	<li class="mr-1">
+			    	<a class="bg-white border-brand-500 border-b border-l border-t-4 border-r  py-3 px-4 text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
+			  	</li>
+			  	<li class="mr-1">
+			    	<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
+			  	</li>
+			   	<li class="mr-1">
+			    	<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
+			  	</li>
 			</ul>
-			<table class="text-white border text-xl text-center mt-8 mb-8 bg-cta-500 w-10/12 border-gray-500">
-				<tbody >
-					<tr class="border border-white">
-						<td class="border border-white">&nbsp;</td>
-						<td class="border border-white">월</td>
-						<td class="border border-white">화</td>
-						<td class="border border-white">수</td>
-						<td class="border border-white">목</td>
-						<td class="border border-white">금</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">1교시</td>
-						<td class="border border-white">스프링 과정</td>
-						<td class="border border-white">스프링 과정</td>
-						<td class="border border-white">스프링 과정</td>
-						<td class="border border-white">스프링 과정</td>
-						<td class="border border-white">스프링 과정</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">2교시</td>
-						<td class="border border-white">MVC패턴</td>
-						<td class="border border-white">MVC패턴</td>
-						<td class="border border-white">MVC패턴</td>
-						<td class="border border-white">MVC패턴</td>
-						<td class="border border-white">MVC패턴</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">3교시</td>
-						<td class="border border-white">백엔드개발</td>
-						<td class="border border-white">백엔드개발</td>
-						<td class="border border-white">백엔드개발</td>
-						<td class="border border-white">백엔드개발</td>
-						<td class="border border-white">백엔드개발</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">4교시</td>
-						<td class="border border-white">데이터베이스 </td>
-						<td class="border border-white">데이터베이스 </td>
-						<td class="border border-white">데이터베이스 </td>
-						<td class="border border-white">데이터베이스 </td>
-						<td class="border border-white">데이터베이스 </td>
-					</tr>
-					<tr>
-						<td class="border border-white">5교시</td>
-						<td class="border border-white">자바스크립트</td>
-						<td class="border border-white">자바스크립트</td>
-						<td class="border border-white">자바스크립트</td>
-						<td class="border border-white">자바스크립트</td>
-						<td class="border border-white">자바스크립트</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">6교시</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">7교시</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">8교시</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-					</tr>
-					<tr class="border border-white">
-						<td class="border border-white">9교시</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-						<td class="border border-white">프로젝트 개발</td>
-					</tr>
-				</tbody>
-			</table>
-		<!-- DivTable.com -->
+			<div class="my-8 p-4">
+				<div id="courseSchedule" class="w-full max-w-screen-md">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

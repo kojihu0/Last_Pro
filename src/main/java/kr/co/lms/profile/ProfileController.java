@@ -17,8 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import kr.co.lms.main.DAO.MemberDAOImp;
 import kr.co.lms.main.DAO.MypageDAOImp;
+import kr.co.lms.main.VO.CourseVO;
 import kr.co.lms.main.VO.MemberVO;
 import kr.co.lms.main.VO.MypageVO;
 
@@ -106,6 +111,7 @@ public class ProfileController {
 		mav.setViewName("main/profile/inCompletionCourse");
 		return mav;
 	}
+	
 	@RequestMapping(value="/schedule", method=RequestMethod.GET)
 	public ModelAndView schedule(HttpServletRequest req,MemberVO vo) {//½Ã°£Ç¥
 		ModelAndView mav = new ModelAndView();
@@ -119,6 +125,34 @@ public class ProfileController {
 		mav.addObject("student_info",vo2.getStudent_info());
 		mav.setViewName("main/profile/schedule");
 		return mav;
+	}
+	
+	@RequestMapping(value="/schedule/getTimeTable")
+	@ResponseBody
+	public String getTimeTable(HttpServletRequest req) {
+		HttpSession sess = req.getSession();
+		int student_no = (Integer)sess.getAttribute("student_no");
+		
+		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
+		List<CourseVO> list = dao.selectTimeTable(student_no);
+		
+		JsonArray jsonArr = new JsonArray();
+		Gson gson = new Gson();
+		String jsonVal = "";
+		
+		for(int i=0; i<list.size(); i++) {
+			CourseVO vo = list.get(i);
+			JsonObject jsonObj = new JsonObject();
+			
+			jsonObj.addProperty("", vo.getCourse_name());
+			jsonObj.addProperty("", vo.getCourse_start_date());
+			jsonObj.addProperty("", vo.getCourse_end_date());
+			jsonArr.add(jsonObj);
+		}
+		
+		jsonVal=gson.toJson(jsonArr);
+		
+		return jsonVal;
 	}
 	
 	@RequestMapping(value="/profileUpdate", method=RequestMethod.POST)
