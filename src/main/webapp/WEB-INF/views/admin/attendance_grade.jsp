@@ -11,98 +11,67 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
 	</div>
-	<form class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/attendance_grade" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
 		<div class="mx-3 w-5/6">
-			<div class="flex my-2">
-				<span class="leading-8">강좌구분 : </span><div class="inline-block relative w-30 mx-2">
-					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline year">
-						<option>==</option>
-					    <option>2010</option>
-					    <option>2011</option>
-					    <option>2012</option>
-					    <option>2013</option>
-					    <option>2014</option>
-					    <option>2015</option>
-					    <option>2016</option>
-					    <option>2017</option>
-					    <option>2018</option>
-					    <option>2019</option>
-					    <option>2020</option>
-					    <option>2021</option>
-		  	 		</select>
-				    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-					    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				    </div>
-				</div>
-				<div class="inline-block relative w-20 mx-2">
-					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
-						<option>==</option>
-					    <option>01</option>
-					    <option>02</option>
-					    <option>03</option>
-					    <option>04</option>
-					    <option>05</option>
-					    <option>06</option>
-					    <option>07</option>
-					    <option>08</option>
-					    <option>09</option>
-					    <option>10</option>
-					    <option>11</option>
-					    <option>12</option>
-		  	 		</select>
-	  		    	<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	  			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				    </div>
-				</div>
-				<div class="inline-block relative w-40 mx-2">
-					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
-						<option>==</option>
-					    <option>JAVA</option>
-					    <option>HTML/CSS</option>
-					    <option>JAVASCRIPT</option>
-					    <option>SPRING</option>
-					    <option>MYBATIS</option>
-		  	 		</select>
-		  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				    </div>
-				</div>
-				<div class="inline-block relative w-40 mx-2">
-					<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
-						<option>개강</option>
-					    <option>폐강</option>
-					    <option>전체</option>
-		  	 		</select>
-		  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				    </div>
-				</div>
-			</div>
+			<div class="w-1/2 calendar my-3">개강년월 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
+			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="border-solid border-2 border-gray-600"/></div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-10 my-2 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="w-20 h-16 my-3 ml-12 border-solid border-2 border-gray-600 rounded"/>
 	</form>
-	<form class="w-full" action="/lms/table_attendance_grade">
-		<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse;">
-			<tr class="text-center">
-				<td style="width:50px">번호</td>
-				<td style="width:120px;">개강년월</td>
-				<td style="width:300px;">과정명</td>
-				<td style="width:300px;">강좌명</td>
-				<td style="width:300px;">반명</td>
-				<td style="width:50px">인원</td>
-				<td>출결·과제관리</td>
-			</tr>
+	<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
+	<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse; table-layout:fixed;">
+		<tr class="text-center">
+			<td style="width:50px">번호</td>
+			<td style="width:120px;">개강년월</td>
+			<td style="width:200px;">과정명</td>
+			<td style="width:250px;">강좌명</td>
+			<td style="width:300px;">반</td>
+			<td style="width:50px;">인원</td>
+			<td style="width:150px;">출결·과제관리</td>
+		</tr>
+		<c:forEach var="vo" items="${list}">
 			<tr class="bg-white text-center" style="border-top:solid 1px black; border-bottom:solid 1px black">
-				<td class="p-2" style="width:50px">1</td>
-				<td class="p-2" style="width:120px;">2020-02-06</td>
-				<td class="p-2" style="width:300px;">JAVASCRIPT</td>
-				<td class="p-2" style="width:300px;">JAVASCRIPT</td>
-				<td class="p-2" style="width:300px;">JAVASCRIPT와 함께</td>
-				<td class="p-2" style="width:50px"><span>3</span>명</td>
-				<td class="p-2" ><input type="submit" value="출결/과제관리" class="bg-info-200 border-solid border-2 border-gray-600 rounded"/></td>
+				<td class="p-2">${vo.course_no}</td>
+				<td class="p-2">${vo.course_start_date}</td>
+				<td class="p-2">${vo.course_name}</td>
+				<td class="p-2 truncate" style="overflow:hidden; text-overflow:ellipsis">${vo.course_overview}</td>
+				<td class="p-2">${vo.course_stage}</td>
+				<td class="p-2">${vo.course_student_count}명</td>
+				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-200 border-solid border-2 border-gray-600 rounded">출결/과제관리</a></td>
 			</tr>
-		</table>
-	</form>
+		</c:forEach>
+	</table>
+	
+	<div class="w-full max-w-screen-xl my-10 mx-auto mb-12">
+		<ul class="flex justify-center" id="page">
+			<c:if test="${pageVO.pageNum==1}">
+				<li><i class="xi-angle-left"></i></li>
+			</c:if>
+			<c:if test="${pageVO.pageNum!=1}">
+				<li class="hover:text-danger"><a href="/lms/attendance_grade?pageNum=${pageVO.pageNum-1}
+				<c:if test="${searchWord!=null && searchWord!=''}">&searchWord=${pageVO.searchWord}</c:if>
+				<c:if test="${startDate!=null && startDate!='' && endDate!=null && endDate!=''}">&startDate=${pageVO.startDate}&endDate=${pageVO.endDate}</c:if>
+				"><i class="xi-angle-left text-2xl"></i></a></li>
+			</c:if>
+			<c:forEach var="i" begin="${pageVO.startPage}" end="${pageVO.startPage + pageVO.onePageCount-1}">
+				<c:if test="${i<=pageVO.totalPage}">
+					<li class="hover:text-danger"><a href="/lms/attendance_grade?pageNum=${i}
+					<c:if test="${searchWord!=null && searchWord!=''}">&searchWord=${pageVO.searchWord}</c:if>
+					<c:if test="${startDate!=null && startDate!='' && endDate!=null && endDate!=''}">&startDate=${pageVO.startDate}&endDate=${pageVO.endDate}</c:if>
+					" <c:if test='${i==pageVO.pageNum}'>style='color:red'</c:if>><span class="text-2xl leading-none">${i}</span></a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pageVO.pageNum == pageVO.totalPage}">
+				<li><i class="xi-angle-right"></i></li>
+			</c:if>
+			<c:if test="${pageVO.pageNum < pageVO.totalPage}">
+				<li class="hover:text-danger"><a href="/lms/attendance_grade?pageNum=${pageVO.pageNum+1}
+				<c:if test="${searchWord!=null && searchWord!=''}">&searchWord=${pageVO.searchWord}</c:if>
+				<c:if test="${startDate!=null && startDate!='' && endDate!=null && endDate!=''}">&startDate=${pageVO.startDate}&endDate=${pageVO.endDate}</c:if>
+				"><i class="xi-angle-right text-2xl"></i></a></li>
+			</c:if>
+		</ul>
+	</div>
 </div>
 </body>
 </html>

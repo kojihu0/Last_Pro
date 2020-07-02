@@ -12,23 +12,22 @@
 		<i class="xi-school"></i><span class="ml-2">강좌별 수강생 현황</span>
 	</div>
 	<a href="/lms/management_of_student" class="w-full"><i class="xi-angle-left-min">반으로</i></a>
-	<form method="post" action="" class="w-full my-3">
+	<form method="post" action="/lms/admin/student_leaveOutOk" class="w-full my-3">
+		<input type="hidden" name="student_no" value="${vo.student_no}"/>
 		<table class="w-full">
 			<tr class="text-center">
 				<td class="border-2 border-solid border-gray-600 bg-info-300 p-2">대상자</td>
 				<td class="border-2 border-solid border-gray-600 p-2">
 					<table class="w-full">
 						<tr>
-							<td class="border-2 border-solid border-gray-600 p-2">선택</td>
 							<td class="border-2 border-solid border-gray-600 p-2">수강생</td>
 							<td class="border-2 border-solid border-gray-600 p-2">학생휴대폰</td>
 							<td class="border-2 border-solid border-gray-600 p-2">부모휴대폰</td>	
 						</tr>
 						<tr>
-							<td class="border-2 border-solid border-gray-600 p-2"><input type="checkbox" checked/></td>
-							<td class="border-2 border-solid border-gray-600 p-2">하정우(서현고등학교 2학년)</td>
-							<td class="border-2 border-solid border-gray-600 p-2">010-0000-0001</td>
-							<td class="border-2 border-solid border-gray-600 p-2">010-0000-0000</td>	
+							<td class="border-2 border-solid border-gray-600 p-2">${vo.student_name_ko}</td>
+							<td class="border-2 border-solid border-gray-600 p-2">${vo.student_tel_phone}</td>
+							<td class="border-2 border-solid border-gray-600 p-2">${vo.student_tel_parent}</td>	
 						</tr>
 					</table>
 				</td>
@@ -37,8 +36,8 @@
 				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">구분</td>
 				<td class="border-2 border-solid border-gray-600 p-2">
 					<div>
-						<input type="radio" value="leave" name="leave_out" id="leave"/>휴원
-						<input type="radio" value="out" name="leave_out" id="out"/>퇴원
+						<input type="radio" value="3" name="state" id="leave"/>휴원
+						<input type="radio" value="4" name="state" id="out"/>퇴원
 					</div>
 				</td>
 			</tr>
@@ -46,7 +45,7 @@
 				<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">휴/퇴원 일지</td>
 				<td class="border-2 border-solid border-gray-600 p-2">
 					<div class="calendar">
-						<input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" id="leave_out_date"/>
+						<input type="text" name="student_course_state_date" class="datepicker border-solid border-2 border-gray-600 ml-2" id="leave_out_date"/>
 					</div>
 				</td>
 			</tr>
