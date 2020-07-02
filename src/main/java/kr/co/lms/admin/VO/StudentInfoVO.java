@@ -3,44 +3,44 @@ package kr.co.lms.admin.VO;
 import org.springframework.web.multipart.MultipartFile;
 
 public class StudentInfoVO {
-	private int student_no; 
-	private String student_id;
-	private String student_pw;
+	private int student_no; //학생번호
+	private String student_id;//학생 아이디
+	private String student_pw;//학생 비밀번호
 	
-	private String student_email;
+	private String student_email;//학생 이메일
 	private String student_email_id;
 	private String student_email_domain;
 	
-	private String student_img;
+	private String student_img;//학생 프로필 사진
 	private MultipartFile img_file;
-	private String student_name_ko;
-	private String student_name_eng;
-	private String student_gender;
+	private String student_name_ko;//학생 한글이름
+	private String student_name_eng;//학생 영문이름
+	private String student_gender;//학생 성별
 	
-	private String student_tel_phone;
+	private String student_tel_phone;//학생 휴대전화
 	private String student_tel1;
 	private String student_tel2;
 	
-	private String student_tel_house;
+	private String student_tel_house;//학생 집전화
 	private String student_house1;
 	private String student_house2;
 	private String student_house3;
 	
-	private String student_tel_parent;
+	private String student_tel_parent;//학부모 연락처
 	private String parent_phone1;
 	private String parent_phone2;
 	
-	private String student_parent_state;
-	private int student_addr_no;
-	private String student_addr_main;
-	private String student_addr_sub;
-	private String student_motive;
-	private String student_interest;
-	private String student_memo;
-	private String student_regi_date;
-	private String student_lately_course;
+	private String student_parent_state;//학생과의 관계
+	private int student_addr_no;//우편번호
+	private String student_addr_main;//집주소
+	private String student_addr_sub;//상세집주소
+	private String student_motive;//동기
+	private String student_interest;//흥미분야
+	private String student_memo;//특이사항
+	private String student_regi_date;//등록일
+	private String student_lately_course;//최근강좌
 	
-	private String student_birthday;
+	private String student_birthday;//생일
 	private String student_birthday_year;
 	private String student_birthday_month;
 	private String student_birthday_day;
@@ -49,7 +49,7 @@ public class StudentInfoVO {
 	private String parent_email_id;
 	private String parent_email_domain;
 	
-	private String student_parent_name;
+	private String student_parent_name;//부모님 성함
 	
 	public int getStudent_no() {
 		return student_no;

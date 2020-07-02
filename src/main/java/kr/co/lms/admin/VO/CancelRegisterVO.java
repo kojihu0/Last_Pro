@@ -1,28 +1,28 @@
 package kr.co.lms.admin.VO;
 
 public class CancelRegisterVO {
-	private int student_no;
-	private String employee_name;
-	private int payment_state;
-	private int payment_no;
-	private int payment_price;
-	private String payment_name;
-	private String payment_date;
-	private String payment_method;
-	private String payment_card_name;
-	private String payment_memo;
-	private String payment_division;
-	private String course_name;
-	private int course_price;
-	private String course_start_date;
-	private String course_end_date;
-	private String course_time; 
-	private String refund_method;
-	private String refund_reason;
-	private String refund_date;
-	private int refund_price;
-	private String refund_memo;
-	private int refund_no;
+	private int student_no;//회원번호
+	private String employee_name;//담당자
+	private int payment_state;//결제구분 0:결제 1:환불 및 취소
+	private int payment_no;//결제번호
+	private int payment_price;//결제금액
+	private String payment_name;//회원명
+	private String payment_date;//등록일
+	private String payment_method;//결제방법
+	private String payment_card_name;//카드명
+	private String payment_memo;//비고
+	private String payment_division;//신규, 재등록
+	private String course_name;//강좌명
+	private int course_price;//결제액
+	private String course_start_date;//강좌 시작일
+	private String course_end_date;//강좌 종강일
+	private String course_time; //강좌 시간
+	private String refund_method;//반환방법
+	private String refund_reason;//반환사유
+	private String refund_date;//반환일자
+	private int refund_price;//반환금액
+	private String refund_memo;//반환비고
+	private int refund_no;//환불번호
 	
 	public int getStudent_no() {
 		return student_no;

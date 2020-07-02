@@ -9,7 +9,7 @@ public class StudentAttendanceVO {
 	private String course_time;
 	private int state;
 	private String attendance_date;
-	private int attendance_state;
+	private int attendance_state;//1.출석 2.지각 3.결석
 	
 	public int getStudent_no() {
 		return student_no;
