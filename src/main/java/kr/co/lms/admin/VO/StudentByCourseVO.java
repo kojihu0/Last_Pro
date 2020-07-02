@@ -1,12 +1,12 @@
 package kr.co.lms.admin.VO;
 
 public class StudentByCourseVO {
-	private int course_no;//코스번호
-	private String course_start_date;//강좌시작일
-	private String course_name;//강좌명
-	private String course_overview;//강좌개요
-	private String course_stage;//반
-	private int course_student_count;//반별 인원수
+	private int course_no;
+	private String course_start_date;
+	private String course_name;
+	private String course_overview;
+	private String course_stage;
+	private int course_student_count;
 	private String course_day;
 	private String course_time;
 	

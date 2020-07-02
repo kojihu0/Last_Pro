@@ -1,17 +1,17 @@
 package kr.co.lms.admin.VO;
 
 public class RegisterVO {
-	private int payment_no;//결제번호
-	private String payment_state;//구분 신규 재등록
-	private String payment_name;//회원명
+	private int payment_no;
+	private String payment_state;
+	private String payment_name;
 	private String payment_division;
-	private String course_name;//강좌명
-	private String payment_method;//결제방법
-	private String payment_card_name;//카드명
-	private int payment_account_num;//승인번호
-	private String payment_date;//납부일자
-	private String employee_name;//담당자
-	private String payment_memo;//비고
+	private String course_name;
+	private String payment_method;
+	private String payment_card_name;
+	private int payment_account_num;
+	private String payment_date;
+	private String employee_name;
+	private String payment_memo;
 	
 	
 	public int getPayment_no() {

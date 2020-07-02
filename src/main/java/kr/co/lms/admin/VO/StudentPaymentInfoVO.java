@@ -1,11 +1,11 @@
 package kr.co.lms.admin.VO;
 
 public class StudentPaymentInfoVO {
-	private String payment_date;//결제일
-	private String course_start_date;//강좌시작일
-	private String course_name;//강좌이름
-	private String payment_price;//결제금액
-	private String employee_name;//강사이름
+	private String payment_date;
+	private String course_start_date;
+	private String course_name;
+	private String payment_price;
+	private String employee_name;
 	
 	public String getPayment_date() {
 		return payment_date;
