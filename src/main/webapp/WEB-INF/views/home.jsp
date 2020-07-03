@@ -133,7 +133,7 @@
 				<div class="event-desc text-gray-700 mt-6"><c:out value='${fn:substring(evo.admin_notice_content.replaceAll("\\\<.*?\\\>",""),0,140)}' escapeXml="false" /></div>
 			</div>
 			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-				<c:if test="${! empty evo.admin_notice_img}">
+				<c:if test="${evo.admin_notice_img!=null && evo.admin_notice_img!=''}">
 				<img class="w-full" src="<%=ctx %>/img/${evo.admin_notice_img}">
 				</c:if>
 			</div>
@@ -162,10 +162,10 @@
 			<div class="news-item px-4"><!-- news-item -->
 				<div class="news-img overflow-hidden text-center">
 					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1">
-					<c:if test="${!empty evo.admin_notice_img}">
+					<c:if test="${nvo.admin_notice_img!=null && nvo.admin_notice_img!=''}">
 					<img src="<%=ctx %>/img/${nvo.admin_notice_img}">
 					</c:if>
-					<c:if test="${empty evo.admin_notice_img}">
+					<c:if test="${nvo.admin_notice_img==null || nvo.admin_notice_img==''}">
 					<img src="<%=ctx %>/img/no-image.png" class="my-0 mx-auto">
 					</c:if>
 					</a>

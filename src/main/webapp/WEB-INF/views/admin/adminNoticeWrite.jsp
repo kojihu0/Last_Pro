@@ -83,15 +83,6 @@
 	</div>
 
 
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 $(function(){
 	CKEDITOR.replace('noticeWriteContent',

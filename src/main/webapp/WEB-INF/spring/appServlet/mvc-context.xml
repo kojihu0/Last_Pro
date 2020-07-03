@@ -64,6 +64,26 @@
 			<mvc:mapping path="/modify_counselingOk"/>		
 			<bean class="kr.co.lms.admin.interceptor.AdminLoginInterceptor"/>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/myPageDetail"/>
+			<mvc:mapping path="/profile"/>
+			<mvc:mapping path="/courseOfStudy"/>
+			<mvc:mapping path="/completionCourse"/>
+			<mvc:mapping path="/inCompletionCourse"/>
+			<mvc:mapping path="/schedule"/>
+			<mvc:mapping path="/schedule/getTimeTable"/>
+			<mvc:mapping path="/profileUpdate"/>
+			<mvc:mapping path="/profilePasswordUpdate"/>
+			<mvc:mapping path="/wishList"/>
+			<mvc:mapping path="/paymentHistory"/>
+			<mvc:mapping path="/paymentDetail"/>
+			<mvc:mapping path="/paymentProcess"/>
+			<mvc:mapping path="/paymentComplete"/>
+			<mvc:mapping path="/paymentCashComplete"/>
+			<mvc:mapping path="/paymentCompleted"/>
+			<mvc:mapping path="/paymentCancel"/>
+			<bean class="kr.co.lms.main.interceptor.MainLoginInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	
