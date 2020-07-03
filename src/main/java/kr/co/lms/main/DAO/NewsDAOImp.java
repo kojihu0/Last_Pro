@@ -7,22 +7,22 @@ import kr.co.lms.main.VO.NewsVO;
 import kr.co.lms.main.VO.PagingVO;
 
 public interface NewsDAOImp {
-	//°øÁö»çÇ× °Ô½ÃÆÇ ¸®½ºÆ® °¡Á®¿À±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<NewsVO> newsAllSelectRecord(PagingVO vo);
-	//°øÁö»çÇ× Æû °¡Á®¿À±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public NewsVO newsSelectRecord(int no);
-	//ÀÌº¥Æ® °Ô½ÃÆÇ ¸®½ºÆ® °¡Á®¿À±â 
+	//ï¿½Ìºï¿½Æ® ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	public List<NewsVO> eventsAllSelectRecord(PagingVO vo);
-	//ÀÌº¥Æ® Æû °¡Á®¿À±â 
+	//ï¿½Ìºï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	public NewsVO eventsSelectRecord(int no);
-	//ÆäÀÌÂ¡ °øÁö»çÇ×Å×ÀÌºí¿¡ ÀÖ´Â °Ô½Ã¹° °¹¼ö ¼¼¿ö¿À±â
-	//ÀÌº¥Æ®ÆäÀÌÂ¡
+	//ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½Ìºï¿½Æ®ï¿½ï¿½ï¿½ï¿½Â¡
 	public int eventGetTotalRecord();
-	//´º½º ÆäÀÌÂ¡ 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ 
 	public int newsGetTotalRecord();
-	//ÀÌº¥Æ®µðÅ×ÀÏÃ¢ ÀÌÀü±Û ´ÙÀ½±Û
+	//ï¿½Ìºï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public LeadLagVO eventRecordList(int no, PagingVO pVo);
-	//´º½º µðÅ×ÀÏÃ¢ ÀÌÀü±Û ´ÙÀ½±Û
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public LeadLagVO newsRecordList(int no, PagingVO pVo);
 
 }

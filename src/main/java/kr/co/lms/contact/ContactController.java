@@ -54,26 +54,26 @@ public class ContactController {
 		int cnt;
 		int res;
 		try {
-			//±¸±ÛÄ¸Â÷ÀÎÁõ
+			//êµ¬ê¸€ìº¡ì°¨ì¸ì¦
 			if(VerifyRecaptcha.verify(gRecaptchaResponse)) {
-				MimeMessage msg = mailSender.createMimeMessage(); //ÀÌ¸ŞÀÏ°´Ã¼
+				MimeMessage msg = mailSender.createMimeMessage(); //ì´ë©”ì¼ê°ì²´
 				MimeMessageHelper helper = new MimeMessageHelper(msg, true, "utf-8");
-				String contactContent = "¼ºÇÔ: " + vo.getContact_name() + "\r\n"
-						+ "ÀÌ¸ŞÀÏ: " + vo.getContact_email() + "\r\n"
-						+ "¿¬¶ôÃ³: " + vo.getContact_tel() + "\r\n"
-						+ "¹®ÀÇ³»¿ë: " + vo.getContact_content();
-				//¼ö½ÅÀÚ
+				String contactContent = "ì„±í•¨: " + vo.getContact_name() + "\r\n"
+						+ "ì´ë©”ì¼: " + vo.getContact_email() + "\r\n"
+						+ "ì—°ë½ì²˜: " + vo.getContact_tel() + "\r\n"
+						+ "ë¬¸ì˜ë‚´ìš©: " + vo.getContact_content();
+				//ìˆ˜ì‹ ì
 				helper.setTo(new InternetAddress("fezze779@gmail.com"));
-				//¹ß½ÅÀÚ(ÀÌ¸ŞÀÏÁÖ¼Ò+ÀÌ¸§)
+				//ë°œì‹ ì(ì´ë©”ì¼ì£¼ì†Œ+ì´ë¦„)
 				helper.setFrom(new InternetAddress("fezze779@gmail.com", "Educamp"));
 				
-				//ÀÌ¸ŞÀÏ Á¦¸ñ
-				helper.setSubject(vo.getContact_name()+"´ÔÀ¸·ÎºÎÅÍ »õ·Î¿î ¹®ÀÇ°¡ ¼ö½ÅµÇ¾ú½À´Ï´Ù.");
-				//ÀÌ¸ŞÀÏ º»¹®
+				//ì´ë©”ì¼ ì œëª©
+				helper.setSubject(vo.getContact_name()+"ë‹˜ìœ¼ë¡œë¶€í„° ìƒˆë¡œìš´ ë¬¸ì˜ê°€ ìˆ˜ì‹ ë˜ì—ˆìŠµë‹ˆë‹¤.");
+				//ì´ë©”ì¼ ë³¸ë¬¸
 				helper.setText(contactContent);
 				
-				mailSender.send(msg); //¸ŞÀÏº¸³»±â
-				cnt = dao.insertContact(vo); //µ¥ÀÌÅÍº£ÀÌ½º Ã³¸®
+				mailSender.send(msg); //ë©”ì¼ë³´ë‚´ê¸°
+				cnt = dao.insertContact(vo); //ë°ì´í„°ë² ì´ìŠ¤ ì²˜ë¦¬
 				System.out.println(cnt);
 				if(cnt>0) {
 					res = 1;
@@ -83,7 +83,7 @@ public class ContactController {
 				}
 			}
 			else {
-				res = -1; //Ä¸Â÷ÀÎÁõ ¾ÈµÊ
+				res = -1; //ìº¡ì°¨ì¸ì¦ ì•ˆë¨
 			}
 			
 			

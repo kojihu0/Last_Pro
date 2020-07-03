@@ -33,7 +33,7 @@ public class LoginController {
 	public ModelAndView login(MemberVO vo , HttpServletRequest req) {
 		MemberDAOImp dao = sqlsession.getMapper(MemberDAOImp.class);
 		MemberVO loginVO = dao.memberLogin(vo);
-		//ÆĞ½º¿öµå ºñ±³
+		//íŒ¨ìŠ¤ì›Œë“œ ë¹„êµ
 		boolean pwMatch = pwEncoder.matches(vo.getStudent_pw(), loginVO.getStudent_pw());
 		ModelAndView mav = new ModelAndView();
 		if(loginVO!=null && pwMatch == true) {
@@ -42,9 +42,9 @@ public class LoginController {
 			s.setAttribute("student_no", loginVO.getStudent_no());
 			s.setAttribute("student_id", loginVO.getStudent_id());
 			s.setAttribute("logStatus","Y");
-			mav.addObject("response", "·Î±×ÀÎ µÇ¾ú½À´Ï´Ù. È¯¿µÇÕ´Ï´Ù!");
+			mav.addObject("response", "ë¡œê·¸ì¸ ë˜ì—ˆìŠµë‹ˆë‹¤. í™˜ì˜í•©ë‹ˆë‹¤!");
 		}else {
-			mav.addObject("response", "¾ÆÀÌµğ ¶Ç´Â ÆĞ½º¿öµå°¡ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
+			mav.addObject("response", "ì•„ì´ë”” ë˜ëŠ” íŒ¨ìŠ¤ì›Œë“œê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}
 		mav.setViewName("main/login/loginRedirect");
 		return mav;
@@ -54,7 +54,7 @@ public class LoginController {
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) {
 		new SecurityContextLogoutHandler().logout(req, res, null);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("response", "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.");
+		mav.addObject("response", "ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		
 		mav.setViewName("main/login/loginRedirect");
 		return mav;

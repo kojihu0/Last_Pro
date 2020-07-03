@@ -49,10 +49,10 @@ public class Id_pwdFindController {
 		String findId = dao.memberIdFind(vo);
 		String response = "";
 		if(findId!=null && !findId.isEmpty()) {
-			response ="È¸¿ø´ÔÀÇ ¾ÆÀÌµğ´Â "+findId+" ÀÔ´Ï´Ù.";
+			response ="íšŒì›ë‹˜ì˜ ì•„ì´ë””ëŠ” "+findId+" ì…ë‹ˆë‹¤.";
 		}
 		else {
-			response ="ÀÔ·ÂÇÏ½Å Á¤º¸·Î °¡ÀÔµÈ È¸¿ø¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+			response ="ì…ë ¥í•˜ì‹  ì •ë³´ë¡œ ê°€ì…ëœ íšŒì›ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		}
 		
 		return response;
@@ -63,11 +63,11 @@ public class Id_pwdFindController {
 	public String pwdFindEmail(HttpServletRequest req, MemberVO vo) {
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
 		String findId = dao.memberIdFind(vo);
-		String response = "ÆĞ½º¿öµå ¹ß±ŞÀÌ ½ÇÆĞÇß½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù.";
-		if(findId!=null && !findId.isEmpty()) { //ÀÔ·ÂÇÑ Á¤º¸°¡  DB¿¡ Á¸ÀçÇÔ
+		String response = "íŒ¨ìŠ¤ì›Œë“œ ë°œê¸‰ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤.";
+		if(findId!=null && !findId.isEmpty()) { //ì…ë ¥í•œ ì •ë³´ê°€  DBì— ì¡´ì¬í•¨
 			String newPwd = generateTempPwd();
-			String body ="EduCamp ÀÓ½Ã ºñ¹Ğ¹øÈ£ÀÔ´Ï´Ù. ·Î±×ÀÎ ÈÄ ÆĞ½º¿öµå¸¦ º¯°æÇÏ¼¼¿ä.\r\n"+newPwd;
-			String subject ="EduCamp ÆĞ½º¿öµå Àç¼³Á¤ ¾È³»";
+			String body ="EduCamp ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ì…ë‹ˆë‹¤. ë¡œê·¸ì¸ í›„ íŒ¨ìŠ¤ì›Œë“œë¥¼ ë³€ê²½í•˜ì„¸ìš”.\r\n"+newPwd;
+			String subject ="EduCamp íŒ¨ìŠ¤ì›Œë“œ ì¬ì„¤ì • ì•ˆë‚´";
 			vo.setStudent_pw(passwordEncoder.encode(newPwd));
 			int cnt = dao.memberPasswordDataSelect(vo);
 			if(cnt>0) {
@@ -84,19 +84,19 @@ public class Id_pwdFindController {
 					helper.setText(body); 
 					
 					mailSender2.send(message);
-					System.out.println("ºñ¹Ğ¹øÈ£ ÀÌ¸ŞÀÏ Àü¼Û ¼º°ø");
+					System.out.println("ë¹„ë°€ë²ˆí˜¸ ì´ë©”ì¼ ì „ì†¡ ì„±ê³µ");
 					
-					response = "ÀÌ¸ŞÀÏ·Î ÀÓ½Ã ÆĞ½º¿öµå°¡ ¹ß±ŞµÇ¾ú½À´Ï´Ù.";
+					response = "ì´ë©”ì¼ë¡œ ì„ì‹œ íŒ¨ìŠ¤ì›Œë“œê°€ ë°œê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				}catch(Exception e) {
 					System.out.println(e.getMessage());
 				}
 			}
 			else {
-				response = "ÆĞ½º¿öµå ¹ß±ŞÀÌ ½ÇÆĞÇß½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù.";
+				response = "íŒ¨ìŠ¤ì›Œë“œ ë°œê¸‰ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤.";
 			}
 		}
 		else {
-			response ="ÀÔ·ÂÇÏ½Å Á¤º¸·Î °¡ÀÔµÈ È¸¿ø¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+			response ="ì…ë ¥í•˜ì‹  ì •ë³´ë¡œ ê°€ì…ëœ íšŒì›ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		}
 		
 		return response;
