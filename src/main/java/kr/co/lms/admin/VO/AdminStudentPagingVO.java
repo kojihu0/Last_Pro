@@ -16,7 +16,13 @@ public class AdminStudentPagingVO {
    private int 	    searchKey_03;
    
    private String 	searchWord; 
-   
+
+   	private String startDate;
+	private String endDate;
+	private String startDate2;
+	private String endDate2;
+   	
+	private int course_no;
    
 
    public int getSearchKey_01() {
@@ -99,5 +105,37 @@ public int getPageNum() {
    public void setSearchWord(String searchWord) {
       this.searchWord = searchWord;
    }
+
+   	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public String getStartDate2() {
+		return startDate2;
+	}
+	public void setStartDate2(String startDate2) {
+		this.startDate2 = startDate2;
+	}
+	public String getEndDate2() {
+		return endDate2;
+	}
+	public void setEndDate2(String endDate2) {
+		this.endDate2 = endDate2;
+	}
+
+	public int getCourse_no() {
+		return course_no;
+	}
+	public void setCourse_no(int course_no) {
+		this.course_no = course_no;
+	}
    
 }

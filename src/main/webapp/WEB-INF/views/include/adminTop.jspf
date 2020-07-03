@@ -77,7 +77,7 @@
 		<li><a href="/lms/admin/adminMain">HOME</a></li>
 		<li><a href="/lms/subjectRegister">접수관리</a>
 			<ul class="submenu">
-				<li><a href="/lms/subjectRegister">과목별 접수현황</a></li>
+				<li><a href="/lms/subjectRegister">접수현황</a></li>
 				<li><a href="/lms/cancelRegister">취소요청현황</a></li>
 			</ul>
 		</li>

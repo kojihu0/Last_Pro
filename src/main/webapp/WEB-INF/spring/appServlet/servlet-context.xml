@@ -43,6 +43,7 @@
             <beans:property name="mapperLocations">
                 <beans:list>
                     <beans:value>classpath:kr/co/lms/admin/mapper/*.xml</beans:value>
+                    <beans:value>classpath:kr/co/lms/admin/register/mapper/*.xml</beans:value>
                 </beans:list>
             </beans:property>
     </beans:bean>

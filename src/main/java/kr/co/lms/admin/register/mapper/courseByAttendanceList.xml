@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.StudentAttendanceDAOImp">
+	<select id="selectCorseByAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select * from
+		(select * from
+		(select c.course_no, to_char(course_start_date, 'YYYY-MM-DD') course_start_date, course_name, course_overview, course_stage, cc.course_student_count from course c full join 
+		(select p.course_no, count(p.payment_no) course_student_count from payment p full join student_course_state s on p.payment_no = s.payment_no where s.state=0 group by p.course_no) cc
+		on c.course_no=cc.course_no 
+		<where>
+			<if test="searchWord!=null and searchWord!=''">
+				and course_name like '%' || #{searchWord} || '%'
+			</if>
+			<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+			    and course_start_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+		order by c.course_no desc) 
+		where rownum<![CDATA[<=]]> #{pageNum} * #{onePageRecord} order by course_no asc)
+		where rownum<![CDATA[<=]]><if test="pageNum == totalPage"> #{lastPageRecords}</if>
+		<if test="pageNum != totalPage">#{onePageRecord}</if> order by course_no desc
+	</select>
+	<select id="getSelectCorseByAttendance" resultType="java.lang.Integer" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
+		select count(course_no) from course
+		<where>
+			<if test="searchWord!=null and searchWord!=''">
+				and course_name like '%' || #{searchWord} || '%'
+			</if>
+			<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+			    and course_start_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+	</select>
+	<select id="selectStudentAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select s.student_no student_no, c.course_no course_no, s.student_name_ko student_name_ko, s.student_gender student_gender, s.student_tel_phone student_tel_phone, a.attendance_state attendance_state, a.attendance_reason attendance_reason
+		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a on a.student_no=p.student_no and a.payment_no = p.payment_no full join student_course_state sc on
+        sc.payment_no = p.payment_no and sc.student_no = p.student_no where c.course_no=#{param1} and sc.state=0
+	</select>
+	<select id="selectStudentAttendance2" resultType="kr.co.lms.admin.VO.StudentByCourseVO" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
+		select s.student_no student_no, c.course_no course_no, s.student_name_ko student_name_ko, s.student_gender student_gender, s.student_tel_phone student_tel_phone, a.attendance_state attendance_state, a.attendance_reason attendance_reason
+		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a on a.student_no=p.student_no and a.payment_no = p.payment_no full join student_course_state sc on
+        sc.payment_no = p.payment_no and sc.student_no = p.student_no
+        <where>
+        	c.course_no=#{course_no} and sc.state=0
+        	<if test="startDate!=null and startDate!=''">
+        		and to_char(a.attendance_date,'YYYY-MM-DD') = #{startDate} 
+        	</if>
+        </where>
+	</select>
+	<select id="selectSettingStudentAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select s.student_no, c.course_no, s.student_name_ko, s.student_name_eng, (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL) attendance_date
+		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a
+		on a.student_no=p.student_no and a.payment_no = p.payment_no full join student_course_state sc on sc.payment_no = p.payment_no and sc.student_no = p.student_no where c.course_no=#{param1} and sc.state=0
+	</select>
+	<insert id="studentAttendanceOk" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		insert into attendance(attendance_no, student_no, payment_no, attendance_date, attendance_state, attendance_reason)
+		values(attendance_sq.nextval, #{param1}, (select payment_no from payment where student_no=#{param1} and course_no=#{param4}), sysdate, #{param2}, #{param3})
+	</insert>
+	<update id="studentAttendanceOk2" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		update attendance set attendance_date=sysdate, attendance_state=#{param2}, attendance_reason=#{param3} where student_no=#{param1} and payment_no=(select payment_no from payment where student_no=#{param1} and course_no=#{param4})
+	</update>
+	<select id="selectAttendanceIndividual" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select s.student_no, c.course_no, s.student_name_ko, s.student_name_eng, TO_CHAR(a.attendance_date, 'YYYY-MM-DD') attendance_date,
+		a.attendance_state, a.attendance_reason
+		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a
+		on a.student_no=s.student_no where c.course_no=#{param2} and a.student_no=#{param1}
+	</select>
+	<update id="studentAttedanceUpdate" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		update attendance set attendance_state=#{attendance_state}, attendance_reason=#{attendance_reason} where student_no=#{student_no} and attendance_no=(select attendance_no from attendance where student_no=#{student_no} and payment_no=(select payment_no from payment where student_no=#{student_no} and course_no=#{course_no}))
+	</update>
+	<delete id="studentAttendanceDelete" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		update attendance set attendance_state=4, attendance_reason=''  where student_no=#{student_no} and attendance_no=(select attendance_no from attendance where student_no=#{student_no} and payment_no=(select payment_no from payment where student_no=#{student_no} and course_no=#{course_no}))
+	</delete>
+	<select id="studentCountByAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select count(a.student_no) student_cnt from attendance a join payment p on a.student_no = p.student_no join student_course_state sc on p.student_no=sc.student_no and p.payment_no=sc.payment_no and p.course_no=#{param1} and sc.state=0
+	</select>
+	<select id="studentCountByAttendance2" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select count(a.student_no) student_cnt2 from attendance a join payment p on a.student_no = p.student_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and p.course_no=#{param1} where a.attendance_state=4 and sc.state=0
+	</select>
+	<select id="studentCountByAttendance3" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
+		select count(a.attendance_no) attendance_cnt from attendance a join payment p on a.student_no= p.student_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and p.course_no=#{param1} and sc.state=0
+	</select>
+</mapper>
