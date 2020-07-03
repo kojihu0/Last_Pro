@@ -130,10 +130,12 @@
 			</div>
 			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0 flex-auto">
 				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx %>/newsDetail?no=${evo.admin_notice_no}&pageNum=1">${evo.admin_notice_title}</a></h2>
-				<div class="event-desc text-gray-700 mt-6">${fn:substring(evo.admin_notice_content,0,140)}</div>
+				<div class="event-desc text-gray-700 mt-6"><c:out value='${fn:substring(evo.admin_notice_content.replaceAll("\\\<.*?\\\>",""),0,140)}' escapeXml="false" /></div>
 			</div>
 			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-				<img class="w-full" src="<%=ctx %>/img/eventthumb.jpg">
+				<c:if test="${! empty evo.admin_notice_img}">
+				<img class="w-full" src="<%=ctx %>/img/${evo.admin_notice_img}">
+				</c:if>
 			</div>
 		</div><!-- event-row -->
 		</c:forEach>
@@ -158,8 +160,15 @@
 		<div id="newsCarousel" class="-mx-4 fadeUp">
 			<c:forEach var="nvo" items="${newsList}">
 			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden">
-					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1"><img src="<%=ctx %>${nvo.admin_notice_img}"></a>
+				<div class="news-img overflow-hidden text-center">
+					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1">
+					<c:if test="${!empty evo.admin_notice_img}">
+					<img src="<%=ctx %>/img/${nvo.admin_notice_img}">
+					</c:if>
+					<c:if test="${empty evo.admin_notice_img}">
+					<img src="<%=ctx %>/img/no-image.png" class="my-0 mx-auto">
+					</c:if>
+					</a>
 				</div>
 				<div class="news-content text-center -mt-4">
 					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">${nvo.admin_notice_date}</div>

@@ -3,6 +3,6 @@ package kr.co.lms.main.DAO;
 import kr.co.lms.main.VO.ContactVO;
 
 public interface ContactDAOImp {
-	//µî·Ï
+	//ì½˜íƒíŠ¸í¼
 	public int insertContact(ContactVO vo);
 }

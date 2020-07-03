@@ -8,31 +8,31 @@ import kr.co.lms.main.VO.PagingVO;
 import kr.co.lms.main.VO.WishVO;
 
 public interface CourseDAOImp {
-	//°­ÁÂ¸®½ºÆ®
+	//ê°•ì¢Œë¦¬ìŠ¤íŠ¸
 	public List<CourseVO> courseList(PagingVO pvo);
-	//°­ÁÂ¼±ÅÃ
+	//ê°•ì¢Œì„ íƒ
 	public CourseVO selectCourse(int course_no);
-	//°­ÁÂ°³¼ö
+	//ê°•ì¢Œê°œìˆ˜
 	public int getTotalCoureses(String search_text);
-	//±¸¸Å¹øÈ£ ¼±ÅÃ
+	//êµ¬ë§¤ë²ˆí˜¸ ì„ íƒ
 	public String selectPaymentNo(int course_no, int student_no);
-	//¼ö°­ÈÄ±â ¸®½ºÆ®
+	//ìˆ˜ê°•í›„ê¸° ë¦¬ìŠ¤íŠ¸
 	public List<CourseReviewVO> reviewList(PagingVO rpvo);
-	//¼ö°­Æò ÆÛ¼¾Å×ÀÌÁö
+	//ìˆ˜ê°•í‰ í¼ì„¼í…Œì´ì§€
 	public List<CourseReviewVO> reviewRanks(int course_no);
-	//¼ö°­ÈÄ±â °³¼ö
+	//ìˆ˜ê°•í›„ê¸° ê°œìˆ˜
 	public int getTotalReviews(int course_no);
-	//¼ö°­ÈÄ±â µî·Ï
+	//ìˆ˜ê°•í›„ê¸° ë“±ë¡
 	public int insertReview(CourseReviewVO vo);
-	//¼ö°­ÈÄ±â ¼öÁ¤
+	//ìˆ˜ê°•í›„ê¸° ìˆ˜ì •
 	public int updateReview(CourseReviewVO vo);
-	//¼ö°­ÈÄ±â »èÁ¦
+	//ìˆ˜ê°•í›„ê¸° ì‚­ì œ
 	public int deleteReview(int review_no);
-	//À§½Ã¸®½ºÆ® Á¸Àç
+	//ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì¡´ì¬
 	public int selectWishNo(int course_no, int student_no);
-	//À§½Ã¸®½ºÆ® Ãß°¡
+	//ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì¶”ê°€
 	public int insertWish(WishVO vo);
-	//À§½Ã¸®½ºÆ® »èÁ¦
+	//ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì‚­ì œ
 	public int deleteWish(WishVO vo);
 	
 }

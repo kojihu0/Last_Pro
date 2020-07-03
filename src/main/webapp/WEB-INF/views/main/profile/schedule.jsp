@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
 	var calendarEl = document.getElementById('courseSchedule');
@@ -14,7 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
 					console.log('시간표 불러오기 실패');
 				}
 		    }
-		]
+		],
+		eventRender: function(info){
+			tippy(info.el, {
+				  content: info.event.extendedProps.description,
+			});
+		}
+		
 	});
 	calendar.render();
 });
@@ -43,25 +51,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex roboto-slab">
 				<li class="-mb-px mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
 				</li> 
 				<li class="mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
 				</li>
 				<li class="mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
 				</li>
 				<li class="mr-1">
-					<a class="bg-white border-brand-500 border-b border-l border-t-4 border-r  py-3 px-4 text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
+					<a class="bg-white border-brand-500 border-b border-l border-t-4 border-r  py-3 px-4 text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
 				</li>
 				<li class="mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile">Profile</a>
 				</li>
 				<li class="mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
 				</li>
 				<li class="mr-1">
-					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+					<a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
 				</li>
 			</ul>
 			<div class="my-8 p-4">

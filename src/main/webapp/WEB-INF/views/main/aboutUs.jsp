@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
-		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ABOUT_US</h1>
+		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;ABOUT US</h1>
 	</div>
 </div>
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">

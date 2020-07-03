@@ -72,6 +72,6 @@
 		</div>
  	</form>
 </div>
-<div class="ajax-overlay fixed items-center justify-center w-full h-full top-0 left-0 z-50 bg-brand-500 opacity-75 text-white text-6xl hidden"><i class="xi-spinner-3 xi-spin"></i></div>
+<div class="ajax-overlay fixed items-center justify-center w-full h-full top-0 left-0 z-50 bg-white opacity-75 text-brand-500 text-6xl hidden"><i class="xi-spinner-3 xi-spin"></i></div>
 </body>
 </html>
