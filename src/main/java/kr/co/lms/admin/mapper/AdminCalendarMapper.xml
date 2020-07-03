@@ -30,4 +30,39 @@
 		)
 			
 	</insert>
+	
+	<update id="updateCalender"
+			parameterType="kr.co.lms.admin.VO.AdminCalendarVO">
+		UPDATE
+			calendar
+		SET
+			calendar_start_date = #{calendar_start_date},
+			calendar_end_date = #{calendar_end_date},
+			calendar_date = TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			calendar_title = #{calendar_title},
+			calendar_color = #{calendar_color},
+			calendar_content = #{calendar_content}
+		WHERE
+			calendar_no = #{calendar_no}
+	</update>
+	<delete id="deleteCalender"
+			parameterType="kr.co.lms.admin.VO.AdminCalendarVO">
+		DELETE FROM
+			calendar
+		WHERE
+		 	calendar_no = #{calendar_no}
+	</delete>
+	
+	<update id="dropUpdateCalender"
+			parameterType="kr.co.lms.admin.VO.AdminCalendarVO">
+		UPDATE
+			calendar
+		SET
+			calendar_start_date = #{calendar_start_date},
+			calendar_end_date   = #{calendar_end_date}
+		WHERE
+			calendar_no = #{calendar_no}
+			
+			
+			</update>
 </mapper> 

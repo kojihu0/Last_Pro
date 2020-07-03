@@ -1,5 +1,7 @@
 package kr.co.lms.admin.VO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdminTeacherVO {
 	
 	private int 	employee_no;
@@ -7,6 +9,7 @@ public class AdminTeacherVO {
 	private String 	admin_id;
 	private String 	admin_pw; 
 	private String 	employee_class;
+	private String  employee_subject;
 	private String 	employee_authority;
 	
 		private String teacherTel_01;
@@ -20,11 +23,36 @@ public class AdminTeacherVO {
 	
 
 	private String 	employee_state;
+	private String 	employee_date;
 	private String 	employee_img;
+	private MultipartFile employee_img_m;
 	private String 	employee_rank;
 	private String  employee_overview;
 	
 	//=====================================================
+	
+	
+
+	public String getEmployee_date() {
+		return employee_date;
+	}
+	public void setEmployee_date(String employee_date) {
+		this.employee_date = employee_date;
+	}
+	
+	public MultipartFile getEmployee_img_m() {
+		return employee_img_m;
+	}
+	public void setEmployee_img_m(MultipartFile employee_img_m) {
+		this.employee_img_m = employee_img_m;
+	}
+	
+	public String getEmployee_subject() {
+		return employee_subject;
+	}
+	public void setEmployee_subject(String employee_subject) {
+		this.employee_subject = employee_subject;
+	}
 	
 	public String getTeacherTel_01() {
 		return teacherTel_01;

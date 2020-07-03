@@ -3,7 +3,49 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+	
+	<select id="selectManageinfoNameAndNo"
+			parameterType="string"
+			resultType="kr.co.lms.admin.VO.AdminManageInfoVO"> 
+		SELECT  
+			employee_no, employee_name
+		FROM
+			 employee
+		WHERE admin_id = #{param1}
+	</select>
 
+	
+	<select id="selectManageInfoName"
+			resultType="kr.co.lms.admin.VO.AdminManageInfoVO"> 
+		SELECT 
+			employee_no, employee_name
+		FROM
+			employee 
+	</select>
+	
+	
+	<select id="selectTotalRecordManageInfo"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
+			resultType="int">
+		SELECT
+			COUNT(admin_manageinfo_no)
+		FROM
+			admin_manageinfo
+		<where> 
+			<if test="searchKey_03 == 0 or searchKey_03 == 1">
+			 AND admin_manageinfo_ok = #{searchKey_03} 
+			</if>
+	  		<if test="searchKey_01 != -1"> 
+		    	AND employee_no = #{searchKey_01}  
+		    </if>   	      
+		    <if test="searchKey_02 != '::과목::'"> 
+		    	AND admin_manageinfo_subject = #{searchKey_02} 
+		    </if>
+		</where>
+	</select>
+	
+	
+	
 	<select id="selectOneRecord"
 			resultType="kr.co.lms.admin.VO.AdminManageInfoVO">
 	 	SELECT 
@@ -29,24 +71,51 @@
 			admin_manageinfo_opinion,
 			admin_manageinfo_file,
 			admin_manageinfo_ok
-		FROM admin_manageinfo
-		WHERE admin_manageinfo_no = #{param1}
+		FROM  
+			admin_manageinfo
+		WHERE 
+			admin_manageinfo_no = #{param1}
 	</select>
 	<select id="selectManageInfo"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="kr.co.lms.admin.VO.AdminManageInfoVO">
-	
-		 SELECT   
-		        admin_manageinfo_no,  
-		        admin_manageinfo_subject,
-		        employee_no,
-		        employee_name,
-		        admin_manageinfo_class,
-		        TO_CHAR(admin_manageinfo_date, 'YYYY-MM-DD') admin_manageinfo_date,
-		        admin_manageinfo_ok,
-		        admin_manageinfo_opinion
-		        
-	    FROM admin_manageinfo 
-	    ORDER BY admin_manageinfo_no DESC 
+		SELECT * FROM
+			(SELECT * FROM
+				 (SELECT    
+				        admin_manageinfo_no,  
+				        admin_manageinfo_subject,
+				        employee_no,
+				        employee_name,
+				        admin_manageinfo_class,
+				        TO_CHAR(admin_manageinfo_date, 'YYYY-MM-DD') admin_manageinfo_date,
+				        admin_manageinfo_ok,
+				        admin_manageinfo_opinion      
+			     FROM 
+			     		admin_manageinfo
+
+			<where>
+				<if test="searchKey_03 == 0 or searchKey_03 == 1">
+				 AND admin_manageinfo_ok = #{searchKey_03} 
+				</if>
+		  		<if test="searchKey_01 != -1">  
+			    	AND employee_no = #{searchKey_01}  
+			    </if>   	      
+			    <if test="searchKey_02 != '::과목::'"> 
+			    	AND admin_manageinfo_subject = #{searchKey_02} 
+			    </if>
+			</where>
+			 
+    
+			     ORDER BY admin_manageinfo_no DESC
+			     )
+			WHERE rownum <![CDATA[<=]]> #{pageNum} * #{onePageRecord} ORDER BY admin_manageinfo_no ASC
+			)
+		<if test="pageNum == totalPage">
+			WHERE rownum <![CDATA[<=]]> #{lastPageRecords} ORDER BY admin_manageinfo_no DESC
+		</if>
+		<if test="pageNum != totalPage">
+			WHERE rownum <![CDATA[<=]]> #{onePageRecord} ORDER BY admin_manageinfo_no DESC
+		</if> 
 	</select>
 
 
@@ -89,42 +158,37 @@
 			#{admin_manageinfo_rest},
 			#{admin_manageinfo_move},
 			#{admin_manageinfo_now}, 
-				<if test="absent_reason != null">
+				<if test="absent_reason != null and absent_reason != '' ">
 					#{absent_reason}, 
 				</if>		
-				<if test="absent_reason == null">
+				<if test="absent_reason == null or absent_reason == '' ">
 					'X',
 				</if>		
-				<if test="tardy_reason != null">
+				<if test="tardy_reason != null and tardy_reason != '' ">
 					#{tardy_reason},
 				</if>		
-				<if test="tardy_reason == null">
+				<if test="tardy_reason == null or tardy_reason == '' ">
 					'X',
 				</if>		
-				<if test="early_reason != null">
+				<if test="early_reason != null and early_reason != ''">
 					#{early_reason},
 				</if>		
-				<if test="early_reason == null">
+				<if test="early_reason == null or early_reason == ''">
 					'X',
 				</if>	
-				<if test="rest_reason != null">
+				<if test="rest_reason != null and rest_reason != ''">
 					#{rest_reason},
 				</if>		
-				<if test="rest_reason == null">
+				<if test="rest_reason == null or rest_reason == ''">
 					'X',
 				</if>	
-				<if test="move_reason != null">
+				<if test="move_reason != null and move_reason != ''">
 					#{move_reason},
 				</if>			
-				<if test="move_reason == null"> 
-					'X'
-				</if> 	
-				<if test="student_parent_counsel != null">
-					#{student_parent_counsel},
-				</if>  
-				<if test="student_parent_counsel == null">
+				<if test="move_reason == null or move_reason == ''"> 
 					'X',
-				</if> 
+				</if> 	
+			#{student_parent_counsel},
 			#{admin_manageinfo_work},
 			#{admin_manageinfo_opinion},
 			#{admin_manageinfo_file},
@@ -146,20 +210,20 @@
 			admin_manageinfo_now 	 = #{admin_manageinfo_now}, 
 			 
 			absent_reason 	= 
-			<if test = "absent_reason != null">#{absent_reason},</if>
-			<if test = "absent_reason == null">'X',</if>
+			<if test = "absent_reason != null and absent_reason != ''">#{absent_reason},</if>
+			<if test = "absent_reason == null or absent_reason == ''">'X',</if>
 			tardy_reason 	= 
-			<if test = "tardy_reason != null">#{tardy_reason},</if>
-			<if test = "tardy_reason == null">'X',</if>
+			<if test = "tardy_reason != null and tardy_reason != ''">#{tardy_reason},</if>
+			<if test = "tardy_reason == null or tardy_reason == ''">'X',</if>
 			early_reason 	= 
-			<if test = "early_reason != null">#{early_reason},</if>
-			<if test = "early_reason == null">'X',</if>	
+			<if test = "early_reason != null and early_reason != ''">#{early_reason},</if>
+			<if test = "early_reason == null or early_reason == ''">'X',</if>	
 			rest_reason 	= 
-			<if test = "rest_reason != null">#{rest_reason},</if>
-			<if test = "rest_reason == null">'X',</if>
+			<if test = "rest_reason != null and rest_reason != ''">#{rest_reason},</if>
+			<if test = "rest_reason == null or rest_reason == ''">'X',</if>
 			move_reason 	= 
-			<if test = "move_reason != null">#{move_reason},</if>
-			<if test = "move_reason == null">'X',</if>
+			<if test = "move_reason != null and move_reason != ''">#{move_reason},</if>
+			<if test = "move_reason == null or move_reason == ''">'X',</if>
 			
 			student_parent_counsel  	= #{student_parent_counsel},
 			admin_manageinfo_work 		= #{admin_manageinfo_work},

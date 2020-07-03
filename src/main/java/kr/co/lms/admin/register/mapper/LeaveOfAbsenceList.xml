@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.LeaveOfAbsenceDAOImp">
+	<select id="selectLeaveOfAbsence" resultType="kr.co.lms.admin.VO.LeaveOfAbsenceVO">
+		select * from
+		(select * from
+		(select s.student_no student_no, s.student_name_ko student_name_ko, s.student_tel_phone student_tel_phone, s.student_tel_parent student_tel_parent, s.student_lately_course student_lately_course, to_char(student_course_state_date,'YYYY-MM-DD') student_course_state_date 
+		from student s join student_course_state c on s.student_no=c.student_no
+		<where>
+		     	c.state=3
+			<if test="searchWord!=null and searchWord!=''">
+				and s.student_name_ko like '%' || #{searchWord} || '%'
+			</if>
+			<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+			    and student_course_state_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+		order by s.student_no desc)
+		where rownum<![CDATA[<=]]> #{pageNum} * #{onePageRecord} order by student_no asc)
+		where rownum<![CDATA[<=]]><if test="pageNum == totalPage"> #{lastPageRecords}</if>
+		<if test="pageNum != totalPage">#{onePageRecord}</if> order by student_no desc
+	</select>
+	<select id="getSelectLeaveOfAbsence" resultType="java.lang.Integer" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
+		select count(s.student_no) from student s join student_course_state c on s.student_no=c.student_no 
+		<where>
+		     	c.state=3
+			<if test="searchWord!=null and searchWord!=''">
+				and s.student_name_ko like '%' || #{searchWord} || '%'
+			</if>
+			<if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+				and student_course_state_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+	</select>
+</mapper>

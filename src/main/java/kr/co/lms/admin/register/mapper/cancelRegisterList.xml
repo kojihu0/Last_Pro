@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.CancelRegisterDAOImp">
+	<select id="cancelSelectAll" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
+		select * from
+		(select * from
+		(select student_no, payment_no, payment_division, payment_name, course_name, refund_method, to_char(payment_date, 'YYYY-MM-DD') payment_date, 
+		payment_price, payment_method, to_char(refund_date, 'YYYY-MM-DD') refund_date, refund_reason from payment p join course c on c.course_no = p.course_no where payment_State=1 
+		<choose>
+			<when test="searchKey!=null and searchKey!='' and searchWord!=null and searchWord!='' and startDate!=null and startDate!='' and endDate!=null and endDate!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!=''">
+				and payment_name like '%' || #{searchWord} || '%' and refund_method like '%' || #{searchKey} || '%' and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="searchKey!=null and searchKey!='' and searchWord=='' and startDate=='' and endDate=='' and startDate2=='' and endDate2==''">
+				and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey=='' and startDate=='' and endDate=='' and startDate2=='' and endDate2==''">
+				and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchKey=='' and searchWord=='' and startDate2=='' and endDate2==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey=='' and searchWord=='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey=='' and searchWord==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchKey!=null and searchKey!='' and startDate2=='' and endDate2=='' and searchWord==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchWord!=null and searchWord!='' and searchKey=='' and startDate2=='' and endDate2==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey!=null and searchKey!='' and startDate=='' and endDate=='' and searchWord==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchWord!=null and searchWord!='' and searchKey=='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey!=null and searchKey!='' and startDate2=='' and endDate2=='' and startDate=='' and endDate==''">
+				and refund_method like '%' || #{searchKey} || '%' and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord=='' and searchKey!=null and searchKey!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+				and refund_method like '%' || #{searchKey} || '%' and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey=='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey!=null and searchKey!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%' and payment_name like '%' || #{searchWord} || '%'
+			</when>
+		</choose>
+		order by payment_no desc) 
+		where rownum<![CDATA[<=]]> #{pageNum} * #{onePageRecord} order by payment_no asc)
+		where rownum<![CDATA[<=]]><if test="pageNum == totalPage"> #{lastPageRecords}</if>
+		<if test="pageNum != totalPage">#{onePageRecord}</if> order by payment_no desc
+	</select>
+	<select id="getCancelSelectAll" resultType="java.lang.Integer" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
+		select count(payment_no) from payment where payment_State=1
+		<choose>
+			<when test="searchKey!=null and searchKey!='' and searchWord!=null and searchWord!='' and startDate!=null and startDate!='' and endDate!=null and endDate!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!=''">
+				and payment_name like '%' || #{searchWord} || '%' and refund_method like '%' || #{searchKey} || '%' and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="searchKey!=null and searchKey!='' and searchWord=='' and startDate=='' and endDate=='' and startDate2=='' and endDate2==''">
+				and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey=='' and startDate=='' and endDate=='' and startDate2=='' and endDate2==''">
+				and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchKey=='' and searchWord=='' and startDate2=='' and endDate2==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey=='' and searchWord=='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey=='' and searchWord==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd')
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchKey!=null and searchKey!='' and startDate2=='' and endDate2=='' and searchWord==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="startDate!=null and startDate!='' and endDate!=null and endDate!='' and searchWord!=null and searchWord!='' and searchKey=='' and startDate2=='' and endDate2==''">
+				and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchKey!=null and searchKey!='' and startDate=='' and endDate=='' and searchWord==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%'
+			</when>
+			<when test="startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and searchWord!=null and searchWord!='' and searchKey=='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey!=null and searchKey!='' and startDate2=='' and endDate2=='' and startDate=='' and endDate==''">
+				and refund_method like '%' || #{searchKey} || '%' and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord=='' and searchKey!=null and searchKey!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+				and refund_method like '%' || #{searchKey} || '%' and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd')
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey=='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_date between to_date(#{startDate},'yyyy-mm-dd') And to_date(#{endDate},'yyyy-mm-dd') and payment_name like '%' || #{searchWord} || '%'
+			</when>
+			<when test="searchWord!=null and searchWord!='' and searchKey!=null and searchKey!='' and startDate2!=null and startDate2!='' and endDate2!=null and endDate2!='' and startDate=='' and endDate==''">
+				and payment_date between to_date(#{startDate2},'yyyy-mm-dd') And to_date(#{endDate2},'yyyy-mm-dd') and refund_method like '%' || #{searchKey} || '%' and payment_name like '%' || #{searchWord} || '%'
+			</when>
+		</choose>
+	</select>
+	<select id="selectCancelRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
+		select student_no, payment_no, refund_price, payment_name, to_char(course_start_date, 'YYYY-MM-DD') course_start_date, course_name, course_time, payment_price, payment_method, to_char(payment_date, 'YYYY-MM-DD') payment_date from payment p join course c on p.course_no=c.course_no where student_no=#{param1} and payment_no=#{param2}
+	</select>
+		<select id="selectRefundRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
+		select student_no, payment_no, refund_price, refund_method, to_char(refund_date, 'YYYY-MM-DD') refund_date, refund_reason, refund_memo from payment where student_no=#{param1} and payment_no=#{param2}
+	</select>
+	<insert id="CancelRecordInsert" parameterType="kr.co.lms.admin.VO.CancelRegisterVO">
+		update payment set refund_price=#{refund_price}, refund_reason=#{refund_reason}, refund_method=#{refund_method}, refund_date=#{refund_date}, refund_memo=#{refund_memo} where student_no=#{student_no} and payment_no=#{payment_no}
+	</insert>
+	<select id="selectPaymentRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
+		select student_no, payment_no, payment_name, to_char(payment_date, 'YYYY-MM-DD') payment_date, course_name, to_char(course_start_date,'YYYY-MM-DD') course_start_date,
+		to_char(course_end_date,'YYYY-MM-DD') course_end_date, course_price, payment_price, payment_method, to_char(payment_date, 'YYYY-MM-DD') payment_date, payment_memo 
+		from payment p join course c on c.course_no=p.course_no where student_no=#{param1} and payment_no=#{param2}
+	</select>
+	<update id="updatePaymentRecord" parameterType="kr.co.lms.admin.VO.CancelRegisterVO">
+		update payment set payment_price=#{payment_price}, payment_method=#{payment_method}, payment_date=#{payment_date}, payment_memo=#{payment_memo} where student_no=#{student_no} and payment_no=#{payment_no}
+	</update>
+	<select id="selectReturnRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
+		select student_no, payment_name (select course_start_date from course where course_no=(select course_no from payment where student_no=#{param1})) course_start_date, (select course_name from course where course_no=(select course_no from payment where student_no=#{param1})) course_name, payment_price, payment_method, 
+		(select refund_price from refund where student_no=#{param1}) refund_price, (select refund_reason from refund where student_no=#{param1}) refund_reason, (select refund_method from refund where student_no=#{param1}) refund_method, 
+		(select refund_date from refund where student_no=#{param1}) refund_date, (select refund_memo from refund where student_no=#{param1}) refund_memo from payment where student_no=#{param1}
+	</select>
+	<delete id="deleteReceiveRecord">
+		delete from payment where student_no=#{param1} and payment_no=#{param2}
+	</delete>
+	<delete id="deleteReturnRecord">
+		update payment set refund_price=0, refund_method='', refund_date='', refund_reason='', refund_memo='' where student_no=#{param1} and payment_no=#{param2}
+	</delete>
+</mapper>

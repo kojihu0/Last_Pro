@@ -3,23 +3,66 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+
+
+	<select id="selectNoticeTotalRecord"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO" 
+			resultType="int">
+		SELECT
+			COUNT(admin_notice_no)
+		FROM
+			admin_notice
+				
+		<where>
+			<if test="searchKey == 2">
+				AND 
+					n.admin_category = 2 
+			</if>
+			<if test="searchKey == 1">
+				AND  
+					n.admin_category = 1 
+			</if>
+		</where>
+	</select>
 	<select id="selectNoticeAll"
+			parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO"
 			resultType="kr.co.lms.admin.VO.AdminNoticeVO">
-		SELECT 
-			n.admin_notice_no,
-			n.admin_notice_title,
-			n.admin_category,
-			n.employee_no,
-			e.employee_name,
-			n.admin_notice_date,
-			n.admin_notice_hit 
-		FROM  
-			employee e JOIN admin_notice n
-		ON
-			e.employee_no = n.employee_no
-		ORDER BY
-			 n.admin_notice_no
-		DESC 
+			SELECT * FROM
+				(SELECT * FROM(
+					 SELECT 
+						n.admin_notice_no,
+						n.admin_notice_title,
+						n.admin_category,
+						n.employee_no,
+						e.employee_name,
+						n.admin_notice_date,
+						n.admin_notice_hit 
+					 FROM  
+						employee e JOIN admin_notice n
+					 ON
+						e.employee_no = n.employee_no
+						
+					<where>
+						<if test="searchKey == 2">
+							AND 
+								n.admin_category = 2 
+						</if>
+						<if test="searchKey == 1">
+							AND  
+								n.admin_category = 1 
+						</if>
+					</where>
+						
+					 ORDER BY
+						 n.admin_notice_no
+					 DESC
+				) WHERE rownum  <![CDATA[<=]]> #{pageNum} * #{onePageRecord} ORDER BY admin_notice_no ASC)
+		<if test="pageNum == totalPage">
+			WHERE rownum <![CDATA[<=]]> #{lastPageRecords} ORDER BY admin_notice_no DESC
+		</if>
+		<if test="pageNum != totalPage">
+			WHERE rownum <![CDATA[<=]]> #{onePageRecord} ORDER BY admin_notice_no DESC
+		</if>  
 	</select> 
 	
  	<select id="selectNoticeOne" 
@@ -66,7 +109,7 @@
 				admin_notice_img
 			)
 		VALUES(
-			30,
+			admin_notice_sq.nextval,
 			#{admin_notice_title},
 			#{admin_notice_content},
 			SYSDATE,

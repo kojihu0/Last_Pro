@@ -139,6 +139,7 @@ public class ProfileController {
 	@RequestMapping(value="/schedule", method=RequestMethod.GET)
 	public ModelAndView schedule(HttpServletRequest req, MemberVO vo) {//시간표
 		ModelAndView mav = new ModelAndView();
+		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		HttpSession ses = req.getSession();
 		int no =((Integer)ses.getAttribute("student_no"));
 		vo.setStudent_no(no);
@@ -305,7 +306,7 @@ public class ProfileController {
 		ModelAndView mav = new ModelAndView();
 		paymentVO pVO = new paymentVO();
 		HttpSession ses = req.getSession();
-		ses.setAttribute("student_no",no);
+		ses.setAttribute("payment_no",no);
 		pVO.setPayment_no(no);
 		paymentDAOImp paymentDao = sqlSession.getMapper(paymentDAOImp.class);
 		mav.addObject("pList",paymentDao.paymentDetailRecord(pVO));

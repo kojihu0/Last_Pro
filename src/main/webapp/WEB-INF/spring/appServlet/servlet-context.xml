@@ -16,6 +16,7 @@
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/img/**" location="/img/" />
+	<resources mapping="/adminManagementUpload/**" location="/adminManagementUpload/" />
 	<resources mapping="/fullCalendar02/**" location="/fullCalendar02/"/>
 	<resources mapping="/ckeditor/**" location="/ckeditor/"/> 
 
@@ -43,6 +44,7 @@
                 <beans:list>
                     <beans:value>classpath:kr/co/lms/main/mapper/*.xml</beans:value>
                     <beans:value>classpath:kr/co/lms/admin/mapper/*.xml</beans:value>
+                    <beans:value>classpath:kr/co/lms/admin/register/mapper/*.xml</beans:value>
                 </beans:list>
             </beans:property>
     </beans:bean>

@@ -1,4 +1,4 @@
-package kr.co.lms.register;
+ package kr.co.lms.register;
 
 import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
@@ -157,12 +157,32 @@ public class RegisterController {
 		return mav;
 	}
 	@RequestMapping("/subjectRegister")
-	public String subjectRegister() {
-		return "admin/subjectRegister";
+	public ModelAndView subjectRegister(@RequestParam(value="pageNum",defaultValue="1") int pageNum, AdminStudentPagingVO PageVO) {
+		ModelAndView mav = new ModelAndView();
+		RegisterDAOImp dao = sqlSession.getMapper(RegisterDAOImp.class);
+		PageVO.setPageNum(pageNum);
+		PageVO.setTotalRecord(dao.getSelectAll(PageVO));
+		
+		mav.addObject("list", dao.selectAll(PageVO));
+		mav.addObject("pageVO", PageVO);
+		mav.setViewName("admin/subjectRegister");
+				
+		return mav;
 	}
 	
 	@RequestMapping("/cancelRegister")
-	public String cancelRegister() {
-		return "admin/cancelRegister";
+	public ModelAndView cancelRegister(@RequestParam(value="pageNum",defaultValue="1") int pageNum, AdminStudentPagingVO PageVO) {
+		List<CancelRegisterVO> list = new ArrayList<CancelRegisterVO>();
+		ModelAndView mav = new ModelAndView();
+		CancelRegisterDAOImp dao =  sqlSession.getMapper(CancelRegisterDAOImp.class);
+		PageVO.setPageNum(pageNum);
+		PageVO.setTotalRecord(dao.getCancelSelectAll(PageVO));
+		
+		list = dao.cancelSelectAll(PageVO);
+		mav.addObject("list", list);
+		mav.addObject("pageVO", PageVO);
+		mav.setViewName("admin/cancelRegister");
+		
+		return mav;
 	}
 }

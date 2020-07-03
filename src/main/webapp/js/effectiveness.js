@@ -39,6 +39,7 @@ $(function(){
 	var email = /^\w{4,20}$/;
 	var domain = /^[a-zA-Z]{2,10}[.]{1}[a-zA-Z]{2,3}$/;
     var id = /^[a-zA-Z]{1}\w{7,20}$/;
+    var pw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 	
 	$("#member_regi").on("click", function(){
 		if(!korName.test($(".korName").val()) || $(".korName").val()==""){
@@ -60,7 +61,10 @@ $(function(){
 			alert("집 전화번호를 제대로 입력해주세요.");
 			return false;
 		}else if($(".student_id").val()=="" || !id.test($(".student_id").val())){
-			alert("아이디를 제대로 입력해주세요.");
+			alert("알파벳으로 시작하고 숫자와 알파벳이 섞인 7~20자리 아이디를 입력해주세요.");
+			return false;
+		}else if($(".student_pw").val()=="" || !pw.test($(".student_pw").val())){
+			alert("영어, 특수문자(?=.*), 숫자를 포함하여 8자 이상의 비밀번호를 입력해주새요.");
 			return false;
 		}else if($(".parent_phone1").val()=="" || $(".parent_phone2").val()=="" || isNaN($(".parent_phone1").val())==true || isNaN($(".parent_phone2").val())==true || $(".parent_phone1").val().length<4 || $(".parent_phone2").val().length<4){
 			alert("학부모 연락처를 제대로 입력해주세요");

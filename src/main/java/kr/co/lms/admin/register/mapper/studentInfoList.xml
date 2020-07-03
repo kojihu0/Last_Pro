@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.lms.admin.DAO.StudentInfoDAOImp">
+	<select id="studentSelectAll" resultType="kr.co.lms.admin.VO.StudentInfoVO">
+		select * from
+		(select * from
+		(select student_no, student_name_ko, student_gender, student_tel_phone, student_email, student_tel_parent, to_char(student_regi_date, 'YYYY-MM-DD') student_regi_date from student 
+		<if test="searchKey!=null and searchWord!=null">
+		where ${searchKey} like '%' || #{searchWord} || '%'
+		</if>
+		order by student_no desc) 
+		where rownum<![CDATA[<=]]> #{pageNum} * #{onePageRecord} order by student_no asc)
+		where rownum<![CDATA[<=]]><if test="pageNum == totalPage"> #{lastPageRecords}</if>
+		<if test="pageNum != totalPage">#{onePageRecord}</if> order by student_no desc
+	</select>
+	<select id="getStudentSelectAll" resultType="java.lang.Integer" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
+		select count(student_no) from student <if test="searchKey!=null and searchWord!=null"> where ${searchKey} like '%' || #{searchWord} || '%' </if>
+	</select>
+	<insert id="memberInsert" parameterType="kr.co.lms.admin.VO.StudentInfoVO">
+		insert into student(student_no, student_name_ko, student_name_eng, student_img, student_gender, student_birthday, student_tel_phone, student_email, student_tel_house, student_id, student_pw, student_tel_parent, student_parent_email, student_parent_state, student_parent_name,
+							student_addr_no, student_addr_main, student_addr_sub, student_motive, student_interest, student_memo, student_regi_date)
+		values(student_sq.nextval, #{student_name_ko}, #{student_name_eng}, #{student_img}, #{student_gender}, #{student_birthday}, #{student_tel_phone}, #{student_email}, #{student_tel_house}, #{student_id}, #{student_pw}, #{student_tel_parent}, #{student_parent_email}, #{student_parent_state}, #{student_parent_name},
+				#{student_addr_no}, #{student_addr_main}, #{student_addr_sub}, #{student_motive}, #{student_interest}, #{student_memo}, #{student_regi_date})
+	</insert>
+	<select id="studentSelectDetail" resultType="kr.co.lms.admin.VO.StudentInfoVO">
+		select student_no, student_img, student_lately_course, student_name_ko, student_name_eng, student_gender, to_char(student_birthday,'YYYY-MM-DD') student_birthday, student_tel_phone, student_email,
+		student_tel_house, student_id, student_tel_parent, student_parent_email, student_parent_state, student_parent_name, student_addr_no, student_addr_main, student_addr_sub,
+		student_motive, student_interest, student_memo, to_char(student_regi_date,'YYYY-MM-DD') student_regi_date from student where student_no=#{param1}
+	</select>
+	<update id="studentInfoUpdate" parameterType="kr.co.lms.admin.VO.StudentInfoVO">
+		update student set student_img=#{student_img}, student_name_ko=#{student_name_ko}, student_name_eng=#{student_name_eng}, student_gender=#{student_gender}, student_birthday=#{student_birthday},
+		student_tel_phone=#{student_tel_phone}, student_email=#{student_email}, student_tel_house=#{student_tel_house}, student_id=#{student_id}, student_tel_parent=#{student_tel_parent}, student_parent_email=#{student_parent_email},
+		student_parent_state=#{student_parent_state}, student_parent_name=#{student_parent_name}, student_addr_no=#{student_addr_no}, student_addr_main=#{student_addr_main}, student_addr_sub=#{student_addr_sub}, student_motive=#{student_motive},
+		student_interest=#{student_interest}, student_memo=#{student_memo}, student_regi_date=#{student_regi_date} where student_no=#{student_no}
+	</update>
+	<select id="studentPaymentInfo" resultType="kr.co.lms.admin.VO.StudentPaymentInfoVO">
+		select p.payment_date payment_date, to_char(course_start_date,'YYYY-MM-DD') course_start_date, c.course_name course_name, p.payment_price payment_price, e.employee_name employee_name from payment p join course c
+		on p.course_no=c.course_no join employee e on c.employee_no=e.employee_no where p.student_no=#{param1}
+	</select>
+	<select id="studentCounselingList" resultType="kr.co.lms.admin.VO.StudentCounselingVO">
+		select student_no, counseling_no, counseling_date, counseling_division, counseling_title, counseling_content from counseling where student_no=#{param1}
+	</select>
+	<insert id="studentCounselingInsert" parameterType="kr.co.lms.admin.VO.StudentCounselingVO">
+		insert into counseling (counseling_no, student_no, counseling_date, counseling_division, counseling_title, counseling_content) values(counseling_sq.nextval, #{student_no}, to_date(sysdate, 'YYYY-MM-DD HH24:MI:SS'), #{counseling_division}, #{counseling_title}, #{counseling_content})
+	</insert>
+	<delete id="studentCounselingDelete">
+		delete from counseling where student_no=#{param1} and counseling_no=#{param2}
+	</delete>
+	<update id="studentCounselingUpdate" parameterType="kr.co.lms.admin.VO.StudentCounselingVO">
+		update counseling set counseling_division=#{counseling_division}, counseling_title=#{counseling_title}, counseling_content=#{counseling_content} where student_no=#{student_no} and counseling_no=#{counseling_no}
+	</update>
+	<delete id="memberDel">
+		delete from student where student_no=#{param1}
+	</delete>
+	<select id="studentClassInfoSelect" resultType="kr.co.lms.admin.VO.StudentClassInfoVO">
+		select p.student_no student_no, p.payment_no payment_no, c.course_name course_name, c.course_time course_time, to_char(s.student_course_state_date,'YYYY-MM-dd') student_course_state_date, s.state state from course c join payment p on c.course_no=p.course_no 
+		join student_course_state s on p.payment_no=s.payment_no where p.student_no=#{param1}
+	</select>
+	<update id="studentClassMove" parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
+		update course set course_day=#{course_day}, course_time=#{course_time}, course_stage=#{course_stage} where course_no = (select course_no from payment where payment_no=#{payment_no})
+	</update>
+	<update id="studentClosedOutEditOk"  parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
+		update student_course_state set student_course_state_date=to_date(#{student_course_state_date},'YYYY-MM-DD'), state=#{state} where student_no=#{student_no}
+	</update>
+	<update id="closedOutOk"  parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
+		update student_course_state set state=#{state}, student_course_state_date=#{student_course_state_date} where student_no=#{student_no}
+	</update>
+	<select id="studentAttendace" resultType="kr.co.lms.admin.VO.StudentAttendanceVO">
+		select c.course_name course_name, c.course_day course_day, to_char(c.course_start_date,'YYYY-MM-DD') course_start_date, c.course_time course_time,
+		p.student_no student_no, p.payment_no payment_no, s.state state from course c join payment p on c.course_no=p.course_no
+		join student_course_state s on p.payment_no=s.payment_no and p.student_no=s.payment_no where s.student_no=#{param1}
+	</select>
+	<select id="studentAttendaceList" resultType="kr.co.lms.admin.VO.StudentAttendanceVO">
+		select to_char(attendance_date, 'YYYY-MM-DD') attendance_date, attendance_state from attendance where payment_no=#{param1}
+	</select>
+</mapper>

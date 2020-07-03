@@ -18,7 +18,7 @@
 			<i class="xi-school"></i>&nbsp;강사 업무 일지 등록
 		</div>
  
-		<form method="post" action="<%=projectPath %>/admin/adminMangeRegiOk" onsubmit="return manageRegiCheck()">
+		<form method="post" action="<%=projectPath %>/admin/adminMangeRegiOk" enctype="multipart/form-data" onsubmit="return manageRegiCheck()">
 			<!-- 테이블 -->
 			<div class="p-6 bg-info-100">  
 				<table class="border w-full"> 
@@ -114,8 +114,8 @@
 							<th class="border bg-white px-4 py-2 text-left"><input type="text" id="suggestion" name="admin_manageinfo_opinion" style="width:500px" class="border border-black" placeholder="건의 사항을 적어주세요"/></th>
 						</tr>
 						<tr> 
-							<th class="bg-info-300 py-2 text-center">첨부파일</th> 
-							<th class="border  bg-white px-2 py-2 text-left"><input type="file" name="admin_manageinfo_file"/></th>		
+							<th class="bg-info-300 py-2 text-center">첨부파일</th>  
+							<th class="border  bg-white px-2 py-2 text-left"><input type="file" name="admin_manageinfo_file_m"/></th>		
 						</tr>
 					</thead>   
 				</table>

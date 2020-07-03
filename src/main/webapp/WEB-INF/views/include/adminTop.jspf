@@ -14,12 +14,14 @@
 
 <script src="/lms/js/jquery-3.4.1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
- 
+<!-- Development --> 
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 <!-- css -->
 <link rel="stylesheet" href="/lms/css/adminTop.css" type="text/css"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
+
 
 <!-- js -->
 <script src="/lms/js/adminTop.js" type="text/javascript"></script>
@@ -30,8 +32,36 @@
 <script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
 
 
-<title>Insert title here</title>
+<!--  -->
 
+	 <!-- chart js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+	
+	<!-- fullCalendar02 -->
+	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/core/main.css" type="text/css"/>
+	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/daygrid/main.css" type="text/css"/>
+	<link rel="stylesheet" href="<%=projectPath %>/fullCalendar02/timegrid/main.css" type="text/css"/>
+
+	
+	
+	<!-- fullCalendar02 -->
+	
+	<script src="<%=projectPath %>/js/moment-with-locales.js"></script> 
+	<script src="<%=projectPath %>/fullCalendar02/moment/main.js"></script>
+	<script src="<%=projectPath %>/js/bPopup.js"></script>
+	<script src="<%=projectPath %>/fullCalendar02/core/main.js"></script>
+	<script src="<%=projectPath %>/fullCalendar02/interaction/main.js"></script>
+	<script src="<%=projectPath %>/fullCalendar02/daygrid/main.js"></script>
+	<script src="<%=projectPath %>/fullCalendar02/timegrid/main.js"></script>
+
+	<script src="<%=projectPath %>/js/mainFullCalendar.js"></script> 
+	<script src="<%=projectPath %>/js/editEvent.js"></script>
+	<script src="<%=projectPath %>/js/selectInsertEvent.js"></script>
+	<script src="<%=projectPath %>/js/dropEvent.js"></script>  
+ 
+
+<title>Insert title here</title>
+ 
 </head>
 <body> 
 	<div id="loginArea" class="w-full flex justify-end h-6 align-center">
@@ -47,7 +77,7 @@
 		<li><a href="/lms/admin/adminMain">HOME</a></li>
 		<li><a href="/lms/subjectRegister">접수관리</a>
 			<ul class="submenu">
-				<li><a href="/lms/subjectRegister">과목별 접수현황</a></li>
+				<li><a href="/lms/subjectRegister">접수현황</a></li>
 				<li><a href="/lms/cancelRegister">취소요청현황</a></li>
 			</ul>
 		</li>

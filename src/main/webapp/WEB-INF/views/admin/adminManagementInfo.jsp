@@ -20,33 +20,26 @@
 			</div>
 			
 			<div class="border-solid border-4 border-gray-600 p-3 bg-gray-200 w-full flex">
-				<form>
-					<select class="border flex-initial mx-2">
-						<option>::강사::</option>
-						<option>정진범</option>
-						<option>김영권</option>
-						<option>이현지</option>
-						<option>이학송</option>
-						<option>김춘식</option>
+					<select name="employee_no" onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?admin_manageinfo_ok=${selectOk}&admin_manageinfo_subject=${selectSubject }&employee_no='+ this.value"   class="border flex-initial mx-2">
+						<option value="-1" <c:if test="${i.employee_no == selectNo}">selected</c:if>>::강사::</option>
+						<c:forEach var="i" items="${nameList}">    
+							<option value="${i.employee_no}" <c:if test="${i.employee_no == selectNo}">selected</c:if>>${i.employee_name}</option>		 			
+						</c:forEach>
 					</select>
-				</form>
-				<form>
-					<select class="border flex-initial mx-2">   
-						<option>::과목::</option>
-						<option>JAVA</option>
-						<option>javascript</option>
-						<option>Html/CSS</option>
-						<option>Spring</option>	
+				
+					<select name="admin_manageinfo_subject"  onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?employee_no=${selectNo}&admin_manageinfo_ok=${selectOk}&admin_manageinfo_subject='+ this.value" class="border flex-initial mx-2">   
+						<option value="::과목::"<c:if test="${selectSubject == '::과목::'}">selected</c:if>>::과목::</option> 
+						<option value="JAVA"       <c:if test="${selectSubject == 'JAVA'}">selected</c:if>>JAVA</option>
+						<option value="javascript" <c:if test="${selectSubject == 'javascript'}">selected</c:if>>javascript</option> 
+						<option value="Html/CSS"   <c:if test="${selectSubject == 'Html/CSS'}">selected</c:if>>Html/CSS</option>
+						<option value="Spring"     <c:if test="${selectSubject == 'Spring'}">selected</c:if>>Spring</option>	 
 					</select>
-				</form>
-				<form>
-					<select class="border flex-initial mx-2"> 
-						<option>::승인여부::</option>
-						<option>결제 완료</option>
-						<option>결제 대기</option>	
-					</select>
-				</form>
-			</div>
+					 
+					<select name="admin_manageinfo_ok"  onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?admin_manageinfo_subject=${selectSubject }&employee_no=${selectNo}&admin_manageinfo_ok='+ this.value" class="border flex-initial mx-2">  
+							<option value="0"  <c:if test="${selectOk  == '0'}">selected</c:if>>미승인</option> 
+							<option value="1"  <c:if test="${selectOk  == '1'}">selected </c:if>>승인</option>  						
+					</select> 
+			</div> 
 			<!-- 테이블 -->
 			<div class="p-3 bg-info-100">  	
 				<table class="border my-0 w-full"> 
@@ -88,6 +81,35 @@
 					<a href="<%=projectPath%>/admin/adminManageRegi" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4">등록</a>
 				</div>
 			</div>
+			
+			
+	<div class="text-center">	
+	<!-- 현재 페이지 -->
+		<c:if test="${pageVo.pageNum == 1 }"> 
+			<i class="xi-angle-left text-2xl"></i>
+		</c:if>	  
+		
+		<c:if test="${pageVo.pageNum > 1 }"> 
+			<a href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-left text-2xl"></i></a>
+		</c:if>
+		
+		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
+			<c:if test="${i <= pageVo.totalPage }">
+				<a class="text-2xl" href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
+			</c:if>
+		</c:forEach>  
+		
+		<!-- 현재 페이지가 마지막일 경우 -->
+		<c:if test="${pageVo.pageNum == pageVo.totalPage }">
+			<i class="xi-angle-right text-2xl"></i> 
+		</c:if>
+		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
+			<a href="<%=projectPath%>/admin/adminManagementInfo?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-right text-2xl"></i></a> 
+		</c:if>
+	</div>
+			
+			
+			
 		</div>
 </body>
 </html>

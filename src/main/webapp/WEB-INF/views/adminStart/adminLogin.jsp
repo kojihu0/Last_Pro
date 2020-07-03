@@ -22,7 +22,10 @@
     </style>
     <script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
     
-</head>
+</head> 
+
+
+
 <body class="bg-white font-family-karla h-screen">
 
     <div class="w-full flex flex-wrap">

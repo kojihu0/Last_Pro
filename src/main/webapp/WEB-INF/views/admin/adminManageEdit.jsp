@@ -21,7 +21,7 @@
 		</div>
 	  
 	 
-		<form method="post" action="<%=projectPath %>/admin/adminManageEditOk?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}"  onsubmit="return manageEditCheck()">
+		<form method="post" action="<%=projectPath %>/admin/adminManageEditOk?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}" enctype="multipart/form-data" onsubmit="return manageEditCheck()">
 			<!-- 테이블 -->
 			<div class="p-6 bg-info-100">  
 				<table class="border w-full">  
@@ -141,8 +141,8 @@
 							<th class="border bg-white px-4 py-2 text-left"><input type="text" id="suggestion" name="admin_manageinfo_opinion" value="${result_Vo.admin_manageinfo_opinion }" style="width:500px" class="border border-black"/></th>
 						</tr>
 						<tr> 
-							<th class="bg-info-300 py-2 text-center">첨부파일</th>  
-							<th class="border  bg-white px-2 py-2 text-left"><input type="file" value="${result_Vo.admin_manageinfo_file }" name="admin_manageinfo_file" /></th>		
+							<th class="bg-info-300 py-2 text-center">첨부파일</th>   
+							<th class="border  bg-white px-2 py-2 text-left"><input type="file" value="${result_Vo.admin_manageinfo_file }" name="admin_manageinfo_file_m" /></th>		
 						</tr>
 					</thead>   
 				</table>
