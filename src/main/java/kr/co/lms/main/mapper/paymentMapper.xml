@@ -36,11 +36,11 @@
 		FROM payment p
 			JOIN course  c ON p.course_no = c.course_no
 			JOIN student s ON p.student_no = s.student_no
-			JOIN employee e ON e.employee_no = c.employee_no where p.student_no=#{student_no}
+			JOIN employee e ON e.employee_no = c.employee_no where p.student_no=#{student_no} order by payment_date asc
 	</select>
 	<select id="paymentDetailRecord" parameterType="kr.co.lms.main.VO.paymentVO" resultType="kr.co.lms.main.VO.paymentVO">
 		SELECT p.payment_no,c.course_name,p.payment_price,
-			   to_char(c.course_start_date,'yyyy-mm-dd')course_start_date, e.employee_name,p.payment_method,
+			   to_char(c.course_start_date,'yyyy-mm-dd')course_start_date, e.employee_name,p.payment_method,p.payment_state,
 			   p.payment_name,to_char(p.payment_date,'yyyy-mm-dd')payment_date
 			  ,p.payment_phone
 		FROM payment p
@@ -48,4 +48,7 @@
 			JOIN student s ON p.student_no = s.student_no
 			JOIN employee e ON e.employee_no = c.employee_no where p.payment_no=#{payment_no}
 	</select>
+	<update id="paymentCancel" parameterType="kr.co.lms.main.VO.paymentVO">
+		update payment set payment_state=1 where payment_no=#{payment_no} and student_no=#{student_no}
+	</update>
 </mapper>

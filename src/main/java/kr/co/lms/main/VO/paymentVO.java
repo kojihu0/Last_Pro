@@ -5,6 +5,7 @@ public class paymentVO {
 		private int course_no;                
 		private int student_no;
 		private int payment_price;
+		private int payment_state;
 		private String payment_name;
 		private String payment_email;
 		private String payment_tel;
@@ -34,8 +35,12 @@ public class paymentVO {
 		public void setStudent_no(int student_no) {
 			this.student_no = student_no;
 		}
-		
-		
+		public int getPayment_state() {
+			return payment_state;
+		}
+		public void setPayment_state(int payment_state) {
+			this.payment_state = payment_state;
+		}
 		public int getPayment_price() {
 			return payment_price;
 		}

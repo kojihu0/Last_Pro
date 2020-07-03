@@ -46,12 +46,28 @@ public class ProfileController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	@RequestMapping(value="/myPageDetail", method=RequestMethod.GET)
+	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo) {
+		ModelAndView mav = new ModelAndView();	
+		HttpSession s = req.getSession();
+		int no=	(Integer)s.getAttribute("student_no");
+		vo.setStudent_no(no);
+		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
+		MemberDAOImp memDao = sqlSession.getMapper(MemberDAOImp.class);
+		MypageVO vo2 = dao.memberMypageDetailInfo(no);
+		MemberVO mVo = memDao.memberPaymentRecord(vo);
+		mav.addObject("vo",mVo);
+		mav.addObject("info",vo2);
+		mav.setViewName("main/profile/myPageDetail");
+		return mav;
+	}
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
 	public ModelAndView profile(HttpServletRequest req,MemberVO vo) {//맵핑
+		HttpSession ses = req.getSession();
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
-		HttpSession ses = req.getSession();
-		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
+		int no=	(Integer)ses.getAttribute("student_no");
+		vo.setStudent_no(no);
 		MemberVO vo2 = dao.memberDataSelect(vo);
 		mav.addObject("student_name_ko", vo2.getStudent_name_ko());
 		mav.addObject("student_img", vo2.getStudent_img());
@@ -60,16 +76,19 @@ public class ProfileController {
 		return mav;
 	}
 	@RequestMapping(value="/courseOfStudy",method=RequestMethod.GET)
-	public ModelAndView courseOfStudy(HttpServletRequest req, MemberVO vo){//수강중인강좌
+	public ModelAndView courseOfStudy(HttpServletRequest req ,MemberVO vo){//수강중인강좌
+
 		ModelAndView mav = new ModelAndView();
-		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
-		HttpSession ses = req.getSession();
-		int student_no = (Integer)ses.getAttribute("student_no");
-		
-		List<MypageVO> courseList =dao.courseRecord(student_no);
+		MypageVO mVO = new MypageVO();
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
-		MypageVO course_progress = dao.courseProgess(student_no);
-		vo.setStudent_no(student_no);
+		HttpSession ses = req.getSession();
+		int no =((Integer)ses.getAttribute("student_no"));
+		vo.setStudent_no(no);
+		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class); 
+		List<MypageVO> courseList =dao.courseRecord(no);
+		
+		MypageVO course_progress = dao.courseProgess(no);
+		
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
 		
 		mav.addObject("course_progress",course_progress);
@@ -82,18 +101,15 @@ public class ProfileController {
 				
 	}
 	@RequestMapping(value="/completionCourse",method=RequestMethod.GET)
-	public ModelAndView completionCourse(HttpServletRequest req ,MemberVO vo) {//수료강좌
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView completionCourse(HttpServletRequest req,MemberVO vo) {//수료강좌
 		HttpSession ses = req.getSession();
+		ModelAndView mav = new ModelAndView();
+		int no =((Integer)ses.getAttribute("student_no"));
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		List<MypageVO> completionCourse = dao.completionCourseRecord(no);
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
-		int student_no = (Integer)ses.getAttribute("student_no");
-		
-		List<MypageVO> completionCourse = dao.completionCourseRecord(student_no);
-		
-		vo.setStudent_no(student_no);
+		vo.setStudent_no(no);
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
-		
 		mav.addObject("student_img",vo2.getStudent_img());
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
@@ -102,16 +118,14 @@ public class ProfileController {
 		return mav;
 	}
 	@RequestMapping(value="/inCompletionCourse",method=RequestMethod.GET)
-	public ModelAndView inCompletionCourse(HttpServletRequest req, MemberVO vo) {//미수료강좌
+	public ModelAndView inCompletionCourse(HttpServletRequest req,MemberVO vo) {//미수료강좌
 		ModelAndView mav = new ModelAndView();
 		HttpSession ses = req.getSession();
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class);
+		int no =((Integer)ses.getAttribute("student_no"));
+		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord(no);
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
-		int student_no = (Integer)ses.getAttribute("student_no");
-		
-		List<MypageVO> incompleteCourse = dao.inCompleteCourseRecord(student_no);
-		
-		vo.setStudent_no((Integer)ses.getAttribute("student_no"));
+		vo.setStudent_no(no);
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
 		
 		mav.addObject("student_img",vo2.getStudent_img());
@@ -126,12 +140,9 @@ public class ProfileController {
 	public ModelAndView schedule(HttpServletRequest req, MemberVO vo) {//시간표
 		ModelAndView mav = new ModelAndView();
 		HttpSession ses = req.getSession();
-		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
-		int student_no = (Integer)ses.getAttribute("student_no");
-		
-		vo.setStudent_no(student_no);
+		int no =((Integer)ses.getAttribute("student_no"));
+		vo.setStudent_no(no);
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
-		
 		mav.addObject("student_img",vo2.getStudent_img());
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
@@ -274,9 +285,7 @@ public class ProfileController {
 		MemberDAOImp memberDao = sqlSession.getMapper(MemberDAOImp.class);
 		paymentDAOImp paymentDao = sqlSession.getMapper(paymentDAOImp.class);
 		HttpSession ses = req.getSession();
-		
 		pVO.setStudent_no((Integer)ses.getAttribute("student_no"));//결제내역에 필요한 학생번호 
-		
 		vo.setStudent_no((Integer)ses.getAttribute("student_no"));//프로필 정보에 필요한 학생번호 
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
 		List<paymentVO> pList = paymentDao.paymentHistoryRecord(pVO);//결제내역리스트 가져오기 
@@ -292,12 +301,13 @@ public class ProfileController {
 	
 	//결제내역 상세페이지 
 	@RequestMapping(value="/paymentDetail", method=RequestMethod.GET)
-	public ModelAndView paymentDetail(int no) {
+	public ModelAndView paymentDetail(HttpServletRequest req,int no) {
 		ModelAndView mav = new ModelAndView();
 		paymentVO pVO = new paymentVO();
+		HttpSession ses = req.getSession();
+		ses.setAttribute("student_no",no);
 		pVO.setPayment_no(no);
-		paymentDAOImp paymentDao =  sqlSession.getMapper(paymentDAOImp.class);
-		
+		paymentDAOImp paymentDao = sqlSession.getMapper(paymentDAOImp.class);
 		mav.addObject("pList",paymentDao.paymentDetailRecord(pVO));
 		mav.setViewName("main/profile/paymentDetail");
 		return mav ; 

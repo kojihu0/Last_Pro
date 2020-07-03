@@ -47,6 +47,7 @@
 				  </li>
 				</ul>
 				<div class="best-section my-0 mx-auto py-16">
+				<c:if test="${list != null}">
 					<div class="flex justify-between relative pb-4 mb-10">
 						<div>
 							<h1 class="roboto-slab font-bold">FAVORITE COURSES</h1>
@@ -57,7 +58,11 @@
 						</div>
 						<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 					</div>
+					<c:if test="${empty list}">
+								<p class="py-8 text-center text-lg font-bold">선택하신 강좌가 없습니다.</p>
+					</c:if>
 				<div id="wishListCourseCarousel" class="-mx-4 overflow-hidden">
+				
 					<c:forEach var="list" items="${list}">
 						<div class="course-item px-4 text-center"><!-- course-item -->
 							<div class="course-image relative overflow-hidden border border-gray-300">
@@ -74,6 +79,7 @@
 						</div><!-- course-item -->
 					</c:forEach>
 				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

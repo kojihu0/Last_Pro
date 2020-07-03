@@ -13,7 +13,7 @@
 		<c:if test="${student_img != null }">
 			<img src="<%=ctx%>/img/${student_img}">
 		</c:if >
-		<c:if test="${student_img == null }">
+		<c:if test="${empty student_img}">
 			<img src="<%=ctx%>/img/user-avatar.png">
 		</c:if>
 			<div id="hr" class="my-8 border-t border-solid"></div>
@@ -45,27 +45,32 @@
 				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
 				  </li>
 				</ul>
-				<div>
-				<ul class="flex mt-8 roboto-slab bg-cta-400">
-					<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
-					<li class="text-white text-xl w-1/3">Course</li>
-					<li class="text-white text-xl w-1/6">FinalGrade</li>
-					<li class="text-white text-xl w-1/5">CompletionStatus</li>
-					<li class="text-white text-xl">End date</li>
-				</ul>
-				<c:forEach var = "incompleteCourse" items="${incompleteCourse}">
-					<ul class="flex my-4 roboto-slab">
-						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${incompleteCourse.employee_name }</a></li>
-						<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${incompleteCourse.course_name}</a></li>
-						<li class="text-black text-xl w-1/6">${incompleteCourse.grade}등급</li>
-						<c:if test="${incompleteCourse.state == 2}">
-						<li class="text-black text-xl w-1/5">NO</li>
-						</c:if>
-						<li class="text-black text-xl ">${incompleteCourse.course_end_date }</li>
+				<c:if test="${incompleteCourse != null}">
+					<div>
+					<ul class="flex mt-8 roboto-slab bg-cta-400">
+						<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
+						<li class="text-white text-xl w-1/3">Course</li>
+						<li class="text-white text-xl w-1/6">FinalGrade</li>
+						<li class="text-white text-xl w-1/5">CompletionStatus</li>
+						<li class="text-white text-xl">End date</li>
 					</ul>
-					<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
+					<c:if test="${empty completionCourse}">
+						<p class="py-8 text-center text-lg font-bold">수료한 강좌가 없습니다.</p>
+					</c:if>
+					<c:forEach var = "incompleteCourse" items="${incompleteCourse}">
+						<ul class="flex my-4 roboto-slab">
+							<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${incompleteCourse.employee_name }</a></li>
+							<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${incompleteCourse.course_name}</a></li>
+							<li class="text-black text-xl w-1/6">${incompleteCourse.grade}등급</li>
+							<c:if test="${incompleteCourse.state == 2}">
+							<li class="text-black text-xl w-1/5">NO</li>
+							</c:if>
+							<li class="text-black text-xl ">${incompleteCourse.course_end_date }</li>
+						</ul>
+						<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
 				</c:forEach>
 			</div>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -46,6 +46,7 @@
 				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
 				  </li>
 			</ul>
+			<c:if test="${pList != null}">
 			<div id="gradeList" >
 				<ul class="flex mt-8 roboto-slab bg-gray-500">
 					<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
@@ -54,7 +55,9 @@
 					<li class="text-white text-xl w-1/6">Price</li>
 					<li class="text-white text-xl">Payment Date</li>
 				</ul>
-				
+				<c:if test="${empty pList}">
+						<p class="py-8 text-center text-lg font-bold">결제하신 내역이 존재하지 않습니다.</p>
+				</c:if>
 				
 					<c:forEach var ="vo" items="${pList}">
 					<ul class="flex my-4 roboto-slab">
@@ -69,6 +72,7 @@
 						<div id="hr" class="my-4 border-gray-500 border-t border-solid"></div>
 					</c:forEach>
 			</div>
+			</c:if>
 		</div>
 			
 		

@@ -3,6 +3,8 @@ package kr.co.lms;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		HomeDAOImp dao = sqlSession.getMapper(HomeDAOImp.class);
-		MypageDAOImp dao2 =sqlSession.getMapper(MypageDAOImp.class); 
+		MypageDAOImp dao2 =sqlSession.getMapper(MypageDAOImp.class);
 		dao2.updateSysdate();
 		List<HomeVO> homeCourseList = dao.homeCourseList();
 		List<HomeVO> homeEventList = dao.homeEventList();

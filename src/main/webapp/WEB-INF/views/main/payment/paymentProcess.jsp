@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script> 
 <script>
-
-
 	var pay_method;
 	var name;
 	var	buyer_email; 
@@ -30,6 +28,7 @@ var IMP = window.IMP;
    }, function(rsp) {
 	    if ( rsp.success ) {
 	    	
+	    	
 	    	var sendData = {
 	    			"buyer_email" : $('#paymentEmail').val(),
 	    			"name" : $("#courseName").text(),  
@@ -37,7 +36,7 @@ var IMP = window.IMP;
 	    			"buyer_tel" : $("#paymentTel").val(),  
 	    			"employee_name" : $("#employee_name").text(),
 		    		"pay_method" : document.paymentForm.paymentSelectRadio.value,
-	    			"amount" : $("#coursePrice").text()
+	    			"amount" : $("#coursePrice").text(),
 	    			
 	    	}
 	    	

@@ -1,5 +1,8 @@
 package kr.co.lms.payment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -35,7 +38,7 @@ public class PaymentController {
 
 
 	@RequestMapping(value="/paymentProcess" , method=RequestMethod.GET)
-	public ModelAndView paymentProcess(HttpServletRequest req, int course_no) {//강의 번호
+	public ModelAndView paymentProcess(HttpServletRequest req, int course_no) {//媛뺤쓽 踰덊샇
 		ModelAndView mav = new ModelAndView();
 		CourseVO vo  = new CourseVO();
 		MemberVO vo2  = new MemberVO();
@@ -54,13 +57,19 @@ public class PaymentController {
 	};
 	@RequestMapping(value="/paymentComplete" , method=RequestMethod.POST)
 	@ResponseBody
-	public String  paymentComplete(HttpServletRequest req, String employee_name,
+	public Map<String, Object>  paymentComplete(HttpServletRequest req, String employee_name,
 																 int  amount,
 																 String pay_method,
 																 String buyer_email,
 																 String name,
 																 String buyer_name,
-																 String buyer_tel) {
+																 String buyer_tel,
+																 String imp_uid,
+																 String merchant_uid,
+																 String paid_amount,
+																 String apply_num) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
 		paymentVO vo = new paymentVO(); 
 		HttpSession ses = req.getSession();
 		vo.setStudent_no((Integer)(ses.getAttribute("student_no")));
@@ -78,8 +87,11 @@ public class PaymentController {
 		
 		paymentDAOImp dao  = sqlSession.getMapper(paymentDAOImp.class);
 		dao.paymentInfoInsert(vo);
-		String data = "결제 테스트 중";
-		return data;
+		map.put("imp_uid", imp_uid);
+		map.put("merchant_uid", merchant_uid);
+		map.put("paid_amount", paid_amount);
+		map.put("apply_num", apply_num);
+		return map;
 	}
 	@RequestMapping(value="/paymentCashComplete" , method=RequestMethod.POST)
 	public ModelAndView paymentCashComplete(HttpServletRequest req,String student_id,
@@ -148,5 +160,22 @@ public class PaymentController {
 		mav.addObject("payment_price",vo2.getPayment_price());
 		mav.setViewName("main/payment/paymentCompleted");
 		return mav;  
+	}
+	@RequestMapping("/paymentCancel")
+	@ResponseBody
+	public String paymentCancel(HttpServletRequest req) {
+		String result = "";
+		HttpSession ses = req.getSession();
+		paymentVO vo = new paymentVO(); 
+		vo.setPayment_no((Integer)(ses.getAttribute("payment_no")));
+		vo.setStudent_no((Integer)(ses.getAttribute("student_no")));
+		paymentDAOImp dao  = sqlSession.getMapper(paymentDAOImp.class);
+		int cnt = dao.paymentCancel(vo);
+		if(cnt>0) {
+			result = "yes";
+		}else {
+			result = "no";
+		}
+		return result ;
 	}
 }

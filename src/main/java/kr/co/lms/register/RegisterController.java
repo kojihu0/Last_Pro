@@ -130,6 +130,32 @@ public class RegisterController {
 		
 		return "main/register/registerDel";
 	}
+	
+	@RequestMapping(value="/registerDelOk",method=RequestMethod.POST)
+	public ModelAndView registerDelOk(HttpServletRequest req) {
+		MemberVO vo  = new MemberVO();
+		ModelAndView mav = new ModelAndView();
+		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
+		vo.setStudent_id(req.getParameter("delId"));		
+		vo.setStudent_pw(req.getParameter("delPw"));
+		MemberVO loginVO = dao.memberLogin(vo);
+		boolean pwMatch = pwEncoder.matches(vo.getStudent_pw(), loginVO.getStudent_pw());
+		if(loginVO!=null && pwMatch == true) {
+			int cnt = dao.memberDataDel(vo);
+			if(cnt>0){
+				mav.setViewName("redirect:/");
+			}else {
+				mav.addObject("response","회원탈퇴에 실패 하셨습니다.");
+				mav.setViewName("main/profile/profile");
+			}
+		}else {
+			mav.addObject("response","회원탈퇴에 실패 하셨습니다.");
+			mav.setViewName("main/profile/profile");
+		}
+		
+		
+		return mav;
+	}
 	@RequestMapping("/subjectRegister")
 	public String subjectRegister() {
 		return "admin/subjectRegister";
