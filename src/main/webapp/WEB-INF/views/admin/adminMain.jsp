@@ -1,104 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
+<div class="container my-0 mx-auto px-8 xl:px-0">
+	<div class="text-xl py-3 mx-16 text-xl">  
+		<span class="mr-2"><i class="xi-school my-6"></i></span>HOME
+	</div>
+    <!--Container-->
+    <div class="container w-full mx-auto">
+        <div class="w-full px-4 md:px-0 mb-16 text-grey-darkest leading-normal">
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-1 text-right md:text-center"> 
+                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Revenue</div> 
+                                <h3 class="text-3xl p-3"><span class="mr-2"><i class="xi-won"></i></span><span class="font-bold">${amVo.totalPrice }</span></h3>
+                            </div> 
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+            
+                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-1 text-right md:text-center"> 
+                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Student</div> 
+                                <h3 class="text-3xl p-3"><span class="mr-2 font-bold">${amVo.totalStudent }</span>명</h3>
+                            </div> 
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-1 text-right md:text-center"> 
+                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Teacher</div> 
+                                <h3 class="text-3xl p-3"><span class="mr-2 font-bold">${amVo.totalTeacher}</span>명</h3>
+                            </div> 
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/2 p-3"> 
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-1 text-right md:text-center"> 
+                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Course</div> 
+                                <h3 class="text-3xl p-3"><span class="mr-2 font-bold">${amVo.totalCourse }</span>개</h3>
+                            </div> 
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>	                	                	        
+            </div>
 
-
-<!--  -->    
-	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		
-		<div class="text-xl p-3 mx-16 ">  
-			<i class="xi-school my-6"></i>&nbsp;HOME
-		</div>
-	    <!--Container-->
-	    <div class="container w-full mx-auto">
-	        <div class="w-full px-4 md:px-0 mb-16 text-grey-darkest leading-normal">
-	            <div class="flex flex-wrap">
-	                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
-	                    <!--Metric Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="flex flex-row items-center">
-	                            <div class="flex-1 text-right md:text-center"> 
-	                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Revenue</div> 
-	                                <h3 class="text-3xl p-3">&nbsp;ⓦ&nbsp;${amVo.totalPrice } <span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
-	                            </div> 
-	                        </div>
-	                    </div>
-	                    <!--/Metric Card-->
-	                </div>
-	            
-	                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
-	                    <!--Metric Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="flex flex-row items-center">
-	                            <div class="flex-1 text-right md:text-center"> 
-	                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Student</div> 
-	                                <h3 class="text-3xl p-3">${amVo.totalStudent }&nbsp;명 <span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
-	                            </div> 
-	                        </div>
-	                    </div>
-	                    <!--/Metric Card-->
-	                </div>
-	                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
-	                    <!--Metric Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="flex flex-row items-center">
-	                            <div class="flex-1 text-right md:text-center"> 
-	                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Teacher</div> 
-	                                <h3 class="text-3xl p-3">${amVo.totalTeacher}&nbsp;명 <span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
-	                            </div> 
-	                        </div>
-	                    </div>
-	                    <!--/Metric Card-->
-	                </div>
-	                <div class="w-full md:w-1/2 xl:w-1/2 p-3"> 
-	                    <!--Metric Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="flex flex-row items-center">
-	                            <div class="flex-1 text-right md:text-center"> 
-	                               <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Course</div> 
-	                                <h3 class="text-3xl p-3">${amVo.totalCourse }&nbsp;개<span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
-	                            </div> 
-	                        </div>
-	                    </div>
-	                    <!--/Metric Card-->
-	                </div>	                	                	        
-	            </div>
-	
-	            <!--Divider-->
-	            <hr class="border-b-2 border-info-300 my-8 mx-4">
-				
-	            <div class="flex flex-row flex-wrap flex-grow mt-2">
+            <!--Divider-->
+            <hr class="border-b-2 border-info-300 my-8 mx-4">
+			
+            <div class="flex flex-row flex-wrap flex-grow mt-2">
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->	            
-	              <!-- 캘린더 생성 -->
-	         <div class="w-full md:w-full p-3">
-	              		<div class="rounded text-white ">
-	              			<input style="background-color: #1a252f;" class="p-3 w-24 h-10 rounded" type="button" id="popover" value="일정"/>
-	              		</div>
-	         	
-	              	<div id='calendar'>
-	              	
-	              	</div>
-					<div id="popup" class="bg-white rounded border-b-4 border-info-300">
-	    		 	 	<div class="modal_calendar p-3 text-center" id="modal_calendar"></div>
-              	 	 	<div class="modal_calendar_content" id="modal_calendar_content"></div>
+	        	<!-- 캘린더 생성 -->
+		        <div class="w-full md:w-full p-3">
+	           		<div class="rounded text-white ">
+	           			<input class="bg-black py-2 px-6 rounded cursor-pointer" type="button" id="popover" value="일정추가"/>
+	           		</div>
+		         	<div id='calendar'></div>
+					<div id="popup" class="bg-white rounded shadow">
+	    		 	 	<div class="modal_calendar p-3 text-center font-bold text-lg bg-gray-200 rounded-t" id="modal_calendar"></div>
+	             	 	 	<div class="modal_calendar_content" id="modal_calendar_content"></div>
 					</div>               
-	        </div>
-
+		        </div>
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->					    
-				 </div>    
-			 <div class="flex flex-row flex-wrap flex-grow mt-2">
-	            
-	                  <div class="w-full md:w-1/2 p-3">
-	                    <!--Graph Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="border-b p-3"> 
-	                            <h5 class="text-grey-dark">Popularity Course</h5>
-	                        </div>
-	                        <div class="p-5">
-	                            <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
-	                        
-						   <script>
-						   
+			</div>    
+			<div class="flex flex-row flex-wrap flex-grow mt-2">
+				<div class="w-full md:w-1/2 p-3">
+					<!--Graph Card-->
+					<div class="bg-white border rounded shadow">
+                        <div class="border-b p-3"> 
+                            <h5 class="text-grey-dark">Popularity Course</h5>
+                        </div>
+                        <div class="p-5">
+                            <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
+						   	<script>
 						   		var courseName_00 = "${courseName[0]}";
 						   		var courseName_01 = "${courseName[1]}";
 						   		var courseName_02 = "${courseName[2]}";
@@ -154,22 +143,20 @@
 	                                    }
 	                                }
 	                            });
-	                            </script>
-	                        </div>
-	                    </div>
-	                   </div>
-	                    <!--/Graph Card end-->
-	                   <div class="w-full md:w-1/2 p-3">
-	                    <!--Graph Card-->
-	                    <div class="bg-white border rounded shadow">
-	                        <div class="border-b p-3">
-	                            <h5 class="text-grey-dark">Popularity Teacher</h5> 
-	                        </div>
-	                        <div class="p-5">
-	                            <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
-	                            
-	                            <script>
-	                            
+	                        </script>
+	                   	</div>
+					</div>
+				</div>
+				<!--/Graph Card end-->
+	            <div class="w-full md:w-1/2 p-3">
+	            	<!--Graph Card-->
+	            	<div class="bg-white border rounded shadow">
+	                	<div class="border-b p-3">
+	                    	<h5 class="text-grey-dark">Popularity Teacher</h5> 
+	                	</div>
+	                    <div class="p-5">
+                            <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
+                            <script>
 	                        	var teacherName_00 = "${teacherName[0]}";
 						   		var teacherName_01 = "${teacherName[1]}";
 						   		var teacherName_02 = "${teacherName[2]}";
@@ -225,67 +212,68 @@
 	                                },
 	                                "options": {}
 	                            });
-	                            </script>
-	                        </div>
-	                    </div>
-	                    <!--/Graph Card end-->
-	                </div>         
-	            </div>
-	           	<!-- ------------------------------------------------------------------------------ -->
+                            </script>
+                        </div>
+                    </div>
+                    <!--/Graph Card end-->
+	            </div>         
 	        </div>
+	           	<!-- ------------------------------------------------------------------------------ -->
 	    </div>
 	</div>
+</div>
   
-
-
-
-
 <script>
 $(function(){	
 	//=======================================================================
 	//일정등록 버튼 클릭시, 일정 등록.
 	$("#popover").on('click', function(){ 
 		var tag = "";
-		tag += 	"<form id='calendar_form' method='post'>";
-		tag += "<div class='flex p-3'>"+ 
-					"<div class=''>일정명</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-					"<div class=''>" +
-						"<input size='15' class='border border-black' type='text' name='calendar_title' id='calendar_title' value=''/>" +
+		tag += 	"<form id='calendar_form' method='post'>"+
+				"<div class='p-4'>";
+		tag += "<div class='flex items-center mb-4'>"+ 
+					"<div class='w-1/4'>일정명</div>" +
+					"<div class='w-3/4'>" +
+						"<input class='appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-700' type='text' name='calendar_title' id='calendar_title' value=''/>" +
 					"</div>" +
 				"</div>";
-		tag += "<div class='flex p-3'>" +
-					"<div>시작 날짜</div>&nbsp;&nbsp;" +
-					"<div>" +
-						"<input  class='border border-black' type='date' name='calendar_start_date' id='calendar_start_date' value=''/>" +
+		tag += "<div class='flex items-center mb-4'>" +
+					"<div class='w-1/4'>시작 날짜</div>" +
+					"<div class='w-3/4'>" +
+						"<input class='appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-700' type='date' name='calendar_start_date' id='calendar_start_date' value=''/>" +
 					"</div>" +
 				"</div>";
-		tag += "<div class='flex p-3'>" +
-					"<div>마침 날짜</div>&nbsp;&nbsp;" +
-						"<div>" +
-							"<input  class='border border-black' type='date' name='calendar_end_date' id='calendar_end_date' value=''/>" +
+		tag += "<div class='flex items-center mb-4'>" +
+					"<div class='w-1/4'>마침 날짜</div>" +
+					"<div class='w-3/4'>" +
+						"<input class='appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-700' type='date' name='calendar_end_date' id='calendar_end_date' value=''/>" +
 					"</div>" +
 				"</div>";
-		tag += "<div class='flex p-3'>" +
-					"<div>일정 명칭</div>&nbsp;&nbsp;" + 
-					"<div>" + 
-						"<textarea style='resize:none;'class='border border-black' cols='18' rows='5' name='calendar_content' id='calendar_content'></textarea>" +
+		tag += "<div class='flex items-center mb-4'>" +
+					"<div class='w-1/4'>일정 명칭</div>" + 
+					"<div class='w-3/4'>" + 
+						"<textarea class='appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-700 resize-none' cols='18' rows='5' name='calendar_content' id='calendar_content'></textarea>" +
 					"</div>" +
 				"</div>"	;
-		tag += "<div class='flex p-3'>" +
-					"<div>컬    러</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-					"<div>" +
-						"<select name='calendar_color' id='colorSelect'>" +
-							"<option selected='selected'>::색상::</option>" +
-							"<option value='#3A3939' style='color:#3A3939'>검정</option>" +
-							"<option value='#FF583F' style='color:#FF583F'>빨강</option>" +
-							"<option value='#51DBFF' style='color:#51DBFF'>파랑</option>" +
-							"<option value='#A4ED75' style='color:#A4ED75'>녹색</option>" +  
-						"</select>" +
+		tag += "<div class='flex items-center mb-4'>" +
+					"<div class='w-1/4'>컬러</div>" +
+					"<div class='w-3/4'>"+
+						"<div class='inline-block relative'>" +
+							"<select name='calendar_color' id='colorSelect' class='block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:border-gray-700'>" +
+								"<option>::색상::</option>" +
+								"<option value='#3A3939' style='color:#3A3939'>검정</option>" +
+								"<option value='#FF583F' style='color:#FF583F'>빨강</option>" +
+								"<option value='#51DBFF' style='color:#51DBFF'>파랑</option>" +
+								"<option value='#A4ED75' style='color:#A4ED75'>녹색</option>" +  
+							"</select>" +
+							"<div class='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'><i class='xi-angle-down'></i></div>"+
+						"</div>" +
 					"</div>" +
 				"</div>"	 ;
 					
-		tag += "<div class='text-right p-3'>" +
-					"<input type='submit' value='저장' id='btn' />"+  
+		tag += "<div class='text-right'>" +
+					"<input type='submit' value='저장' id='btn' class='bg-gray-900 py-2 px-4 text-white font-bold rounded'/>"+  
+				"</div>"+  
 				"</div>";
 		tag	+=	"</form>";
 		
@@ -331,7 +319,3 @@ $(function(){
 });//제이쿼리 영역 end
 
  </script>
-	
-	
-</body>
-</html>

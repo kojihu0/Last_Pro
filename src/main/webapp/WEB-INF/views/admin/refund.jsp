@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 	<div class="h-10 text-lg my-6 w-full">
 		<i class="xi-school"></i><span class="ml-2">반환현황</span>
@@ -67,5 +60,3 @@
 	<span class="my-5" style="color:red">- 반환/취소는 수강기간 종료전 퇴원에 의한 환불 사유발생시에만 이용하시고, 착오 수납금은 '수정'모드를 이용하세요.<br/>
           - 수정/반환/삭제시 포인트, 반이동처리 등은 별도로 관리하세요.</span>
 </div>
-</body>
-</html>

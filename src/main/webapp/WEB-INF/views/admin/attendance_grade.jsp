@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>반별출결과제관리</title>
-</head>
-<body>
 <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
@@ -73,5 +66,3 @@
 		</ul>
 	</div>
 </div>
-</body>
-</html>

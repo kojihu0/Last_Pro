@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>noticeEdit</title>
-
-	<script src="<%=projectPath %>/ckeditor/ckeditor.js"></script>
-
-</head>
-<body>
-
-
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		<div class="text-xl p-3 mx-16 ">  
 			<i class="xi-school"></i>&nbsp;사내 공지사항 작성
@@ -118,7 +105,3 @@ $(function(){
 });
 
 </script>
-
-
-</body>
-</html>

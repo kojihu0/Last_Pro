@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">수강생현황</span>
@@ -590,5 +583,3 @@
 	</div>
 	<!-------------------------------------------------출결 현황 ---------------------------------------------->
 </div>
-</body>
-</html>

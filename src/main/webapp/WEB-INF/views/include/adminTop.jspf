@@ -7,34 +7,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- 공용 -->
-<link rel="stylesheet" href="/lms/css/tailwind.css" type="text/css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
-<script src="/lms/js/jquery-3.4.1.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Development --> 
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-<!-- css -->
-<link rel="stylesheet" href="/lms/css/adminTop.css" type="text/css"/>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
-
-
-<!-- js -->
-<script src="/lms/js/adminTop.js" type="text/javascript"></script>
-<script src="/lms/js/effectiveness.js" type="text/javascript"></script>
-<script src="/lms/js/management_of_student.js" type="text/javascript"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
-
-
-<!--  -->
-
-	 <!-- chart js -->
+	<meta charset="UTF-8">
+	<!-- 공용 -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<link rel="stylesheet" href="/lms/css/tailwind.css" type="text/css"/>
+	
+	<script src="/lms/js/jquery-3.4.1.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Development --> 
+	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+	<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+	<!-- css -->
+	<link rel="stylesheet" href="/lms/css/adminTop.css" type="text/css"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="<%=projectPath %>/css/adminCss.css" type="text/css"/>
+	
+	
+	<!-- js -->
+	<script src="/lms/js/adminTop.js" type="text/javascript"></script>
+	<script src="/lms/js/effectiveness.js" type="text/javascript"></script>
+	<script src="/lms/js/management_of_student.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="<%=projectPath%>/js/adminWordCheck.js" type="text/javascript"></script>
+	<!-- chart js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
 	
 	<!-- fullCalendar02 -->
@@ -60,37 +57,40 @@
 	<script src="<%=projectPath %>/js/dropEvent.js"></script>  
  
 
-<title>Insert title here</title>
+<title>Educamp Admin</title>
  
 </head>
-<body> 
-	<div id="loginArea" class="w-full flex justify-end h-6 align-center">
+<body>
+<header class="bg-white shadow">
+	<ul id="loginArea" class="container flex justify-end h-6 item-center my-0 mx-auto">
 		<c:if test="${ admin_id == null || admin_id == ''}">
-			<a href="/lms/admin" class="pr-3">로그인 </a>
+		<li><a href="/lms/admin" class="pr-3">로그인 </a></li>
 		</c:if>
 		<c:if test="${ admin_id != null || admin_id != ''}">
-			<span>${employee_name }&nbsp;님&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		<li>
+			<span class="mr-2">${employee_name }님</span>
 			<a href="<%=projectPath %>/adminStart/adminLogout">로그아웃</a>
+		</li>
 		</c:if>
-	</div>
-	<ul id="menuList" class="h-20 w-full">
-		<li><a href="/lms/admin/adminMain">HOME</a></li>
-		<li><a href="/lms/subjectRegister">접수관리</a>
-			<ul class="submenu">
+	</ul>
+	<ul id="menuList" class="w-full flex h-6 text-center item-center my-0 mx-auto">
+		<li class="w-1/4"><a href="/lms/admin/adminMain">HOME</a></li>
+		<li class="w-1/4"><a href="/lms/subjectRegister">접수관리</a>
+			<ul class="submenu bg-white shadow">
 				<li><a href="/lms/subjectRegister">접수현황</a></li>
 				<li><a href="/lms/cancelRegister">취소요청현황</a></li>
 			</ul>
 		</li>
-		<li><a href="/lms/student_current_situation">수강생 관리</a> 
-			<ul class="submenu">
+		<li class="w-1/4"><a href="/lms/student_current_situation">수강생 관리</a> 
+			<ul class="submenu bg-white shadow">
 				<li><a href="/lms/student_current_situation">수강생 현황</a></li>
 				<li><a href="/lms/leave_of_absence">휴강생 현황</a></li>
 				<li><a href="/lms/student_by_course">강좌별 수강생 현황</a></li>
 				<li><a href="/lms/attendance_grade">출결/성적관리</a></li>
 			</ul>
 		</li>
-		<li><a href="/lms/admin/adminManagementInfo">경영정보</a> 
-			<ul class="submenu"> 
+		<li class="w-1/4"><a href="/lms/admin/adminManagementInfo">경영정보</a> 
+			<ul class="submenu bg-white shadow"> 
 				<li><a href="/lms/admin/adminManagementInfo">강사 업무일지</a></li>
 				<li><a href="/lms/admin/adminNotice">사내일정</a></li>
 				<li><a href="/lms/admin/adminTeacherList">직원현황</a></li>
@@ -98,3 +98,4 @@
 			</ul>
 		</li>
 	</ul>
+</header>

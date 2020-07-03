@@ -96,8 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			tippy(info.el, {
 				
 				content: "<div class='text-center'>"
-							+"<p class='font-bold text-lg' style='background-color :"+info.event.backgroundColor+"'>"+ info.event.title +"</p>"
-							+"<p>"+ info.event.extendedProps.description +"</p>"
+							+"<p class='font-bold text-lg px-3 rounded' style='background-color :"+info.event.backgroundColor+"'>"+ info.event.title +"</p>"
+							+"<p class='p-1'>"+ info.event.extendedProps.description +"</p>"
 						+ "</div>",
 						allowHTML : true 
 			});
