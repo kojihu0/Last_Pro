@@ -41,6 +41,7 @@
 
         calendar.render();
     });
+	history.replaceState({}, null, location.pathname);
 	</script>
 	<script>
 	$(document).ready(function(){

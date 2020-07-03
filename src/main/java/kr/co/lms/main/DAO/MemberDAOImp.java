@@ -5,6 +5,8 @@ import kr.co.lms.main.VO.MemberVO;
 public interface MemberDAOImp {
 	//회원가입
 	public int memberRegister(MemberVO vo);
+	//회원탈퇴
+	public int memberDataDel(MemberVO vo);
 	//아이디 중복체크
 	public int idCheck(String userid);
 	//로그인

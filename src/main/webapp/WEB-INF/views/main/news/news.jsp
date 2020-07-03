@@ -47,9 +47,13 @@ white-space: nowrap;
 							${vo.admin_notice_content }
 							</div>
 						</div>
-						<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-							<img class="w-full" src="<%=ctx %>${vo.admin_notice_img}">
-						</div>
+						<c:if test="${vo.admin_notice_img != null }">
+										<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
+											<img class="w-full" src="<%=ctx %>${vo.admin_notice_img}">
+										</div>
+									</c:if>
+									<c:if test="${empty vo.admin_notice_img}">
+									</c:if>
 					</div><!-- event-row -->
 				</div><!-- 공지사항 폼 end -->
 		</c:forEach>

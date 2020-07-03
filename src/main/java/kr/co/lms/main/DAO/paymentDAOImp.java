@@ -17,4 +17,8 @@ public interface paymentDAOImp {
 	public List<paymentVO> paymentHistoryRecord(paymentVO vo);
 	//결제내역 상세페이지 가져오기 
 	public paymentVO paymentDetailRecord(paymentVO vo);
+	//결제취소 요청 
+	public int paymentCancel(paymentVO vo);
+	//결제 취소 상태 번호 가져오기 
+	public int paymentCancelNum(paymentVO vo);
 }

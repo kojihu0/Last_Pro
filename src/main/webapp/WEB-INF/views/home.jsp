@@ -110,7 +110,7 @@
 				<div class="p-8">
 					<form method="post" action="/lms/registerOk" onsubmit="return basicFormValidate(this)">
 						<p class="mb-4 flex">
-							<input type="text" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
+							<input type="text" id="userId" name="student_id"  placeholder="아이디" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500">
 							<input type="button" id="userIdChk" class="focus:outline-none cursor-pointer py-2 px-4 bg-black text-white focus:bg-brand-700" value="중복체크">
 						</p>
 						<p class="mb-4"><input type="text" name="student_name_ko" placeholder="이름" class="appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-brand-500"></p>

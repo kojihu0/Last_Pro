@@ -529,8 +529,6 @@ $(function(){
 		       $('#cash').show(); 
 		       $('#import').hide();
 		    } 
-		     
-		    
 	   $("#trans,#card").click(function(){
 	    if($("#cash").css("display") == "block"){   
 		       $('#cash').hide();  

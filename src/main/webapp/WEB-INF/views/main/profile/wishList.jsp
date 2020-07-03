@@ -25,28 +25,29 @@
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
 			<ul class="flex flex-initial roboto-slab">
 				  <li class="-mb-px mr-1">
-				    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy?no=${student_no}">Course</a>
+				    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
 				  </li> 
 				  <li class="mr-1">
-				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse?no=${student_no}">Completion Course</a>
+				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/completionCourse">Completion Course</a>
 				  </li>
 				  <li class="mr-1">
-				   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse?no=${student_no}">Incomplete Course</a>
+				   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
 				  </li>
 				  <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule?no=${student_no}">Schedule</a>
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
 				  </li>
 				  <li class="mr-1">
-					<a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile?no=${student_no}">Profile</a>
+					<a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/profile">Profile</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/wishList?no=${student_no}">WishList</a>
+				    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/wishList">WishList</a>
 				  </li>
 				   <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory?no=${student_no}">PaymentHistory</a>
+				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
 				  </li>
 				</ul>
 				<div class="best-section my-0 mx-auto py-16">
+				<c:if test="${list != null}">
 					<div class="flex justify-between relative pb-4 mb-10">
 						<div>
 							<h1 class="roboto-slab font-bold">FAVORITE COURSES</h1>
@@ -57,7 +58,11 @@
 						</div>
 						<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 					</div>
+					<c:if test="${empty list}">
+								<p class="py-8 text-center text-lg font-bold">선택하신 강좌가 없습니다.</p>
+					</c:if>
 				<div id="wishListCourseCarousel" class="-mx-4 overflow-hidden">
+				
 					<c:forEach var="list" items="${list}">
 						<div class="course-item px-4 text-center"><!-- course-item -->
 							<div class="course-image relative overflow-hidden border border-gray-300">
@@ -74,6 +79,7 @@
 						</div><!-- course-item -->
 					</c:forEach>
 				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
