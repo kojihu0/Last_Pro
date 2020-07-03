@@ -1,29 +1,24 @@
 package kr.co.lms.admin;
 
-
+ 
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
-import javax.servlet.ServletContext;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.context.ServletContextAware;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lms.admin.DAO.AdminRegiInterface;
@@ -33,7 +28,7 @@ import kr.co.lms.admin.VO.AdminNoticeVO;
 import kr.co.lms.admin.VO.AdminRegiVO;
 import kr.co.lms.admin.VO.AdminStudentPagingVO;
 import kr.co.lms.admin.VO.AdminTeacherVO;
-
+ 
 @Controller
 public class AdminController {
 
@@ -50,13 +45,13 @@ public class AdminController {
 	}
 	
 //-------------------------------------------------------------
-	//·Î±×ÀÎÃ¢
+	//ë¡œê·¸ì¸ì°½
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
 	public String admin() {
 		
 		return "adminStart/adminLogin";
 	}
-	//°ü¸®ÀÚ ¹× °­»ç ·Î±×ÀÎ
+	//ê´€ë¦¬ì ë° ê°•ì‚¬ ë¡œê·¸ì¸
 	@RequestMapping(value="/adminStart/adminLoginOk", method=RequestMethod.POST)
 	public ModelAndView adminLoginOk(AdminRegiVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -77,23 +72,23 @@ public class AdminController {
 		
 		return mav;
 	}
-	//È¸¿ø°¡ÀÔÃ¢
+	//íšŒì›ê°€ì…ì°½
 	@RequestMapping(value="/adminStart/adminJoin", method=RequestMethod.GET)
 	public String adminJoin() {
 		return "adminStart/adminJoin";
 	}
-	 //°ü¸®ÀÚ ¹× °­»ç È¸¿ø°¡ÀÔ.
+	 //ê´€ë¦¬ì ë° ê°•ì‚¬ íšŒì›ê°€ì….
 	@RequestMapping(value="/adminStart/adminJoinOk", method=RequestMethod.POST)
 	public ModelAndView adminJoinOk(AdminRegiVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		
-		//¾ÆÀÌµğ Áßº¹ Ã¼Å©
+		//ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 		AdminRegiInterface checkId = sqlSession.getMapper(AdminRegiInterface.class);
 		
 		AdminRegiVO resultVo = checkId.selectAdminIdCheck(vo);
 		 
 		if(resultVo == null) { 
-			//¾ÆÀÌµğ µî·Ï
+			//ì•„ì´ë”” ë“±ë¡
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 			int insertResult = adminRegiInter.insertAdminID(vo);
 			
@@ -105,13 +100,13 @@ public class AdminController {
 			}
 		}else {
 			String str = "Y";
-			System.out.println("1¹ø : Áßº¹»óÅÂ");
+			System.out.println("1ë²ˆ : ì¤‘ë³µìƒíƒœ");
 			mav.addObject("overlap", str);   
 			mav.setViewName("/adminStart/adminJoin");
 		}
 		return mav;
 	}
-	//·Î±×¾Æ¿ô
+	//ë¡œê·¸ì•„ì›ƒ
 	@RequestMapping(value="/adminStart/adminLogout", method=RequestMethod.GET)
 	public String adminLogout(HttpServletRequest request) {
 		
@@ -122,20 +117,20 @@ public class AdminController {
 		return "adminStart/adminLogin";
 	}
 //======================================================================================
-	//¾÷¹«ÀÏÁö µî·Ï ÆÄÆ®
+	//ì—…ë¬´ì¼ì§€ ë“±ë¡ íŒŒíŠ¸
 	
-		//¾÷¹«ÀÏÁö ¸ŞÀÎ(¸®½ºÆ®)·Î ÀÌµ¿. 
+		//ì—…ë¬´ì¼ì§€ ë©”ì¸(ë¦¬ìŠ¤íŠ¸)ë¡œ ì´ë™. 
 	@RequestMapping(value="/admin/adminManagementInfo", method= {RequestMethod.GET,RequestMethod.POST}, produces = "application/text; charset=UTF-8")
 	public ModelAndView adminManagementInfo(AdminManageInfoVO vo, AdminStudentPagingVO pVo, HttpServletRequest request) { 
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 		 
 		int 	selectNo 	  = 0;  
-		String  selectSubject = "::°ú¸ñ::";
+		String  selectSubject = "::ê³¼ëª©::";
 		int		selectOk 	  = vo.getAdmin_manageinfo_ok();
 		
 		if(vo.getAdmin_manageinfo_subject() == null) { 
-			selectSubject = "::°ú¸ñ::";
+			selectSubject = "::ê³¼ëª©::";
 			pVo.setSearchKey_02(selectSubject);  
 		} 
 		if(vo.getEmployee_no() == 0) {
@@ -157,15 +152,15 @@ public class AdminController {
 		
 		pVo.setSearchKey_03(vo.getAdmin_manageinfo_ok());
 		
-		//ÆäÀÌÁö ¼³Á¤.
+		//í˜ì´ì§€ ì„¤ì •.
 		int result_totalPage = adminRegiInter.selectTotalRecordManageInfo(pVo);
 		
-		//°­»ç ÀÌ¸§ Àü¿ø »Ì¾Æ¿À±â.
+		//ê°•ì‚¬ ì´ë¦„ ì „ì› ë½‘ì•„ì˜¤ê¸°.
 		List<AdminManageInfoVO> nameList = adminRegiInter.selectManageInfoName();
 		
-		//ÇÑÆäÀÌÁö¿¡ º¸ÀÌ´Â ¼ıÀÚ È®ÀÎ.
+		//í•œí˜ì´ì§€ì— ë³´ì´ëŠ” ìˆ«ì í™•ì¸.
 		pVo.setOnePageRecord(5);
-		//ÅäÅ» ·¹ÄÚµå È®ÀÎ.
+		//í† íƒˆ ë ˆì½”ë“œ í™•ì¸.
 		pVo.setTotalRecord(result_totalPage);
 		
 		List<AdminManageInfoVO> resultList = adminRegiInter.selectManageInfo(pVo);		
@@ -182,7 +177,7 @@ public class AdminController {
  
 		return mav;
 	}
-	//¾÷¹«ÀÏÁö º¸·¯°¡´Â °÷.
+	//ì—…ë¬´ì¼ì§€ ë³´ëŸ¬ê°€ëŠ” ê³³.
 	@RequestMapping("/admin/adminManageView")
 	public ModelAndView adminManageView(AdminManageInfoVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -195,30 +190,30 @@ public class AdminController {
 		
 		return mav;
 	}
-	//¾÷¹«ÀÏÁö µî·ÏÇÏ´Â °÷À¸·Î ÀÌµ¿.
+	//ì—…ë¬´ì¼ì§€ ë“±ë¡í•˜ëŠ” ê³³ìœ¼ë¡œ ì´ë™.
 	@RequestMapping("/admin/adminManageRegi")
 	public String adminManageRegi(){
 		
 		return "admin/adminManageRegi";
 	}
 
-		//¾÷¹«ÀÏÁö µî·ÏOK
+		//ì—…ë¬´ì¼ì§€ ë“±ë¡OK
 	@RequestMapping(value="/admin/adminMangeRegiOk", method=RequestMethod.POST)
 	public ModelAndView adminManageRegiOk(AdminManageInfoVO vo,
 										  HttpServletRequest request) {
-		//¸ğµ¨¾Øºä
+		//ëª¨ë¸ì•¤ë·°
 		ModelAndView mav = new ModelAndView();
-		//ÀÎÅÍÆäÀÌ½º, sql¼¼¼ÇÀ¸·Î °¡Á®¿À±â.
+		//ì¸í„°í˜ì´ìŠ¤, sqlì„¸ì…˜ìœ¼ë¡œ ê°€ì ¸ì˜¤ê¸°.
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-		//ÀÛ¼ºÀÚ¸¦ À§ÇÑ ¾ÆÀÌµğ Á¤º¸
+		//ì‘ì„±ìë¥¼ ìœ„í•œ ì•„ì´ë”” ì •ë³´
 		HttpSession sess = request.getSession();
-		//¾ÆÀÌµğ Á¤º¸ ÀúÀå.
+		//ì•„ì´ë”” ì •ë³´ ì €ì¥.
 		String admin_Id = (String)sess.getAttribute("admin_id");
 		
 		//---------------------------------
-			//ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÑ ÀÛ¾÷.
+			//íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•œ ì‘ì—….
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/adminManagementUpload");
-	      int	 maxSize 		= 1024*1024*100;//100 ¸Ş°¡ ¹ÙÀÌÆ®
+	      int	 maxSize 		= 1024*1024*100;//100 ë©”ê°€ ë°”ì´íŠ¸
 	      String paramName 		= vo.getAdmin_manageinfo_file_m().getName();
 	      String txt 			= vo.getAdmin_manageinfo_file_m().getOriginalFilename();
 	      
@@ -252,7 +247,7 @@ public class AdminController {
 	}
 	
 
-	//¼öÁ¤Æû¿¡¼­, µ¥ÀÌÅÍ ºÒ·¯¿À±â.
+	//ìˆ˜ì •í¼ì—ì„œ, ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°.
 	@RequestMapping(value="/admin/adminManageEdit", method= {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView adminMangeEdit(AdminManageInfoVO vo, HttpServletRequest request) {
 		
@@ -266,7 +261,7 @@ public class AdminController {
 	
 		return mav;
 	}
-	//¾÷¹«ÀÏÁö ¼öÁ¤ok
+	//ì—…ë¬´ì¼ì§€ ìˆ˜ì •ok
 	@RequestMapping(value="/admin/adminManageEditOk", method= RequestMethod.POST)
 	public ModelAndView adminMangeEditOk(AdminManageInfoVO vo, HttpServletRequest request) {
 			ModelAndView mav = new ModelAndView();
@@ -274,9 +269,9 @@ public class AdminController {
 			
 			
 		//============================
-			//ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÑ ÀÛ¾÷.
+			//íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•œ ì‘ì—….
 			  String path 	 		= request.getSession().getServletContext().getRealPath("/adminManagementUpload");
-		      int	 maxSize 		= 1024*1024*100;//100 ¸Ş°¡ ¹ÙÀÌÆ®
+		      int	 maxSize 		= 1024*1024*100;//100 ë©”ê°€ ë°”ì´íŠ¸
 		      String paramName 		= vo.getAdmin_manageinfo_file_m().getName();
 		      String txt 			= vo.getAdmin_manageinfo_file_m().getOriginalFilename();
 		      
@@ -303,7 +298,7 @@ public class AdminController {
 			}
 		return mav;
 	} 
-	//¾÷¹«ÀÏÁö °áÁ¦
+	//ì—…ë¬´ì¼ì§€ ê²°ì œ
 	@RequestMapping(value="/admin/adminManagementInfoOk", method=RequestMethod.POST)
 	public ModelAndView adminManageInfoOk(AdminManageInfoVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -321,17 +316,17 @@ public class AdminController {
 	
 //-------------------------------------------------------------		
 	
-	//°ü¸®ÀÚ °øÁö»çÇ× ÀÌº¥Æ® ¸®½ºÆ® »Ì±â.
+	//ê´€ë¦¬ì ê³µì§€ì‚¬í•­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤íŠ¸ ë½‘ê¸°.
 	@RequestMapping("/admin/adminNotice")
 	public ModelAndView adminNotice(AdminNoticeVO vo, AdminStudentPagingVO pVo, HttpServletRequest request) { 
 		ModelAndView mav = new ModelAndView();
 		
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 		 
-		//ÇÑÆäÀÌÁö¿¡ º¸ÀÌ´Â ¼ıÀÚ È®ÀÎ.
+		//í•œí˜ì´ì§€ì— ë³´ì´ëŠ” ìˆ«ì í™•ì¸.
 		pVo.setOnePageRecord(5);
 		
-		System.out.println("adminNotice ¿¡·¯" + pVo.getSearchKey());
+		System.out.println("adminNotice ì—ëŸ¬" + pVo.getSearchKey());
 		int searchKeyInt = -1;
 		if(pVo.getSearchKey() != null) {
 			searchKeyInt = Integer.parseInt(pVo.getSearchKey()); 
@@ -340,7 +335,7 @@ public class AdminController {
 		int result_totalPage = adminRegiInter.selectNoticeTotalRecord(pVo);
 		
 
-		//ÅäÅ» ·¹ÄÚµå È®ÀÎ.
+		//í† íƒˆ ë ˆì½”ë“œ í™•ì¸.
 		pVo.setTotalRecord(result_totalPage);
 		
 		List<AdminNoticeVO> result_List = adminRegiInter.selectNoticeAll(pVo);
@@ -361,7 +356,7 @@ public class AdminController {
 		return "admin/adminNoticeWrite";
 	}
 	
-	//°øÁö»çÇ× µî·Ï.
+	//ê³µì§€ì‚¬í•­ ë“±ë¡.
 	@RequestMapping(value="/admin/adminNoticeWriteOk", method=RequestMethod.POST)
 	public ModelAndView adminNoticeWriteOk(AdminNoticeVO vo, HttpServletRequest request) {
 	
@@ -373,7 +368,7 @@ public class AdminController {
 		String admin_Id		 = (String)sess.getAttribute("admin_id");
 		String employee_Name = (String)sess.getAttribute("employee_name");
 		//==============================================
-		//ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÑ ÀÛ¾÷.
+		//íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•œ ì‘ì—….
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
 	      String paramName 		= vo.getAdmin_notice_img_m().getName();
 	      String img 			= vo.getAdmin_notice_img_m().getOriginalFilename();
@@ -388,7 +383,7 @@ public class AdminController {
 	      vo.setAdmin_notice_img(img);
 	      
 		//============================================
-		//ÀÓÇÃ·ÎÀÌ ³Ñ¹ö ±¸ÇÏ±â.
+		//ì„í”Œë¡œì´ ë„˜ë²„ êµ¬í•˜ê¸°.
 		int adminNo = adminRegiInter.selectEmployeeNo(admin_Id);
 		
 		vo.setEmployee_no(adminNo);
@@ -408,7 +403,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	//»ç³»ÀÏÁ¤ º¸±â
+	//ì‚¬ë‚´ì¼ì • ë³´ê¸°
 	@RequestMapping("/admin/adminNoticeView")
 	public ModelAndView adminNoticeView(@RequestParam("admin_notice_no") int admin_notice_no, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -423,7 +418,7 @@ public class AdminController {
 		}
 		return mav;
 	}
-	//»ç³»ÀÏÁ¤ ¼öÁ¤À¸·Î ÀÌµ¿ÇÏ±â.
+	//ì‚¬ë‚´ì¼ì • ìˆ˜ì •ìœ¼ë¡œ ì´ë™í•˜ê¸°.
 	@RequestMapping("/admin/adminNoticeEdit")
 	public ModelAndView adminNoticeEdit(@RequestParam("admin_notice_no") int admin_notice_no, HttpServletRequest request) {
 		
@@ -439,7 +434,7 @@ public class AdminController {
 		}
 		return mav; 
 	}
-	//¼öÁ¤ ½ÇÇà.
+	//ìˆ˜ì • ì‹¤í–‰.
 	@RequestMapping(value="/admin/adminNoticeEditOk", method=RequestMethod.POST)
 	public ModelAndView adminNoticeEditOk(AdminNoticeVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -461,25 +456,28 @@ public class AdminController {
 		return "admin/adminNotice";
 	}
 //-------------------------------------------------------------	
-		//°­»ç ¸®½ºÆ® »Ñ¸®±â
+		//ê°•ì‚¬ ë¦¬ìŠ¤íŠ¸ ë¿Œë¦¬ê¸°
 	@RequestMapping(value="/admin/adminTeacherList", method= RequestMethod.GET)
-	public ModelAndView adminTeacherList(HttpServletRequest request, AdminTeacherVO vo, AdminStudentPagingVO pVo) {
+	public ModelAndView adminTeacherList(String searchNameT, HttpServletRequest request, AdminTeacherVO vo, AdminStudentPagingVO pVo) {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-	
+	 
 		pVo.setOnePageRecord(4);
-		pVo.setOnePageCount(5); 
-		if(vo.getEmployee_class() == null) {
+		pVo.setOnePageCount(3); 
+		if(vo.getEmployee_class() == null) { 
 			vo.setEmployee_class("::Class::");
 		} 
 		if(vo.getEmployee_rank() == null) {
-			vo.setEmployee_rank("::Á÷±Ş::");
+			vo.setEmployee_rank("::ì§ê¸‰::");
 		}
 	
 		pVo.setSearchKey(vo.getEmployee_class());
 		pVo.setSearchWord(vo.getEmployee_rank());
-		pVo.setSearchKey_02(vo.getEmployee_name());
 	
+		if(searchNameT != null) {
+			pVo.setSearchKey_02(searchNameT);
+		}
+		
 		int result_Total = adminRegiInter.selectTeacherTotal(pVo);
 		
 		pVo.setTotalRecord(result_Total);
@@ -487,20 +485,21 @@ public class AdminController {
 		List<AdminTeacherVO> resultList = adminRegiInter.selectAdminAllRecord(pVo);
 		
 		if(resultList != null) {
-			System.out.println("¼º°ø");
+			System.out.println("ì„±ê³µ");
 			mav.addObject("pageVo", pVo); 
 			mav.addObject("list", resultList); 
 			mav.addObject("employee_rank", vo.getEmployee_rank());
 			mav.addObject("employee_class",vo.getEmployee_class());
-
+			mav.addObject("searchNameT", searchNameT);
+			
 			mav.setViewName("/admin/adminTeacherList");
 		}else {
-			System.out.println("½ÇÆĞ");
+			System.out.println("ì‹¤íŒ¨");
 			mav.setViewName("redirect:/admin");
 		}
 		return mav;
 	}
-	//°­»ç µî·Ï.
+	//ê°•ì‚¬ ë“±ë¡.
 	@RequestMapping("/admin/adminTeacherRegi")
 	public ModelAndView adminTeacherRegi(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -508,7 +507,7 @@ public class AdminController {
 			mav.setViewName("admin/adminTeacherRegi");
 		return mav;
 	}
-	//°­»ç µî·Ïok.
+	//ê°•ì‚¬ ë“±ë¡ok.
 	@RequestMapping(value="/admin/adminTeacherRegiOk", method= {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView adminTeacherRegiOk(AdminTeacherVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -520,7 +519,7 @@ public class AdminController {
 		
 		
 
-		//ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÑ ÀÛ¾÷.
+		//íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•œ ì‘ì—….
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
 	      String paramName 		= vo.getEmployee_img_m().getName();
 	      String img 			= vo.getEmployee_img_m().getOriginalFilename();
@@ -544,32 +543,32 @@ public class AdminController {
 		
 		return mav;
 	}
-	//°­»ç Á¤º¸ ¼öÁ¤ Æû
+	//ê°•ì‚¬ ì •ë³´ ìˆ˜ì • í¼
 	@RequestMapping(value="/admin/adminTeacherEdit", method= {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView adminTeacherEdit(HttpServletRequest request, AdminTeacherVO vo) {
 								
 		ModelAndView  mav = new ModelAndView();
 	
 		AdminRegiInterface  adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
-		//¼öÁ¤ÇØ¾ßÇÏ´Â »ç¶÷ÀÇ Á¤º¸¸¦  °¡Á®¿È.
+		//ìˆ˜ì •í•´ì•¼í•˜ëŠ” ì‚¬ëŒì˜ ì •ë³´ë¥¼  ê°€ì ¸ì˜´.
 		
 		AdminTeacherVO tempVo = adminRegiInter.selectTeacherOverView(vo);
 		
-		System.out.println("TeacherVO È®ÀÎ "+ tempVo.getEmployee_email());
-		System.out.println("TeacherVO È®ÀÎ "+ tempVo.getEmployee_class());
-		System.out.println("TeacherVO È®ÀÎ "+ tempVo.getEmployee_subject());
-		System.out.println("TeacherVO È®ÀÎ "+ tempVo.getEmployee_img());
+		System.out.println("TeacherVO í™•ì¸ "+ tempVo.getEmployee_email());
+		System.out.println("TeacherVO í™•ì¸ "+ tempVo.getEmployee_class());
+		System.out.println("TeacherVO í™•ì¸ "+ tempVo.getEmployee_subject());
+		System.out.println("TeacherVO í™•ì¸ "+ tempVo.getEmployee_img());
 		 
 	
 		if(tempVo != null) { 
 			vo.setEmployee_overview(tempVo.getEmployee_overview() ); 
-			//µµ¸ŞÀÎ, ¾ÆÀÌµğ ºĞ¸®.
+			//ë„ë©”ì¸, ì•„ì´ë”” ë¶„ë¦¬.
 			String 	 email = tempVo.getEmployee_email(); 
 			int        cut = email.indexOf("@");
 			String emailId = email.substring(0,cut); 
 			String  domain = email.substring(cut+1); 
 			
-			//ÀüÈ­¹øÈ£ ºĞ¸® 
+			//ì „í™”ë²ˆí˜¸ ë¶„ë¦¬ 
 			String tel = tempVo.getEmployee_tel();
 			
 			String[] telSplitData = tel.split("-");
@@ -590,14 +589,14 @@ public class AdminController {
 		return mav;
 	}
 	
-	//°­»ç Á¤º¸ ¼öÁ¤OK
+	//ê°•ì‚¬ ì •ë³´ ìˆ˜ì •OK
 	@RequestMapping(value="/admin/adminTeacherEditOk", method={RequestMethod.POST, RequestMethod.GET}) 
 	public ModelAndView adminTeacherEditOk(HttpServletRequest request, AdminTeacherVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
 		AdminRegiInterface adminRegiInter	= sqlSession.getMapper(AdminRegiInterface.class);
 		
-		//ÆÄÀÏ ¾÷·Îµå¸¦ À§ÇÑ ÀÛ¾÷.
+		//íŒŒì¼ ì—…ë¡œë“œë¥¼ ìœ„í•œ ì‘ì—….
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
 	      String paramName 		= vo.getEmployee_img_m().getName();
 	      String img 			= vo.getEmployee_img_m().getOriginalFilename();
@@ -641,7 +640,7 @@ public class AdminController {
 		return mav;
 	}  
 //-------------------------------------------------------------	
-	 //°­ÁÂ ¸®½ºÆ® »Ñ¸®±â
+	 //ê°•ì¢Œ ë¦¬ìŠ¤íŠ¸ ë¿Œë¦¬ê¸°
 	@RequestMapping("/admin/adminCourseList")
 	public ModelAndView adminCourseList(AdminStudentPagingVO pVo
 										,AdminCourseVO vo
@@ -649,12 +648,12 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 
-		//ÇÑÆäÀÌÁö´ç º¸¿©ÁÙ ·¹ÄÚµå ¼ö ¼³Á¤.
+		//í•œí˜ì´ì§€ë‹¹ ë³´ì—¬ì¤„ ë ˆì½”ë“œ ìˆ˜ ì„¤ì •.
 		pVo.setOnePageRecord(10);
 		pVo.setOnePageCount(3);
 				
 		int 	searchKey_Year = -1;
-		String  searchKey_State = "::»óÅÂ::";
+		String  searchKey_State = "::ìƒíƒœ::";
 	  	 
 		if(pVo.getSearchKey_01() == 0) {
 			pVo.setSearchKey_01(searchKey_Year); 
@@ -672,12 +671,12 @@ public class AdminController {
 		pVo.setSearchKey_01(searchKey_Year);
 		pVo.setSearchKey_02(searchKey_State);
 		
-		//ÅäÅ» ·¹ÄÚµå
+		//í† íƒˆ ë ˆì½”ë“œ
 		int result_Int = adminRegiInter.selectCourseTotal(pVo);
-		//ÅäÅ» ·¹ÄÚµå ¼¼ÆÃ.
+		//í† íƒˆ ë ˆì½”ë“œ ì„¸íŒ….
 		pVo.setTotalRecord(result_Int);
 		
-		//¸®½ºÆ® ¸ñ·Ï ¼¼ÆÃ.
+		//ë¦¬ìŠ¤íŠ¸ ëª©ë¡ ì„¸íŒ….
 		List<AdminCourseVO> courseList = adminRegiInter.selectCourseAll(pVo);
 		
 		if(courseList != null) {
@@ -689,7 +688,7 @@ public class AdminController {
 		}
 		return mav;
 	}
-	 //°­ÁÂ ¼öÁ¤ Æû µé¾î°¡±â.	
+	 //ê°•ì¢Œ ìˆ˜ì • í¼ ë“¤ì–´ê°€ê¸°.	
 	@RequestMapping("/admin/adminCourseEdit")
 	public ModelAndView adminCourseEdit(AdminCourseVO vo, HttpServletRequest requet) {
 		ModelAndView mav = new ModelAndView();
@@ -703,7 +702,7 @@ public class AdminController {
 		
 		return mav;  
 	}
-	//°­ÁÂ ¼öÁ¤ÇÏ±â ok
+	//ê°•ì¢Œ ìˆ˜ì •í•˜ê¸° ok
 	@RequestMapping(value="/admin/adminCourseEditOk", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView adminCourseEditOk(AdminCourseVO vo, HttpServletRequest request){
 		
@@ -712,7 +711,7 @@ public class AdminController {
 
 		int result_Int = adminRegiInter.updateCourse(vo);
 		
-		System.out.println("È®ÀÎ : °á°ú : " + result_Int); 
+		System.out.println("í™•ì¸ : ê²°ê³¼ : " + result_Int); 
 		
 		if(result_Int > 0) {
 			mav.setViewName("redirect:/admin/adminCourseList");   
@@ -725,7 +724,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	//°­ÁÂ »èÁ¦ÇÏ±â.
+	//ê°•ì¢Œ ì‚­ì œí•˜ê¸°.
 	@RequestMapping("/admin/adminCourseDel")
 	public ModelAndView adminCourseDel(AdminCourseVO vo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -742,21 +741,21 @@ public class AdminController {
 		
 		return mav;
 	}
-	//°­ÁÂ µî·ÏÇÏ±â ÆûÀ¸·Î ÀÌµ¿.
+	//ê°•ì¢Œ ë“±ë¡í•˜ê¸° í¼ìœ¼ë¡œ ì´ë™.
 	@RequestMapping("/admin/adminCourseRegi")
 	public String adminCourseRegi() {
 		return "admin/adminCourseRegi";
 	}
-	//°­ÁÂ µî·Ï ok
+	//ê°•ì¢Œ ë“±ë¡ ok
 	@RequestMapping(value="/admin/adminCourseRegiOk", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView adminCourseRegiOk(AdminCourseVO vo, HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 		
-		//¾ÆÀÌµğ Á¤º¸ ¹Ş¾Æ¿À±â À§ÇØ ¼¼¼Ç ¼±¾ğ
+		//ì•„ì´ë”” ì •ë³´ ë°›ì•„ì˜¤ê¸° ìœ„í•´ ì„¸ì…˜ ì„ ì–¸
 		HttpSession sess = request.getSession();
-		//¾ÆÀÌµğ , ÀÌ¸§, ¹øÈ£
+		//ì•„ì´ë”” , ì´ë¦„, ë²ˆí˜¸
 		String 	employee_Id = (String)sess.getAttribute("admin_id");
 		String 	check_Name  = (String)sess.getAttribute("employee_name");
 		int 	employee_No_Check =  adminRegiInter.checkTeacherId(employee_Id); 
@@ -765,7 +764,7 @@ public class AdminController {
 			
 			vo.setEmployee_no(employee_No_Check); 
 			vo.setEmployee_name(check_Name);
-					
+					 
 			String price = vo.getCourse_price();
 			String priceUncomma = price.replaceAll(",", ""); 
 
@@ -786,7 +785,7 @@ public class AdminController {
 		return mav;
 	}
 //------------------------------------------------------------
-	//ÆÄÀÏ ¾÷·Îµå »èÁ¦
+	//íŒŒì¼ ì—…ë¡œë“œ ì‚­ì œ
 	public void deleteFile(String path, String txt) {
 		File f = new File(path, txt);
 		f.delete();

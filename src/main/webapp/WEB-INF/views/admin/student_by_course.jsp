@@ -13,7 +13,7 @@
 	</div>
 	<form action="/lms/student_by_course" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
 		<div class="mx-3 w-5/6">
-			<div class="w-1/2 calendar my-3">반환일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
+			<div class="w-1/2 calendar my-3">개강일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
 			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="border-solid border-2 border-gray-600"/></div>
 		</div>
 		<input type="submit" value="검색하기" class="w-20 h-16 my-3 ml-12 border-solid border-2 border-gray-600 rounded"/>

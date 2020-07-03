@@ -127,7 +127,7 @@ $(function(){
 		  $("#colsed_out_form").css("display","none");
 		});
 	  
-	  $("#modify_counseling_id").click(function(){
+	  $(".modify_counseling_id").click(function(){
 		  $("#counseling_management_tab>a").addClass("rounded-t").addClass("border-l").addClass("border-t").addClass("border-r");
 		  $("#basicInfo_tab>a").removeClass("rounded-t").removeClass("border-l").removeClass("border-t").removeClass("border-r");
 		  $("#assigning_class_tab>a").removeClass("rounded-t").removeClass("border-l").removeClass("border-t").removeClass("border-r");
@@ -143,6 +143,14 @@ $(function(){
 		  $("#assigning_class").css("display","none");
 		  $("#payment_status").css("display","none");
 		  $("#counseling_management").css("display","none");
+		  
+		  var student_no = $(this).data("student_no");
+		  var counseling_no = $(this).data("counseling_no");
+		  $("#modify_counseling_form textarea[name=counseling_content]").val($(".counseling_content-"+counseling_no).text());
+		  $("#modify_counseling_form input[name=counseling_title]").val($(".counseling_title-"+counseling_no).text());
+		  $("#modify_counseling_form select[name=counseling_division]").val($(".counseling_division-"+counseling_no).text()).prop("selected", true);
+		  $("#modify_counseling_form input[name=student_no]").val(student_no);
+		  $("#modify_counseling_form input[name=counseling_no]").val(counseling_no);
 		});
 	  
 	  $("#move_class").click(function(){
@@ -161,6 +169,11 @@ $(function(){
 		  $("#assigning_class").css("display","none");
 		  $("#payment_status").css("display","none");
 		  $("#counseling_management").css("display","none");
+		  
+		  var payment_no = $(this).data("payment_no");
+		  var student_no = $(this).data("student_no");
+		  $("#move_class_form input[name=payment_no]").val(payment_no);
+		  $("#move_class_form input[name=student_no]").val(student_no);
 		});
 	  
 	  $("#colsed_out_class").click(function(){
@@ -197,18 +210,123 @@ $(function(){
 		  $("#assigning_class").css("display","none");
 		  $("#payment_status").css("display","none");
 		  $("#counseling_management").css("display","none");
+		  
+		  var state = $(this).data("state");
+		  var student_course_state_date = $(this).data("student_course_state_date");
+		  var payment_no = $(this).data("payment_no");
+		  if(state==3){
+			  $("#modify_colsed_out_form input[name=state]").val("3").prop("checked", true);
+		  }else if(state==4){
+			  $("#modify_colsed_out_form input[name=state]").val("4").prop("checked", true);
+		  }
+		  $("#modify_colsed_out_form input[name=student_course_state_date]").val(student_course_state_date);
+		  $("#modify_colsed_out_form input[name=payment_no]").val(payment_no);
 		});
 	  
 ////////////////////////////////////////////////////student_detail.jsp tab////////////////////////////////////////////////////////////
-	  
-///////////////////////////////////////////////////stuent_detail 이미지 업로드/////////////////////////////////////////////////////////////
-	  $("#button_img").on("click", function(e){
-		  e.preventDefault();
-		  $("#input_img").click();
-	  });
-	  $("#input_img").on("change", imgFileSelect);
-///////////////////////////////////////////////////stuent_detail 이미지 업로드/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////학생 상담 추가//////////////////////////////////////////////////////////////////////////
+	  	$("#counseling_regi").click(function(){
+	  		if($("#counseling_division option:selected").val()=='::상담구분::'){
+	  			alert("상담구분을 선택해주세요.");
+	  			return false;
+	  		}else if($("#counseling_title").val()==""){
+	  			alert("상담 제목을 입력해주세요.");
+	  			return false;
+	  		}else if($("#counseling_content").val()==""){
+	  			alert("상담 내용을 입력해주세요.");
+	  			return false;
+	  		}
+	  	});
+///////////////////////////////////////////////////////반배정 이동///////////////////////////////////////////////////////////////////////////////
+	  	$("#moveCLassOk").click(function(){
+	  		if($("#course_day option:selected").val()=="::요일::"){
+	  			alert("이동 할 반의 수업요일을 선택해주세요.");
+	  			return false;
+	  		}else if($("#course_time option:selected").val()=="::수업시간::"){
+	  			alert("이동 할 반의 수업시간을 선택해주세요.");
+	  			return false;
+	  		}else if($("#course_stage option:selected").val()=="::장소::" || $("#course_stage option:selected").val()=="=====본관=====" || $("#course_stage option:selected").val()=="=====신관=====" || $("#course_stage option:selected").val()=="=====구관====="){
+	  			alert("이동 할 반의 수업장소을 선택해주세요.");
+	  			return false;
+	  		}
+	  	});
+	  	
+	 	$("#trasfer_classOK").click(function(){
+	  		if($("#course_day option:selected").val()=="::요일::"){
+	  			alert("이동 할 반의 수업요일을 선택해주세요.");
+	  			return false;
+	  		}else if($("#course_time option:selected").val()=="::수업시간::"){
+	  			alert("이동 할 반의 수업시간을 선택해주세요.");
+	  			return false;
+	  		}else if($("#course_stage option:selected").val()=="::장소::" || $("#course_stage option:selected").val()=="=====본관=====" || $("#course_stage option:selected").val()=="=====신관=====" || $("#course_stage option:selected").val()=="=====구관====="){
+	  			alert("이동 할 반의 수업장소을 선택해주세요.");
+	  			return false;
+	  		}else if($("#course_name option:selected").val()=="=="){
+	  			alert("이동 할 반을 선택해주세요.");
+	  			return false;
+	  		}
+	  	});
+//////////////////////////////////////////////////////학생 휴/퇴원////////////////////////////////////////////////////////////////////////////////////
+	  	$("#closed_out_ok").click(function(){
+	  		if($("input[id='student_closed_out']").prop("checked")==false){
+	  			alert("휴/퇴원 대상자를 선택해주세요.");
+	  			return false;
+	  		}else if($("input[class='state']").prop("checked")==false){
+	  			alert("휴원 또는 퇴원을 선택해주세요.");
+	  			return false;
+	  		}else if($("#student_closed_out_date").val()==""){
+	  			alert("휴/퇴원 일지를 입력해주세요.");
+	  			return false;
+	  		}
+	  	});
+//////////////////////////////////////////////////////학생 휴.퇴원////////////////////////////////////////////////////////////////////////////////////
+	  	//////////////////////////////////////////////반환//////////////////////////////////////////////////////////////////////////////////////////
+	  	$("#refundDetailOk").click(function(){
+	  		if($("#refundReason").val()==""){
+	  			alert("반환사유를 입력해주세요.");
+	  			return false;
+	  		}else if($("#refundDay").val()==""){
+	  			alert("반환일자를 입력해주세요.");
+	  			return false;
+	  		}
+	  	});
+	  	//////////////////////////////////////////////반환////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////출석리스트//////////////////////////////////////////////////////////////////////////////////////////////
+	  	$("#attendanceKey").on("change", function(){
+			var url = "/lms/admin/attendanceArray"
+			var params = "payment_no="+$(this).val();
+			$.ajax({
+				type:"GET",
+				url: url,
+				data : params,
+				success : function(result){
+					var listResult = $(result);
+					
+					var tag ="<tr style='border-top:solid black 1px; border-bottom:solid black 1px'>";
+					listResult.each(function(idx, vo){
+						if(vo.attendance_state==1){
+							tag +="<td class='w-1/4 p-2'>"+vo.attendance_date+"</td>"
+								  +"<td class='w=1/4'>"+"출석"+"<td>"+"<td></td></tr>";
+						}else if(vo.attendance_state==2){
+							tag +="<td class='w-1/4 p-2'>"+vo.attendance_date+"</td>"
+							  +"<td class='w=1/4'>"+"지각"+"<td>"+"<td></td></tr>";
+						}else if(vo.attendance_state==3){
+							tag +="<td class='w-1/4 p-2'>"+vo.attendance_date+"</td>"
+							  +"<td class='w=1/4'>"+"결석"+"<td>"+"<td></td></tr>";
+						}
+						$("#attendance_list").html(tag);
+					});
+				},
+				error : function(e){
+					console.log(e.responseText);
+				}
+			});
+		});
+///////////////////////////////////////////////////////출석리스트////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////반배정 이동///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////학생 상담 추가//////////////////////////////////////////////////////////////////////////
 });
+
 /////////student_detail 이미지 업로드
 var sel_file;
 
@@ -231,6 +349,13 @@ function imgFileSelect(e){
 		reader.readAsDataURL(f);
 	});	
 }
+/////////student_detail 이미지 업로드
+
+
+
+
+
+
 /////////student_detail 이미지 업로드
 function preview(input, target) {
     if(input.files && input.files[0]){

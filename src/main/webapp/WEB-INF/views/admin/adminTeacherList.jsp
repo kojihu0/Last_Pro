@@ -25,7 +25,7 @@
 				<option value="D" <c:if test="${employee_class == 'D' }">selected</c:if>>D</option>
 				<option value="E" <c:if test="${employee_class == 'E' }">selected</c:if>>E</option> 
 			</select>  
-			<input type="text" name="nameS" placeholder="이름 검색" id="searchName" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
+			<input type="text" name="searchNameT" placeholder="이름 검색" id="searchName" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
 		</div>
 			
 		<div class="p-3 bg-info-100">
@@ -74,12 +74,12 @@
 		</c:if>	    
 		 
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-left text-xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount-1}" > 
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -88,7 +88,7 @@
 			<i class="xi-angle-right text-xl"></i> 
 		</c:if> 
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && employee_name != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&employee_name=${employee_name }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
 		</c:if>
 	</div>
 		
@@ -97,12 +97,13 @@
 	
 	<script>
 	$(function(){
+		
+		var userName = '${searchNameT}';
+		
 		$("#buttonName").on('click', function(){
 			var searchName = document.getElementById("searchName").value; 
-			location.href="/lms/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class=${employee_class}&employee_name=" + searchName;
+			location.href="/lms/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class=${employee_class}&searchNameT=" + userName;
 		});
-		
-		var userName = '${employee_name}';
 		
 		$("#teacherRegiButtoon").on('click', function(){
 			if(userName != '관리자'){

@@ -422,6 +422,7 @@ public class StudentController {
 		CancelRegisterDAOImp dao =  sqlSession.getMapper(CancelRegisterDAOImp.class);
 		
 		int cnt = dao.deleteReturnRecord(student_no, payment_no);
+		
 		mav.addObject("student_no", student_no);
 		mav.addObject("payment_no", payment_no);
 		mav.setViewName("redirect:/refund");
