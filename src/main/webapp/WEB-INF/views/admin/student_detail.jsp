@@ -37,8 +37,8 @@
 	<input type="hidden" name="student_no" value="${vo.student_no}"/>
 		<table class="w-full">
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">사진</td>
-				<td class="border-solid border-4 border-gray-600 p-2" style="width:350px;">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">사진</td>
+				<td class="border-solid border-2 border-gray-600 p-2" style="width:350px;">
 					<div class="img_wrap border-solid border-2 border-gray-600" style="width:200px; height:200px; margin:0 auto">
 						<c:if test="${vo.student_img != null }">
 							<img src="/lms/img/${vo.student_img}" class="student_img">
@@ -51,8 +51,8 @@
 						<input onchange="preview(this, $('.student_img'));"id="input_img" name="img_file" type="file"> 
 					</div>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">최근수강정보</td>
-				<td class="border-solid border-4 border-gray-600 p-2">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">최근수강정보</td>
+				<td class="border-solid border-2 border-gray-600 p-2">
 					<div class="overflow-y-auto" style="height:350px;">
 					<c:forEach var="vo9" items="${list}">
 						<div>
@@ -63,19 +63,19 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">이름</td>
-				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">한글 : <input type="text" name="student_name_ko" value="${vo.student_name_ko}" class="border-solid border-2 border-gray-600 rounded korName"/> 영문 : <input type="text" name="student_name_eng" value="${vo.student_name_eng}" class="border-solid border-2 border-gray-600 rounded engName"/></td>
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">이름</td>
+				<td class="border-solid border-2 border-gray-600 p-2 " colspan="3">한글 : <input type="text" name="student_name_ko" value="${vo.student_name_ko}" class="border-solid border-2 border-gray-600 rounded korName"/> 영문 : <input type="text" name="student_name_eng" value="${vo.student_name_eng}" class="border-solid border-2 border-gray-600 rounded engName"/></td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">성별</td>
-				<td class="border-solid border-4 border-gray-600 p-2">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">성별</td>
+				<td class="border-solid border-2 border-gray-600 p-2">
 					<div>
 						<input type="radio" name="student_gender" value="남" <c:if test="${vo.student_gender=='남'}">checked</c:if>>남
 						<input type="radio" name="student_gender" value="여" <c:if test="${vo.student_gender=='여'}">checked</c:if>>여
 					</div>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">생년월일</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">생년월일</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					<div class="inline-block relative w-40 mx-2">
 						<select name="student_birthday_year" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline birthYear">
 							<option>선택</option>
@@ -116,14 +116,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">휴대폰 정보</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">휴대폰 정보</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					010
 					- <input type="text" name="student_tel1" value="${vo.student_tel1}" class="border-solid border-2 border-gray-600 w-20 rounded text-center student_phone1" maxlength="4"/>
 					- <input type="text" name="student_tel2" value="${vo.student_tel2}" class="border-solid border-2 border-gray-600 w-20 rounded text-center student_phone2" maxlength="4"/>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">Email</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">Email</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					<div> 
 						<input id="sEmail" type="text" name="student_email_id" class="border-solid border-2 border-gray-600 rounded" value="${vo.student_email_id}"/>@  
 						<input id="sDomain" name="student_email_domain" type="text" class="border-solid border-2 border-gray-600 text-center rounded" value="${vo.student_email_domain}"/> 	
@@ -146,8 +146,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">전화번호</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">전화번호</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					<div class="inline-block relative w-auto">
 						<select name="student_house1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							   <option <c:if test="${student_house1=='02'}">selected</c:if>>02</option>
@@ -174,18 +174,18 @@
 					- <input type="text" name="student_house2" value="${vo.student_house2}" class="border-solid border-2 border-gray-600 w-20 rounded text-center tel2" maxlength="4"/>
 					- <input type="text" name="student_house3" value="${vo.student_house3}" class="border-solid border-2 border-gray-600 w-20 rounded text-center tel3" maxlength="4"/>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">홈아이디</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" name="student_id" value="${vo.student_id}" class="border-solid border-2 border-gray-600 rounded w-64 student_id"/></td>
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">홈아이디</td>
+				<td class="border-solid border-2 border-gray-600 p-2 "><input type="text" name="student_id" value="${vo.student_id}" class="border-solid border-2 border-gray-600 rounded w-64 student_id"/></td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 휴대폰</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">학부모 휴대폰</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					010
 					- <input type="text" name="parent_phone1" value="${vo.parent_phone1}" class="border-solid border-2 border-gray-600 w-20 rounded text-center parent_phone1" maxlength="4"/>
 					- <input type="text" name="parent_phone2" value="${vo.parent_phone2}" class="border-solid border-2 border-gray-600 w-20 rounded text-center parent_phone2" maxlength="4"/>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 Email</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">학부모 Email</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					<div> 
 						<input id="pEmail" type="text" value="${vo.parent_email_id}" name="parent_email_id" class="border-solid border-2 border-gray-600 rounded email1"/>@  
 						<input id="pDomain" type="text" value="${vo.parent_email_domain}" name="parent_email_domain" class="border-solid border-2 border-gray-600 text-center rounded email2"/> 	
@@ -208,8 +208,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 관계</td>
-				<td class="border-solid border-4 border-gray-600 p-2 ">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">학부모 관계</td>
+				<td class="border-solid border-2 border-gray-600 p-2 ">
 					<div class="inline-block relative w-40 mx-2">
 						<select name="student_parent_state" class="relation block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							<option>==</option>
@@ -223,12 +223,12 @@
 					    </div>
 					</div>
 				</td>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">학부모 성함</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "><input type="text" name="student_parent_name" value="${vo.student_parent_name}" class="border-solid border-2 border-gray-600 rounded w-40 pkorName"/></td>
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">학부모 성함</td>
+				<td class="border-solid border-2 border-gray-600 p-2 "><input type="text" name="student_parent_name" value="${vo.student_parent_name}" class="border-solid border-2 border-gray-600 rounded w-40 pkorName"/></td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">주소</td>
-				<td  class="border-solid border-4 border-gray-600 p-2 "colspan="3">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">주소</td>
+				<td  class="border-solid border-2 border-gray-600 p-2 "colspan="3">
 					<div class="flex">
 						<input name="student_addr_no" type="text" value="${vo.student_addr_no}" class="addr_num border-solid border-2 border-gray-600 w-32 rounded addr1 text-center" maxlength="5" readonly/>
 						<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20 bg-info-200" value="주소검색"/>
@@ -238,8 +238,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">수강동기</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "colspan="3">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">수강동기</td>
+				<td class="border-solid border-2 border-gray-600 p-2 "colspan="3">
 					<div>
 						<input type="radio" name="student_motive" value="소개"<c:if test="${vo.student_motive=='소개'}">checked</c:if>>소개
 						<input type="radio" name="student_motive" value="신문"<c:if test="${vo.student_motive=='신문'}">checked</c:if>>신문
@@ -251,8 +251,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">관심분야</td>
-				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">관심분야</td>
+				<td class="border-solid border-2 border-gray-600 p-2 " colspan="3">
 					<div>
 						<input type="radio" name="student_interest" value="JAVA" <c:if test="${vo.student_interest=='JAVA'}">checked</c:if>>JAVA
 						<input type="radio" name="student_interest" value="HTML/CSS" <c:if test="${vo.student_interest=='HTML/CSS'}">checked</c:if>>HTML/CSS
@@ -264,18 +264,18 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">메모</td>
-				<td class="border-solid border-4 border-gray-600 p-2 "colspan="3"><textarea cols="100" rows="5" class="border-solid border-2 border-gray-600" name="student_memo">${vo.student_memo}</textarea></td>
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">메모</td>
+				<td class="border-solid border-2 border-gray-600 p-2 "colspan="3"><textarea cols="100" rows="5" class="border-solid border-2 border-gray-600" name="student_memo">${vo.student_memo}</textarea></td>
 			</tr>
 			<tr>
-				<td class="border-solid border-4 border-gray-600 bg-info-200 p-2 text-center">최초 등록일</td>
-				<td class="border-solid border-4 border-gray-600 p-2 " colspan="3">
+				<td class="border-solid border-2 border-gray-600 bg-info-200 p-2 text-center">최초 등록일</td>
+				<td class="border-solid border-2 border-gray-600 p-2 " colspan="3">
 				<div class="calendar"><input type="text" value="${vo.student_regi_date}" name="student_regi_date" class="datepicker border-solid border-2 border-gray-600 ml-2 first_regiDate"/></div></td>
 			</tr>
 		</table>
 		<div class="my-5 flex justify-center">
 			<input class="border-solid border-2 border-gray-600 rounded mr-1 bg-info-200" type="submit" value="수정하기" id="modify_studentInfo"/>
-			<a href="javascript:memberDelete_check(${vo.student_no})" class="border-solid border-2 border-gray-600 rounded ml-1 bg-info-200"/>삭제하기</a>
+			<a href="javascript:memberDelete_check(${vo.student_no})" class="border-solid border-2 border-gray-600 rounded ml-1 bg-info-200">삭제하기</a>
 		</div>
 	</form>
 	<!-- ----------------------------------------------기본정보 ---------------------------------------->
@@ -344,7 +344,7 @@
 	</form>
 	<!------------------------------------------------- 상담관리 ------------------------------------------------>
 	<!-------------------------------------------------반 배정 현황 ---------------------------------------------->
-	<div class="w-full" id="assigning_class" style="display:none">
+	<div class="w-full" id="assigning_class" style="display:none"> 
 		<table class="w-full">
 			<tbody>
 			<c:forEach var="vo4" items="${list3}">

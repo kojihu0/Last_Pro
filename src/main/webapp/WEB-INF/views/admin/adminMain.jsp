@@ -6,12 +6,12 @@
 <!--  -->    
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		
-		<div class="text-xl p-3 pt-20 mx-16 ">  
-			<i class="xi-school"></i>&nbsp;HOME
+		<div class="text-xl p-3 mx-16 ">  
+			<i class="xi-school my-6"></i>&nbsp;HOME
 		</div>
 	    <!--Container-->
-	    <div class="container w-full mx-auto pt-20">
-	        <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-grey-darkest leading-normal">
+	    <div class="container w-full mx-auto">
+	        <div class="w-full px-4 md:px-0 mb-16 text-grey-darkest leading-normal">
 	            <div class="flex flex-wrap">
 	                <div class="w-full md:w-1/2 xl:w-1/2 p-3">
 	                    <!--Metric Card-->

@@ -70,25 +70,25 @@
 	<div class="text-center">	
 	<!-- 현재 페이지 -->
 		<c:if test="${pageVo.pageNum == 1 }"> 
-			<i class="xi-angle-left text-xl"></i>
+			<i class="xi-angle-left text-2xl"></i>
 		</c:if>	    
 		 
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-left text-2xl"></i></a>
 		</c:if>
-		
+		 
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount-1}" > 
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border-botton:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-2xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
 		<!-- 현재 페이지가 마지막일 경우 -->
 		<c:if test="${pageVo.pageNum == pageVo.totalPage }">
-			<i class="xi-angle-right text-xl"></i> 
+			<i class="xi-angle-right text-2xl"></i> 
 		</c:if> 
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-right text-2xl"></i></a> 
 		</c:if>
 	</div>
 		
@@ -98,13 +98,12 @@
 	<script>
 	$(function(){
 		
-		var userName = '${searchNameT}';
-		
 		$("#buttonName").on('click', function(){
 			var searchName = document.getElementById("searchName").value; 
-			location.href="/lms/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class=${employee_class}&searchNameT=" + userName;
+			location.href="/lms/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class=${employee_class}&searchNameT=" + searchName;
 		});
 		
+		var userName = '${employee_name}';
 		$("#teacherRegiButtoon").on('click', function(){
 			if(userName != '관리자'){
 				alert("관리자 전용 페이지 입니다. 로그인 창으로 돌아갑니다.(자동으로 로그아웃 됩니다.)");

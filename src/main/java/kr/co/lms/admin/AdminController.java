@@ -516,9 +516,6 @@ public class AdminController {
 		
 		HttpSession  sess = request.getSession();
 		String 		check = (String)sess.getAttribute("employee_name");
-		
-		
-
 		//파일 업로드를 위한 작업.
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
 	      String paramName 		= vo.getEmployee_img_m().getName();
@@ -611,10 +608,7 @@ public class AdminController {
 	      vo.setEmployee_img(img); 
 		
 		int result_Int = adminRegiInter.updateAdminTeacherEdit(vo);
-		
-		
-		
-		
+
 		if(result_Int > 0) {  
 			mav.setViewName("redirect:/admin/adminTeacherList");	
 		}else {

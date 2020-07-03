@@ -86,25 +86,25 @@
 	<div class="text-center">	
 	<!-- 현재 페이지 -->
 		<c:if test="${pageVo.pageNum == 1 }"> 
-			<i class="xi-angle-left text-xl"></i>
+			<i class="xi-angle-left text-2xl"></i>
 		</c:if>	  
 		
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-left text-xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${pageVo.pageNum -1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-left text-2xl"></i></a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" >
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-xl" href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"<c:if test="${i == pageVo.pageNum }">style='border:1px solid red'</c:if>> ${i}</a> 
+				<a class="text-2xl" href="<%=projectPath %>/admin/adminManagementInfo?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		
 		<!-- 현재 페이지가 마지막일 경우 -->
 		<c:if test="${pageVo.pageNum == pageVo.totalPage }">
-			<i class="xi-angle-right text-xl"></i> 
+			<i class="xi-angle-right text-2xl"></i> 
 		</c:if>
 		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminManagementInfo?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-right text-xl"></i></a> 
+			<a href="<%=projectPath%>/admin/adminManagementInfo?pageNum=${pageVo.pageNum + 1}<c:if test="${pageVo.searchKey_01 != null && pageVo.searchKey_02 != null && pageVo.searchKey_03 != null}">&selectNo=${selectNo }&selectOk=${selectOk }&selectSubject=${selectSubject }</c:if>"><i class="xi-angle-right text-2xl"></i></a> 
 		</c:if>
 	</div>
 			

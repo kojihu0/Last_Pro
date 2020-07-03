@@ -27,7 +27,6 @@
 						<div class="flex justify-end border-b-4 border-info-300">
 							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성자 : ${list.employee_name }</div>
 							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;작성일자 : ${list.admin_notice_date }</div>
-							<div class="p-3"><i class="xi-gratipay"></i>&nbsp;조회수 : ${list.admin_notice_hit}</div>  
 						</div>
 					</td>
 				</tr>

@@ -55,7 +55,7 @@
 						<td colspan="3" class="p-3 border border-black">
 							<select id="belong" name="employee_class" class="border border-black h-8">
 									<c:if test="${vo.employee_class == null }"><option  selected="selected">::담당::</option></c:if>
-									<c:if test="${vo.employee_class != null }"><option>::담당::</option></c:if>
+									<c:if test="${vo.	employee_class != null }"><option>::담당::</option></c:if>
 									
 									<c:if test="${vo.employee_class != 'A' }"><option value="A">A</option></c:if>
 									<c:if test="${vo.employee_class == 'A' }"><option value="A"  selected="selected">A</option></c:if>
@@ -170,9 +170,6 @@
 
 	});	
 </script>
-
-
-
 <!--  -->
 </body>
 </html>
