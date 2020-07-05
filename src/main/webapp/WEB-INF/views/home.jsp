@@ -43,15 +43,15 @@
 				<div>
 					<h1 class="roboto-slab font-bold">COURSES INFO</h1>
 					<p>강좌 소개</p>
-					<a class="text-xs text-brand-500" href="<%=ctx%>/course/coureseList">VIEW MORE <i class="xi-angle-right"></i></a>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/course/courseList">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 			<div class="w-1/3 bg-black p-6 flex opacity-75 duration-300 hover:opacity-100 col">
-				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-teacher.png"></div>
+				<div class="mr-10"><img alt="" src="<%=ctx %>/img/mainslide-contact-us.png"></div>
 				<div>
-					<h1 class="roboto-slab font-bold">INSTRUCTOR INFO</h1>
-					<p>강사진 소개</p>
-					<a class="text-xs text-brand-500" href="#">VIEW MORE <i class="xi-angle-right"></i></a>
+					<h1 class="roboto-slab font-bold">CONTACT</h1>
+					<p>고객센터</p>
+					<a class="text-xs text-brand-500" href="<%=ctx%>/contact">VIEW MORE <i class="xi-angle-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -73,6 +73,9 @@
 		</div>
 		<span class="heading-line bg-black absolute bottom-0 left-0"></span>
 	</div>
+	<c:if test="${empty courseList}">
+	<p class="py-8 text-center text-lg font-bold text-white">강좌가 없습니다.</p>
+	</c:if>
 	<div id="courseCarousel" class="-mx-4 fadeUp">
 		<c:forEach var="cvo" items="${courseList}">
 			<div class="course-item px-4 text-center"><!-- course-item -->
@@ -129,7 +132,7 @@
 				<div class="month">${evo.notice_month}월</div>
 			</div>
 			<div class="event-content relative px-4 pt-4 lg:px-16 sm:pt-0 flex-auto">
-				<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx %>/newsDetail?no=${evo.admin_notice_no}&pageNum=1">${evo.admin_notice_title}</a></h2>
+				<h2 class="font-bold hover:text-brand-500 duration-500 truncate"><a href="<%=ctx %>/newsDetail?no=${evo.admin_notice_no}&pageNum=1">${evo.admin_notice_title}</a></h2>
 				<div class="event-desc text-gray-700 mt-6"><c:out value='${fn:substring(evo.admin_notice_content.replaceAll("\\\<.*?\\\>",""),0,140)}' escapeXml="false" /></div>
 			</div>
 			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
@@ -172,7 +175,7 @@
 				</div>
 				<div class="news-content text-center -mt-4">
 					<div class="news-date bg-brand-500 text-white text-sm inline-block px-4 py-1">${nvo.admin_notice_date}</div>
-					<h2 class="text-white py-4 hover:text-brand-500 duration-500"><a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}">${nvo.admin_notice_title}</a></h2>
+					<h2 class="text-white py-4 hover:text-brand-500 duration-500 truncate"><a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}">${nvo.admin_notice_title}</a></h2>
 				</div>
 			</div><!-- news-item -->
 			</c:forEach>
