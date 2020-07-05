@@ -36,10 +36,12 @@ public class AdminMainController {
 			
 			AdminRegiInterface adminReginInter = sqlSession.getMapper(AdminRegiInterface.class);
 		
-			int totalPrice 		= adminReginInter.totalPrice();
-			int totalTeacher 	= adminReginInter.totalTeacher();
-			int totalStudent 	= adminReginInter.totalStudent();
-			int totalCourse 	= adminReginInter.totalCourse();
+			
+			
+			String totalPrice 		= adminReginInter.totalPrice();
+			String totalTeacher 	= adminReginInter.totalTeacher();
+			String totalStudent 	= adminReginInter.totalStudent();
+			String totalCourse 	    = adminReginInter.totalCourse();
 
 			
 			amVo.setTotalPrice(totalPrice);
@@ -50,27 +52,31 @@ public class AdminMainController {
 			List<AdminMainHomeVO> tempListT = adminReginInter.paymentTeacher();
 			List<AdminMainHomeVO> tempListC = adminReginInter.paymentCourse();
 			
-			
-			String 	teacherName[] 		= new String[tempListT.size()];
-			String	courseName[] 		= new String[tempListC.size()];
-			int 	payment_Num_T[] 	= new int[tempListT.size()];
-			int 	payment_Num_C[] 	= new int[tempListC.size()]; 
-			
-			//가장 많이 팔린 강좌의 선생 정보
-			for(int i = 0; i<tempListT.size(); i++) {
-				teacherName[i] 		= tempListT.get(i).getPayment_name();
-				payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
-			} 
-			//가장 많이 팔린 강좌 정보
-			for(int i = 0; i<tempListC.size(); i++) {
-				courseName[i] 		= tempListC.get(i).getCourse_name();
-				payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
+			if(tempListT != null && tempListC != null ) { 
+				String 	teacherName[] 		= new String[tempListT.size()];
+				String	courseName[] 		= new String[tempListC.size()];
+				int 	payment_Num_T[] 	= new int[tempListT.size()];
+				int 	payment_Num_C[] 	= new int[tempListC.size()]; 
+				
+				//가장 많이 팔린 강좌의 선생 정보
+				for(int i = 0; i<tempListT.size(); i++) {
+					teacherName[i] 		= tempListT.get(i).getPayment_name();
+					payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
+				} 
+				//가장 많이 팔린 강좌 정보
+				for(int i = 0; i<tempListC.size(); i++) {
+					courseName[i] 		= tempListC.get(i).getCourse_name();
+					payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
+				}
+				mav.addObject("payment_Num_T", payment_Num_T);
+				mav.addObject("payment_Num_C", payment_Num_C);
+				
+				
+				mav.addObject("teacherName", teacherName);
+				mav.addObject("courseName", courseName);
 			}
+			
 			mav.addObject("amVo", amVo);
-			mav.addObject("teacherName", teacherName);
-			mav.addObject("courseName", courseName);
-			mav.addObject("payment_Num_T", payment_Num_T);
-			mav.addObject("payment_Num_C", payment_Num_C);
 			
 			mav.setViewName("/admin/adminMain");		
 			return mav;  

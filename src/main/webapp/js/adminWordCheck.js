@@ -427,14 +427,12 @@ function manageRegiCheck(){
 //사내 공지사항
 	//수정
 function noticeEditCheck(){
+	
 	if(document.getElementById("noticeSubject").value == ""){
 		alert("글의 제목을 작성해주세요.");
 		return false;
 	}
-	 
-	var content = document.getElementById("noticEditContent").value;
-	
-	if(content == ""){
+	if(document.getElementById("noticEditContent").value == ""){
 		alert("글의 내용은 필수입니다.");
 		return false;
 	}
@@ -462,12 +460,10 @@ function noticeRegiCheck(){
 	}
 	
 	//noticeWriteContent
-	var content = document.getElementById("noticeWriteContent").value;
-	
-	if(content == ""){
+	if(document.getElementById("noticeWriteContent").value == ""){
 		alert("글의 내용은 필수입니다.");
 		return false;
-	}
+	} 
 	//noticeWritePw
 	reg = /^[0-9]{4,8}$/;
 	

@@ -213,11 +213,9 @@ public class AdminController {
 		//---------------------------------
 			//파일 업로드를 위한 작업.
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/adminManagementUpload");
-	      int	 maxSize 		= 1024*1024*100;//100 메가 바이트
 	      String paramName 		= vo.getAdmin_manageinfo_file_m().getName();
 	      String txt 			= vo.getAdmin_manageinfo_file_m().getOriginalFilename();
-	      
-		 
+
 	      try {
 		      if(txt != null) {
 		    	  vo.getAdmin_manageinfo_file_m().transferTo(new File(path, txt));

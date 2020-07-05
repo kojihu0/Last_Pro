@@ -3,23 +3,23 @@ package kr.co.lms.admin.VO;
 public class AdminMainHomeVO {
 	
 	
-	//ÆÈ¸° ¼±»ý ÆÇ¸Å ¼øÀ§
+	//ï¿½È¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private String  payment_name;
 	private int 	payment_num;
 	
-	//ÆÈ¸° °­ÁÂ ¼øÀ§
+	//ï¿½È¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private String  course_name;
 	private int 	course_num;
 	
 	
-	//ÀüÃ¼ ÇÐ»ý ¼ö
-	private int totalStudent;
-	//ÀüÃ¼ ¼±»ý ¼ö
-	private int totalTeacher;
-	//ÃÑ ÆÇ¸Å¾×
-	private int totalPrice;
-	//ÀüÃ¼ °­ÁÂ ¼ö
-	private int totalCourse;
+	//ï¿½ï¿½Ã¼ ï¿½Ð»ï¿½ ï¿½ï¿½
+	private String totalStudent;
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private String totalTeacher;
+	//ï¿½ï¿½ ï¿½Ç¸Å¾ï¿½
+	private String totalPrice;
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private String totalCourse;
 	
 	
 	
@@ -47,30 +47,35 @@ public class AdminMainHomeVO {
 	public void setCourse_num(int course_num) {
 		this.course_num = course_num;
 	}
-	public int getTotalStudent() {
+	public String getTotalStudent() {
 		return totalStudent;
 	}
-	public void setTotalStudent(int totalStudent) {
+	public void setTotalStudent(String totalStudent) {
 		this.totalStudent = totalStudent;
 	}
-	public int getTotalTeacher() {
+	public String getTotalTeacher() {
 		return totalTeacher;
 	}
-	public void setTotalTeacher(int totalTeacher) {
+	public void setTotalTeacher(String totalTeacher) {
 		this.totalTeacher = totalTeacher;
 	}
-	public int getTotalPrice() {
+	public String getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public int getTotalCourse() {
+	public String getTotalCourse() {
 		return totalCourse;
 	}
-	public void setTotalCourse(int totalCourse) {
+	public void setTotalCourse(String totalCourse) {
 		this.totalCourse = totalCourse;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

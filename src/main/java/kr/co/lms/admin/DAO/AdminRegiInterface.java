@@ -14,10 +14,10 @@ import kr.co.lms.admin.VO.AdminTeacherVO;
 public interface AdminRegiInterface {
 	
 	//main���� ���� �͵�.
-	public int totalPrice();
-	public int totalTeacher();
-	public int totalStudent();
-	public int totalCourse();
+	public String totalPrice();
+	public String totalTeacher();
+	public String totalStudent();
+	public String totalCourse();
 	
 	public List<AdminMainHomeVO> paymentTeacher();
 	public List<AdminMainHomeVO> paymentCourse();

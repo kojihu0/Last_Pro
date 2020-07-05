@@ -20,19 +20,19 @@
 	</select>
 
 	<select id="totalPrice"
-			resultType="int">
+			resultType="String">
 		SELECT SUM(payment_price) FROM payment
 	</select>
 	<select id="totalTeacher"
-			resultType="int">
+			resultType="String">
 		SELECT COUNT(rownum) FROM employee
 	</select>
 	<select id="totalStudent"
-			resultType="int">
+			resultType="String">
 		SELECT COUNT(rownum) FROM student
 	</select>
 	<select id="totalCourse"
-			resultType="int">
+			resultType="String">
 		SELECT COUNT(rownum) FROM course
 	</select>
 	
