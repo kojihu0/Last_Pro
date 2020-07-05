@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
+
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		<div class="text-xl p-3 mx-16 ">  
 			<i class="xi-school"></i>&nbsp;사내 공지사항 작성
@@ -81,25 +82,10 @@
 		</form>
 		
 		</div>
-		
-		
-		
-		
-		
 	</div>
 
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
-$(function(){
+$(function(){ 
 	CKEDITOR.replace('noticeWriteContent',
 					 {height: 350 })
 });

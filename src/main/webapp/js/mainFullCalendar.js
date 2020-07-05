@@ -1,6 +1,5 @@
 
 var calendar;
-var tag =""
 document.addEventListener('DOMContentLoaded', function() {
 	  var calendarEl  = document.getElementById('calendar');
 	  
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  selectable    : true,
 		  selectMirror  : true,
 		  selectHelper  : true,
-		  locale 		: 'ko',
+		  locale 		: 'ko', 
 		  header: {
 			  left: 'prev,next today',
 			  center: 'title',
@@ -25,6 +24,27 @@ document.addEventListener('DOMContentLoaded', function() {
 	      navLink		 : true,
 	      businessHours	 : true,
 	      editable		 : true,
+	      eventSources : [ 
+	    	  { 
+	    		  url: '/lms/calendar/base',
+	    		  method: 'GET', 
+	    		  failure: function(x,e){
+	    			  if(x.status==0){
+	    			    	alert('You are offline!!n Please Check Your Network.');
+	    			    }else if(x.status==404){
+	    			    	alert('Requested URL not found.');
+	    			    }else if(x.status==500){
+	    			    	alert('Internel Server Error.');
+	    			    }else if(e=='parsererror'){
+	    			    	alert('Error.nParsing JSON Request failed.');
+	    			    }else if(e=='timeout'){
+	    			    	alert('Request Time out.');
+	    			    }else {
+	    			    	alert('Unknow Error : '+x.responseText);
+	    			    }
+	    		  }
+	    	  }
+	      ],
 	      select: function(info) {
 	    	  console.log(info);
 	          if(confirm("일정을 등록 하시겠습니까?")){
@@ -125,17 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    	 }; 
 	    	
 	    	 dropEventEdit(resizeParams);
-	    },
-	     eventSources : [ 
-	    	  {
-	    		  url: '/lms/calendar/base',
-	    		  method: 'GET',
-	    		  failure: function(e){
-	    			 console.log("일정 읽기 실패");
-	    		  }
-	    	  }
-	      ]
-	      
+	    }
 	  	}); 
 	  //캘린더 그리기.
 	  calendar.render();

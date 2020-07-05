@@ -325,14 +325,17 @@ public class AdminController {
 		pVo.setOnePageRecord(5);
 		
 		System.out.println("adminNotice 에러" + pVo.getSearchKey());
+		
 		int searchKeyInt = -1;
+		
 		if(pVo.getSearchKey() != null) {
 			searchKeyInt = Integer.parseInt(pVo.getSearchKey()); 
 		}
-		
+		System.out.println("=====================================");
+		System.out.println("adminNotice 에러 확인 다시 ::::::;" +searchKeyInt);
+		System.out.println("=====================================");
 		int result_totalPage = adminRegiInter.selectNoticeTotalRecord(pVo);
 		
-
 		//토탈 레코드 확인.
 		pVo.setTotalRecord(result_totalPage);
 		

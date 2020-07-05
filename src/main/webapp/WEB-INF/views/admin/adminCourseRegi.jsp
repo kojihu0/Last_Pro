@@ -109,9 +109,9 @@
 						<tr>
 							<th class="bg-info-300 p-3 w-32">강좌소개</th>
 							<td class="p-3"> 
-								<textarea name="course_content" rows="" cols="" id="courseRegiContent" id="courseRegiContent" class="courseRegiContent"></textarea>	
+								<textarea name="course_content" id="courseRegiContent" class="courseRegiContent"></textarea>	 
 							</td>
-						</tr> 
+						</tr>  
 						<tr>
 							<th class="bg-info-300 p-3 w-32">사용교재</th>
 							<td class="p-3">
@@ -136,10 +136,10 @@
 				</table>
 			</form>
 		</div>
-		</div>
+	</div>
 
 <script>
-	$(function(){
-		CKEDITOR.replace('courseRegiContent', {height:350})
+	$(function(){   
+		CKEDITOR.replace('courseRegiContent', {height:350});
 	});
 </script>

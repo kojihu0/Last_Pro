@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %> 
-<script src="<%=projectPath %>/ckeditor/ckeditor.js"></script>
+
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 			<div class="text-xl p-3 mx-16 ">  
 				<i class="xi-school"></i>&nbsp;강좌 수정
@@ -465,7 +465,7 @@
 	</div> 
 
 <script>
-	$(function(){
-		CKEDITOR.replace('courseEditContent', {height:350})
+	$(function(){ 
+		CKEDITOR.replace('courseEditContent', {height:350});
 	});
 </script>

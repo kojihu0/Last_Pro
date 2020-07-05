@@ -3,6 +3,8 @@ package kr.co.lms.admin;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,14 +37,24 @@ public class AdminMainController {
 			ModelAndView mav = new ModelAndView();
 			
 			AdminRegiInterface adminReginInter = sqlSession.getMapper(AdminRegiInterface.class);
-		
-			
 			
 			String totalPrice 		= adminReginInter.totalPrice();
 			String totalTeacher 	= adminReginInter.totalTeacher();
 			String totalStudent 	= adminReginInter.totalStudent();
 			String totalCourse 	    = adminReginInter.totalCourse();
 
+			if(totalPrice == null) {
+				totalPrice = "0";
+			}
+			if(totalTeacher == null) {
+				totalTeacher = "0";
+			}
+			if(totalStudent == null) {
+				totalStudent = "0";
+			}
+			if(totalCourse == null) {
+				totalCourse = "0";
+			}
 			
 			amVo.setTotalPrice(totalPrice);
 			amVo.setTotalStudent(totalStudent);
@@ -52,7 +64,8 @@ public class AdminMainController {
 			List<AdminMainHomeVO> tempListT = adminReginInter.paymentTeacher();
 			List<AdminMainHomeVO> tempListC = adminReginInter.paymentCourse();
 			
-			if(tempListT != null && tempListC != null ) { 
+
+			if(tempListT.size() > 0 && tempListC.size() > 0 ) {   
 				String 	teacherName[] 		= new String[tempListT.size()];
 				String	courseName[] 		= new String[tempListC.size()];
 				int 	payment_Num_T[] 	= new int[tempListT.size()];
@@ -70,8 +83,27 @@ public class AdminMainController {
 				}
 				mav.addObject("payment_Num_T", payment_Num_T);
 				mav.addObject("payment_Num_C", payment_Num_C);
+				mav.addObject("teacherName", teacherName);
+				mav.addObject("courseName", courseName);
+			}else{ 
+				String 	teacherName[] 		= new String[7];
+				String	courseName[] 		= new String[4];
+				int 	payment_Num_T[] 	= new int[7];
+				int 	payment_Num_C[] 	= new int[4];  
+			
+				//가장 많이 팔린 강좌의 선생 정보
+				for(int i = 0; i < 7; i++) {
+					teacherName[i] 		= "미등록";
+					payment_Num_T[i] 	= i;
+				} 
+				//가장 많이 팔린 강좌 정보
+				for(int i = 0; i < 4; i++) { 
+					courseName[i] 		= "미등록";
+					payment_Num_C[i] 	= i;
+				}	
 				
-				
+				mav.addObject("payment_Num_T", payment_Num_T);
+				mav.addObject("payment_Num_C", payment_Num_C);
 				mav.addObject("teacherName", teacherName);
 				mav.addObject("courseName", courseName);
 			}
@@ -84,8 +116,10 @@ public class AdminMainController {
 		//DB에서 일정 읽어오기;
 		@RequestMapping(value="/calendar/base", method={RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
-		public String base(AdminCalendarVO vo, HttpServletRequest request) {
+		public String base(AdminCalendarVO vo, HttpServletRequest request, HttpServletResponse response) {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+		
+			System.out.println("일단 여기는 들어오나 보자.");
 			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
@@ -103,7 +137,9 @@ public class AdminMainController {
 				 } 
 			}	  
 			jsonStr += "]";
-			System.out.println("vo에는 값이 들어가? 아니 여기는 오냐? : " + jsonStr);
+
+			System.out.println("jsonStr ::::" + jsonStr);
+
 			return jsonStr;  
 		}		
 		//addevent

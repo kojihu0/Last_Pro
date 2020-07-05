@@ -16,12 +16,12 @@
 		<where>
 			<if test="searchKey == 2">
 				AND 
-					n.admin_category = 2 
+					admin_category = 2 
 			</if>
 			<if test="searchKey == 1">
 				AND  
-					n.admin_category = 1 
-			</if>
+					admin_category = 1 
+			</if> 
 		</where>
 	</select>
 	<select id="selectNoticeAll"

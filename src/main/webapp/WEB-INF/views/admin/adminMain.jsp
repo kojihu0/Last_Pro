@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
+
+
 <div class="container my-0 mx-auto px-8 xl:px-0">
 	<div class="text-xl py-3 mx-16 text-xl">  
 		<span class="mr-2"><i class="xi-school my-6"></i></span>HOME
@@ -15,7 +17,11 @@
                         <div class="flex flex-row items-center">
                             <div class="flex-1 text-right md:text-center"> 
                                <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Revenue</div> 
-                                <h3 class="text-3xl p-3"><span class="mr-2"><i class="xi-won"></i></span><span class="font-bold">${amVo.totalPrice }</span></h3>
+                                <h3 class="text-3xl p-3"><span class="mr-2"><i class="xi-won"></i></span>
+                                	<span class="font-bold">
+                                		${amVo.totalPrice } 
+                                	</span>
+                                </h3>
                             </div> 
                         </div>
                     </div>
@@ -88,16 +94,30 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
 						   	<script>
-						   		var courseName_00 = "${courseName[0]}";
-						   		var courseName_01 = "${courseName[1]}";
-						   		var courseName_02 = "${courseName[2]}";
-						   		var courseName_03 = "${courseName[3]}";
+						   		var courseName_00;
+						   		var courseName_01;
+						   		var courseName_02;
+						   		var courseName_03;
 						   		
-						   		var payment_Num_C_00 = ${payment_Num_C[0]};
-						   		var payment_Num_C_01 = ${payment_Num_C[1]};
-						   		var payment_Num_C_02 = ${payment_Num_C[2]};
-						   		var payment_Num_C_03 = ${payment_Num_C[3]};
+						   		var payment_Num_C_00;
+						   		var payment_Num_C_01;
+						   		var payment_Num_C_02;
+						   		var payment_Num_C_03;
+								
+						   		
+						   		 courseName_00 = "${courseName[0]}";  
+						   		 courseName_01 = "${courseName[1]}";
+						   		 courseName_02 = "${courseName[2]}";
+						   		 courseName_03 = "${courseName[3]}";
 
+
+						   	
+						   		 payment_Num_C_00 = ${payment_Num_C[0]};
+						   		 payment_Num_C_01 = ${payment_Num_C[1]};
+						   		 payment_Num_C_02 = ${payment_Num_C[2]};
+						   		 payment_Num_C_03 = ${payment_Num_C[3]};
+
+						   		
 	                            new Chart(document.getElementById("chartjs-7"), { 
 	                                "type": "bar",
 	                                "data": {
@@ -157,24 +177,39 @@
 	                    <div class="p-5">
                             <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
-	                        	var teacherName_00 = "${teacherName[0]}";
-						   		var teacherName_01 = "${teacherName[1]}";
-						   		var teacherName_02 = "${teacherName[2]}";
-						   		var teacherName_03 = "${teacherName[3]}";
-	                        	var teacherName_04 = "${teacherName[4]}";
-						   		var teacherName_05 = "${teacherName[5]}";
-						   		var teacherName_06 = "${teacherName[6]}";
+                            
+	                            var teacherName_00;
+						   		var teacherName_01;
+						   		var teacherName_02;
+						   		var teacherName_03;
+	                        	var teacherName_04;
+						   		var teacherName_05;
+						   		var teacherName_06;
 						
-						   		var payment_Num_C_00 = ${payment_Num_T[0]};
-						   		var payment_Num_C_01 = ${payment_Num_T[1]};
-						   		var payment_Num_C_02 = ${payment_Num_T[2]};
-						   		var payment_Num_C_03 = ${payment_Num_T[3]};
-						   		var payment_Num_C_04 = ${payment_Num_T[4]};
-						   		var payment_Num_C_05 = ${payment_Num_T[5]};
-						   		var payment_Num_C_06 = ${payment_Num_T[6]};
-	                            
-	                            
-	                            
+						   		var payment_Num_C_00;
+						   		var payment_Num_C_01;
+						   		var payment_Num_C_02;
+						   		var payment_Num_C_03;
+						   		var payment_Num_C_04;
+						   		var payment_Num_C_05;
+						   		var payment_Num_C_06;
+						   		
+						   		teacherName_00 = "${teacherName[0]}";
+						   		teacherName_01 = "${teacherName[1]}";	 
+						   		teacherName_02 = "${teacherName[2]}";
+						   		teacherName_03 = "${teacherName[3]}";
+						   		teacherName_04 = "${teacherName[4]}";
+						   		teacherName_05 = "${teacherName[5]}";
+						   		teacherName_06 = "${teacherName[6]}";
+						   		//							
+								payment_Num_C_00 = ${payment_Num_T[0]};
+						   		payment_Num_C_01 = ${payment_Num_T[1]};	 
+						   		payment_Num_C_02 = ${payment_Num_T[2]};
+						   		payment_Num_C_03 = ${payment_Num_T[3]};
+						   		payment_Num_C_04 = ${payment_Num_T[4]};
+						   		payment_Num_C_05 = ${payment_Num_T[5]};
+						   		payment_Num_C_06 = ${payment_Num_T[6]};
+						  
 	                            new Chart(document.getElementById("chartjs-0"), {
 	                                "type": "pie",
 	                                "data": {

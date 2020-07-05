@@ -43,7 +43,7 @@
 				<tbody>
 					<tr>
 						<th class="bg-info-300 w-32 border border-black">내용</th>  
-						<td class="border border-black"><textarea id="noticeWriteContent" name="admin_notice_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea></td>
+						<td class="border border-black"><textarea id="noticeWriteContentMain" name="admin_notice_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea></td>
 					</tr>
 					<tr>
 						<th class="bg-info-300 border border-black p-3 w-32">강의 이미지</th>
@@ -60,21 +60,12 @@
 				</div> 
 		
 		</form>
-		
-		</div>
-		
-		
-		
-		
-		
+		</div>	
 	</div>
-
-
+ 
 <script type="text/javascript">
-$(function(){
-	CKEDITOR.replace('noticeWriteContent',
+$(function(){ 
+	CKEDITOR.replace('noticeWriteContentMain',
 					 {height: 350 })
-	
 });
-
-</script>
+</script> 
