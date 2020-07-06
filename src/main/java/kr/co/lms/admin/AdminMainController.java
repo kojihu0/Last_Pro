@@ -73,9 +73,9 @@ public class AdminMainController {
 				
 				//가장 많이 팔린 강좌의 선생 정보
 				for(int i = 0; i<tempListT.size(); i++) {
-					teacherName[i] 		= tempListT.get(i).getPayment_name();
+					teacherName[i] 		= tempListT.get(i).getEmployee_name();
 					payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
-				} 
+				}  
 				//가장 많이 팔린 강좌 정보
 				for(int i = 0; i<tempListC.size(); i++) {
 					courseName[i] 		= tempListC.get(i).getCourse_name();
