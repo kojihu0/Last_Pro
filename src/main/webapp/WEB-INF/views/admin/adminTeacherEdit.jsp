@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-			<div class="text-xl p-3 mx-16 ">  
+			<div class="text-xl p-6 ">  
 				<i class="xi-school"></i>&nbsp;직원-정보수정
 			</div>
   
@@ -14,14 +14,14 @@
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">사  진</th>
 						<th class="p-3 w-32 border border-black text-l">    
 							<div class="">
-								<div class="p-3 img_wrap border-solid border-2 border-gray-600" style="width:200px; height:250px; margin:0 auto"> 
+								<div class="p-3 img_wrap border-solid border border-gray-600" style="width:200px; height:250px; margin:0 auto"> 
 									<img id="img" class="object-cover" src="<%=projectPath %>/img/${vo.employee_img }"/>
 
 								</div>  
 								<div class="p-3">  
 									<input type="hidden" name="employee_img" value="${vo.employee_img}"/>  
 									<input type="file" id="input_img" name="employee_img_m" class="hidden"/> 
-									<button id="button_img" class=" border-solid border-2 border-gray-600 rounded bg-info-200">사진등록</button>
+									<button id="button_img" class=" border-solid border border-gray-600 rounded bg-info-200">사진등록</button>
 								</div>
 							</div> 
 						</th>

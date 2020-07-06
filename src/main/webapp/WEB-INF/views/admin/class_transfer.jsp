@@ -11,8 +11,8 @@
 		<input type="hidden" name="course_no" value="${course_no}"/>
 		<table class="w-full">
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2" style="width:200px">이동 할 반 선택 : </td>
-				<td class="border-2 border-solid border-gray-600 p-2">
+				<td class="bg-info-300 text-center border border-solid border-gray-600 p-2" style="width:200px">이동 할 반 선택 : </td>
+				<td class="border border-solid border-gray-600 p-2">
 					<div class="inline-block relative w-40">
 						<select name="course_day" id="course_day" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							<option selected="selected">::요일::</option>
@@ -22,7 +22,7 @@
 						    <option value="주말반">주말반</option>
 					  	 </select>
 					  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-			    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			    			<i class="xi-angle-down"></i>
 			  			</div> 
 		 			</div>
 		 			<div class="inline-block relative w-40"> 
@@ -34,7 +34,7 @@
 						    <option value="20:00~23:00">20:00~23:00</option>
 					  	 </select>
 					  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-			    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			    			<i class="xi-angle-down"></i>
 			  			</div>
 		 			</div>
 					<div class="inline-block relative w-40">
@@ -72,7 +72,7 @@
 						    <option value="구관:C303">C303</option>
 					  	 </select>
 					  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-			    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			    			<i class="xi-angle-down"></i>
 			  			</div>
 		 			</div>
 	 				<div class="inline-block relative w-40 mx-2">
@@ -85,22 +85,22 @@
 						    <option>MYBATIS</option>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 				</td>
 			</tr>
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2">이동 일자 : </td>
-				<td class="border-2 border-solid border-gray-600 p-2">
+				<td class="bg-info-300 text-center border border-solid border-gray-600 p-2">이동 일자 : </td>
+				<td class="border border-solid border-gray-600 p-2">
 					<div class="calendar">
-						<input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2 text-center transfer_date"/>
+						<input type="text" class="datepicker border-solid border border-gray-600 ml-2 text-center transfer_date"/>
 					</div>
 				</td>
 			</tr>
 			<tr>
-				<td class="bg-info-300 text-center border-2 border-solid border-gray-600 h-64 p-2">납부 내역 변경 : </td>
-				<td class="border-2 border-solid border-gray-600 p-2">
+				<td class="bg-info-300 text-center border border-solid border-gray-600 h-64 p-2">납부 내역 변경 : </td>
+				<td class="border border-solid border-gray-600 p-2">
 					<div>
 						<input type="radio" name="1" checked/>수납내역을 변경하지 않음<br/>
 						<input type="radio" name="1"/>수납내역을 신규반으로 전액 변경처리함<br/>

@@ -4,9 +4,9 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">수강생현황</span>
 	</div>
-	<form action="/lms/student_current_situation" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/student_current_situation" class="w-full flex bg-gray-300 items-center">
 		<div class="mx-3 w-5/6">
-			<div class="flex my-2">
+			<div class="flex my-2 items-center">
 				<span class="leading-10">검색조건 : </span>
 				<div class="inline-block relative w-40 mx-2">
 					<select name="searchKey" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
@@ -16,35 +16,35 @@
 					    <option value="student_tel_parent">부모전화=></option>
 		  	 		</select>
 		  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+	   			    	<i class="xi-angle-down"></i>
 				    </div>
 				</div>
-				<input  name="searchWord" type="text"/>
+				<input name="searchWord" type="text" class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>
 			</div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-12 mt-1 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 		<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
-		<div class="justify-end border-2 border-solid border-gray-600 bg-info-200 rounded"><a href="/lms/registration_member"/>등록하기</a></div>
+		<div class="my-2"><a class="inline-block px-2 py-1 bg-info-700 text-white rounded" href="/lms/registration_member"/>등록하기</a></div>
 	<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse;">
 		<tr>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px;">회원번호</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px;">회원명</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:50px;">성별</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px;">휴대폰</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:250px;">이메일</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px;">부모휴대폰</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:150px;">수강등록일</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:100px;">회원번호</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:200px;">회원명</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:50px;">성별</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:200px;">휴대폰</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:250px;">이메일</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:200px;">부모휴대폰</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:150px;">수강등록일</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
-			<tr class="bg-white hover:bg-gray-200" onClick="location.href='/lms/student_detail?student_no=${vo.student_no}'">
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:100px;">${vo.student_no}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:200px;">${vo.student_name_ko}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:50px;">${vo.student_gender}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:200px;">${vo.student_tel_phone}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:250px;">${vo.student_email}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:200px;">${vo.student_tel_parent}</td>
-				<td class="border-solid border-2 border-gray-600 text-center p-2" style="width:150px;">${vo.student_regi_date}</td>
+			<tr class="bg-white hover:bg-gray-200 cursor-pointer" onClick="location.href='/lms/student_detail?student_no=${vo.student_no}'">
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:100px;">${vo.student_no}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:200px;">${vo.student_name_ko}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:50px;">${vo.student_gender}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:200px;">${vo.student_tel_phone}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:250px;">${vo.student_email}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:200px;">${vo.student_tel_parent}</td>
+				<td class="border-solid border border-gray-600 text-center p-2" style="width:150px;">${vo.student_regi_date}</td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %> 
 		<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;강사 업무 일지 수정
 		</div>
 	
 		<div class="p-3 text-right">  
-			<a href="<%=projectPath%>/admin/adminManagementInfo" class="border-solid border-2 border-gray-600 rounded py-2 px-4">목록으로</a>
+			<a href="<%=projectPath%>/admin/adminManagementInfo" class="border-solid border border-gray-600 rounded py-2 px-4">목록으로</a>
 		</div>
 	  
 	 
@@ -140,8 +140,8 @@
 				<div class="p-3"></div>
 				
 				<div class="text-right"> 
-					<input type="submit" value="수정" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
-					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4">수정취소</a> 
+					<input type="submit" value="수정" class="bg-info-700 text-white rounded py-2 px-4"/>
+					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-700 text-white rounded py-2 px-4">수정취소</a> 
 				</div> 
 			</div>
 		</form>   

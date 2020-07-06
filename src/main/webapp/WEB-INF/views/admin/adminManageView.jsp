@@ -7,8 +7,8 @@
 		</div>
 		 
 		<div class="p-3 text-right">  
-			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
-			<a  class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}">수정</a>
+			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
+			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}">수정</a>
 		</div>
 		 
 		<!-- 테이블 -->
@@ -113,7 +113,7 @@
 			
 				<div class="text-right">  
 					<input type="hidden"  name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
-					<input type="submit" value="결제" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
+					<input type="submit" value="결제" class="bg-info-700 text-white rounded py-2 px-4"/>
 					<!-- 목록으로 가는 버튼 -->		
 				</div>
 			</form>	

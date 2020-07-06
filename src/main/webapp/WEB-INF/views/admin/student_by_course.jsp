@@ -4,33 +4,33 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">강좌별 수강생 현황</span>
 	</div>
-	<form action="/lms/student_by_course" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/student_by_course" class="w-full flex bg-gray-300 items-center">
 		<div class="mx-3 w-5/6">
-			<div class="w-1/2 calendar my-3">개강일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
-			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="border-solid border-2 border-gray-600"/></div>
+			<div class="calendar my-3">개강일자 : <input type="text" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="startDate"/> ~ <input type="text" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="endDate"/></div>
+			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/></div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-16 my-3 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 	<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
 	<table class="bg-info-300 text-center" style="width:100%; border-top: 1px solid #444444; table-layout:fixed;">
 		<tr>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">번호</td>
-			<td class="border-solid border-2 border-gray-600" style="width:150px;">개강년월</td>
-			<td class="border-solid border-2 border-gray-600" style="width:200px;">과정명</td>
-			<td class="border-solid border-2 border-gray-600" style="width:200px;">강좌명</td>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">반</td>
-			<td class="border-solid border-2 border-gray-600" style="width:150px;">인원</td>
-			<td class="border-solid border-2 border-gray-600" style="width:100px;">학생관리</td>
+			<td class="border-solid border border-gray-600" style="width:100px;">번호</td>
+			<td class="border-solid border border-gray-600" style="width:150px;">개강년월</td>
+			<td class="border-solid border border-gray-600" style="width:200px;">과정명</td>
+			<td class="border-solid border border-gray-600" style="width:200px;">강좌명</td>
+			<td class="border-solid border border-gray-600" style="width:100px;">반</td>
+			<td class="border-solid border border-gray-600" style="width:150px;">인원</td>
+			<td class="border-solid border border-gray-600" style="width:100px;">학생관리</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
 			<tr class="bg-white">
-				<td class="border-solid border-2 border-gray-600 p-2">${vo.course_no}</td>
-				<td class="border-solid border-2 border-gray-600 p-2" >${vo.course_start_date}</td>
-				<td class="border-solid border-2 border-gray-600 p-2" >${vo.course_name}</td>
-				<td class="border-solid border-2 border-gray-600 p-2" style="overflow:hidden; text-overflow:ellipsis">${vo.course_overview}</td>
-				<td class="border-solid border-2 border-gray-600 p-2" >${vo.course_stage }</td>
-				<td class="border-solid border-2 border-gray-600 p-2" >인원 수 : ${vo.course_student_count}명</td>
-				<td class="border-solid border-2 border-gray-600 p-2" ><a href="/lms/admin/management_of_student?course_no=${vo.course_no}&course_student_count=${vo.course_student_count}" class="border-solid border-2 border-gray-600 bg-info-200 rounded">학생관리</a></td>
+				<td class="border-solid border border-gray-600 p-2">${vo.course_no}</td>
+				<td class="border-solid border border-gray-600 p-2" >${vo.course_start_date}</td>
+				<td class="border-solid border border-gray-600 p-2" >${vo.course_name}</td>
+				<td class="border-solid border border-gray-600 p-2" style="overflow:hidden; text-overflow:ellipsis">${vo.course_overview}</td>
+				<td class="border-solid border border-gray-600 p-2" >${vo.course_stage }</td>
+				<td class="border-solid border border-gray-600 p-2" >인원 수 : ${vo.course_student_count}명</td>
+				<td class="border-solid border border-gray-600 p-2" ><a href="/lms/admin/management_of_student?course_no=${vo.course_no}&course_student_count=${vo.course_student_count}" class="bg-info-600 px-4 rounded">학생관리</a></td>
 			</tr>
 		</c:forEach>
 	</table>

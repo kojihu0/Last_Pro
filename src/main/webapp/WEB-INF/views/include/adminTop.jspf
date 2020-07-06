@@ -59,11 +59,12 @@
  
 </head>
 <body>
+<div class="site-wrap">
 <header class="shadow">
 	<div class="bg-black py-4">
 		<div class="container my-0 mx-auto flex items-center justify-between text-white">
 			<div class="flex-shrink-0 text-lg font-bold">
-				<a href="<%=projectPath %>/admin/adminMain">Educamp Admin</a>
+				<a href="<%=projectPath %>/admin/adminMain"><span class="mr-2"><img src="<%=projectPath %>/img/educamp.png" width="27" height="27" class="inline-block"></span>Educamp Admin</a>
 			</div>
 			<ul id="loginArea" class="container flex justify-end items-center my-0 mx-auto">
 				<c:if test="${ admin_id == null || admin_id == ''}">
@@ -109,4 +110,4 @@
 		</ul>
 	</nav>
 </header>
-<div class="bg-gray-100">
+<div class="page-content bg-gray-100">

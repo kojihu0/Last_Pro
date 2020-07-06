@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;강좌 등록
 		</div>
 		<div class="p-3 flex justify-center">
@@ -57,7 +57,7 @@
 									    <option value="주말반">주말반</option>
 								  	 </select>
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div>
 					 			<div class="inline-block relative w-40">
@@ -69,7 +69,7 @@
 									    <option value="20:00~23:00">20:00~23:00</option>
 								  	 </select>
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div> 
 					 			<div class="inline-block relative w-40">
@@ -107,7 +107,7 @@
 									    <option value="구관A303">A303</option>
 								  	 </select>  
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div>
 					 		</td>
@@ -138,8 +138,8 @@
 						</tr>
 						<tr>
 							<th colspan="2" class="p-3 text-right">
-								<input class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" type="submit" value="등록"/>
-								<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
+								<input class="bg-info-700 text-white rounded py-2 px-4" type="submit" value="등록"/>
+								<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
 							</th>
 							<th>
 							</th>

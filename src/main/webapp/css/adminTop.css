@@ -4,7 +4,7 @@ ul li{padding:0; margin:0}
 #menuList>li{line-height:50px; height:50px;}*/
 #menuList .submenu{z-index:100; width:180px; display:none;}
 #menuList>li>a{border-bottom-color:transparent;}
-#menuList>li>a:hover{border-bottom-color:#05B7E6};
+#menuList>li:hover>a{border-bottom-color:#05B7E6};
 .calendar img{display:inline-block}
 .img_wrap img{max-width:100%; max-height:100%;} 
 .img_div{position:relative;}

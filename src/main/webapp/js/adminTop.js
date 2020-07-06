@@ -38,7 +38,7 @@ $(function(){
 		  $("#modify_counseling_form").css("display","none");
 		  $("#modify_colsed_out_form").css("display","none");
 		  $("#move_class_form").css("display","none");
-		  $("#colsed_out_form").css("display","none");s
+		  $("#colsed_out_form").css("display","none");
 	  });
 	  
 	  $("#counseling_management_tab").click(function(){
