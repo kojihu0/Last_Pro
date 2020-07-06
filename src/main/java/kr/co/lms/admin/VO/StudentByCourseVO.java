@@ -30,6 +30,7 @@ public class StudentByCourseVO {
 	private int student_cnt2;
 	private int attendance_cnt;
 	
+	
 	public int getState() {
 		return state;
 	}
@@ -180,6 +181,4 @@ public class StudentByCourseVO {
 	public void setAttendance_cnt(int attendance_cnt) {
 		this.attendance_cnt = attendance_cnt;
 	}
-	
-	
 }

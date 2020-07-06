@@ -39,55 +39,42 @@
 		 			</div>
 					<div class="inline-block relative w-40">
 						<select name="course_stage" id="course_stage" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-center">
-							<option selected="selected">::장소::</option>
-						    <option value="">=====본관=====</option> 
-						    <option value="본관 :A101">A101</option>
-						    <option value="본관 :A102">A102</option>
-						    <option value="본관 :A103">A103</option>
-						    <option value="본관 :B201">B201</option>
-						    <option value="본관 :B202">B202</option>
-						    <option value="본관 :B203">B203</option>
-						    <option value="본관 :C301">C301</option>
-						    <option value="본관 :C302">C302</option>
-						    <option value="본관 :C303">C303</option>
-						    <option value="">=====신관=====</option>
-						    <option value="신관:A101">A101</option>
-						    <option value="신관:A102">A102</option>
-						    <option value="신관:A103">A103</option>
-						    <option value="신관:B201">B201</option>
-						    <option value="신관:B202">B202</option>
-						    <option value="신관:B203">B203</option>
-						    <option value="신관:C301">C301</option>
-						    <option value="신관:C302">C302</option>
-						    <option value="신관:C303">C303</option>
-						    <option value="">=====구관=====</option>
-						    <option value="구관:A101">A101</option>
-						    <option value="구관:A102">A102</option>
-						    <option value="구관:A103">A103</option>
-						    <option value="구관:B201">B201</option>
-						    <option value="구관:B202">B202</option>
-						    <option value="구관:B203">B203</option>
-						    <option value="구관:C301">C301</option>
-						    <option value="구관:C302">C302</option>
-						    <option value="구관:C303">C303</option>
-					  	 </select>
+						 <option selected="selected">::장소::</option>
+                               <option value="">=====본관=====</option>
+                               <option value="본관A101">A101</option>
+                               <option value="본관A102">A102</option>
+                               <option value="본관A103">A103</option>
+                               <option value="본관B201">B201</option>
+                               <option value="본관B202">B202</option>
+                               <option value="본관B203">B203</option>
+                               <option value="본관C301">C301</option>
+                               <option value="본관C302">C302</option>
+                               <option value="본관C303">C303</option>
+                               <option value="">=====신관=====</option>
+                               <option value="신관A101">A101</option>
+                               <option value="신관A102">A102</option>
+                               <option value="신관A103">A103</option>
+                               <option value="신관A201">A201</option>
+                               <option value="신관A202">A202</option>
+                               <option value="신관A203">A203</option>
+                               <option value="신관A301">A301</option>
+                               <option value="신관A302">A302</option>
+                               <option value="신관A303">A303</option>
+                               <option value="">=====구관=====</option>
+                               <option value="구관A101">A101</option>
+                               <option value="구관A102">A102</option>
+                               <option value="구관A103">A103</option>
+                               <option value="구관A201">A201</option>
+                               <option value="구관A202">A202</option>
+                               <option value="구관A203">A203</option>
+                               <option value="구관A301">A301</option>
+                               <option value="구관A302">A302</option>
+                               <option value="구관A303">A303</option>
+                              </select>  
 					  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 			    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
 			  			</div>
 		 			</div>
-	 				<div class="inline-block relative w-40 mx-2">
-						<select name="course_name" id="course_name" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
-							<option>==</option>
-						    <option>JAVA</option>
-						    <option>HTML/CSS</option>
-						    <option>JAVASCRIPT</option>
-						    <option>SPRING</option>
-						    <option>MYBATIS</option>
-			  	 		</select>
-			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-					    </div>
-					</div>
 				</td>
 			</tr>
 			<tr>

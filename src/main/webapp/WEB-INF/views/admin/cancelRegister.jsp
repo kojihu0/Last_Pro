@@ -7,8 +7,8 @@
 	<form action="/lms/cancelRegister" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
 		<div class="mx-3 w-5/6">
 			<div class="flex mt-3 mb-2">
-				<div class="w-1/2 calendar">반환일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
-				<div class="w-1/2 calendar">원 등록일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate2"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate2"/></div>
+				<div class="w-1/2 calendar">반환일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2 w-40" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600 w-40" name="endDate"/></div>
+				<div class="w-1/2 calendar">원 등록일자 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2 w-40" name="startDate2"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600 w-40" name="endDate2"/></div>
 			</div>
 			<div class="flex mb-2">
 				<span class="leading-8">검색조건 : </span><div class="inline-block relative w-40 mx-2">

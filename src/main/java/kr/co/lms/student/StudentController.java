@@ -277,14 +277,21 @@ public class StudentController {
 	public ModelAndView class_transferOk(StudentByCourseVO vo) {
 		ModelAndView mav = new ModelAndView();
 		StudentByCourseDAOImp dao =  sqlSession.getMapper(StudentByCourseDAOImp.class);
-		mav.addObject("student_no", vo.getStudent_no());
 		
-		int cnt = dao.studentClassUpdate(vo);
-		if(cnt>0) {
-			mav.setViewName("admin/classTransferOk");
+		
+		mav.addObject("student_no", vo.getStudent_no());
+		int attendanceDel = dao.attendanceRecordeDel(vo);
+		
+		if(attendanceDel>0) {
+			int cnt = dao.studentClassUpdate(vo);
+			if(cnt>0) {
+				mav.setViewName("admin/classTransferOk");
+			}else {
+				mav.setViewName("admin/classTransferFail");
+			}	
 		}else {
 			mav.setViewName("admin/classTransferFail");
-		}	
+		}
 		return mav;
 	}
 	@RequestMapping("/admin/leave_out")
