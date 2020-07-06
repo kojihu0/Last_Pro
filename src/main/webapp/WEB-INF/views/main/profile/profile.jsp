@@ -94,7 +94,7 @@ function preview(input, target) {
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
-	<div class="flex mt-12">
+	<div class="flex my-12">
 		<div class="lg:w-1/5 flex-initial">
 		<c:if test="${student_img != null }">
 			<img src="<%=ctx%>/img/${student_img}">
@@ -108,8 +108,8 @@ function preview(input, target) {
 			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-full mt-4 pl-8">
-			<ul class="flex roboto-slab">
-			  <li class="-mb-px mr-1">
+			<ul class="flex roboto-slab -mb-px">
+			  <li class="mr-1">
 			    <a class="bg-whitehover:border-brand-500  border-b border-l border-t border-r  py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
 			  </li> 
 			  <li class="mr-1">
@@ -119,17 +119,17 @@ function preview(input, target) {
 			   	 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/inCompletionCourse">Incomplete Course</a>
 			  </li>
 			  <li class="mr-1">
-			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
+			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/schedule">Schedule</a>
 			  </li>
 			  <li class="mr-1">
-			    <a class=" bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/profile">Profile</a>
+			    <a class="bg-white border-brand-500 border-b border-l border-t-4 border-r py-3 px-4  text-brand-500  font-semibold" href="<%=ctx%>/profile">Profile</a>
 			  </li>
 			   <li class="mr-1">
-			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
+			    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
 			  </li>
-			   <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
-				  </li>
+			  <li class="mr-1">
+				 <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
+				</li>
 			</ul>
 				
 			<ul class="flex roboto-slab mt-16 mb-4">
@@ -145,12 +145,14 @@ function preview(input, target) {
 			</ul>
 				
 			<form id="profileUpdate" style="display:block">
-				<span class="text-black font-bold ">자기소개</span><br/>
-				<textarea id="student_info" name="student_info" class="focus:outline-none bg-gray-200 mt-4 " rows="8" cols="50"></textarea><br/>
-				<span class="text-gray-500 ">Share a little biographical information to fill out your profile. This may be shown publicly.</span><br/>
-				<div class="mt-5">
-					<span class="font-bold">이름</span><br/>
-					<input type="text" name="student_name_ko" id="firstName" class='focus:outline-none bg-gray-200 py-2 px-3'/><br/>
+				<div class="mb-4">
+					<p class="font-bold mb-2">이름</p>
+					<p><input type="text" name="student_name_ko" id="firstName" class='focus:outline-none bg-gray-200 py-2 px-3' value="${student_name_ko}"/></p>
+				</div>
+				<div>
+					<p class="text-black font-bold mb-2">자기소개</p>
+					<textarea id="student_info" name="student_info" class="focus:outline-none bg-gray-200 py-2 px-3" rows="8" cols="50">${student_info}</textarea>
+					<p class="text-gray-500 text-sm">Share a little biographical information to fill out your profile. This may be shown publicly.</p>
 				</div>
 				<input value="변경하기" id="generalBtn" type="button" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
 				<input value="회원탈퇴" id="generalDelBtn" type="button" class="cursor-pointer focus:outline-none mt-5 mb-5 bg-brand-500 hover:bg-brand-700  text-black font-bold py-3 px-5 ">
@@ -169,13 +171,13 @@ function preview(input, target) {
 			
 			<form id="passwordUpdate"style="display:none">
 				<div class="mt-3">
-					<span class="font-bold">New Password</span><br/> 	
-					<input type="password" id="newPwd" name="student_pw" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/> 						
+					<p class="font-bold">New Password</p>
+					<p><input type="password" id="newPwd" name="student_pw" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"></p>				
 				</div>
 				<div class="text-brand-500 text-sm" >비밀번호는 영문자,숫자,특수문자를 포함한 8자리 이상</div>
 				<div class="mt-3">
-					<span class="font-bold">Confirmation Password</span><br/>
-					<input type="password" id="newPwdChk" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"><br/>
+					<p class="font-bold">Confirmation Password</p>
+					<p><input type="password" id="newPwdChk" class="focus:outline-none my-4 bg-gray-200 py-2 px-3"></p>
 				</div>
 				<div class="text-brand-500 text-sm" id="mypagePw">비밀번호가 일치합니다.</div>
       	  		<div class="text-danger-500 text-sm" id="mypagePwChk">비밀번호가 일치하지 않습니다.</div>

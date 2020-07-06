@@ -58,17 +58,33 @@
 			<h1 class="mb-4 text-3xl font-bold">${vo.course_name}</h1>
 			<p class="mb-8 text-gray-dark">${vo.course_overview}</p>
 			<div class="course-meta flex items-start text-sm">
-				<div class="border-r border-gray pr-4 py-1">
-					<p class="text-gray-500">모집기간<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_reception_start} ~ ${vo.course_reception_end}</span></p>
+				<div class="pr-4 py-1">
+					<p class="text-gray-500">
+						<span class="w-10">모집기간</span>
+						<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_reception_start} ~ ${vo.course_reception_end}</span>
+					</p>
 				</div>
-				<div class="border-r border-gray px-4 py-1">
-					<p class="text-gray-500">개강일<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_start_date}</span></p>
+				<div class="px-4 py-1">
+					<p class="text-gray-500">
+						<span class="w-10">개강일</span>
+						<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_start_date}</span>
+					</p>
 				</div>
-				<div class="border-r border-gray px-4 py-1">
-					<p class="text-gray-500">수강기간<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_start_date} ~ ${vo.course_end_date}</span></p>
+				<div class="px-4 py-1">
+					<p class="text-gray-500">
+						<span class="w-10">수강기간</span>
+						<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_start_date} ~ ${vo.course_end_date}</span>
+					</p>
+					<p class="text-gray-500">
+						<span class="w-10">시간</span>
+						<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_day} ${vo.course_time}</span>
+					</p>
 				</div>
 				<div class="pl-4 py-1">
-					<p class="text-gray-500">장소<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_stage}</span></p>
+					<p class="text-gray-500">
+						<span class="w-10">장소</span>
+						<span class="font-bold text-gray-700 ml-2 text-xs">${vo.course_stage}</span>
+					</p>
 				</div>
 			</div>
 			<!--버튼-->
