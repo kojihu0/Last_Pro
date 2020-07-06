@@ -183,32 +183,27 @@
 						   		var teacherName_02;
 						   		var teacherName_03;
 	                        	var teacherName_04;
-						   		var teacherName_05;
-						   		var teacherName_06;
+
 						
 						   		var payment_Num_C_00;
 						   		var payment_Num_C_01;
 						   		var payment_Num_C_02;
 						   		var payment_Num_C_03;
 						   		var payment_Num_C_04;
-						   		var payment_Num_C_05;
-						   		var payment_Num_C_06;
+
 						   		
 						   		teacherName_00 = "${teacherName[0]}";
 						   		teacherName_01 = "${teacherName[1]}";	 
 						   		teacherName_02 = "${teacherName[2]}";
 						   		teacherName_03 = "${teacherName[3]}";
 						   		teacherName_04 = "${teacherName[4]}";
-						   		teacherName_05 = "${teacherName[5]}";
-						   		teacherName_06 = "${teacherName[6]}";
+
 						   		//							
 								payment_Num_C_00 = ${payment_Num_T[0]};
 						   		payment_Num_C_01 = ${payment_Num_T[1]};	 
 						   		payment_Num_C_02 = ${payment_Num_T[2]};
 						   		payment_Num_C_03 = ${payment_Num_T[3]};
 						   		payment_Num_C_04 = ${payment_Num_T[4]};
-						   		payment_Num_C_05 = ${payment_Num_T[5]};
-						   		payment_Num_C_06 = ${payment_Num_T[6]};
 						  
 	                            new Chart(document.getElementById("chartjs-0"), {
 	                                "type": "pie",
@@ -217,9 +212,8 @@
 	                                    			teacherName_01,
 	                                    			teacherName_02,
 	                                    			teacherName_03,
-	                                    			teacherName_04,
-	                                    			teacherName_05,
-	                                    			teacherName_06
+	                                    			teacherName_04
+
 	                                    		  ],
 	                                    "datasets": [{
 	                                        "label": "Views",
@@ -227,9 +221,7 @@
 	                                        			payment_Num_C_01,
 	                                        			payment_Num_C_02,
 	                                        			payment_Num_C_03,
-	                                        			payment_Num_C_04,
-	                                        			payment_Num_C_05,
-	                                        			payment_Num_C_06
+	                                        			payment_Num_C_04 
 	                                        		],
 	                                        "fill": false,
 	                                        "backgroundColor": [

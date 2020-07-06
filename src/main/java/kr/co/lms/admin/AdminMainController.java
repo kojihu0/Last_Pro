@@ -75,6 +75,8 @@ public class AdminMainController {
 				for(int i = 0; i<tempListT.size(); i++) {
 					teacherName[i] 		= tempListT.get(i).getEmployee_name();
 					payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
+					
+					System.out.println("선생 확인 ::: " + teacherName[i]); 
 				}  
 				//가장 많이 팔린 강좌 정보
 				for(int i = 0; i<tempListC.size(); i++) {
