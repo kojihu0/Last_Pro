@@ -46,7 +46,7 @@
 						<tr class="text-center">
 							<td class="border border-black bg-white w-16 p-2">${vo.course_no }</td>
 							<td class="border border-black bg-white w-32 p-2">${vo.course_start_date }</td> 
-							<td class="border border-black bg-white w-64 p-2">${vo.course_name }</td>
+							<td class="border border-black bg-white w-64 p-2 truncate ">${vo.course_name }</td> 
 							<td class="border border-black bg-white w-32 p-2">${vo.course_price }</td> 
 							<td class="border border-black bg-white w-32 p-2">${vo.course_state }</td>
 							<td class="border border-black bg-white w-32 p-2">

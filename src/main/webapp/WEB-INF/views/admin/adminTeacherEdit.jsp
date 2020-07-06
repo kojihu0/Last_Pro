@@ -15,14 +15,15 @@
 						<th class="p-3 w-32 border border-black text-l">    
 							<div class="">
 								<div class="p-3 img_wrap border-solid border-2 border-gray-600" style="width:200px; height:250px; margin:0 auto"> 
-									<img id="img" class="object-cover" src="<%=projectPath %>/img/${vo.employee_img }"/>  
+									<img id="img" class="object-cover" src="<%=projectPath %>/img/${vo.employee_img }"/>
+
 								</div>  
 								<div class="p-3">  
-									<input type="hidden" value=""/>
-									<input type="file" id="input_img" name="employee_img_m" class="hidden" />
+									<input type="hidden" name="employee_img" value="${vo.employee_img}"/>  
+									<input type="file" id="input_img" name="employee_img_m" class="hidden"/> 
 									<button id="button_img" class=" border-solid border-2 border-gray-600 rounded bg-info-200">사진등록</button>
 								</div>
-							</div>
+							</div> 
 						</th>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">소개글</th>
 						<th class="w-16 border border-black text-l">    
@@ -40,7 +41,7 @@
 						<td colspan="3" class="p-3 border border-black">
 							<select id="belong" name="employee_class" class="border border-black h-8">
 									<c:if test="${vo.employee_class == null }"><option  selected="selected">::담당::</option></c:if>
-									<c:if test="${vo.	employee_class != null }"><option>::담당::</option></c:if>
+									<c:if test="${vo.employee_class != null }"><option>::담당::</option></c:if>
 									
 									<c:if test="${vo.employee_class != 'A' }"><option value="A">A</option></c:if>
 									<c:if test="${vo.employee_class == 'A' }"><option value="A"  selected="selected">A</option></c:if>
@@ -58,6 +59,27 @@
 									<c:if test="${vo.employee_class == 'E' }"><option value="E" selected="selected">E</option></c:if>
 							</select>
 						</td> 
+					</tr>
+					<tr> 
+						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">전  공</th>
+						<td colspan="3" class="p-3 border border-black">
+							<select name="employee_subject" class="border border-black h-8">   
+								<c:if test="${vo.employee_subject == null }"><option  selected="selected">::반::</option></c:if>
+									<c:if test="${vo.employee_subject != null }"><option>::반::</option></c:if>
+									
+									<c:if test="${vo.employee_subject == 'JAVA' }"><option value="JAVA"  selected="selected">JAVA</option></c:if>
+									<c:if test="${vo.employee_subject != 'JAVA' }"><option value="JAVA" >JAVA</option></c:if>
+									
+									<c:if test="${vo.employee_subject == 'javascript' }"><option value="javascript" selected="selected">javascript</option></c:if>
+									<c:if test="${vo.employee_subject != 'javascript' }"><option value="javascript">javascript</option></c:if>
+									
+									<c:if test="${vo.employee_subject == 'Html/CSS'}"><option value="Html/CSS" selected="selected">Html/CSS</option></c:if>
+									<c:if test="${vo.employee_subject != 'Html/CSS' }"><option value="Html/CSS">Html/CSS</option></c:if>
+									 
+									<c:if test="${vo.employee_subject == 'Spring' }"><option value="Spring" selected="selected">Spring</option></c:if>
+									<c:if test="${vo.employee_subject != 'Spring' }"><option value="Spring">Spring</option></c:if>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">직  급</th>

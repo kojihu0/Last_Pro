@@ -134,6 +134,7 @@
 			employee_state     = #{employee_state},
 			employee_img       = #{employee_img},
 			employee_rank      = #{employee_rank},
+			employee_subject   = #{employee_subject}, 
 			employee_overview  = #{employee_overview}
 		WHERE
 			employee_no = #{employee_no}

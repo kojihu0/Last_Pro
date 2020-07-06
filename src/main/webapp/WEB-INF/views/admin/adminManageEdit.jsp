@@ -23,8 +23,8 @@
 						<tr>		
 							<th class="bg-info-300 py-2 text-center">클래스</th>
 							<th class="border bg-white px-2 text-left">
-								<select name="admin_manageinfo_subject" id="classSubject" class="border border-black mx-2 h-8">    
-									<c:if test="${result_Vo.admin_manageinfo_subject == null }"><option  selected="selected">::반::</option></c:if>
+								<select name="admin_manageinfo_subject" id="classSubject" class="border border-black mx-2 h-8">     
+									<c:if test="${result_Vo.admin_manageinfo_subject == null }"><option  selected="selected">::전공::</option></c:if>
 									<c:if test="${result_Vo.admin_manageinfo_subject != null }"><option>::반::</option></c:if>
 									
 									<c:if test="${result_Vo.admin_manageinfo_subject == 'JAVA' }"><option value="JAVA"  selected="selected">JAVA</option></c:if>

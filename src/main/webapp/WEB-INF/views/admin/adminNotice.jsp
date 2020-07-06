@@ -31,7 +31,7 @@
 					<c:forEach var="vo" items="${list }">
 						<tr class="bg-white hover:bg-gray-200" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?admin_notice_no=${vo.admin_notice_no }'">
 							<td  class="border text-center p-2">${vo.admin_notice_no}</td>
-							<td  class="border text-center p-2">${vo.admin_notice_title}</td>
+							<td  class="truncate border text-center p-2">${vo.admin_notice_title}</td>
 							
 							<c:if test="${vo.admin_category == 1}">
 								<td  class="border text-center p-2">공지사항</td>
