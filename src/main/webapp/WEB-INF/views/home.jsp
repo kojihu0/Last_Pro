@@ -7,7 +7,7 @@
 			<div class="container h-full my-0 mx-auto relative px-4 lg:px-0">
 				<div class="slide_txt absolute">
 					<h1 class="roboto-slab text-6xl">Best For Education</h1>
-					<p class="text-lg">노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
+					<p class="text-lg">코딩이 습관이 되는 학원 EDUCAMP</p>
 				</div>
 			</div>
 		</div>
@@ -15,7 +15,7 @@
 			<div class="container h-full my-0 mx-auto relative px-4 lg:px-0">
 				<div class="slide_txt absolute">
 					<h1 class="roboto-slab text-6xl">Best For Education</h1>
-					<p class="text-lg">노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
+					<p class="text-lg">EDUCAMP는 항상 끊임없이 연구하고 노력하는 IT전문교육기관입니다.</p>
 				</div>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 			<div class="container h-full my-0 mx-auto relative px-4 lg:px-0">
 				<div class="slide_txt absolute">
 					<h1 class="roboto-slab text-6xl">Best For Education</h1>
-					<p class="text-lg">노년에게서 가치를 방황하였으며, 방황하여도, 하였으며, 보라. 관현악이며, 너의 풍부하게 것은 사막이다.</p>
+					<p class="text-lg">기초부터 탄탄하게 가르치는 교육</p>
 				</div>
 			</div>
 		</div>

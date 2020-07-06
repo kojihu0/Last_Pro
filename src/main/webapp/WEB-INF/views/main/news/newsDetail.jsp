@@ -27,7 +27,7 @@
 	 </div>
 	 	<div class="text-center mb-8">
 		<a href="<%=ctx%>/event">	
-			<input type="button" class="w-full focus:outline-none text-white cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="목록으로"/>
+			<input type="button" class="focus:outline-none text-white cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="목록으로"/>
 		</a>
 	</div>
 </div>
