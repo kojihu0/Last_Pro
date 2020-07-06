@@ -34,9 +34,10 @@
 		<div class="flex items-center">
 			<c:if test="${payment_no=='' || payment_no==null}">
 			<p class="font-bold text-xl text-danger-500 mr-8"><span>${vo.course_price_format}</span>원</p>
-			<a href="#donate" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded hidden lg:inline-block text-lg text-center font-bold">수강신청</a>
+			<a href="<%=ctx %>/paymentProcess?course_no=${vo.course_no}" class="btn-donate bg-brand-500 hover:bg-brand-600 text-white py-2 px-4 rounded inline-block text-lg text-center font-bold">수강신청</a>
 			</c:if>
-			<a href="#" class="add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded hidden lg:inline-bloc text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
+			<a href="/course/wishOk" data-course_no="${vo.course_no}" data-wish_status="<c:if test="${wish_no>0}">remove</c:if><c:if test="${wish_no==0}">add</c:if>"
+				data-action="<%=ctx %>/course/wishOk" class="<c:if test="${wish_no>0}">added-this </c:if>add-wishlist relative ml-2 bg-black border border-gray-700 text-brand-500 w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 		</div>
 		</c:if>
 		<c:if test="${logStatus == 'N' || logStatus == null}">
