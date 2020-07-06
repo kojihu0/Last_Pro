@@ -114,7 +114,7 @@ public class AdminMainController {
 			return mav;  
 		}
 		//DB에서 일정 읽어오기;
-		@RequestMapping(value="/calendar/base", method={RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
+		@RequestMapping(value="/calendar/base", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
 		public String base(AdminCalendarVO vo, HttpServletRequest request, HttpServletResponse response) {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
@@ -123,7 +123,8 @@ public class AdminMainController {
 			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
-				//json형식으로 문자열 생성->javascript 필드에서 작업할 것.
+
+				
 				 jsonStr += "{" + "\"start\":"  	    +"\"" + result_List.get(i).getCalendar_start_date()  +"\"" + "," +
 								   "\"end\":"   	    +"\"" + result_List.get(i).getCalendar_end_date()	+"\"" + "," + 
 								   "\"title\":" 	    +"\"" + result_List.get(i).getCalendar_title() 		+"\"" + "," +
