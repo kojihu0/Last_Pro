@@ -693,6 +693,8 @@ public class AdminController {
 		AdminCourseVO result_Vo = adminRegiInter.selectCourseOne(vo.getCourse_no());
 		
 		mav.addObject("vo", result_Vo);
+		
+		System.out.println("vo->course_day ::: " + vo.getCourse_day());
 		mav.setViewName("/admin/adminCourseEdit");
 		
 		return mav;  

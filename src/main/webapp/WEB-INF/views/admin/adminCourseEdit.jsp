@@ -223,8 +223,6 @@
 										<c:if test="${vo.course_stage != '본관A303' }">
 											 <option value="본관A303">A303</option>
 										</c:if>
-										
-
 										 <c:if test="${vo.course_stage == '본관B101'}">
 											 <option selected="selected" value="본관B101">B101</option>
 										</c:if>
@@ -236,7 +234,7 @@
 											 <option selected="selected"  value="본관B102">B102</option>
 										</c:if>
 										<c:if test="${vo.course_stage != '본관B102' }">
-											 <option value="본관 B102">본관B102</option>
+											 <option value="본관 B102">B102</option>
 										</c:if>
 									    
 									    <c:if test="${vo.course_stage == '본관B103' }">
