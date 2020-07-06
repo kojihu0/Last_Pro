@@ -78,14 +78,14 @@ public class AdminMainController {
 				}  
 				//가장 많이 팔린 강좌 정보
 				for(int i = 0; i<tempListC.size(); i++) {
-					courseName[i] 		= tempListC.get(i).getCourse_name();
+					courseName[i] 		= tempListC.get(i).getCourse_name().substring(0,7); 
 					payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
 				}
 				mav.addObject("payment_Num_T", payment_Num_T);
 				mav.addObject("payment_Num_C", payment_Num_C);
 				mav.addObject("teacherName", teacherName);
 				mav.addObject("courseName", courseName);
-			}else{ 
+			}else{  
 				String 	teacherName[] 		= new String[7];
 				String	courseName[] 		= new String[4];
 				int 	payment_Num_T[] 	= new int[7];

@@ -105,10 +105,10 @@
 						   		var payment_Num_C_03;
 								
 						   		
-						   		 courseName_00 = "${courseName[0]}";  
-						   		 courseName_01 = "${courseName[1]}";
-						   		 courseName_02 = "${courseName[2]}";
-						   		 courseName_03 = "${courseName[3]}";
+						   		 courseName_00 = '${courseName[0]}';  
+						   		 courseName_01 = '${courseName[1]}';
+						   		 courseName_02 = '${courseName[2]}';
+						   		 courseName_03 = '${courseName[3]}'; 
 
 
 						   	
@@ -123,11 +123,11 @@
 	                                "data": {
 	                                    "labels": [	courseName_00,
 	                                    			courseName_01,
-	                                    			courseName_02,
-	                                    			courseName_03
+	                                    			courseName_02, 
+	                                    			courseName_03	
 	                                    		  ],
 	                                    "datasets": [{
-	                                        "label": "Page Impressions", 
+	                                        "label": "course", 
 	                                        "data": [	payment_Num_C_00,
 	                                        		 	payment_Num_C_01,
 	                                        		 	payment_Num_C_02,
@@ -142,7 +142,7 @@
 	                                               'rgba(75, 192, 192, 0.2)',
 	                                        ]
 	                                    }, {
-	                                        "label": "Adsense Clicks",
+	                                        "label": "point-line",
 	                                        "data": [	payment_Num_C_00,
 	                                        			payment_Num_C_01,
 	                                        			payment_Num_C_02,
