@@ -42,10 +42,10 @@
 					</td>
 					<td class="p-2" style="width:200px">${vo.attendance_reason}</td>
 					<!-- 출결체크가 되어 있으면 보여야 한다. -->
-					<c:if test="${vo.attendance_state==1 || vo.attendance_state==2 || vo.attendance_state==3}">
+					<c:if test="${vo.attendance_state==1 || vo.attendance_state==2 || vo.attendance_state==3 || vo.attendance_state==4}">
 						<td style="width:100px"><a href="/lms/admin/modify_table_attendance_grade_individual?student_no=${vo.student_no}&course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">수정</a></td>
 					</c:if>
-					<c:if test="${vo.attendance_state==4 || vo.attendance_state==0}">
+					<c:if test="${vo.attendance_state==0}">
 						<td style="width:100px"></td>
 					</c:if>
 				</tr>

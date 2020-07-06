@@ -20,4 +20,6 @@ public interface StudentByCourseDAOImp {
 	public StudentByCourseVO selectStudentName(int student_no);
 	//휴퇴원 처리
 	public int studentLeaveOutUpdate(StudentByCourseVO vo);
+	//반이동 하면서 출석기록 삭제
+	public int attendanceRecordeDel(StudentByCourseVO vo);
 }

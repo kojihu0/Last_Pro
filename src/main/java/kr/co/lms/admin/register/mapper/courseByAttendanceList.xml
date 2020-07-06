@@ -55,8 +55,8 @@
 		on a.student_no=p.student_no and a.payment_no = p.payment_no full join student_course_state sc on sc.payment_no = p.payment_no and sc.student_no = p.student_no where c.course_no=#{param1} and sc.state=0
 	</select>
 	<insert id="studentAttendanceOk" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
-		insert into attendance(attendance_no, student_no, payment_no, attendance_date, attendance_state, attendance_reason)
-		values(attendance_sq.nextval, #{param1}, (select payment_no from payment where student_no=#{param1} and course_no=#{param4}), sysdate, #{param2}, #{param3})
+		insert into attendance(attendance_no, student_no, payment_no, attendance_date, attendance_state, attendance_reason, course_no)
+		values(attendance_sq.nextval, #{param1}, (select payment_no from payment where student_no=#{param1} and course_no=#{param4}), sysdate, #{param2}, #{param3}, #{param4})
 	</insert>
 	<update id="studentAttendanceOk2" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
 		update attendance set attendance_date=sysdate, attendance_state=#{param2}, attendance_reason=#{param3} where student_no=#{param1} and payment_no=(select payment_no from payment where student_no=#{param1} and course_no=#{param4})
@@ -74,12 +74,12 @@
 		update attendance set attendance_state=4, attendance_reason=''  where student_no=#{student_no} and attendance_no=(select attendance_no from attendance where student_no=#{student_no} and payment_no=(select payment_no from payment where student_no=#{student_no} and course_no=#{course_no}))
 	</delete>
 	<select id="studentCountByAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
-		select count(a.student_no) student_cnt from attendance a join payment p on a.student_no = p.student_no join student_course_state sc on p.student_no=sc.student_no and p.payment_no=sc.payment_no and p.course_no=#{param1} and sc.state=0
+		select count(a.student_no) student_cnt from attendance a join payment p on a.student_no = p.student_no and a.payment_no = p.payment_no join student_course_state sc on p.student_no=sc.student_no and p.payment_no=sc.payment_no and a.course_no=#{param1} and sc.state=0
 	</select>
 	<select id="studentCountByAttendance2" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
-		select count(a.student_no) student_cnt2 from attendance a join payment p on a.student_no = p.student_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and p.course_no=#{param1} where a.attendance_state=4 and sc.state=0
+		select count(a.student_no) student_cnt2 from attendance a join payment p on a.student_no = p.student_no and a.payment_no = p.payment_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and a.course_no=#{param1} where a.attendance_state=4 and sc.state=0
 	</select>
 	<select id="studentCountByAttendance3" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
-		select count(a.attendance_no) attendance_cnt from attendance a join payment p on a.student_no= p.student_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and p.course_no=#{param1} and sc.state=0
+		select count(a.attendance_no) attendance_cnt from attendance a join payment p on a.student_no= p.student_no and a.payment_no=p.payment_no join student_course_state sc on p.payment_no=sc.payment_no and p.student_no=sc.student_no and a.course_no=#{param1} and sc.state=0
 	</select>
 </mapper>

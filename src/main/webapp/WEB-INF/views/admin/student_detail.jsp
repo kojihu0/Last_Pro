@@ -464,11 +464,224 @@
 				</div>
 			</div>
 		</form>
-		<!--------------------------------------------------반이동 -------------------------------------------------------->
-		
-		<!---------------------------------------------------휴퇴원  -------------------------------------------------------->
-		<form method="post" action="/lms/admin/closedOutOk" class="w-full">
-			<div class="w-full my-3" style="display:none;" id="colsed_out_form">
+		<c:forEach var="vo3" items="${list2}">
+			<div class="my-5">
+				<div class="flex justify-between" style="border-top:solid black 1px; border-bottom:solid black 1px">
+					<span class="p-2">${vo3.counseling_date}</span>
+					<div class="p-2">
+						<button data-student_no="${vo3.student_no}" data-counseling_no="${vo3.counseling_no}" class="rounded bg-info-200 border-solid border-2 border-gray-600 modify_counseling_id" >수정</button><!-- Ajax로 구현하기 -->
+						<a href="javascript:delete_counseling(${vo3.student_no},${vo3.counseling_no})" class="rounded bg-info-200 border-solid border-2 border-gray-600">삭제</a>
+					</div>
+				</div>
+				<div class="w-full mt-4">[<span class="counseling_division-${vo3.counseling_no}">${vo3.counseling_division}</span>]<span class="counseling_title-${vo3.counseling_no}">${vo3.counseling_title}</span></div>
+				<div class="mt-2 counseling_content-${vo3.counseling_no}">${vo3.counseling_content}</div>
+			</div>
+		</c:forEach>
+	</div>
+	<form id="modify_counseling_form" method="post" action="/lms/modify_counselingOk" style="display:none">
+		<input type="hidden" name="student_no"/>
+		<input type="hidden" name="counseling_no"/>
+		<div class="flex">
+			<div class="inline-block relative w-40 mr-2">
+				<select name="counseling_division" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+					<option>입학상담</option>
+					<option>일반상담</option>
+					<option>휴퇴원상담</option>
+					<option>학부모상담</option>
+	  	 		</select>
+	  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			    </div>
+			</div>
+			<input type="text" name="counseling_title" class="border-solid border-2 border-gray-600" style="width:300px;"/>
+		</div>
+		<div class="w-full">
+			<textarea name="counseling_content" rows="5" cols="150" class="border-solid border-2 border-gray-600"></textarea>
+		</div>
+		<input class="rounded bg-info-200 border-solid border-2 border-gray-600" type="submit" value="등록하기"/>
+	</form>
+	<!------------------------------------------------- 상담관리 ------------------------------------------------>
+	<!-------------------------------------------------반 배정 현황 ---------------------------------------------->
+	<div class="w-full" id="assigning_class" style="display:none"> 
+		<table class="w-full">
+			<tbody>
+			<c:forEach var="vo4" items="${list3}">
+			<input type="hidden" name="student_no" value="${vo4.student_no}"/>
+				<tr style="border-top:solid black 1px; border-bottom:solid black 1px">
+					<td class="p-2">${vo4.payment_no}</td>
+					<td class="p-2">${vo4.course_name}/${vo4.course_time}</td>
+					<td class="p-2">${vo4.student_course_state_date}</td>
+					<td class="p-2" style="color:red">
+						<c:if test="${vo4.state==1}">(수료)</c:if>
+						<c:if test="${vo4.state==2}">(미수료)</c:if>
+						<c:if test="${vo4.state==3}">(휴원)</c:if>
+						<c:if test="${vo4.state==4}">(퇴원)</c:if>
+					</td>
+					<td class="flex justify-end p-2">
+						<c:if test="${vo4.state==0}">
+							<button data-payment_no="${vo4.payment_no}" data-student_no="${vo4.student_no}" class="border-solid border-2 border-gray-600 rounded bg-info-200" id="move_class">반 이동</button><!-- 휴퇴원처리가 되면 안보인다 --><!-- Ajax로 구현하기 -->
+							<button class="border-solid border-2 border-gray-600 rounded bg-info-200 ml-2" id="colsed_out_class">휴/퇴원</button><!-- 휴퇴원처리가 되면 안보인다 --><!-- Ajax로 구현하기 -->
+						</c:if>
+						<c:if test="${vo4.state==1 || vo4.state==2 || vo4.state==3 || vo4.state==4}">
+							<button data-state="${vo4.state}" data-student_course_state_date="${vo4.student_course_state_date}" data-payment_no="${vo4.payment_no}" class="border-solid border-2 border-gray-600 rounded bg-info-200 ml-2" id="modify_colsed_out">수정</button><!-- 휴퇴원처리가 되면 보인다 --><!-- Ajax로 구현하기 -->
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<!--------------------------------------------------반이동  ----------------------------------------------------------->
+	<form method="post" action="/lms/admin/moveClassOk" class="w-full">
+		<div class="w-full" id="move_class_form" style="display:none">
+			<input type="hidden" name="payment_no"/>
+			<input type="hidden" name="student_no"/>
+			<table class="w-full">
+				<tr>
+					<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2" style="width:200px">이동 할 반 선택 : </td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<div class="inline-block relative w-40">
+							<select name="course_day" id="course_day" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+								<option selected="selected">::요일::</option>
+							    <option value="월~금">월~금</option>
+							    <option value="월,수,금">월,수,금</option> 
+							    <option value="화,목,금">화,목,금</option>
+							    <option value="주말반">주말반</option>
+						  	 </select>
+						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				  			</div> 
+			 			</div>
+			 			<div class="inline-block relative w-40"> 
+							<select name="course_time" id="course_time" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+								<option selected="selected">::수업시간::</option>
+							    <option value="09:00~12:00">09:00~12:00</option>
+							    <option value="13:00~16:00">13:00~16:00</option>
+							    <option value="16:00~19:00">16:00~19:00</option>
+							    <option value="20:00~23:00">20:00~23:00</option>
+						  	 </select>
+						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				  			</div>
+			 			</div>
+						<div class="inline-block relative w-40">
+							<select name="course_stage" id="course_stage" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-center">
+							   <option value="">=====본관=====</option>
+                               <option value="본관A101">A101</option>
+                               <option value="본관A102">A102</option>
+                               <option value="본관A103">A103</option>
+                               <option value="본관B201">B201</option>
+                               <option value="본관B202">B202</option>
+                               <option value="본관B203">B203</option>
+                               <option value="본관C301">C301</option>
+                               <option value="본관C302">C302</option>
+                               <option value="본관C303">C303</option>
+                               <option value="">=====신관=====</option>
+                               <option value="신관A101">A101</option>
+                               <option value="신관A102">A102</option>
+                               <option value="신관A103">A103</option>
+                               <option value="신관A201">A201</option>
+                               <option value="신관A202">A202</option>
+                               <option value="신관A203">A203</option>
+                               <option value="신관A301">A301</option>
+                               <option value="신관A302">A302</option>
+                               <option value="신관A303">A303</option>
+                               <option value="">=====구관=====</option>
+                               <option value="구관A101">A101</option>
+                               <option value="구관A102">A102</option>
+                               <option value="구관A103">A103</option>
+                               <option value="구관A201">A201</option>
+                               <option value="구관A202">A202</option>
+                               <option value="구관A203">A203</option>
+                               <option value="구관A301">A301</option>
+                               <option value="구관A302">A302</option>
+                               <option value="구관A303">A303</option>
+						  	 </select>
+						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				  			</div>
+			 			</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="bg-info-300 text-center border-2 border-solid border-gray-600 p-2">이동 일자 : </td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<div class="calendar">
+							<input type="text" name="student_course_state_date" class="datepicker border-solid border-2 border-gray-600 ml-2 text-center"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="bg-info-300 text-center border-2 border-solid border-gray-600 h-64 p-2">납부 내역 변경 : </td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<input type="radio" name="pay" value="" checked/>수납내역을 변경하지 않음<br/>
+						<input type="radio" name="pay" value=""/>수납내역을 신규반으로 전액 변경처리함<br/>
+						<input type="radio" name="pay" value=""/>수강료를 이동일자 기준으로 배분<br/>
+					</td>
+				</tr>
+			</table>
+			<div class="text-center my-3">
+				<input type="submit" id="moveCLassOk" value="반이동 처리" class="border-2 border-gray-600 border-solid bg-info-200"/>
+			</div>
+		</div>
+	</form>
+	<!--------------------------------------------------반이동 -------------------------------------------------------->
+	
+	<!---------------------------------------------------휴퇴원  -------------------------------------------------------->
+	<form method="post" action="/lms/admin/closedOutOk" class="w-full">
+		<div class="w-full my-3" style="display:none;" id="colsed_out_form">
+		<input type="hidden" name="student_no" value="${vo.student_no}"/>
+			<table class="w-full">
+				<tr class="text-center w-full">
+					<td class="border-2 border-solid border-gray-600 bg-info-300 p-2">대상자</td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<table class="w-full">
+							<tr>
+								<td class="border-2 border-solid border-gray-600 p-2">선택</td>
+								<td class="border-2 border-solid border-gray-600 p-2">수강생</td>
+								<td class="border-2 border-solid border-gray-600 p-2">학생휴대폰</td>
+								<td class="border-2 border-solid border-gray-600 p-2">부모휴대폰</td>	
+							</tr>
+							<tr>
+								<td class="border-2 border-solid border-gray-600 p-2"><input id="student_closed_out" type="checkbox" checked/></td>
+								<td class="border-2 border-solid border-gray-600 p-2">${vo.student_name_ko}</td>
+								<td class="border-2 border-solid border-gray-600 p-2">${vo.student_tel_parent}</td>
+								<td class="border-2 border-solid border-gray-600 p-2">${vo.student_tel_phone}</td>	
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">구분</td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<div>
+							<input class="state" type="radio" value="3" name="state"/>휴원
+							<input class="state" type="radio" value="4" name="state"/>퇴원
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">휴/퇴원 일지</td>
+					<td class="border-2 border-solid border-gray-600 p-2">
+						<div class="calendar">
+							<input type="text" id="student_closed_out_date" name="student_course_state_date" class="datepicker border-solid border-2 border-gray-600 ml-2"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="border-2 border-solid border-gray-600 bg-info-300 text-center p-2">비고</td>
+					<td class="border-2 border-solid border-gray-600 p-2"><input type="text" class="w-64 border-2 border-solid border-gray-600"/></td>
+				</tr>
+			</table>
+			<div class="text-center my-3 ">
+				<input id="closed_out_ok" type="submit" value="처리하기" class="border-2 border-solid border-gray-600 bg-info-200 rounded"/>
+			</div>
+		</div>
+	</form>
+	<!---------------------------------------------------휴퇴원  ------------------------------------------------------------>
+	<!----------------------------------------------------휴퇴원 수정  ------------------------------------------------------------->
+	<form method="post" action="/lms/admin/modifyClosedOutOk" class="w-full">
+		<div class="w-full my-3" style="display:none;" id="modify_colsed_out_form">
 			<input type="hidden" name="student_no" value="${vo.student_no}"/>
 				<table class="w-full">
 					<tr class="text-center w-full">
