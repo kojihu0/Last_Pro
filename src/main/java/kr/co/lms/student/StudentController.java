@@ -44,7 +44,7 @@ public class StudentController {
 	}
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
+		this.sqlSession = sqlSession; 
 	}
 	
 	@RequestMapping("/student_current_situation")
