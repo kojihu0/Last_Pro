@@ -18,9 +18,9 @@
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">READ MORE</a>
 			</div>
 			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-				<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
+				<h3 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4 truncate">
 					<a href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">${vo.course_name}</a>
-				</h2>
+				</h3>
 				<div class="course-author text-gray-900 mb-4">${vo.employee_name}</div>
 				<div class="course-price text-danger-500 relative py-4">${vo.course_price_format}<span>원</span></div>
 			</div>

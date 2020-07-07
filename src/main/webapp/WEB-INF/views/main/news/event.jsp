@@ -49,14 +49,11 @@ white-space: nowrap;
 											<c:out value='${fn:substring(vo.admin_notice_content.replaceAll("\\\<.*?\\\>",""),0,100)}' />
 										</div>
 									</div>
-									<c:if test="${vo.admin_notice_img != null }">
-										<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
-											<img  class="w-full" src="<%=ctx %>${vo.admin_notice_img}">
-										</div>
-									</c:if>
-									<c:if test="${empty vo.admin_notice_img}">
-												<img style="height:150px" class="w-full" src="<%=ctx %>/img/no-image.png">
-									</c:if>
+									<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto hidden lg:block">
+										<c:if test="${vo.admin_notice_img!=null && evo.admin_notice_img!=''}">
+										<img class="w-full object-center" src="<%=ctx %>/img/${vo.admin_notice_img}">
+										</c:if>
+									</div>
 								</div><!-- event-row -->
 							</div><!-- 공지사항 폼 end -->
 					</c:forEach>

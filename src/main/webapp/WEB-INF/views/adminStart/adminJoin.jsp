@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>Educamp Admin</title>
 
     <!-- Tailwind -->
 	<link rel="stylesheet" href="<%=projectPath %>/css/tailwind.css" type="text/css"/>

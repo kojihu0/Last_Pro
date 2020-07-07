@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Educamp Admin</title>
 <script src="/lms/js/jquery-3.4.1.js"></script>
 <script>
 var data;
