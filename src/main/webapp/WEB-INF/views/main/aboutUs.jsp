@@ -33,7 +33,7 @@
 </div>
 <div class="w-full bg-gray-lightest text-center text-2xl my-40 font-bold fadeUp">
 	<div style="line-height: 130px">"</div>
-	<div class="px-64 -mt-10"><span class="text-brand-500 roboto-slab">EduCamp</span>는 대한민국에서 새로운 도전이 자연스러운 환경을 만들고자 합니다.<br>이를 위해 리테일, 트레이더스, 벤처스 등 새로운 사업 영역을 확대하며 스타트업을 위한<br>종합 지원 플랫폼으로 나아가고 있습니다.</div>
+	<div class="-mt-10"><span class="text-brand-500 roboto-slab">EduCamp</span>는 대한민국에서 새로운 도전이 자연스러운 환경을 만들고자 합니다.<br>이를 위해 리테일, 트레이더스, 벤처스 등 새로운 사업 영역을 확대하며 스타트업을 위한<br>종합 지원 플랫폼으로 나아가고 있습니다.</div>
 	<div style="line-height: 110px">"</div>
 </div>
 <div class="container my-0 mx-auto">
