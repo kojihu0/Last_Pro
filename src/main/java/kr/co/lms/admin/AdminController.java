@@ -442,6 +442,10 @@ public class AdminController {
 		
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 	
+		
+		
+		
+		
 
 		int result_Int = adminRegiInter.updateNotice(vo); 
 		if(result_Int > 0) {

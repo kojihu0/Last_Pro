@@ -35,7 +35,7 @@
 	</select>
 	<select id="selectStudentAttendance" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
 		select s.student_no student_no, c.course_no course_no, s.student_name_ko student_name_ko, s.student_gender student_gender, s.student_tel_phone student_tel_phone, a.attendance_state attendance_state, a.attendance_reason attendance_reason
-		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a on a.student_no=p.student_no and a.payment_no = p.payment_no full join student_course_state sc on
+		from student s full join payment p on s.student_no=p.student_no full join course c on p.course_no=c.course_no full join attendance a on a.student_no=p.student_no and a.payment_no = p.payment_no and a.attendance_date=to_char(sysdate,'YYYY-MM-DD') full join student_course_state sc on
         sc.payment_no = p.payment_no and sc.student_no = p.student_no where c.course_no=#{param1} and sc.state=0
 	</select>
 	<select id="selectStudentAttendance2" resultType="kr.co.lms.admin.VO.StudentByCourseVO" parameterType="kr.co.lms.admin.VO.AdminStudentPagingVO">
