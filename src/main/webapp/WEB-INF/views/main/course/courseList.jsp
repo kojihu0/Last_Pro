@@ -14,8 +14,7 @@
 		</c:if>
 		<c:forEach var="vo" items="${list}">
 		<div class="course-item px-4 py-6 text-center lg:w-1/4 fadeUp"><!-- course-item -->
-			<div class="course-image relative overflow-hidden border border-gray-300">
-				<img class="duration-300" src="<%=ctx %>/img/${vo.course_img}">
+			<div class="course-image relative overflow-hidden border border-gray-300 h-48 text-center bg-cover bg-center" style="background-image:url('<%=ctx %>/img/${vo.course_img}')">
 				<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">READ MORE</a>
 			</div>
 			<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
