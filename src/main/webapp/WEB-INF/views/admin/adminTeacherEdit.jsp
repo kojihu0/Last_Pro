@@ -127,7 +127,7 @@
 						<td colspan="3" class="p-3 border border-black"> 
 						 	<span id="teacherTel_01">010</span>&nbsp;-&nbsp;<input type="tel" id="teacherTel_02" name="teacherTel_02" size="4" class="border border-black" maxlength="4" value="${data[2] }"/>&nbsp;-&nbsp;<input type="tel" id="teacherTel_03" name="teacherTel_03"size="4" class="border border-black" maxlength="4" value="${data[3] }"/>
 						</td>
-					</tr> 
+					</tr>  
 					<tr>
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">이메일</th>
 						<td colspan="3" class="p-3 border border-black">
@@ -143,7 +143,7 @@
                        		</select>
 						</td>
 					</tr> 
-					<tr> 
+					<tr>  
 						<th class="p-3 w-32 border border-black bg-info-300 text-center text-l">상  태</th> 
 						<td colspan="3" class="p-3 border border-black">
 							<input type="radio" name="employee_state" value="정상" checked/>&nbsp;정상&nbsp;
