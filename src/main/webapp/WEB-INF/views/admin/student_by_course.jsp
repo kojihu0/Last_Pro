@@ -23,6 +23,7 @@
 			<td class="border-solid border border-gray-600" style="width:100px;">학생관리</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
+		<c:if test="${vo.course_no != 0}">
 			<tr class="bg-white">
 				<td class="border-solid border border-gray-600 p-2">${vo.course_no}</td>
 				<td class="border-solid border border-gray-600 p-2" >${vo.course_start_date}</td>
@@ -32,6 +33,7 @@
 				<td class="border-solid border border-gray-600 p-2" >인원 수 : ${vo.course_student_count}명</td>
 				<td class="border-solid border border-gray-600 p-2" ><a href="/lms/admin/management_of_student?course_no=${vo.course_no}&course_student_count=${vo.course_student_count}" class="bg-info-600 px-4 rounded">학생관리</a></td>
 			</tr>
+		</c:if>
 		</c:forEach>
 	</table>
 	

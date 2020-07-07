@@ -18,7 +18,6 @@
 			<td class="border-solid border border-gray-600 text-center" style="width:200px">회원명</td>
 			<td class="border-solid border border-gray-600 text-center" style="width:250px">휴대전화</td>
 			<td class="border-solid border border-gray-600 text-center" style="width:250px">부모전화</td>
-			<td class="border-solid border border-gray-600 text-center" style="width:280px">최근수강강좌</td>
 			<td class="border-solid border border-gray-600 text-center" style="width:100px">휴원일자</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
@@ -27,7 +26,6 @@
 				<td class="border-solid border border-gray-600 text-center" style="width:200px">${vo.student_name_ko}</td>
 				<td class="border-solid border border-gray-600 text-center" style="width:250px">${vo.student_tel_phone}</td>
 				<td class="border-solid border border-gray-600 text-center" style="width:250px">${vo.student_tel_parent}</td>
-				<td class="border-solid border border-gray-600 text-center" style="width:280px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${vo.student_lately_course}</td>
 				<td class="border-solid border border-gray-600 text-center" style="width:100px">${vo.student_course_state_date}</td>
 			</tr>
 		</c:forEach>
