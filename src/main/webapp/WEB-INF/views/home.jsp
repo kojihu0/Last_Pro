@@ -135,7 +135,7 @@
 				<h2 class="font-bold hover:text-brand-500 duration-500 truncate"><a href="<%=ctx %>/newsDetail?no=${evo.admin_notice_no}&pageNum=1">${evo.admin_notice_title}</a></h2>
 				<div class="event-desc text-gray-700 mt-6"><c:out value='${fn:substring(evo.admin_notice_content.replaceAll("\\\<.*?\\\>",""),0,140)}' escapeXml="false" /></div>
 			</div>
-			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto">
+			<div class="event-img flex-shrink-0 overflow-hidden w-full p-4 sm:p-0 sm:w-auto hidden lg:block">
 				<c:if test="${evo.admin_notice_img!=null && evo.admin_notice_img!=''}">
 				<img class="w-full" src="<%=ctx %>/img/${evo.admin_notice_img}">
 				</c:if>

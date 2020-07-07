@@ -18,15 +18,15 @@
 	</div>
 </div>
 <div id="stickyNav" class="course-tab-nav w-full fixed bg-white border-t border-gray">
-	<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex lg:justify-between">
+	<div class="w-full h-16 max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex lg:justify-between">
 		<ul class="hidden lg:flex items-center block w-1/2">
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4 active" data-nav-idx="1">
+			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4 active" data-nav-idx="1">
 				<a href="#course_detail" class="inline-block px-4">강좌소개 및 커리큘럼</a>
 			</li>
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="2">
+			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4" data-nav-idx="2">
 				<a href="#instructor" class="inline-block px-4">강사소개</a>
 			</li>
-			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="3">
+			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4" data-nav-idx="3">
 				<a href="#comments" class="inline-block px-4">수강후기</a>
 			</li>
 		</ul>
@@ -105,8 +105,8 @@
 	</div><!-- 상단 -->
 	<div id="courseContent" class="w-full flex items-start content-start"><!-- 본문 -->
 		<div class="w-full bg-white mt-4 border border-gray pb-16 mb-16">
-			<div class="course-tab-nav w-full bg-white flex items-center justify-center">
-				<ul class="w-full flex items-center justify-center block text-sm lg:text-md lg:py-8 lg:font-bold lg:px-6">
+			<div class="course-tab-nav h-16 bg-white flex items-center justify-center">
+				<ul class="w-full h-16 flex items-center justify-center block text-sm lg:text-md lg:py-8 lg:font-bold lg:px-6">
 					<li class="tab-item w-1/3 text-center mx-4 border-b-4 active" data-nav-idx="1">
 						<a href="#course_detail" class="inline-block lg:p-4">
 							<span class="ico mr-2"><i class="xi-bookmark"></i></span>강좌소개 및 커리큘럼
