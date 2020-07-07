@@ -68,9 +68,9 @@
 		update student_course_state set state=#{state}, student_course_state_date=#{student_course_state_date} where student_no=#{student_no}
 	</update>
 	<select id="studentAttendace" resultType="kr.co.lms.admin.VO.StudentAttendanceVO">
-		select c.course_name course_name, c.course_day course_day, to_char(c.course_start_date,'YYYY-MM-DD') course_start_date, c.course_time course_time,
-		p.student_no student_no, p.payment_no payment_no, s.state state from course c join payment p on c.course_no=p.course_no
-		join student_course_state s on p.payment_no=s.payment_no and p.student_no=s.payment_no where s.student_no=#{param1}
+		select c.course_name course_name, c.course_day course_day, to_char(c.course_start_date,'YYYY-MM-DD') course_start_date,
+		c.course_time course_time, p.student_no student_no, p.payment_no payment_no, s.state state from course c full join payment p on c.course_no=p.course_no
+		full join student_course_state s on p.payment_no=s.payment_no and p.student_no=s.payment_no where p.student_no=#{param1}
 	</select>
 	<select id="studentAttendaceList" resultType="kr.co.lms.admin.VO.StudentAttendanceVO">
 		select to_char(attendance_date, 'YYYY-MM-DD') attendance_date, attendance_state from attendance where payment_no=#{param1}

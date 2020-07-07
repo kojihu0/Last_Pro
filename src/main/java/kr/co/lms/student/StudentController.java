@@ -44,7 +44,7 @@ public class StudentController {
 	}
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession; 
+		this.sqlSession = sqlSession;  
 	}
 	
 	@RequestMapping("/student_current_situation")
@@ -603,7 +603,6 @@ public class StudentController {
 	public List<StudentAttendanceVO> attendanceArray(int payment_no) {
 		StudentInfoDAOImp dao =  sqlSession.getMapper(StudentInfoDAOImp.class);
 		List<StudentAttendanceVO> list = new ArrayList<StudentAttendanceVO>();
-		
 		list = dao.studentAttendaceList(payment_no);
 		
 		return list;

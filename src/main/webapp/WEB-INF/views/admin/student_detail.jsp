@@ -568,7 +568,7 @@
 		<div class="inline-block relative w-auto mr-2">
 			<select id="attendanceKey" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
 				<c:forEach var="vo5" items="${list4}">
-					<option value="${vo5.payment_no}">${vo5.course_start_date} ${vo5.course_name}/${vo5.course_day}/${vo5.course_time}<c:if test="${vo5.state==0}">(수료중)</c:if><c:if test="${vo5.state==1}">(수료)</c:if><c:if test="${vo5.state==2}">(미수료)</c:if><c:if test="${vo5.state==3}">(휴원)</c:if><c:if test="${vo5.state==4}">(퇴원)</c:if></option>
+					<option value="${vo5.payment_no}">${vo5.course_start_date} ${vo5.course_name}/${vo5.course_day}/${vo5.course_time}<c:if test="${vo5.state==0 || vo5.state==null}">(수료중)</c:if><c:if test="${vo5.state==1}">(수료)</c:if><c:if test="${vo5.state==2}">(미수료)</c:if><c:if test="${vo5.state==3}">(휴원)</c:if><c:if test="${vo5.state==4}">(퇴원)</c:if></option>
 				</c:forEach>
 			</select>
 		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
