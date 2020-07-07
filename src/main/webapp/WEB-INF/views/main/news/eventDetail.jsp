@@ -15,11 +15,10 @@
 	</div>
 	<div>
 		<c:if test="${pnVo.leadSubject!='이전글'}">
-		<p class="xi-angle-up text-brand-500 font-bold"></p>&nbsp;&nbsp;이전글&nbsp; :&nbsp;
+			<p class="xi-angle-up text-brand-500 font-bold"></p>&nbsp;&nbsp;이전글&nbsp; :&nbsp;
 			<a class="hover:text-brand-500" href="<%=ctx%>/eventDetail?no=${pnVo.leadNo}&pageNum=${pVo.pageNum}">${pnVo.leadSubject}</a><br/>
-			<div id="hr" class="my-4 border-t border-brand-400 border-solid"></div>
 		</c:if> 
-		
+			<div id="hr" class="my-4"></div>
 		<div class="mb-8">
 		<c:if test="${pnVo.lagSubject!='다음글'}">
 		<p class="xi-angle-down text-brand-500 font-bold"></p>&nbsp;&nbsp;다음글&nbsp; :&nbsp;

@@ -81,10 +81,27 @@ function preview(input, target) {
  <script>
   $(function(){ 
 	$("#generalDelBtn").click(function(){
-		window.open("<%=ctx%>/registerDel ","generalDelBtn","width=600px , height=300px");
-		
-	});
- });
+		if (confirm("회원탈퇴를 진행 하시겠습니까?") == true){
+		var url = "<%=ctx%>/registerDelOk"
+			$.ajax({
+				url : url,
+				success : function(result){
+					if(result=='yes'){
+						alert("회원탈퇴가  완료 되었습니다.");
+						history.go(0);
+					}else{
+						alert("회원탈퇴 요청 중 에러가 발생 하였습니다 \n 다시 시도해주세요.");
+						
+					}
+				}, error : function(){
+					console.log("회원탈퇴 에러 ...");
+				}
+			});  
+	 }else{
+	     return false;
+	 }
+	}) 
+});
  </script>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">

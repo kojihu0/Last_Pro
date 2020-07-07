@@ -12,7 +12,9 @@ $(function(){
 						alert("결제 취소 요청이 완료 되었습니다.");
 						history.go(0);
 					}else{
+						
 						alert("결제 취소 요청중 에러가 발생 하였습니다 \n 다시 시도해주세요.");
+						
 					}
 				}, error : function(){
 					console.log("결제취소 에러 ...");
@@ -109,7 +111,12 @@ $(function(){
 				    <hr/>
 				    <div class="flex items-center font-bold justify-between my-2 text-xl">
 						<span>결제 상태</span>
-						<span>결제 완료 </span>
+						 <c:if test="${pList.payment_method !='카드결제'}">
+							<span>결제 대기 </span>
+						</c:if>
+						 <c:if test="${pList.payment_method =='카드결제'}">
+							<span>결제 완료 </span>
+						</c:if>
 				    </div>
 			    </c:if>
 			    <c:if test="${pList.payment_state == 1 }">

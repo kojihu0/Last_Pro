@@ -1,11 +1,9 @@
 package kr.co.lms.main.VO;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class MypageVO {
 	private String Student_no;//등록된학생번호 
+	private int course_no; //강사 번호
 	private String employee_name;//강사명
 	private String course_name;//강좌명
 	private String course_start_date;//시작일
@@ -21,6 +19,12 @@ public class MypageVO {
 	}
 	public void setStudent_no(String student_no) {
 		Student_no = student_no;
+	}
+	public int getCourse_no() {
+		return course_no;
+	}
+	public void setCourse_no(int course_no) {
+		this.course_no = course_no;
 	}
 	public String getEmployee_name() {
 		return employee_name;

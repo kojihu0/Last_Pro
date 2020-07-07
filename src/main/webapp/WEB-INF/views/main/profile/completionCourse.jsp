@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+  #courseSubject{
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+</style>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
@@ -46,16 +53,6 @@
 				  </li>
 				</ul>
 				
-				<ul class="flex roboto-slab mt-16">
-				  <li id="CompletionCourse" class="-mb-px mr-1">
-				    <a class="bg-white border-b border-l border-t-4 border-r py-2 px-3 font-semibold border-brand-500 text-brand-500 ">CompletionCourse</a>
-				  </li> 
-				  <li id="FinalGrade" class="mr-1">
-				    <a class="bg-white border-b border-l border-t border-r py-2 px-3 font-semibold text-gray-900 hover:text-brand-500 ">Final Grade</a>
-				  </li>
-				</ul>
-				
-				
 				<c:if test="${completionCourse != null}">
 					<div id="CompletionCourseList" style="display:block">
 					<ul class="flex mt-8 roboto-slab bg-cta-400">
@@ -71,7 +68,7 @@
 					<c:forEach var ="completionCourse" items="${completionCourse}">
 						<ul class="flex my-4 roboto-slab">
 							<li class="ml-2 h-8 text-xl text-black w-1/6">${completionCourse.employee_name}</li>
-							<li class="text-black text-xl w-1/3">${completionCourse.course_name}</li>
+							<li class="text-black text-xl w-1/3"><p id="courseSubject">${completionCourse.course_name}</p></li>
 							<c:if test="${completionCourse.state == 1 }">
 								<li class="text-black text-xl  w-1/5">YES</li>
 							</c:if>
@@ -85,36 +82,6 @@
 					</c:forEach>
 				</div>
 			</c:if>
-			
-			
-			
-			<c:if test="${completionCourse != null}">
-				<div id="FinalGradeList" style="display:none">
-					<ul class="flex mt-8 roboto-slab bg-cta-400">
-						<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
-						<li class="text-white text-xl w-1/3">Course</li>
-						<li class="text-white text-xl w-1/6">FinalGrade</li>
-						<li class="text-white text-xl w-1/6">Rating</li>
-						<li class="text-white text-xl">End Date</li>
-					</ul>
-					<c:if test="${empty completionCourse}">
-						<p class="py-8 text-center text-lg font-bold">수료한 강좌가 없습니다.</p>
-					</c:if>
-					<c:forEach var ="completionCourse" items="${completionCourse}">					
-					<ul class="flex my-4 roboto-slab ">
-							<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${completionCourse.employee_name}</a></li>
-							<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${completionCourse.course_name}</a></li>
-							<li class="text-black text-xl w-1/6">${completionCourse.grade }등급</li>
-							<li class="text-black text-xl w-1/6">${completionCourse.rank }등급</li>
-							<li class="text-black text-xl ">${completionCourse.course_end_date }</li>
-						</ul>
-						<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
-					</c:forEach>
-				</div>
-			</c:if>
-			
-			
-			
 		</div>
 	</div>
 </div>

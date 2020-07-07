@@ -28,7 +28,6 @@ var IMP = window.IMP;
    }, function(rsp) {
 	    if ( rsp.success ) {
 	    	
-	    	
 	    	var sendData = {
 	    			"buyer_email" : $('#paymentEmail').val(),
 	    			"name" : $("#courseName").text(),  
@@ -37,7 +36,6 @@ var IMP = window.IMP;
 	    			"employee_name" : $("#employee_name").text(),
 		    		"pay_method" : document.paymentForm.paymentSelectRadio.value,
 	    			"amount" : $("#coursePrice").text(),
-	    			
 	    	}
 	    	
 	        //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -48,6 +46,7 @@ var IMP = window.IMP;
 		         data : sendData,
 		         m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 	        }).done(function(data) {
+	        	 location.href="<%=ctx%>/paymentCompleted"
 	         //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
 	         if ( everythings_fine ) {
 		          var msg = '결제가 완료되었습니다.';
@@ -66,9 +65,8 @@ var IMP = window.IMP;
 	           var msg = '결제에 실패하였습니다.';
 	           msg += '에러내용 : ' + rsp.error_msg;
 	           alert(msg);
-	           location.href="<%=ctx%>/"
 	       }
-	    location.href="<%=ctx%>/paymentCompleted"
+	   
 	    
    });
 }

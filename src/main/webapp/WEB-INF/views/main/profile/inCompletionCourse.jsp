@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+#courseSubject p{
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+</style>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
@@ -54,13 +61,13 @@
 						<li class="text-white text-xl w-1/5">CompletionStatus</li>
 						<li class="text-white text-xl">End date</li>
 					</ul>
-					<c:if test="${empty completionCourse}">
+					<c:if test="${empty incompletionCourse}">
 						<p class="py-8 text-center text-lg font-bold">수료한 강좌가 없습니다.</p>
 					</c:if>
 					<c:forEach var = "incompleteCourse" items="${incompleteCourse}">
 						<ul class="flex my-4 roboto-slab">
 							<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${incompleteCourse.employee_name }</a></li>
-							<li class="text-black text-xl w-1/3"><a href="#" class="hover:text-cta-500">${incompleteCourse.course_name}</a></li>
+							<li class="text-black text-xl w-1/3"><a id="courseSubject" href="#" class="hover:text-cta-500"><p>${incompleteCourse.course_name}</p></a></li>
 							<li class="text-black text-xl w-1/6">${incompleteCourse.grade}등급</li>
 							<c:if test="${incompleteCourse.state == 2}">
 							<li class="text-black text-xl w-1/5">NO</li>

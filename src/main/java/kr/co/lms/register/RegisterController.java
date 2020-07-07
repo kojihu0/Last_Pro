@@ -7,11 +7,15 @@ import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -140,30 +144,25 @@ public class RegisterController {
 		return "main/register/registerDel";
 	}
 	
-	@RequestMapping(value="/registerDelOk",method=RequestMethod.POST)
-	public ModelAndView registerDelOk(HttpServletRequest req) {
+	@RequestMapping(value="/registerDelOk",method=RequestMethod.GET)
+	@ResponseBody
+	public String registerDelOk(HttpServletRequest req,HttpServletResponse res) {
+		String yes = "";
+		
 		MemberVO vo  = new MemberVO();
 		ModelAndView mav = new ModelAndView();
 		MemberDAOImp dao = sqlSession.getMapper(MemberDAOImp.class);
-		vo.setStudent_id(req.getParameter("delId"));		
-		vo.setStudent_pw(req.getParameter("delPw"));
-		MemberVO loginVO = dao.memberLogin(vo);
-		boolean pwMatch = pwEncoder.matches(vo.getStudent_pw(), loginVO.getStudent_pw());
-		if(loginVO!=null && pwMatch == true) {
-			int cnt = dao.memberDataDel(vo);
+		HttpSession ses = req.getSession();
+		String user_id = ((String)ses.getAttribute("student_id"));
+		vo.setStudent_id(user_id);		
+		int cnt = dao.memberDataDel(vo);
 			if(cnt>0){
-				mav.setViewName("redirect:/");
+				 yes="yes";
+				new SecurityContextLogoutHandler().logout(req, res, null);
 			}else {
-				mav.addObject("response","회원탈퇴에 실패 하셨습니다.");
-				mav.setViewName("main/profile/profile");
+				
 			}
-		}else {
-			mav.addObject("response","회원탈퇴에 실패 하셨습니다.");
-			mav.setViewName("main/profile/profile");
-		}
-		
-		
-		return mav;
+		return yes;
 	}
 	@RequestMapping("/subjectRegister")
 	public ModelAndView subjectRegister(@RequestParam(value="pageNum",defaultValue="1") int pageNum, AdminStudentPagingVO PageVO) {

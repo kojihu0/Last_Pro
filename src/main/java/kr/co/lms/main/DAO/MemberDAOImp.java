@@ -1,6 +1,7 @@
 package kr.co.lms.main.DAO;
 
 import kr.co.lms.main.VO.MemberVO;
+import kr.co.lms.main.VO.paymentVO;
 
 public interface MemberDAOImp {
 	//회원가입
@@ -27,4 +28,6 @@ public interface MemberDAOImp {
 	public int memberPasswordDataSelect(MemberVO vo);
 	//이메일 중복체크
 	public int emailCheck(String student_email);
+	//학생상태 테이블 데이터 등록
+	public void studentStautsInsert(paymentVO vo1);
 }

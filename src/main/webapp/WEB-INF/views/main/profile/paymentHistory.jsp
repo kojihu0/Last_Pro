@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+#paymentSubject p{
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+</style>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PAYMENT HISTORY</h1>
@@ -63,7 +70,7 @@
 					<ul class="flex my-4 roboto-slab">
 						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${vo.employee_name}</a></li>
 						<li class="text-black text-xl w-1/3">
-							<a href="<%=ctx%>/paymentDetail?no=${vo.payment_no}" class="hover:text-cta-500">${vo.course_name}</a>
+							<a id="paymentSubject"href="<%=ctx%>/paymentDetail?no=${vo.payment_no}" class="hover:text-cta-500"><p>${vo.course_name}</p></abbr></a>
 						</li>
 						<li class="text-black text-xl w-1/6">${vo.course_start_date}</li>
 						<li class="text-black text-xl w-1/6">${vo.payment_price}원</li>
