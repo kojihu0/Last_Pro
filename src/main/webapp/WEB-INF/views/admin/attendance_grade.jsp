@@ -31,7 +31,7 @@
 				<td class="p-2 truncate">${vo.course_overview}</td>
 				<td class="p-2">${vo.course_stage}</td>
 				<td class="p-2">${vo.course_student_count}명</td>
-				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">출결/과제관리</a></td>
+				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">출결관리</a></td>
 			</tr>
 		</c:if>
 		</c:forEach>

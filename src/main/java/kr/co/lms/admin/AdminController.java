@@ -443,10 +443,29 @@ public class AdminController {
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 	
 
-		int result_Int = adminRegiInter.updateNotice(vo); 
+		//==============================================
+		//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+	      String paramName 		= vo.getAdmin_notice_img_m().getName();
+	      String img 			= vo.getAdmin_notice_img_m().getOriginalFilename();
+	      
+	      try {
+		      if(img != null) {
+		    	  vo.getAdmin_notice_img_m().transferTo(new File(path, img));
+		      }
+	      }catch(Exception e) {
+	    	  e.printStackTrace();
+	      }
+	      vo.setAdmin_notice_img(img);
+	      
+		//============================================
+
+		int result_Int = adminRegiInter.updateNotice(vo);			
+		
 		if(result_Int > 0) {
 			mav.setViewName("redirect:/admin/adminNotice"); 
 		}else {
+			deleteFile(path, img);
 			mav.setViewName("redirect:/admin/adminNoticeEdit");
 		}
 		return mav;

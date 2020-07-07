@@ -311,6 +311,6 @@ html, body, .site-wrap{
     color: #cb0802;
     content: "\ea10";
 }
-#stickyNav{bottom: -50px; transition: .3s;}
+#stickyNav{height: 46px; bottom: -50px; transition: .3s;}
 #stickyNav.sticky-nav{bottom:0;}
 #stickyNav ul li a{line-height: 46px;}

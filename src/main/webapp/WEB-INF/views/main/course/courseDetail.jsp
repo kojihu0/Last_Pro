@@ -18,15 +18,15 @@
 	</div>
 </div>
 <div id="stickyNav" class="course-tab-nav w-full fixed bg-white border-t border-gray">
-	<div class="w-full h-16 max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex lg:justify-between">
+	<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 flex lg:justify-between">
 		<ul class="hidden lg:flex items-center block w-1/2">
-			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4 active" data-nav-idx="1">
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4 active" data-nav-idx="1">
 				<a href="#course_detail" class="inline-block px-4">강좌소개 및 커리큘럼</a>
 			</li>
-			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4" data-nav-idx="2">
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="2">
 				<a href="#instructor" class="inline-block px-4">강사소개</a>
 			</li>
-			<li class="tab-item w-1/3 h-16 text-center mx-4 border-t-4" data-nav-idx="3">
+			<li class="tab-item w-1/3 text-center mx-4 border-t-4" data-nav-idx="3">
 				<a href="#comments" class="inline-block px-4">수강후기</a>
 			</li>
 		</ul>

@@ -64,8 +64,8 @@
 <div class="best-section container my-0 mx-auto py-16 px-4 lg:px-0">
 	<div class="flex justify-between items-end relative pb-4 mb-10 fadeRight">
 		<div>
-			<h1 class="roboto-slab font-bold">POPULAR COURSES</h1>
-			<p>현재 인기있는 강좌입니다</p>
+			<h1 class="roboto-slab font-bold">LATEST COURSES</h1>
+			<p>최신강좌</p>
 		</div>
 		<div class="carou-btn">
 			<button class="slide-arrow arrow-prev outline-none border border-black duration-300 hover:border-brand-500 hover:text-brand-500"><i class="xi-angle-left"></i></button>
@@ -79,14 +79,13 @@
 	<div id="courseCarousel" class="-mx-4 fadeUp">
 		<c:forEach var="cvo" items="${courseList}">
 			<div class="course-item px-4 text-center"><!-- course-item -->
-				<div class="course-image relative overflow-hidden border border-gray-300">
-					<img class="duration-300" src="<%=ctx %>/img/${cvo.course_img}">
-					<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">READ MORE</a>
+				<div class="course-image relative overflow-hidden border border-gray-300 h-48 text-center bg-cover bg-center" style="background-image:url('<%=ctx %>/img/${cvo.course_img}')">
+					<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">READ MORE</a>
 				</div>
 				<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-					<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-						<a href="<%=ctx %>/course/courseDetail?course_no=${cvo.course_no}">${cvo.course_name}</a>
-					</h2>
+					<h3 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4 truncate">
+						<a href="<%=ctx%>/course/courseDetail?course_no=${cvo.course_no}">${cvo.course_name}</a>
+					</h3>
 					<div class="course-author text-gray-900 mb-4">${cvo.employee_name}</div>
 					<div class="course-price text-danger-500 relative py-4">${cvo.course_price_format}<span>원</span></div>
 				</div>
@@ -163,7 +162,7 @@
 		<div id="newsCarousel" class="-mx-4 fadeUp">
 			<c:forEach var="nvo" items="${newsList}">
 			<div class="news-item px-4"><!-- news-item -->
-				<div class="news-img overflow-hidden text-center">
+				<div class="news-img overflow-hidden text-center h-60">
 					<a href="<%=ctx %>/newsDetail?no=${nvo.admin_notice_no}&pageNum=1">
 					<c:if test="${nvo.admin_notice_img!=null && nvo.admin_notice_img!=''}">
 					<img src="<%=ctx %>/img/${nvo.admin_notice_img}">

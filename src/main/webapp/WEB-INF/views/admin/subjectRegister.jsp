@@ -42,7 +42,6 @@
 			<td rowspan="2" class="border border-solid border-gray-600" style="width:120px">회원명</td>
 			<td rowspan="2" class="border border-solid border-gray-600" style="width:220px">강좌명</td>
 			<td colspan="3" class="border border-solid border-gray-600" class="text-center">결제방법</td>
-			<td rowspan="2" class="border border-solid border-gray-600" style="width:130px">승인번호</td>
 			<td rowspan="2" class="border border-solid border-gray-600" style="width:170px">납부일자</td>
 			<td rowspan="2" class="border border-solid border-gray-600" style="width:200px">비고</td>
 		</tr>
@@ -60,7 +59,6 @@
 				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='카드결제'}">O</c:if></td>
 				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='현금결제'}">O</c:if></td>
 				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='계좌이체'}">O</c:if></td>
-				<td class="border border-solid border-gray-600 p-2" style="width:130px">${vo.payment_account_num}</td>
 				<td class="border border-solid border-gray-600 p-2" style="width:170px">${vo.payment_date}</td>
 				<td class="border border-solid border-gray-600 p-2" style="width:200px">${vo.payment_memo}</td>
 			</tr>

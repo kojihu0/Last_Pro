@@ -9,7 +9,7 @@
 			
 	
 		<div class="p-3 flex justify-center">
-			<form method="post" action="/lms/admin/adminCourseEditOk?course_no=${vo.course_no }" onsubmit="return checkRegCourseEdit()"> 
+			<form method="post" action="/lms/admin/adminCourseEditOk?course_no=${vo.course_no }" enctype="multipart/form-data" onsubmit="return checkRegCourseEdit()"> 
 				<table>
 					<thead>  
 						<tr>

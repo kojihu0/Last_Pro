@@ -10,7 +10,7 @@
 		<div class="p-3 text-right"> 
 			<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminNotice">목록으로</a>
 		</div>
-		<form method="post" action="<%=projectPath%>/admin/adminNoticeEditOk" onsubmit="return noticeEditCheck()">
+		<form method="post" action="<%=projectPath%>/admin/adminNoticeEditOk"  enctype="multipart/form-data" onsubmit="return noticeEditCheck()">
 			<table class=" my-0 mx-auto"> 
 				<thead>
 					<tr>
@@ -64,7 +64,7 @@
 					<tr>
 						<th class="bg-info-300 border border-gray-500 p-3 w-32">강의 이미지</th>
 						<td class="p-3 border border-gray-500">  
-							<input class="border border-gray-500" type="file" name="admin_notice_img" value="${list.admin_notice_img }"/> 
+							<input class="border border-gray-500" type="file" name="admin_notice_img_m" value="${list.admin_notice_img }"/> 
 						</td>
 					</tr>
 				</tbody>
