@@ -729,52 +729,31 @@
 					<input id="closed_out_ok" type="submit" value="처리하기" class="border border-solid border-gray-600 bg-info-200 rounded"/>
 				</div>
 			</div>
-		</form>
-		<!---------------------------------------------------휴퇴원  ------------------------------------------------------------>
-		<!----------------------------------------------------휴퇴원 수정  ------------------------------------------------------------->
-		<form method="post" action="/lms/admin/modifyClosedOutOk" class="w-full">
-			<div class="w-full my-3" style="display:none;" id="modify_colsed_out_form">
-				<input type="hidden" name="student_no" value="${vo.student_no}"/>
-				<table class="w-full">
-					<tr>
-						<td class="border border-solid border-gray-600 bg-info-300 text-center p-2">구분</td>
-						<td class="border border-solid border-gray-600 p-2">
-							<div>
-								<input type="radio" value="3" name="state"/>휴원
-								<input type="radio" value="4" name="state"/>퇴원
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="border border-solid border-gray-600 bg-info-300 text-center p-2">휴/퇴원 일지</td>
-						<td class="border border-solid border-gray-600 p-2">
-							<div class="calendar">
-								<input type="text" name="student_course_state_date" class="datepicker border-solid border border-gray-600 ml-2"/>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="border border-solid border-gray-600 bg-info-300 text-center p-2">비고</td>
-						<td class="border border-solid border-gray-600 p-2"><input type="text" class="w-64 border border-solid border-gray-600"/></td>
-					</tr>
-				</table>
-				<div class="text-center my-3 ">
-					<input type="submit" value="처리하기" class="border border-solid border-gray-600 rounded bg-info-200"/>
-				</div>
-			</div>
-		</form>
-		<!----------------------------------------------------휴퇴원 수정  ------------------------------------------------------------->
-		<!-------------------------------------------------반 배정 현황 ---------------------------------------------->
-		<!-------------------------------------------------납부 현황 ---------------------------------------------->
-		<div class="w-full" id="payment_status" style="display:none">
-			<table class="w-full" id="payment_status_detail">
-				<tbody>
-				<c:forEach var="vo2" items="${list}">
-					<tr style="border-top:solid black 1px; border-bottom:solid black 1px">
-						<td class="p-2">${vo2.payment_date}</td>
-						<td>${vo2.course_start_date}/${vo2.course_name}/${vo2.employee_name}</td>
-						<td>납부액 : ${vo2.payment_price}원</td>
-					</tr>
+		</div>
+	</form>
+	<!----------------------------------------------------휴퇴원 수정  ------------------------------------------------------------->
+	<!-------------------------------------------------반 배정 현황 ---------------------------------------------->
+	<!-------------------------------------------------납부 현황 ---------------------------------------------->
+	<div class="w-full" id="payment_status" style="display:none">
+		<table class="w-full" id="payment_status_detail">
+			<tbody>
+			<c:forEach var="vo2" items="${list}">
+				<tr style="border-top:solid black 1px; border-bottom:solid black 1px">
+					<td class="p-2">${vo2.payment_date}</td>
+					<td>${vo2.course_start_date}/${vo2.course_name}/${vo2.employee_name}</td>
+					<td>납부액 : ${vo2.payment_price}원</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<!-------------------------------------------------납부 현황 ---------------------------------------------->
+	<!-------------------------------------------------출결 현황 ---------------------------------------------->
+	<div class="w-full" id="attendance_absent" style="display:none">
+		<div class="inline-block relative w-auto mr-2">
+			<select id="attendanceKey" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline month">
+				<c:forEach var="vo5" items="${list4}">
+					<option value="${vo5.payment_no}">${vo5.course_start_date} ${vo5.course_name}/${vo5.course_day}/${vo5.course_time}<c:if test="${vo5.state==0 || vo5.state==null}">(수료중)</c:if><c:if test="${vo5.state==1}">(수료)</c:if><c:if test="${vo5.state==2}">(미수료)</c:if><c:if test="${vo5.state==3}">(휴원)</c:if><c:if test="${vo5.state==4}">(퇴원)</c:if></option>
 				</c:forEach>
 				</tbody>
 			</table>

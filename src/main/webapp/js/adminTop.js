@@ -281,14 +281,19 @@ $(function(){
 	  	$("#attendanceKey").on("change", function(){
 			var url = "/lms/admin/attendanceArray"
 			var params = "payment_no="+$(this).val();
+	  		
+			//그리기 전에 지우기
+			$("#attendance_list").html("");
+	  		
 			$.ajax({
 				type:"GET",
 				url: url,
 				data : params,
 				success : function(result){
 					var listResult = $(result);
-					
 					var tag ="<tr style='border-top:solid black 1px; border-bottom:solid black 1px'>";
+				
+					
 					listResult.each(function(idx, vo){
 						if(vo.attendance_state==1){
 							tag +="<td class='w-1/4 p-2'>"+vo.attendance_date+"</td>"

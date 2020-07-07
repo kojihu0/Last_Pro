@@ -101,7 +101,7 @@
 			</tr>
 			<tr>
 				<td class="border-solid border-4 border-gray-600 bg-info-200 text-center p-3">전화번호</td>
-				<td class="border-solid border-4 border-gray-600 p-3">
+				<td class="border-solid border-4 border-gray-600 p-3" style="width:300px;">
 					<div class="inline-block relative w-auto">
 						<select name="student_house1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							   <option>02</option>
