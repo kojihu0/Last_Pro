@@ -300,7 +300,7 @@
 											 <option selected="selected"  value="신관A102">A102</option>
 										</c:if>
 										<c:if test="${vo.course_stage != '신관A102' }">
-											 <option value="신관A102">A101</option>
+											 <option value="신관A102">A102</option>
 										</c:if>
 									    
 									    <c:if test="${vo.course_stage == '신관A103' }">
