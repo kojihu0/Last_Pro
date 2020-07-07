@@ -21,6 +21,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import kr.co.lms.admin.DAO.AdminRegiInterface;
+import kr.co.lms.admin.VO.AdminCalendarVO;
 import kr.co.lms.main.DAO.MemberDAOImp;
 import kr.co.lms.main.DAO.MypageDAOImp;
 import kr.co.lms.main.DAO.paymentDAOImp;
@@ -154,11 +156,24 @@ public class ProfileController {
 		
 		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
 		List<CourseVO> list = dao.selectTimeTable(student_no);
+		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+		List<AdminCalendarVO> admin_cal_list = adminRegiInter.selectAllCalendar();
 		
 		JsonArray jsonArr = new JsonArray();
 		Gson gson = new Gson();
 		String jsonVal = "";
 		
+		for(int i=0; i<admin_cal_list.size(); i++) {
+			AdminCalendarVO vo = admin_cal_list.get(i);
+			JsonObject jsonObj = new JsonObject();
+			jsonObj.addProperty("title", vo.getCalendar_title());
+			jsonObj.addProperty("start", vo.getCalendar_start_date());
+			jsonObj.addProperty("end", vo.getCalendar_end_date());
+			jsonObj.addProperty("color", vo.getCalendar_color());
+			jsonObj.addProperty("description", vo.getCalendar_content());
+			jsonObj.addProperty("id", vo.getCalendar_no());
+			jsonArr.add(jsonObj);
+		}
 		for(int i=0; i<list.size(); i++) {
 			CourseVO vo = list.get(i);
 			JsonObject jsonObj = new JsonObject();
@@ -171,7 +186,7 @@ public class ProfileController {
 		}
 		
 		jsonVal = gson.toJson(jsonArr);
-		
+		System.out.println(jsonVal);
 		return jsonVal;
 	}
 	
