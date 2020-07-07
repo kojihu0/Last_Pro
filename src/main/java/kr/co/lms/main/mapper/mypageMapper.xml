@@ -6,12 +6,14 @@
  	<select id="courseRecord"  resultType="kr.co.lms.main.VO.MypageVO">
 	 	SELECT 
 			e.employee_name, 
+			c.course_no,
 			c.course_name,
 			to_char(c.course_start_date,'YYYY-MM-DD')course_start_date,
 			to_char(c.course_end_date,'YYYY-MM-DD')course_end_date,
 			s.rank, 
 			s.grade,
-			s.student_no
+			s.student_no,
+			to_date(c.course_end_date, 'YYYY-MM-DD') - to_date(c.course_progress,'YYYY-MM-DD')course_progress
 			FROM   
 			employee e join course c on
 			e.employee_no = c.employee_no join payment p on 
@@ -34,7 +36,7 @@
 			e.employee_no = c.employee_no join payment p on 
 			c.course_no = p.course_no join student_course_state s on
 			p.payment_no = s.payment_no
-		WHERE  s.student_no = #{param1}
+		WHERE  s.student_no = #{param1} and s.state=1
  	</select>
  	<select id="inCompleteCourseRecord"  resultType="kr.co.lms.main.VO.MypageVO">
  	SELECT 
@@ -51,13 +53,13 @@
 		e.employee_no = c.employee_no join payment p on 
 		c.course_no = p.course_no join student_course_state s on
 		p.payment_no = s.payment_no
-	WHERE  s.student_no = #{param1}
+	WHERE  s.student_no = #{param1} and s.state=2
  	</select>
  	<select id="selectTimeTable" resultType="kr.co.lms.main.VO.CourseVO">
  	select p.course_no ,course_name,
- 	to_char(course_start_date, 'yyyy-mm-dd') course_start_date, to_char(course_end_date, 'yyyy-mm-dd') course_end_date,
+ 		to_char(course_start_date, 'yyyy-mm-dd') course_start_date, to_char(course_end_date, 'yyyy-mm-dd') course_end_date,
  	course_time
-	from payment p join course c on p.course_no=c.course_no
+		from payment p join course c on p.course_no=c.course_no
 	where student_no=#{param1}
 	</select>
  	<select id="memberMypageDetailInfo"  resultType="kr.co.lms.main.VO.MypageVO">

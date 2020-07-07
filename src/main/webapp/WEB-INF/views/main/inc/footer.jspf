@@ -64,7 +64,7 @@
 	    <div class="mb-4">
 	    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=ctx %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
 	    </div>
-	    <div class="mb-4">
+	    <div >
 	    	<input type="submit" id="loginBtn" value="LOGIN" class="text-white text-2xl font-bold w-1/2 bg-brand-500 py-3 px-4"/>
 	    </div>
 	    <div class="mb-4">

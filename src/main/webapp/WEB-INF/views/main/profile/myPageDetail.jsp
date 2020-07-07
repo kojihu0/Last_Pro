@@ -78,11 +78,6 @@
             <td class="border-solid border-4 border-gray-600  " colspan="3">
             <div class="calendar"><input type="text" value="${info.course_end_date}" name="student_regi_date" class="datepicker pointer-events-none border-solid border-2border-white ml-2 first_regiDate"/></div></td>
          </tr>
-          <tr>
-            <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">성적</td>
-            <td class="border-solid border-4 border-gray-600 " colspan="3">
-            <div class="calendar"><input type="text" value="${info.grade}" name="student_regi_date" class="datepicker pointer-events-none border-solid border-2 border-white ml-2 first_regiDate"/></div></td>
-         </tr>
       </table>
 		   </form>
 				<!-- DivTable.com -->

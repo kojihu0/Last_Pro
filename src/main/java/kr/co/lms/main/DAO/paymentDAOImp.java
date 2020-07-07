@@ -21,4 +21,6 @@ public interface paymentDAOImp {
 	public int paymentCancel(paymentVO vo);
 	//결제 취소 상태 번호 가져오기 
 	public int paymentCancelNum(paymentVO vo);
+	//결제번호 가져오기 
+	public paymentVO paymentNumRecord(paymentVO vo);
 }

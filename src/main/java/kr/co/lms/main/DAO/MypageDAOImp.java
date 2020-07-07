@@ -22,5 +22,5 @@ public interface MypageDAOImp {
 	//등록날짜 증감
 	public void updateSysdate();
 	//날짜차이 
-	public MypageVO courseProgess(int no);
+	public List<MypageVO> courseProgess(int cNo);
 }

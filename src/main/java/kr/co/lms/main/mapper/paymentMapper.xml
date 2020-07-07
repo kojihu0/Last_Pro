@@ -51,4 +51,7 @@
 	<update id="paymentCancel" parameterType="kr.co.lms.main.VO.paymentVO">
 		update payment set payment_state=1 where payment_no=#{payment_no} and student_no=#{student_no}
 	</update>
+	<select id="paymentNumRecord" parameterType="kr.co.lms.main.VO.paymentVO" resultType="kr.co.lms.main.VO.paymentVO">
+		select payment_no from payment where course_no=#{course_no} and student_no=#{student_no}
+	</select>
 </mapper>

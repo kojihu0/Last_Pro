@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+#courseSubject p{
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+</style>
 <div id="mainBanner" style="background-image:url('<%=ctx%>/img/top-banner.jpg')" class="bg-cover mb-4 w-full">
 	<div class="container my-0 mx-auto">
 		<h1 class="border-l-4 border-brand-600 text-5xl text-white roboto-slab font-bold">&nbsp;&nbsp;PROFILE</h1>
@@ -42,17 +49,11 @@
 			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/wishList">WishList</a>
 			  </li>
 			   <li class="mr-1">
-				    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
-				  </li>
-			</ul>
-			<ul class="flex roboto-slab mt-16">
-			  <li id="course" class="-mb-px mr-1">
-			    <a class="bg-white border-b border-l border-t-4 border-r py-2 px-3 font-semibold border-brand-500 text-brand-500 " href="#">Course</a>
-			  </li> 
-			  <li id="grade" class="mr-1">
-			    <a class="bg-white border-b border-l border-t border-r py-2 px-3 font-semibold text-gray-900 hover:text-brand-500 " href="#">Grade</a>
+			    <a class="  bg-white hover:border-brand-500 border-b border-l border-t border-r py-3 px-4 text-gray-900 hover:text-brand-500 font-semibold" href="<%=ctx%>/paymentHistory">PaymentHistory</a>
 			  </li>
 			</ul>
+			
+			
 		<c:if test="${courseList != null}">
 		<div id="courseList" style="display:block">
 			<ul class="flex mt-8 roboto-slab bg-cta-400">
@@ -61,7 +62,6 @@
 				<li class="text-white text-xl w-1/6">Start Date</li>
 				<li class="text-white text-xl w-1/6">End Date</li>
 				<li class="text-white text-xl">Course Progress</li>
-				
 			</ul>
 			<c:if test="${empty courseList}">
 				<p class="py-8 text-center text-lg font-bold">수강 중인 강좌가 없습니다.</p>
@@ -69,41 +69,16 @@
 			<c:forEach var ="courseList" items="${courseList}">
 				<ul class="flex my-4 roboto-slab ">
 					<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${courseList.employee_name}</a></li>
-					<li class="text-black text-xl w-1/3"><a href="<%=ctx%>/myPageDetail" class="hover:text-cta-500">${courseList.course_name}</a></li>
-					<li class="text-black text-xl w-1/6">${courseList.course_start_date}</li>
+					<li class="text-black text-xl w-1/3"><a id="courseSubject" href="<%=ctx%>/myPageDetail?course_no=${courseList.course_no}" class="hover:text-cta-500"><p>${courseList.course_name}</p></a></li>					<li class="text-black text-xl w-1/6">${courseList.course_start_date}</li>
 					<li class="text-black text-xl w-1/6">${courseList.course_end_date}</li>
-					<li class="text-black text-xl w-1/6 text-center">${course_progress.course_progress}일</li>
+					<li class="text-black text-xl w-1/6 text-center">${courseList.course_progress}일</li>
+					
 				</ul>
 				<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
 			</c:forEach>
 		</div>
 		</c:if>
-		<c:if test="${courseList != null}">
-			<div id="gradeList" style="display:none">
-					<ul class="flex mt-8 roboto-slab bg-cta-400">
-						<li class="ml-2 h-8 text-xl text-white w-1/6">Instructor</li>
-						<li class="text-white text-xl w-1/3">Course</li>
-						<li class="text-white text-xl w-1/6">Grade</li>
-						<li class="text-white text-xl w-1/6">Rating</li>
-						<li class="text-white text-xl">Test Date</li>
-					</ul>
-					<c:if test="${empty courseList}">
-					<p class="py-8 text-center text-lg font-bold">수강 중인 강좌가 없습니다.</p>
-				</c:if>
-					<ul class="flex my-4 roboto-slab">
-				
-					<c:forEach var ="courseList" items="${courseList}">
-						<li class="ml-2 h-8 text-xl text-black w-1/6"><a href="#" class="hover:text-cta-500">${courseList.employee_name}</a></li>
-						<li class="text-black text-xl w-1/3"><a href="<%=ctx%>/myPageDetail" class="hover:text-cta-500">${courseList.course_name}</a></li>
-						<li class="text-black text-xl w-1/6">${courseList.grade}등급</li>
-						<li class="text-black text-xl w-1/6">${courseList.rank}등급</li>
-						<li class="text-black text-xl ">2020-06-10</li>
-					</c:forEach>
-						<div id="hr" class="my-4 border-cta-500 border-t border-solid"></div>
-					</ul>
-			
-			</div>
-		</c:if>
+		
 		</div>
 	</div>
 </div>

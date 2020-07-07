@@ -47,7 +47,7 @@ public class ProfileController {
 	PasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value="/myPageDetail", method=RequestMethod.GET)
-	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo) {
+	public ModelAndView myPageDetail(HttpServletRequest req,MemberVO vo,int course_no) {
 		ModelAndView mav = new ModelAndView();	
 		HttpSession s = req.getSession();
 		int no=	(Integer)s.getAttribute("student_no");
@@ -86,12 +86,7 @@ public class ProfileController {
 		vo.setStudent_no(no);
 		MypageDAOImp dao =sqlSession.getMapper(MypageDAOImp.class); 
 		List<MypageVO> courseList =dao.courseRecord(no);
-		
-		MypageVO course_progress = dao.courseProgess(no);
-		
 		MemberVO vo2 = memberDao.memberDataSelect(vo);
-		
-		mav.addObject("course_progress",course_progress);
 		mav.addObject("student_name_ko",vo2.getStudent_name_ko());
 		mav.addObject("student_info",vo2.getStudent_info());
 		mav.addObject("student_img",vo2.getStudent_img());

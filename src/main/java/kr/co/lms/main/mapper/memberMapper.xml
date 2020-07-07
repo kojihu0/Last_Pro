@@ -43,7 +43,11 @@
  	<update id="memberPasswordDataSelect" parameterType="kr.co.lms.main.VO.MemberVO">
  	 	update student set student_pw=#{student_pw} where student_id=#{student_id} 
  	</update>
- 	<delete id="memberDataDel">
-	 	delete from student where student_id=#{student_id} 
+ 	<delete id="memberDataDel" parameterType="kr.co.lms.main.VO.MemberVO">
+	delete  from student where student_id=#{student_id} 
  	</delete>
+ 	<insert id="studentStautsInsert"  parameterType="kr.co.lms.main.VO.paymentVO">
+ 		insert into STUDENT_COURSE_STATE(STUDENT_COURSE_STATE_NO,PAYMENT_NO,STUDENT_NO,STUDENT_COURSE_STATE_DATE,STATE) 
+ 		values(STUDENT_COURSE_STATE_SQ.nextval,#{payment_no},#{student_no},sysdate,0) 
+ 	</insert>
 </mapper>

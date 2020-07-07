@@ -84,9 +84,15 @@ public class PaymentController {
 		  }else {
 			  vo.setPayment_method("계좌이체");   
 		  }
-		
 		paymentDAOImp dao  = sqlSession.getMapper(paymentDAOImp.class);
+		MemberDAOImp Mdao = sqlSession.getMapper(MemberDAOImp.class);
+		
 		dao.paymentInfoInsert(vo);
+		vo.setStudent_no((Integer)(ses.getAttribute("student_no")));
+		vo.setCourse_no((Integer)(ses.getAttribute("course_no")));
+		paymentVO vo1 = dao.paymentNumRecord(vo);
+		vo1.setStudent_no((Integer)(ses.getAttribute("student_no")));
+		Mdao.studentStautsInsert(vo1);
 		map.put("imp_uid", imp_uid);
 		map.put("merchant_uid", merchant_uid);
 		map.put("paid_amount", paid_amount);
@@ -117,11 +123,16 @@ public class PaymentController {
 		vo.setEmployee_name(employee_name);
 		vo.setCourse_start_date(course_start_date);
 	
-		vo.setPayment_method("현금결제 "); 
+		vo.setPayment_method("현금결제"); 
 		System.out.println(vo.getPayment_name());		
 		paymentDAOImp dao = sqlSession.getMapper(paymentDAOImp.class);
+		MemberDAOImp Mdao = sqlSession.getMapper(MemberDAOImp.class);
 		dao.paymentCashInsert(vo);
-		
+		vo.setStudent_no((Integer)(ses.getAttribute("student_no")));
+		vo.setCourse_no((Integer)(ses.getAttribute("course_no")));
+		paymentVO vo1 = dao.paymentNumRecord(vo);
+		vo1.setStudent_no((Integer)(ses.getAttribute("student_no")));
+		Mdao.studentStautsInsert(vo1);
 		int payment_no = dao.paymentNumberRecord(vo);
 		vo.setPayment_no(payment_no);
 		paymentVO vo2 = dao.paymentInfoRecord(vo);

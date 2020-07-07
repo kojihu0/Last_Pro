@@ -3,14 +3,14 @@ package kr.co.lms.main.VO;
 import java.text.NumberFormat;
 
 public class CourseVO {
-	private int course_no; //°­ÁÂ¹øÈ£
-	private String course_name; //°­ÁÂ¸í
-	private int employee_no; //°­»ç¹øÈ£
-	private String employee_name; //°­»ç¸í
+	private int course_no; 
+	private String course_name; //ï¿½ï¿½ï¿½Â¸ï¿½
+	private int employee_no; //ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private String employee_name; //ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String employee_img;
 	private String employee_overview;
-	private String admin_id; //°­»ç¾ÆÀÌµð(ÀÌ¸ÞÀÏ)
-	private int course_price; //°­ÁÂ±Ý¾×
+	private String admin_id; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½(ï¿½Ì¸ï¿½ï¿½ï¿½)
+	private int course_price; //ï¿½ï¿½ï¿½Â±Ý¾ï¿½
 	private String course_reception_start;
 	private String course_reception_end;
 	private String course_start_date;
@@ -21,8 +21,8 @@ public class CourseVO {
 	private String course_day;
 	private String course_time;
 	private String course_stage;
-	private String course_img; //½æ³×ÀÏ
-	private String course_price_format; //°­ÁÂ±Ý¾×(Æ÷¸Ë)
+	private String course_img; //ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String course_price_format; //ï¿½ï¿½ï¿½Â±Ý¾ï¿½(ï¿½ï¿½ï¿½ï¿½)
 	private String search_string = "";
 	
 	public int getCourse_no() {
@@ -71,7 +71,7 @@ public class CourseVO {
 		return course_price;
 	}
 	public void setCourse_price(int course_price) {
-		course_price_format = NumberFormat.getInstance().format(course_price); //¼ýÀÚ Ãµ ´ÜÀ§ ÄÞ¸¶
+		course_price_format = NumberFormat.getInstance().format(course_price); //ï¿½ï¿½ï¿½ï¿½ Ãµ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½
 		this.course_price = course_price;
 	}
 	public String getCourse_reception_start() {
