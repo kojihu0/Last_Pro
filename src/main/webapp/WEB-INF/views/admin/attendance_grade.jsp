@@ -12,7 +12,7 @@
 		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 	<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
-	<table class="w-full border-collapse table-fixed border-t border-gray-500 bg-info-300">
+	<table class="w-full border-collapse table-fixed border-t border-gray-500 bg-info-300" style="table-layout:fixed;">
 		<tr class="text-center">
 			<td style="width:50px">번호</td>
 			<td style="width:120px;">개강년월</td>
@@ -23,15 +23,17 @@
 			<td style="width:150px;">출결·과제관리</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
+		<c:if test="${vo.course_no != 0}">
 			<tr class="bg-white border-t border-gray-500 text-center">
 				<td class="p-2">${vo.course_no}</td>
 				<td class="p-2">${vo.course_start_date}</td>
-				<td class="p-2">${vo.course_name}</td>
-				<td class="p-2 truncate" style="overflow:hidden; text-overflow:ellipsis">${vo.course_overview}</td>
+				<td class="p-2 truncate">${vo.course_name}</td>
+				<td class="p-2 truncate">${vo.course_overview}</td>
 				<td class="p-2">${vo.course_stage}</td>
 				<td class="p-2">${vo.course_student_count}명</td>
 				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">출결/과제관리</a></td>
 			</tr>
+		</c:if>
 		</c:forEach>
 	</table>
 	

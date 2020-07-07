@@ -6,7 +6,7 @@
 	<select id="selectLeaveOfAbsence" resultType="kr.co.lms.admin.VO.LeaveOfAbsenceVO">
 		select * from
 		(select * from
-		(select s.student_no student_no, s.student_name_ko student_name_ko, s.student_tel_phone student_tel_phone, s.student_tel_parent student_tel_parent, s.student_lately_course student_lately_course, to_char(student_course_state_date,'YYYY-MM-DD') student_course_state_date 
+		(select DISTINCT s.student_no student_no, s.student_name_ko student_name_ko, s.student_tel_phone student_tel_phone, s.student_tel_parent student_tel_parent, s.student_lately_course student_lately_course, to_char(student_course_state_date,'YYYY-MM-DD') student_course_state_date 
 		from student s join student_course_state c on s.student_no=c.student_no
 		<where>
 		     	c.state=3

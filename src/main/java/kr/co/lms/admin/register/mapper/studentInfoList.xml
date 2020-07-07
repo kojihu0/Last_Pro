@@ -59,7 +59,7 @@
 		join student_course_state s on p.payment_no=s.payment_no where p.student_no=#{param1}
 	</select>
 	<update id="studentClassMove" parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
-		update course set course_day=#{course_day}, course_time=#{course_time}, course_stage=#{course_stage} where course_no = (select course_no from payment where payment_no=#{payment_no})
+		update payment set course_no=(select course_no from course where course_day=#{course_day} and course_time=#{course_time} and course_stage=#{course_stage}) where course_no = (select course_no from payment where payment_no=#{payment_no})
 	</update>
 	<update id="studentClosedOutEditOk"  parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
 		update student_course_state set student_course_state_date=to_date(#{student_course_state_date},'YYYY-MM-DD'), state=#{state} where student_no=#{student_no}
