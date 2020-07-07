@@ -18,7 +18,7 @@
 							 </c:forEach>
 			  	 		</select>
 		  		    	<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		  			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		  			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 					<div class="inline-block relative w-20 mx-2">
@@ -38,7 +38,7 @@
 						    <option>12</option>
 			  	 		</select>
 		  		    	<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		  			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		  			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 					<div class="inline-block relative w-40 mx-2">
@@ -51,12 +51,12 @@
 						    <option>MYBATIS</option>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 				</td>
 				<td>
-					<input type="submit" value="검색" class="border-solid border-2 border-gray-600"/>
+					<input type="submit" value="검색" class="border-solid border border-gray-600"/>
 				</td>
 			</tr>
 		</table>
@@ -64,16 +64,16 @@
 	<form class="w-full">
 		<table class="bg-white text-center w-full" style="width:100%; border-top: 1px solid #444444;">
 			<tr>
-				<td class="border-solid border-2 border-gray-600" style="width:100px;"><input type="checkbox"/></td>
-				<td class="border-solid border-2 border-gray-600" style="width:100px;">개강년월</td>
-				<td class="border-solid border-2 border-gray-600" style="width:200px;">과정명</td>
-				<td class="border-solid border-2 border-gray-600" style="width:200px;">강좌명</td>
-				<td class="border-solid border-2 border-gray-600" style="width:200px;">반명</td>
-				<td class="border-solid border-2 border-gray-600" style="width:100px;">인원</td>
+				<td class="border-solid border border-gray-600" style="width:100px;"><input type="checkbox"/></td>
+				<td class="border-solid border border-gray-600" style="width:100px;">개강년월</td>
+				<td class="border-solid border border-gray-600" style="width:200px;">과정명</td>
+				<td class="border-solid border border-gray-600" style="width:200px;">강좌명</td>
+				<td class="border-solid border border-gray-600" style="width:200px;">반명</td>
+				<td class="border-solid border border-gray-600" style="width:100px;">인원</td>
 			</tr>
 		</table>
 		<div class="text-center my-5">
-			<input type="submit" value="일괄배정하기" class="border-solid border-2 border-gray-600"/>
+			<input type="submit" value="일괄배정하기" class="border-solid border border-gray-600"/>
 		</div>
 	</form>
 </div>

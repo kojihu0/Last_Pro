@@ -50,27 +50,29 @@
   	<div class="close text-white inline-block text-xl absolute top-0 right-0 p-4 cursor-pointer">
 		<i class="xi-close"></i>
 	</div>
-	<form action="<%=ctx %>/loginOk" method="post" class="bg-white max-w-screen-sm m-0 m-auto roboto-slab mt-20 h-auto z-99 opacity-100 text-center border-t border-white">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<div class="mt-8 h-4 mb-8">
-			<p class="text-2xl">Login with your site account</p>
-		</div>
-		<div>
-	      <input name="student_id" class="appearance-none  w-1/2 bg-gray-200  text-gray-700 border border-gray-200 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-id" type="text" placeholder="ID">
-	    </div>
-	    <div>
-	      <input name="student_pw" class="appearance-none w-1/2 bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="password" placeholder="PASSWORD">
-	    </div>
-	    <div class="mb-4">
-	    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=ctx %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
-	    </div>
-	    <div >
-	    	<input type="submit" id="loginBtn" value="LOGIN" class="text-white text-2xl font-bold w-1/2 bg-brand-500 py-3 px-4"/>
-	    </div>
-	    <div class="mb-4">
-			<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=ctx %>/register" class="text-brand-500 text-xs">Register now</a>
-		</div>
- 	</form>
+	<div class="bg-white max-w-screen-sm my-20 mx-auto p-8 roboto-slab h-auto text-center">
+		<form action="<%=ctx %>/loginOk" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<div class="mb-4">
+				<p class="text-2xl">Login with your site account</p>
+			</div>
+			<div>
+		      <input name="student_id" class="appearance-none  w-1/2 bg-gray-200  text-gray-700 border border-gray-200 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-id" type="text" placeholder="ID">
+		    </div>
+		    <div>
+		      <input name="student_pw" class="appearance-none w-1/2 bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-brand-500" id="grid-password" type="password" placeholder="PASSWORD">
+		    </div>
+		    <div class="mb-4">
+		    	<input type="checkbox" value=""/>&nbsp;<span class="text-xs">Remember Me</span> <a href="<%=ctx %>/idFind" class="text-brand-500 ml-20 text-xs">Lost your password? </a>
+		    </div>
+		    <div class="mb-4">
+		    	<input type="submit" id="loginBtn" value="LOGIN" class="text-white text-2xl font-bold w-1/2 bg-brand-500 py-3 px-4"/>
+		    </div>
+		    <div>
+				<span class="text-xs">Not a member yet?</span>&nbsp;<a href="<%=ctx %>/register" class="text-brand-500 text-xs">Register now</a>
+			</div>
+	 	</form>
+	</div>
 </div>
 <div class="ajax-overlay fixed items-center justify-center w-full h-full top-0 left-0 z-50 bg-white opacity-75 text-brand-500 text-6xl hidden"><i class="xi-spinner-3 xi-spin"></i></div>
 </body>

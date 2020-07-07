@@ -552,11 +552,7 @@ public class AdminController {
 		
 		AdminTeacherVO tempVo = adminRegiInter.selectTeacherOverView(vo);
 		
-		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_email());
-		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_class());
-		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_subject());
-		System.out.println("TeacherVO 확인 "+ tempVo.getEmployee_img());
-		 
+
 	
 		if(tempVo != null) { 
 			vo.setEmployee_overview(tempVo.getEmployee_overview() ); 
@@ -594,28 +590,40 @@ public class AdminController {
 		
 		AdminRegiInterface adminRegiInter	= sqlSession.getMapper(AdminRegiInterface.class);
 		
+		
+		
 		//파일 업로드를 위한 작업.
 		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
 	      String paramName 		= vo.getEmployee_img_m().getName();
 	      String img 			= vo.getEmployee_img_m().getOriginalFilename();
+	    
+			System.out.println("TeacherVO 확인 : "+ vo.getEmployee_email());
+			System.out.println("TeacherVO 확인 : "+ vo.getEmployee_class());
+			System.out.println("TeacherVO 확인  : "+ vo.getEmployee_subject());
+			System.out.println("TeacherVO 확인 : "+ vo.getEmployee_img_m()); 
+			System.out.println("TeacherVO 확인 : "+ vo.getEmployee_img());  
+			System.out.println("img 확인 :  "+ img); 
+	      
 	      
 	      try {
 		      if(img != null) {
 		    	  vo.getEmployee_img_m().transferTo(new File(path, img));
+		    	  vo.setEmployee_img(img); 
+		      }else { 
+		    	  vo.setEmployee_img(vo.getEmployee_img());
+		    	  System.out.println("TeacherVO 확인 : "+ vo.getEmployee_img()); 
 		      }
 	      }catch(Exception e) {
 	    	  
-	      }
-	      vo.setEmployee_img(img); 
-		
-		int result_Int = adminRegiInter.updateAdminTeacherEdit(vo);
-
-		if(result_Int > 0) {  
-			mav.setViewName("redirect:/admin/adminTeacherList");	
-		}else {
-			deleteFile(path, img);
-			mav.setViewName("redirect:/admin/adminTeacherEdit"); 
-		}
+	      } 
+			int result_Int = adminRegiInter.updateAdminTeacherEdit(vo);
+	
+			if(result_Int > 0) {  
+				mav.setViewName("redirect:/admin/adminTeacherList");	
+			}else {
+				deleteFile(path, img);
+				mav.setViewName("redirect:/admin/adminTeacherEdit"); 
+			}
 		
 		return mav;
 	} 
@@ -693,6 +701,8 @@ public class AdminController {
 		AdminCourseVO result_Vo = adminRegiInter.selectCourseOne(vo.getCourse_no());
 		
 		mav.addObject("vo", result_Vo);
+		
+		System.out.println("vo->course_day ::: " + vo.getCourse_day());
 		mav.setViewName("/admin/adminCourseEdit");
 		
 		return mav;  

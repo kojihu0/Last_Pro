@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;강사 업무 일지 등록
 		</div>
  

@@ -4,15 +4,15 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
 	</div>
-	<form action="/lms/attendance_grade" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/attendance_grade" class="w-full flex bg-gray-300 items-center">
 		<div class="mx-3 w-5/6">
-			<div class="w-1/2 calendar my-3">개강년월 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/> ~ <input type="text" class="datepicker border-solid border-2 border-gray-600" name="endDate"/></div>
-			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="border-solid border-2 border-gray-600"/></div>
+			<div class="calendar my-3">개강년월 : <input type="text" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="startDate"/> ~ <input type="text" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="endDate"/></div>
+			<div class="mb-3">과정명 : <input type="text" name="searchWord" placeholder="과정명" class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/></div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-16 my-3 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 	<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
-	<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse; table-layout:fixed;">
+	<table class="w-full border-collapse table-fixed border-t border-gray-500 bg-info-300">
 		<tr class="text-center">
 			<td style="width:50px">번호</td>
 			<td style="width:120px;">개강년월</td>
@@ -23,14 +23,14 @@
 			<td style="width:150px;">출결·과제관리</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
-			<tr class="bg-white text-center" style="border-top:solid 1px black; border-bottom:solid 1px black">
+			<tr class="bg-white border-t border-gray-500 text-center">
 				<td class="p-2">${vo.course_no}</td>
 				<td class="p-2">${vo.course_start_date}</td>
 				<td class="p-2">${vo.course_name}</td>
 				<td class="p-2 truncate" style="overflow:hidden; text-overflow:ellipsis">${vo.course_overview}</td>
 				<td class="p-2">${vo.course_stage}</td>
 				<td class="p-2">${vo.course_student_count}명</td>
-				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-200 border-solid border-2 border-gray-600 rounded">출결/과제관리</a></td>
+				<td class="p-2"><a href="/lms/admin/table_attendance_grade?course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">출결/과제관리</a></td>
 			</tr>
 		</c:forEach>
 	</table>

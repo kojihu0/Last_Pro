@@ -4,16 +4,21 @@
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
 		
 		
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;사내공지
 		</div>
 		
-		<div class="border-solid border-4 border-gray-600 p-3 bg-gray-200 w-full flex">
-			<select name="searchKey"  onChange="location.href='<%=projectPath %>/admin/adminNotice?searchKey='+ this.value" class="border flex-initial mx-2">  
-				<option value="-1"  <c:if test="${searchKey  == '-1'}">selected</c:if>>전  부</option> 
-				<option value="2"  <c:if test="${searchKey  == '2'}">selected </c:if>>이벤트</option>  						
-				<option value="1"  <c:if test="${searchKey  == '1'}">selected </c:if>>공지사항</option>  
-			</select> 
+		<div class="p-3 mb-4 w-full flex bg-gray-300 items-center flex">
+			<div class="inline-block relative mx-2">
+				<select name="searchKey"  onChange="location.href='<%=projectPath %>/admin/adminNotice?searchKey='+ this.value" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">  
+					<option value="-1"  <c:if test="${searchKey  == '-1'}">selected</c:if>>전  부</option> 
+					<option value="2"  <c:if test="${searchKey  == '2'}">selected </c:if>>이벤트</option>  						
+					<option value="1"  <c:if test="${searchKey  == '1'}">selected </c:if>>공지사항</option>  
+				</select>
+				<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+   			    	<i class="xi-angle-down"></i>
+			    </div>
+			</div>
 		</div>
 		
 		<div class="p-3">
@@ -29,9 +34,9 @@
 				</tbody>  
 				<tbody>  
 					<c:forEach var="vo" items="${list }">
-						<tr class="bg-white hover:bg-gray-200" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?admin_notice_no=${vo.admin_notice_no }'">
+						<tr class="bg-white hover:bg-gray-200 cursor-pointer" OnClick="location.href='<%=projectPath%>/admin/adminNoticeView?admin_notice_no=${vo.admin_notice_no }'">
 							<td  class="border text-center p-2">${vo.admin_notice_no}</td>
-							<td  class="border text-center p-2">${vo.admin_notice_title}</td>
+							<td  class="truncate border text-center p-2">${vo.admin_notice_title}</td>
 							
 							<c:if test="${vo.admin_category == 1}">
 								<td  class="border text-center p-2">공지사항</td>
@@ -49,7 +54,7 @@
 		</div>
 		
 		<div class="p-3 text-right"> 
-			<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a>
+			<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminNoticeWrite">쓰기</a>
 		</div>	
 		
 	<div class="text-center">	

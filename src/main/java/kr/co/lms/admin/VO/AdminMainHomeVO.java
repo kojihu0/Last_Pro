@@ -4,7 +4,7 @@ public class AdminMainHomeVO {
 	
 	
 	//�ȸ� ���� �Ǹ� ����
-	private String  payment_name;
+	private String  employee_name;
 	private int 	payment_num;
 	
 	//�ȸ� ���� ����
@@ -22,12 +22,11 @@ public class AdminMainHomeVO {
 	private String totalCourse;
 	
 	
-	
-	public String getPayment_name() {
-		return payment_name;
+	public String getEmployee_name() {
+		return employee_name;
 	}
-	public void setPayment_name(String payment_name) {
-		this.payment_name = payment_name;
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
 	}
 	public int getPayment_num() {
 		return payment_num;

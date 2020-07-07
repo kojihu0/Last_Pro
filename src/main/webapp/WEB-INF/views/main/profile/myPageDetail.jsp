@@ -41,7 +41,7 @@
             <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">이름</td>
             <td class="border-solid border-4 border-gray-600 " colspan="3">
             <div class="calendar">
-            <input type="text" value="${vo.student_name_ko}" name="student_regi_date" class="datepicker border-solid border-2 pointer-events-none border-white ml-2 first_regiDate"/>
+            <input type="text" value="${vo.student_name_ko}" name="student_regi_date" class="datepicker border-solid border pointer-events-none border-white ml-2 first_regiDate"/>
             </div>
             </td>
          </tr>
@@ -49,12 +49,12 @@
          <tr>
             <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">휴대폰 번호</td>
             <td class="border-solid border-4 border-gray-600 p-2 ">
-                <input type="text" name="student_phone_tel2" class="border-solid border-2 pointer-events-none border-white w-40  " value="${vo.student_tel_phone }"/>
+                <input type="text" name="student_phone_tel2" class="border-solid border pointer-events-none border-white w-40  " value="${vo.student_tel_phone }"/>
             </td>
             <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">Email</td>
             <td class="border-solid border-4 border-gray-600 p-2 ">
                <div> 
-                  <input id="sEmail" type="text" name="student_email_id" class="pointer-events-none border-solid border-2 border-white " value="${vo.student_email}"/>
+                  <input id="sEmail" type="text" name="student_email_id" class="pointer-events-none border-solid border border-white " value="${vo.student_email}"/>
                   <div class="inline-block relative w-40">
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                        </div>
@@ -65,18 +65,18 @@
          <tr>
             <tr>
             <td class="border-solid border-4 border-gray-600 text-white  bg-brand-500 p-2 text-center">자기소개</td>
-            <td class="border-solid border-4 border-gray-600 p-2 pointer-events-none"colspan="3"><textarea cols="100" rows="5" class="border-solid border-2 border-white pointer-events-none" name="student_memo">${vo.student_info}</textarea></td>
+            <td class="border-solid border-4 border-gray-600 p-2 pointer-events-none"colspan="3"><textarea cols="100" rows="5" class="border-solid border border-white pointer-events-none" name="student_memo">${vo.student_info}</textarea></td>
          </tr>
          
          <tr>
             <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">수업시작일</td>
             <td class="border-solid border-4 border-gray-600  " colspan="3">
-            <div class="calendar"><input type="text" value="${info.course_start_date}" name="student_regi_date" class="datepicker  pointer-events-none border-solid border-2 border-white ml-2 first_regiDate"/></div></td>
+            <div class="calendar"><input type="text" value="${info.course_start_date}" name="student_regi_date" class="datepicker  pointer-events-none border-solid border border-white ml-2 first_regiDate"/></div></td>
          </tr>
           <tr>
             <td class="border-solid border-4 text-white border-gray-600 bg-brand-500 p-2 text-center">수업종료일</td>
             <td class="border-solid border-4 border-gray-600  " colspan="3">
-            <div class="calendar"><input type="text" value="${info.course_end_date}" name="student_regi_date" class="datepicker pointer-events-none border-solid border-2border-white ml-2 first_regiDate"/></div></td>
+            <div class="calendar"><input type="text" value="${info.course_end_date}" name="student_regi_date" class="datepicker pointer-events-none border-solid borderborder-white ml-2 first_regiDate"/></div></td>
          </tr>
       </table>
 		   </form>

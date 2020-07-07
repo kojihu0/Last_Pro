@@ -42,7 +42,7 @@
 							</c:forEach>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 					년<div class="inline-block relative w-40 mx-2">
@@ -53,7 +53,7 @@
 							</c:forEach>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 					월<div class="inline-block relative w-40 mx-2">
@@ -64,7 +64,7 @@
 							</c:forEach>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>일
 				</td>
@@ -93,7 +93,7 @@
 							    <option>chollian.net</option>
 						  	 </select>
 						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				    			<i class="xi-angle-down"></i>
 				  			</div>
 			 			</div>
 					</div>
@@ -122,7 +122,7 @@
 							   <option>064</option>
 						  </select>
 						<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-				    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				    		<i class="xi-angle-down"></i>
 				  		</div>
 			 		</div>
 					- <input type="text" name="student_house2" class="border-solid border-2 border-gray-600 w-20 text-center rounded tel2" maxlength="4"/>
@@ -158,7 +158,7 @@
 							    <option>chollian.net</option>
 						  	 </select>
 						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				    			<i class="xi-angle-down"></i>
 				  			</div>
 			 			</div>
 					</div>
@@ -176,7 +176,7 @@
 							<option>모</option>
 			  	 		</select>
 			  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-		   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+		   			    	<i class="xi-angle-down"></i>
 					    </div>
 					</div>
 				</td>
@@ -231,7 +231,7 @@
 			</tr>
 		</table>
 		<div class="text-center my-5">
-			<input id="member_regi" class="border-solid border-2 border-gray-600 rounded bg-info-200" type="submit" value="등록하기"/>
+			<input id="member_regi" class="border-solid bg-info-600 px-4 rounded" type="submit" value="등록하기"/>
 		</div>
 	</form>
 </div>

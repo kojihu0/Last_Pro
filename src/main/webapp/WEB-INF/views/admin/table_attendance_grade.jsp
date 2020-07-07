@@ -11,12 +11,12 @@
 	<div class="h-10 text-lg my-6 w-full">
 		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
 	</div>
-	<form action="/lms/admin/table_attendance_grade2" method="post" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/admin/table_attendance_grade2" method="post" class="w-full flex bg-gray-300 items-center">
 		<input type="hidden" name="course_no" value="${course_no}"/>
 		<div class="mx-3 w-5/6">
-			<div class="w-1/2 calendar my-4">수강일 : <input type="text" class="datepicker border-solid border-2 border-gray-600 ml-2" name="startDate"/></div>
+			<div class="w-1/2 calendar my-4">수강일 : <input type="text" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline ml-2" name="startDate"/></div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-10 my-3 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 	<form class="w-full" action="/lms/admin/table_attendance__grade">
 		<table class="bg-info-300 text-center" style="width:100%; border-top: 1px solid #444444; border-collapse: collapse;">
@@ -42,10 +42,10 @@
 					</td>
 					<td class="p-2" style="width:200px">${vo.attendance_reason}</td>
 					<!-- 출결체크가 되어 있으면 보여야 한다. -->
-					<c:if test="${vo.attendance_state==1 || vo.attendance_state==2 || vo.attendance_state==3}">
-						<td style="width:100px"><a href="/lms/admin/modify_table_attendance_grade_individual?student_no=${vo.student_no}&course_no=${vo.course_no}" class="border-2 border-gray-600 rounded bg-info-200">수정</a></td>
+					<c:if test="${vo.attendance_state==1 || vo.attendance_state==2 || vo.attendance_state==3 || vo.attendance_state==4}">
+						<td style="width:100px"><a href="/lms/admin/modify_table_attendance_grade_individual?student_no=${vo.student_no}&course_no=${vo.course_no}" class="bg-info-600 px-4 rounded">수정</a></td>
 					</c:if>
-					<c:if test="${vo.attendance_state==4 || vo.attendance_state==0}">
+					<c:if test="${vo.attendance_state==0}">
 						<td style="width:100px"></td>
 					</c:if>
 				</tr>
@@ -53,7 +53,7 @@
 		</table>
 		<!-- 출결체크가 안되어 있으면 보여야 한다. -->
 		<c:if test="${vo2.student_cnt==0 || vo3.student_cnt2==vo2.student_cnt}">
-			<div class="my-2 float-right"><a href="/lms/admin/modify_table_attendance_grade?course_no=${course_no}" class="border-2 border-gray-600 rounded bg-info-200">출결체크</a></div>
+			<div class="my-2 float-right"><a href="/lms/admin/modify_table_attendance_grade?course_no=${course_no}" class="bg-info-600 px-4 rounded">출결체크</a></div>
 		</c:if>
 	</form>
 </div>

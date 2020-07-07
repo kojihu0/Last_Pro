@@ -41,8 +41,15 @@
 		s.student_gender, s.student_tel_parent, s.student_tel_phone from student s join payment p on s.student_no= p.student_no and p.course_no=#{param1}
 		join student_course_state sc on p.student_no = sc.student_no and p.payment_no = sc.payment_no where sc.state=0
 	</select>
-	<update id="studentClassUpdate">
-		update payment set course_no=(select course_no from course where course_name=#{course_name} and course_day=#{course_day} and course_time=#{course_time} and course_stage=#{course_stage}) where student_no=#{student_no} and payment_no=(select payment_no from payment where student_no=#{student_no} and course_no=#{course_no})
+	<delete id="attendanceRecordeDel" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		delete from attendance where student_no=#{student_no} and course_no=#{course_no}
+	</delete>
+	<update id="studentClassUpdate" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
+		<![CDATA[
+		update payment set course_no = (select course_no from course where course_day=#{course_day} and course_time=#{course_time} and course_stage=#{course_stage})
+		where student_no=#{student_no} 
+		and payment_no=(select payment_no from payment where student_no=#{student_no} and course_no=#{course_no})
+		]]>
 	</update>
 	<select id="selectStudentName" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
 		select student_no, student_name_ko, student_name_eng, student_tel_phone, student_tel_parent from student where student_no=#{param1}

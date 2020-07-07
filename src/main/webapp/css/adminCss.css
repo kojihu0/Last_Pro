@@ -19,10 +19,21 @@ end
 	Calendar
 */
 
-html, body {
-  margin: 0;
-  padding: 0;
+html,
+body,
+.site-wrap{
+	height:100%;
 }
+
+.site-wrap{
+	display: flex;
+	flex-direction: column;
+}
+
+.page-content{
+	flex: 1 0 auto;
+}
+
 #external-events {
   position: fixed;
   z-index: 2;
@@ -153,7 +164,9 @@ popup
   margin-right: 0;
 }
 
+.fc-view-container{background-color:#fff;}
 /*
 	Calendar
 	end
 */
+.ui-datepicker-trigger{display:inline-block;}

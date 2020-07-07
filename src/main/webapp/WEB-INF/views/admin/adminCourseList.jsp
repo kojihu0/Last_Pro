@@ -2,24 +2,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-			<div class="text-xl p-3 mx-16 ">  
+			<div class="text-xl p-6 ">  
 				<i class="xi-school"></i>&nbsp;강좌목록
 			</div>
 			
-			<div class="p-3 searchDiv text-right bg-gray-200 border-solid border-4 border-gray-600 flex">  
-				<select name="searchKey_01" class="mx-2"  onChange="location.href='<%=projectPath %>/admin/adminCourseList?searchKey_02=${searchKey_State}&searchKey_01='+ this.value" >
-					<option value="-1" <c:if test="${searchKey_Year == -1 }">selected</c:if> >::연도::</option>
-					<c:forEach var="i" begin="2020" end="2050">
-						<option value="${i}" <c:if test="${searchKey_Year == i }">selected</c:if> >${i}</option>
-					</c:forEach> 
-				</select>   
-				<select name="searchKey_02" class="mx-2"  onChange="location.href='<%=projectPath %>/admin/adminCourseList?searchKey_01=${searchKey_Year}&searchKey_02='+ this.value">
-					<option  <c:if test="${searchKey_State == '::상태::' }">selected</c:if>>::상태::</option>
-					<option value="개강" <c:if test="${searchKey_State == '개강'}">selected</c:if>>개강</option>
-					<option value="폐강"  <c:if test="${searchKey_State == '폐강'}">selected</c:if>>폐강</option>
-					<option value="대기"  <c:if test="${searchKey_State == '대기'}">selected</c:if>>대기</option>
-				</select> 
-				<input type="text" id="courseNameS" name="courseNameS" placeholder="강좌 명 검색" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
+			<div class="searchDiv p-3 mb-4 w-full flex bg-gray-300 items-center flex">
+				<div class="inline-block relative mx-2">
+					<select name="searchKey_01" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"  onChange="location.href='<%=projectPath %>/admin/adminCourseList?searchKey_02=${searchKey_State}&searchKey_01='+ this.value" >
+						<option value="-1" <c:if test="${searchKey_Year == -1 }">selected</c:if> >::연도::</option>
+						<c:forEach var="i" begin="2020" end="2050">
+							<option value="${i}" <c:if test="${searchKey_Year == i }">selected</c:if> >${i}</option>
+						</c:forEach> 
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+	   			    	<i class="xi-angle-down"></i>
+				    </div>
+				</div>
+				<div class="inline-block relative mx-2">
+					<select name="searchKey_02" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"  onChange="location.href='<%=projectPath %>/admin/adminCourseList?searchKey_01=${searchKey_Year}&searchKey_02='+ this.value">
+						<option  <c:if test="${searchKey_State == '::상태::' }">selected</c:if>>::상태::</option>
+						<option value="개강" <c:if test="${searchKey_State == '개강'}">selected</c:if>>개강</option>
+						<option value="폐강"  <c:if test="${searchKey_State == '폐강'}">selected</c:if>>폐강</option>
+						<option value="대기"  <c:if test="${searchKey_State == '대기'}">selected</c:if>>대기</option>
+					</select>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+	   			    	<i class="xi-angle-down"></i>
+				    </div>
+				</div>
+				<input type="text" id="courseNameS" name="courseNameS" placeholder="강좌 명 검색" class="mx-2 appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
 			</div>
 			
 				
@@ -46,7 +56,7 @@
 						<tr class="text-center">
 							<td class="border border-black bg-white w-16 p-2">${vo.course_no }</td>
 							<td class="border border-black bg-white w-32 p-2">${vo.course_start_date }</td> 
-							<td class="border border-black bg-white w-64 p-2">${vo.course_name }</td>
+							<td class="border border-black bg-white w-64 p-2 truncate ">${vo.course_name }</td> 
 							<td class="border border-black bg-white w-32 p-2">${vo.course_price }</td> 
 							<td class="border border-black bg-white w-32 p-2">${vo.course_state }</td>
 							<td class="border border-black bg-white w-32 p-2">
@@ -63,7 +73,7 @@
 			</div> 
 			
 			<div class="text-right p-3">
-				<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseRegi">등록하기</a>
+				<a class="bg-info-700 text-white rounded py-2 px-4 rounded" href="<%=projectPath%>/admin/adminCourseRegi">등록하기</a>
 			</div>
 	</div>
 	

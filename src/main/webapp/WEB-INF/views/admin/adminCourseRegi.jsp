@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;강좌 등록
 		</div>
 		<div class="p-3 flex justify-center">
@@ -57,7 +57,7 @@
 									    <option value="주말반">주말반</option>
 								  	 </select>
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div>
 					 			<div class="inline-block relative w-40">
@@ -69,33 +69,45 @@
 									    <option value="20:00~23:00">20:00~23:00</option>
 								  	 </select>
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div> 
 					 			<div class="inline-block relative w-40">
 									<select name="course_stage" id="courseStage" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-center">
 										<option selected="selected">::장소::</option>
 									    <option value="">=====본관=====</option>
-									    <option value="본관 :A101">A101</option>
-									    <option value="본관 :A102">A102</option>
-									    <option value="본관 :A103">A103</option>
-									    <option value="본관 :B201">B201</option>
-									    <option value="본관 :B202">B202</option>
-									    <option value="본관 :B203">B203</option>
-									    <option value="본관 :C301">C301</option>
-									    <option value="본관 :C302">C302</option>
-									    <option value="본관 :C303">C303</option>
+									    <option value="본관A101">A101</option>
+									    <option value="본관A102">A102</option>
+									    <option value="본관A103">A103</option>
+									    <option value="본관B201">B201</option>
+									    <option value="본관B202">B202</option>
+									    <option value="본관B203">B203</option>
+									    <option value="본관C301">C301</option>
+									    <option value="본관C302">C302</option>
+									    <option value="본관C303">C303</option>
 									    <option value="">=====신관=====</option>
-									    <option value="신관:A101">A101</option>
-									    <option value="신관:A102">A102</option>
-									    <option value="신관:A103">A103</option>
+									    <option value="신관A101">A101</option>
+									    <option value="신관A102">A102</option>
+									    <option value="신관A103">A103</option>
+									    <option value="신관A201">A201</option>
+									    <option value="신관A202">A202</option>
+									    <option value="신관A203">A203</option>
+									    <option value="신관A301">A301</option>
+									    <option value="신관A302">A302</option>
+									    <option value="신관A303">A303</option>
 									    <option value="">=====구관=====</option>
-									    <option value="구관:A101">A101</option>
-									    <option value="구관:A102">A102</option>
-									    <option value="구관:A103">A103</option>
-								  	 </select> 
+									    <option value="구관A101">A101</option>
+									    <option value="구관A102">A102</option>
+									    <option value="구관A103">A103</option>
+									    <option value="구관A201">A201</option>
+									    <option value="구관A202">A202</option>
+									    <option value="구관A203">A203</option>
+									    <option value="구관A301">A301</option>
+									    <option value="구관A302">A302</option>
+									    <option value="구관A303">A303</option>
+								  	 </select>  
 								  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-						    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						    			<i class="xi-angle-down"></i>
 						  			</div>
 					 			</div>
 					 		</td>
@@ -126,8 +138,8 @@
 						</tr>
 						<tr>
 							<th colspan="2" class="p-3 text-right">
-								<input class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" type="submit" value="등록"/>
-								<a class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
+								<input class="bg-info-700 text-white rounded py-2 px-4" type="submit" value="등록"/>
+								<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminCourseList">돌아가기</a>
 							</th>
 							<th>
 							</th>

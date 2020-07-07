@@ -38,14 +38,14 @@
 	
 	<select id="paymentTeacher"
 			resultType="kr.co.lms.admin.VO.AdminMainHomeVO">
-		SELECT 
-			payment_name, 
-			COUNT(*) payment_num 
+        SELECT 
+			c.employee_name,
+		 	COUNT(*) payment_num
 		FROM 
-			payment
-		GROUP BY 
-			payment_name
-		ORDER BY 
+			payment p JOIN course c ON p.course_no = c.course_no
+		GROUP BY
+		   c.employee_name
+		ORDER BY
 			payment_num
 		DESC
 	</select>

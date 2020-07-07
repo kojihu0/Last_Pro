@@ -59,41 +59,55 @@
  
 </head>
 <body>
-<header class="bg-white shadow">
-	<ul id="loginArea" class="container flex justify-end h-6 item-center my-0 mx-auto">
-		<c:if test="${ admin_id == null || admin_id == ''}">
-		<li><a href="/lms/admin" class="pr-3">로그인 </a></li>
-		</c:if>
-		<c:if test="${ admin_id != null || admin_id != ''}">
-		<li>
-			<span class="mr-2">${employee_name }님</span>
-			<a href="<%=projectPath %>/adminStart/adminLogout">로그아웃</a>
-		</li>
-		</c:if>
-	</ul>
-	<ul id="menuList" class="w-full flex h-6 text-center item-center my-0 mx-auto">
-		<li class="w-1/4"><a href="/lms/admin/adminMain">HOME</a></li>
-		<li class="w-1/4"><a href="/lms/subjectRegister">접수관리</a>
-			<ul class="submenu bg-white shadow">
-				<li><a href="/lms/subjectRegister">접수현황</a></li>
-				<li><a href="/lms/cancelRegister">취소요청현황</a></li>
+<div class="site-wrap">
+<header class="shadow">
+	<div class="bg-black py-4">
+		<div class="container my-0 mx-auto flex items-center justify-between text-white">
+			<div class="flex-shrink-0 text-lg font-bold">
+				<a href="<%=projectPath %>/admin/adminMain"><span class="mr-2"><img src="<%=projectPath %>/img/educamp.png" width="27" height="27" class="inline-block"></span>Educamp Admin</a>
+			</div>
+			<ul id="loginArea" class="container flex justify-end items-center my-0 mx-auto">
+				<c:if test="${ admin_id == null || admin_id == ''}">
+				<li><a href="/lms/admin" class="pr-3">로그인 </a></li>
+				</c:if>
+				<c:if test="${ admin_id != null || admin_id != ''}">
+				<li>
+					<span class="mr-4 font-bold">${employee_name}님</span>
+					<a href="<%=projectPath %>/adminStart/adminLogout" class="text-info-500">로그아웃</a>
+				</li>
+				</c:if>
 			</ul>
-		</li>
-		<li class="w-1/4"><a href="/lms/student_current_situation">수강생 관리</a> 
-			<ul class="submenu bg-white shadow">
-				<li><a href="/lms/student_current_situation">수강생 현황</a></li>
-				<li><a href="/lms/leave_of_absence">휴강생 현황</a></li>
-				<li><a href="/lms/student_by_course">강좌별 수강생 현황</a></li>
-				<li><a href="/lms/attendance_grade">출결/성적관리</a></li>
-			</ul>
-		</li>
-		<li class="w-1/4"><a href="/lms/admin/adminManagementInfo">경영정보</a> 
-			<ul class="submenu bg-white shadow"> 
-				<li><a href="/lms/admin/adminManagementInfo">강사 업무일지</a></li>
-				<li><a href="/lms/admin/adminNotice">사내일정</a></li>
-				<li><a href="/lms/admin/adminTeacherList">직원현황</a></li>
-				<li><a href="/lms/admin/adminCourseList">강좌관리</a></li> 
-			</ul>
-		</li>
-	</ul>
+		</div>
+	</div>
+	<nav class="w-full">
+		<ul id="menuList" class="container flex my-0 mx-auto text-gray-800">
+			<li class="w-1/6"><a href="/lms/admin/adminMain" class="inline-block py-4 border-b-2 duration-300 hover:text-black"><i class="xi-home mr-1"></i>HOME</a></li>
+			<li class="w-1/6 relative">
+				<a href="/lms/subjectRegister" class="inline-block py-4 border-b-2 duration-300 hover:text-black"><i class="xi-document mr-1"></i>접수관리</a>
+				<ul class="submenu absolute bg-white shadow">
+					<li><a href="/lms/subjectRegister" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">접수현황</a></li>
+					<li><a href="/lms/cancelRegister" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">취소요청현황</a></li>
+				</ul>
+			</li>
+			<li class="w-1/6 relative">
+				<a href="/lms/student_current_situation" class="inline-block py-4 border-b-2 duration-300"><i class="xi-users mr-1"></i>수강생 관리</a> 
+				<ul class="submenu absolute bg-white shadow">
+					<li><a href="/lms/student_current_situation" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">수강생 현황</a></li>
+					<li><a href="/lms/leave_of_absence" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">휴강생 현황</a></li>
+					<li><a href="/lms/student_by_course" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">강좌별 수강생 현황</a></li>
+					<li><a href="/lms/attendance_grade" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">출결/성적관리</a></li>
+				</ul>
+			</li>
+			<li class="w-1/6 relative">
+				<a href="/lms/admin/adminManagementInfo" class="inline-block py-4 border-b-2 duration-300"><i class="xi-chart-bar mr-1"></i>경영정보</a> 
+				<ul class="submenu absolute bg-white shadow"> 
+					<li><a href="/lms/admin/adminManagementInfo" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">강사 업무일지</a></li>
+					<li><a href="/lms/admin/adminNotice" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">사내일정</a></li>
+					<li><a href="/lms/admin/adminTeacherList" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">직원현황</a></li>
+					<li><a href="/lms/admin/adminCourseList" class="block py-2 px-4 hover:bg-gray-200 hover:text-black">강좌관리</a></li> 
+				</ul>
+			</li>
+		</ul>
+	</nav>
 </header>
+<div class="page-content bg-gray-100">

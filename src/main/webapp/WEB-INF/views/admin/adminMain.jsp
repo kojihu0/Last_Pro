@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true" %>
-
-
 <div class="container my-0 mx-auto px-8 xl:px-0">
 	<div class="text-xl py-3 mx-16 text-xl">  
 		<span class="mr-2"><i class="xi-school my-6"></i></span>HOME
@@ -17,10 +16,8 @@
                         <div class="flex flex-row items-center">
                             <div class="flex-1 text-right md:text-center"> 
                                <div class="bg-info-300 uppercase text-left text-grey p-2 font-bold">Total Revenue</div> 
-                                <h3 class="text-3xl p-3"><span class="mr-2"><i class="xi-won"></i></span>
-                                	<span class="font-bold">
-                                		${amVo.totalPrice } 
-                                	</span>
+                                <h3 class="text-3xl p-3">
+                                	<span class="mr-2"><i class="xi-won"></i></span><span class="font-bold"><fmt:formatNumber value="${amVo.totalPrice}" pattern="#,###"/></span>
                                 </h3>
                             </div> 
                         </div>
@@ -67,7 +64,7 @@
             </div>
 
             <!--Divider-->
-            <hr class="border-b-2 border-info-300 my-8 mx-4">
+            <hr class="border-1 border-gray-500 my-8 mx-4">
 			
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->	            
@@ -77,13 +74,17 @@
 	           			<input class="bg-black py-2 px-6 rounded cursor-pointer" type="button" id="popover" value="일정추가"/>
 	           		</div>
 		         	<div id='calendar'></div>
-					<div id="popup" class="bg-white rounded shadow">
+					<div id="popup" class="bg-white rounded shadow hidden">
 	    		 	 	<div class="modal_calendar p-3 text-center font-bold text-lg bg-gray-200 rounded-t" id="modal_calendar"></div>
 	             	 	 	<div class="modal_calendar_content" id="modal_calendar_content"></div>
 					</div>               
 		        </div>
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->					    
 			</div>    
+			
+			<!--Divider-->
+            <hr class="border-1 border-gray-500 my-8 mx-4">
+            
 			<div class="flex flex-row flex-wrap flex-grow mt-2">
 				<div class="w-full md:w-1/2 p-3">
 					<!--Graph Card-->
@@ -105,10 +106,10 @@
 						   		var payment_Num_C_03;
 								
 						   		
-						   		 courseName_00 = "${courseName[0]}";  
-						   		 courseName_01 = "${courseName[1]}";
-						   		 courseName_02 = "${courseName[2]}";
-						   		 courseName_03 = "${courseName[3]}";
+						   		 courseName_00 = '${courseName[0]}';  
+						   		 courseName_01 = '${courseName[1]}';
+						   		 courseName_02 = '${courseName[2]}';
+						   		 courseName_03 = '${courseName[3]}'; 
 
 
 						   	
@@ -123,11 +124,11 @@
 	                                "data": {
 	                                    "labels": [	courseName_00,
 	                                    			courseName_01,
-	                                    			courseName_02,
-	                                    			courseName_03
+	                                    			courseName_02, 
+	                                    			courseName_03	
 	                                    		  ],
 	                                    "datasets": [{
-	                                        "label": "Page Impressions", 
+	                                        "label": "course", 
 	                                        "data": [	payment_Num_C_00,
 	                                        		 	payment_Num_C_01,
 	                                        		 	payment_Num_C_02,
@@ -142,7 +143,7 @@
 	                                               'rgba(75, 192, 192, 0.2)',
 	                                        ]
 	                                    }, {
-	                                        "label": "Adsense Clicks",
+	                                        "label": "point-line",
 	                                        "data": [	payment_Num_C_00,
 	                                        			payment_Num_C_01,
 	                                        			payment_Num_C_02,
@@ -183,32 +184,27 @@
 						   		var teacherName_02;
 						   		var teacherName_03;
 	                        	var teacherName_04;
-						   		var teacherName_05;
-						   		var teacherName_06;
+
 						
 						   		var payment_Num_C_00;
 						   		var payment_Num_C_01;
 						   		var payment_Num_C_02;
 						   		var payment_Num_C_03;
 						   		var payment_Num_C_04;
-						   		var payment_Num_C_05;
-						   		var payment_Num_C_06;
+
 						   		
 						   		teacherName_00 = "${teacherName[0]}";
 						   		teacherName_01 = "${teacherName[1]}";	 
 						   		teacherName_02 = "${teacherName[2]}";
 						   		teacherName_03 = "${teacherName[3]}";
 						   		teacherName_04 = "${teacherName[4]}";
-						   		teacherName_05 = "${teacherName[5]}";
-						   		teacherName_06 = "${teacherName[6]}";
+
 						   		//							
 								payment_Num_C_00 = ${payment_Num_T[0]};
 						   		payment_Num_C_01 = ${payment_Num_T[1]};	 
 						   		payment_Num_C_02 = ${payment_Num_T[2]};
 						   		payment_Num_C_03 = ${payment_Num_T[3]};
 						   		payment_Num_C_04 = ${payment_Num_T[4]};
-						   		payment_Num_C_05 = ${payment_Num_T[5]};
-						   		payment_Num_C_06 = ${payment_Num_T[6]};
 						  
 	                            new Chart(document.getElementById("chartjs-0"), {
 	                                "type": "pie",
@@ -217,9 +213,8 @@
 	                                    			teacherName_01,
 	                                    			teacherName_02,
 	                                    			teacherName_03,
-	                                    			teacherName_04,
-	                                    			teacherName_05,
-	                                    			teacherName_06
+	                                    			teacherName_04
+
 	                                    		  ],
 	                                    "datasets": [{
 	                                        "label": "Views",
@@ -227,9 +222,7 @@
 	                                        			payment_Num_C_01,
 	                                        			payment_Num_C_02,
 	                                        			payment_Num_C_03,
-	                                        			payment_Num_C_04,
-	                                        			payment_Num_C_05,
-	                                        			payment_Num_C_06
+	                                        			payment_Num_C_04 
 	                                        		],
 	                                        "fill": false,
 	                                        "backgroundColor": [

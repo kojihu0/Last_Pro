@@ -73,19 +73,21 @@ public class AdminMainController {
 				
 				//가장 많이 팔린 강좌의 선생 정보
 				for(int i = 0; i<tempListT.size(); i++) {
-					teacherName[i] 		= tempListT.get(i).getPayment_name();
+					teacherName[i] 		= tempListT.get(i).getEmployee_name();
 					payment_Num_T[i] 	= tempListT.get(i).getPayment_num();
-				} 
+					
+					System.out.println("선생 확인 ::: " + teacherName[i]); 
+				}  
 				//가장 많이 팔린 강좌 정보
 				for(int i = 0; i<tempListC.size(); i++) {
-					courseName[i] 		= tempListC.get(i).getCourse_name();
+					courseName[i] 		= tempListC.get(i).getCourse_name().substring(0,7); 
 					payment_Num_C[i] 	= tempListC.get(i).getCourse_num();
 				}
 				mav.addObject("payment_Num_T", payment_Num_T);
 				mav.addObject("payment_Num_C", payment_Num_C);
 				mav.addObject("teacherName", teacherName);
 				mav.addObject("courseName", courseName);
-			}else{ 
+			}else{  
 				String 	teacherName[] 		= new String[7];
 				String	courseName[] 		= new String[4];
 				int 	payment_Num_T[] 	= new int[7];
@@ -114,7 +116,7 @@ public class AdminMainController {
 			return mav;  
 		}
 		//DB에서 일정 읽어오기;
-		@RequestMapping(value="/calendar/base", method={RequestMethod.POST, RequestMethod.GET}, produces = "application/text; charset=UTF-8")  	 
+		@RequestMapping(value="/calendar/base", method= {RequestMethod.GET, RequestMethod.POST}, produces = "application/text; charset=UTF-8")  	 
 		@ResponseBody
 		public String base(AdminCalendarVO vo, HttpServletRequest request, HttpServletResponse response) {
 			AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
@@ -123,7 +125,8 @@ public class AdminMainController {
 			List<AdminCalendarVO> result_List = adminRegiInter.selectAllCalendar();
 			String jsonStr = "[";
 			for(int i = 0; i < result_List.size(); i++) {  
-				//json형식으로 문자열 생성->javascript 필드에서 작업할 것.
+
+				
 				 jsonStr += "{" + "\"start\":"  	    +"\"" + result_List.get(i).getCalendar_start_date()  +"\"" + "," +
 								   "\"end\":"   	    +"\"" + result_List.get(i).getCalendar_end_date()	+"\"" + "," + 
 								   "\"title\":" 	    +"\"" + result_List.get(i).getCalendar_title() 		+"\"" + "," +

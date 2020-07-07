@@ -1,25 +1,11 @@
 $(function(){
-	$("#menuList a").hover(function(){
-		$(this).css("color","black");
-		$(this).css("text-decoration","none");
-	},function(){
-		$(this).children("ul").fadeOut();
-		$(this).css("color","gray");
-	});
-	
 	$("#menuList>li").hover(function(){
-		$(this).children("ul").fadeIn();
+		$(this).children(".submenu").fadeIn();
 	},function(){
-		$(this).children("ul").fadeOut();
+		$(this).children(".submenu").fadeOut();
 	});
 	
-	$(".subMenu a").hover(function(){
-		$(this).css("color","black");
-		$(this).css("text-decoration","none");
-	},function(){
-		$(this).css("color","gray");
-	});
-	  $( ".datepicker" ).datepicker({
+	$( ".datepicker" ).datepicker({
 		  showOn: "both", 
 	      buttonImage: "/lms/img/calendar.png", 
 	      buttonImageOnly: true,
@@ -35,7 +21,7 @@ $(function(){
           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
           monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
           monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
+	});
 ////////////////////////////////////////////////////student_detail.jsp tab////////////////////////////////////////////////////////////
 	  $("#basicInfo_tab").click(function(){
 		  $("#basicInfo_tab>a").addClass("rounded-t").addClass("border-l").addClass("border-t").addClass("border-r");
@@ -52,7 +38,7 @@ $(function(){
 		  $("#modify_counseling_form").css("display","none");
 		  $("#modify_colsed_out_form").css("display","none");
 		  $("#move_class_form").css("display","none");
-		  $("#colsed_out_form").css("display","none");s
+		  $("#colsed_out_form").css("display","none");
 	  });
 	  
 	  $("#counseling_management_tab").click(function(){

@@ -4,31 +4,31 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">휴강생현황</span>
 	</div>
-	<form action="/lms/leave_of_absence" class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/leave_of_absence" class="p-3 w-full flex bg-gray-300 items-center">
 		<div class="mx-3 w-5/6">
-			<div class="my-2 calendar ">휴원일자 : <input type="text" name="startDate" class="datepicker border-solid border-2 border-gray-600 ml-2"/> ~ <input type="text" name="endDate" class="datepicker border-solid border-2 border-gray-600"/></div>
-			회원이름 : <input type="text" name="searchWord" class="ml-2 border-solid border-2 border-gray-600"/>
+			<div class="my-2 calendar ">휴원일자 : <input type="text" name="startDate" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline ml-2"/> ~ <input type="text" name="endDate" class="datepicker appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/></div>
+			회원이름 : <input type="text" name="searchWord" class="ml-2 appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-20 my-1 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 	<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
 	<table class="bg-info-300" style="width:100%; border-top: 1px solid #444444;">
 		<tr>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">회원번호</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:200px">회원명</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:250px">휴대전화</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:250px">부모전화</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:280px">최근수강강좌</td>
-			<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">휴원일자</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:100px">회원번호</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:200px">회원명</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:250px">휴대전화</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:250px">부모전화</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:280px">최근수강강좌</td>
+			<td class="border-solid border border-gray-600 text-center" style="width:100px">휴원일자</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
 			<tr class="bg-white">
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">${vo.student_no}</td>
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:200px">${vo.student_name_ko}</td>
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:250px">${vo.student_tel_phone}</td>
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:250px">${vo.student_tel_parent}</td>
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:280px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${vo.student_lately_course}</td>
-				<td class="border-solid border-2 border-gray-600 text-center" style="width:100px">${vo.student_course_state_date}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:100px">${vo.student_no}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:200px">${vo.student_name_ko}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:250px">${vo.student_tel_phone}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:250px">${vo.student_tel_parent}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:280px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${vo.student_lately_course}</td>
+				<td class="border-solid border border-gray-600 text-center" style="width:100px">${vo.student_course_state_date}</td>
 			</tr>
 		</c:forEach>
 	</table>

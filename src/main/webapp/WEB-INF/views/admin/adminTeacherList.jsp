@@ -1,31 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
-
-	
 	<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		
-		
-		<div class="text-xl p-6 mx-16 ">  
+		<div class="text-xl p-6">  
 			<i class="xi-school"></i>&nbsp;직원현황
 		</div>
-		
-		<div class="p-3 searchDiv text-right bg-gray-200 border-solid border-4 border-gray-600 flex">  
-			<select name="employee_rank" class="mx-2" onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_class=${employee_class}&employee_rank='+ this.value">
-				<option value="::직급::"<c:if test="${employee_rank == '::직급::' }">selected</c:if>>::직급::</option>
-				<option value="평강사"   <c:if test="${employee_rank == '평강사' }">selected</c:if>>평강사</option>
-				<option value="임시강사"  <c:if test="${employee_rank == '임시강사' }">selected</c:if>>임시강사</option>
-				<option value="강사"     <c:if test="${employee_rank == '강사' }">selected</c:if>>강사</option>
-			</select> 
-			<select name="employee_class" class="mx-2"  onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class='+ this.value">
-				<option value="::Class::">::Class::</option>
-				<option value="A" <c:if test="${employee_class == 'A' }">selected</c:if>>A</option>
-				<option value="B" <c:if test="${employee_class == 'B' }">selected</c:if>>B</option>
-				<option value="C" <c:if test="${employee_class == 'C' }">selected</c:if>>C</option>
-				<option value="D" <c:if test="${employee_class == 'D' }">selected</c:if>>D</option>
-				<option value="E" <c:if test="${employee_class == 'E' }">selected</c:if>>E</option> 
-			</select>  
-			<input type="text" name="searchNameT" placeholder="이름 검색" id="searchName" class="mx-2 border border-black"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
+		<div class="p-3 mb-4 searchDiv w-full flex bg-gray-300 items-center flex">
+			<div class="inline-block relative mx-2"> 
+				<select name="employee_rank" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_class=${employee_class}&employee_rank='+ this.value">
+					<option value="::직급::"<c:if test="${employee_rank == '::직급::' }">selected</c:if>>::직급::</option>
+					<option value="평강사"   <c:if test="${employee_rank == '평강사' }">selected</c:if>>평강사</option>
+					<option value="임시강사"  <c:if test="${employee_rank == '임시강사' }">selected</c:if>>임시강사</option>
+					<option value="강사"     <c:if test="${employee_rank == '강사' }">selected</c:if>>강사</option>
+				</select>
+				<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+   			    	<i class="xi-angle-down"></i>
+			    </div>
+			</div>
+			<div class="inline-block relative mx-2"> 
+				<select name="employee_class" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"  onChange="location.href='<%=projectPath %>/admin/adminTeacherList?employee_rank=${employee_rank}&employee_class='+ this.value">
+					<option value="::Class::">::Class::</option>
+					<option value="A" <c:if test="${employee_class == 'A' }">selected</c:if>>A</option>
+					<option value="B" <c:if test="${employee_class == 'B' }">selected</c:if>>B</option>
+					<option value="C" <c:if test="${employee_class == 'C' }">selected</c:if>>C</option>
+					<option value="D" <c:if test="${employee_class == 'D' }">selected</c:if>>D</option>
+					<option value="E" <c:if test="${employee_class == 'E' }">selected</c:if>>E</option> 
+				</select>
+				<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+   			    	<i class="xi-angle-down"></i>
+			    </div>
+			</div>  
+			<input type="text" name="searchNameT" placeholder="이름 검색" id="searchName" class="mx-2 appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>&nbsp;<button id="buttonName"><i class="xi-search"></i></button>
 		</div>
 			
 		<div class="p-3 bg-info-100">
@@ -56,7 +61,7 @@
 							<td  class="border text-center p-2">${vo.admin_id }</td>
 							<td  class="border text-center p-2">${vo.employee_authority }</td> 
 							<td  class="border text-center p-2">${vo.employee_state }</td>     
-							<td  class="border text-center p-2"><a href="<%=projectPath %>/admin/adminTeacherEdit?employee_no=${vo.employee_no}&employee_name=${vo.employee_name }<c:if test="${vo.employee_class != null}">&employee_class=${vo.employee_class }</c:if><c:if test="${vo.employee_state != null}">&employee_state=${vo.employee_state }</c:if><c:if test="${vo.employee_authority != null }">&employee_authority=${vo.employee_authority }</c:if><c:if test="${vo.employee_rank != null }">&employee_rank=${vo.employee_rank }</c:if><c:if test="${vo.admin_id != null}">&admin_id=${vo.admin_id }</c:if>" class="bg-info-200 hover:bg-blue-700 border border-black font-bold  px-4 rounded">수정</a></td>
+							<td  class="border text-center p-2"><a href="<%=projectPath %>/admin/adminTeacherEdit?employee_no=${vo.employee_no}&employee_name=${vo.employee_name }<c:if test="${vo.employee_class != null}">&employee_class=${vo.employee_class }</c:if><c:if test="${vo.employee_state != null}">&employee_state=${vo.employee_state }</c:if><c:if test="${vo.employee_authority != null }">&employee_authority=${vo.employee_authority }</c:if><c:if test="${vo.employee_rank != null }">&employee_rank=${vo.employee_rank }</c:if><c:if test="${vo.admin_id != null}">&admin_id=${vo.admin_id }</c:if>" class="bg-info-600 px-4 rounded">수정</a></td>
 						</tr> 
 					</c:forEach> 
 				</tbody>
@@ -64,7 +69,7 @@
 		</div>
 		
 		<div class="p-3 text-right">  
-			<button id="teacherRegiButtoon" class="bg-info-200 hover:bg-blue-700 border border-black font-bold py-2 px-4 rounded">직원등록</button>
+			<button id="teacherRegiButtoon" class="bg-info-700 text-white rounded py-2 px-4">직원등록</button>
 		</div>	
 	<!-- page -->	
 	<div class="text-center">	

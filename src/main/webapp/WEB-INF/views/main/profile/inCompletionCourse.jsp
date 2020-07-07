@@ -15,7 +15,7 @@ white-space: nowrap;
 <div id="profileMenu" class="my-0 mx-auto w-full max-w-screen-xl">
 	<span class="text-gray-500"><a href="<%=ctx%>/">Home</a>&nbsp;&nbsp;<i class="xi-angle-right"></i>&nbsp;&nbsp;Profile</span>
 	<div id="hr" class="my-4 border-t border-solid"></div>
-	<div class="flex mt-12">
+	<div class="flex my-12">
 		<div class="lg:w-1/5 flex-initial">
 		<c:if test="${student_img != null }">
 			<img src="<%=ctx%>/img/${student_img}">
@@ -29,8 +29,8 @@ white-space: nowrap;
 			<h4 class="text-gray-500 text-center mb-4">${student_info}</h4>
 		</div>
 		<div class="lg:w-4/5 w-3/4 mt-4 pl-8">
-			<ul class="flex roboto-slab">
-				  <li class="-mb-px mr-1">
+			<ul class="flex roboto-slab -mb-px">
+				  <li class="mr-1">
 				    <a class="bg-white hover:border-brand-500 border-b border-l border-t border-r  py-3 px-4 text-gray-900  hover:text-brand-500 font-semibold" href="<%=ctx%>/courseOfStudy">Course</a>
 				  </li> 
 				  <li class="mr-1">

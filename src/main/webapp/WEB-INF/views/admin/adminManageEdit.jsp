@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %> 
 		<div class="w-full max-w-screen-xl my-0 mx-auto items-center justify-between flex-wrap px-8 xl:px-0">
-		<div class="text-xl p-3 mx-16 ">  
+		<div class="text-xl p-6 ">  
 			<i class="xi-school"></i>&nbsp;강사 업무 일지 수정
 		</div>
 	
 		<div class="p-3 text-right">  
-			<a href="<%=projectPath%>/admin/adminManagementInfo" class="border-solid border-2 border-gray-600 rounded py-2 px-4">목록으로</a>
+			<a href="<%=projectPath%>/admin/adminManagementInfo" class="border-solid border border-gray-600 rounded py-2 px-4">목록으로</a>
 		</div>
 	  
 	 
@@ -23,8 +23,8 @@
 						<tr>		
 							<th class="bg-info-300 py-2 text-center">클래스</th>
 							<th class="border bg-white px-2 text-left">
-								<select name="admin_manageinfo_subject" id="classSubject" class="border border-black mx-2 h-8">    
-									<c:if test="${result_Vo.admin_manageinfo_subject == null }"><option  selected="selected">::반::</option></c:if>
+								<select name="admin_manageinfo_subject" id="classSubject" class="border border-black mx-2 h-8">     
+									<c:if test="${result_Vo.admin_manageinfo_subject == null }"><option  selected="selected">::전공::</option></c:if>
 									<c:if test="${result_Vo.admin_manageinfo_subject != null }"><option>::반::</option></c:if>
 									
 									<c:if test="${result_Vo.admin_manageinfo_subject == 'JAVA' }"><option value="JAVA"  selected="selected">JAVA</option></c:if>
@@ -140,8 +140,8 @@
 				<div class="p-3"></div>
 				
 				<div class="text-right"> 
-					<input type="submit" value="수정" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4"/>
-					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-200 border-solid border-2 border-gray-600 rounded py-2 px-4">수정취소</a> 
+					<input type="submit" value="수정" class="bg-info-700 text-white rounded py-2 px-4"/>
+					<a href="<%=projectPath %>/admin/adminManagementInfo" class="bg-info-700 text-white rounded py-2 px-4">수정취소</a> 
 				</div> 
 			</div>
 		</form>   

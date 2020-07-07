@@ -11,10 +11,10 @@
 	<div class="h-10 text-lg my-6">
 		<i class="xi-school"></i><span class="ml-2">접수현황</span>
 	</div>
-	<form action="/lms/subjectRegister"class="w-full border-solid border-4 border-gray-600 flex bg-gray-200">
+	<form action="/lms/subjectRegister"class="w-full flex bg-gray-300 items-center">
 		<div class="w-5/6 mx-3">
 			<div class="flex mb-2 my-3">
-				납부일자 : <input type="text" name="startDate" class="datepicker border-solid border-2 border-gray-600 ml-2"/> ~ <input type="text" name="endDate" class="datepicker border-solid border-2 border-gray-600"/>
+				납부일자 : <input type="text" name="startDate" class="datepicker block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 rounded shadow leading-tight focus:outline-none focus:shadow-outline ml-2"/> ~ <input type="text" name="endDate" class="datepicker block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>
 			</div>
 			<div class="flex mb-2">
 				<span class="leading-8">검색조건 : </span>
@@ -26,43 +26,43 @@
 					    <option value="현금결제">현금결제</option>
 		  	 		</select>
 		  		    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-	   			    	<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+	   			    	<i class="xi-angle-down"></i>
 				    </div>
 				</div>
-				<input type="text" name="searchWord" placeholder="이름" class="border-solid border-2 border-gray-600"/>
+				<input type="text" name="searchWord" placeholder="이름" class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"/>
 			</div>
 		</div>
-		<input type="submit" value="검색하기" class="w-20 h-12 mt-5 ml-12 border-solid border-2 border-gray-600 rounded"/>
+		<input type="submit" value="검색하기" class="px-4 py-2 bg-gray-900 text-white rounded"/>
 	</form>
 		<div class="my-2"><i class="xi-search"></i>검색 결과 : <span class="ml-1">${pageVO.totalRecord}</span>건</div>
 	<table class="w-full bg-info-300">
 		<tr class="text-center">
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:80px">번호</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:80px">구분</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:120px">회원명</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:220px">강좌명</td>
-			<td colspan="3" class="border-2 border-solid border-gray-600" class="text-center">결제방법</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:130px">승인번호</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:170px">납부일자</td>
-			<td rowspan="2" class="border-2 border-solid border-gray-600" style="width:200px">비고</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:80px">번호</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:80px">구분</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:120px">회원명</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:220px">강좌명</td>
+			<td colspan="3" class="border border-solid border-gray-600" class="text-center">결제방법</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:130px">승인번호</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:170px">납부일자</td>
+			<td rowspan="2" class="border border-solid border-gray-600" style="width:200px">비고</td>
 		</tr>
 		<tr class="text-center">
-			<td class="border-2 border-solid border-gray-600">카드</td>
-			<td class="border-2 border-solid border-gray-600">현금</td>
-			<td class="border-2 border-solid border-gray-600">이체</td>
+			<td class="border border-solid border-gray-600">카드</td>
+			<td class="border border-solid border-gray-600">현금</td>
+			<td class="border border-solid border-gray-600">이체</td>
 		</tr>
 		<c:forEach var="vo" items="${list}">
 			<tr class="text-center bg-white">
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:80px">${vo.payment_no}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:80px">${vo.payment_division}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:120px">${vo.payment_name}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:120px">${vo.course_name}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='카드결제'}">O</c:if></td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='현금결제'}">O</c:if></td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='계좌이체'}">O</c:if></td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:130px">${vo.payment_account_num}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:170px">${vo.payment_date}</td>
-				<td class="border-2 border-solid border-gray-600 p-2" style="width:200px">${vo.payment_memo}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:80px">${vo.payment_no}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:80px">${vo.payment_division}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:120px">${vo.payment_name}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:120px">${vo.course_name}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='카드결제'}">O</c:if></td>
+				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='현금결제'}">O</c:if></td>
+				<td class="border border-solid border-gray-600 p-2" style="width:95px"><c:if test="${vo.payment_method=='계좌이체'}">O</c:if></td>
+				<td class="border border-solid border-gray-600 p-2" style="width:130px">${vo.payment_account_num}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:170px">${vo.payment_date}</td>
+				<td class="border border-solid border-gray-600 p-2" style="width:200px">${vo.payment_memo}</td>
 			</tr>
 		</c:forEach>
 	</table>
