@@ -112,7 +112,7 @@
 			admin_notice_sq.nextval,
 			#{admin_notice_title},
 			#{admin_notice_content},
-			SYSDATE,
+			TO_DATE(SYSDATE, 'YYYY-MM-DD'),
 			#{employee_no},
 			#{admin_category},
 			#{admin_notice_img}
