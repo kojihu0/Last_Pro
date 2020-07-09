@@ -18,8 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		    }
 		],
 		eventRender: function(info){
-			tippy(info.el, {
-				  content: info.event.extendedProps.description,
+			var event = info.event.extendedProps.description;
+			tippy(info.el, { 
+				  	content	: event   
 			});
 		}
 		
