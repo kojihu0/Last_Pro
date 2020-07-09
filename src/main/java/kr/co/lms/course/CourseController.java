@@ -144,7 +144,7 @@ public class CourseController {
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		
 		HttpSession sess = req.getSession();
-		int student_no = Integer.parseInt((String)sess.getAttribute("student_no"));
+		int student_no = (Integer)sess.getAttribute("student_no");
 		vo.setStudent_no(student_no);
 		System.out.println("test"+ vo.getCourse_no()+" "+vo.getStudent_no());
 		int payment_no = Integer.parseInt(dao.selectPaymentNo(vo.getCourse_no(), vo.getStudent_no()));

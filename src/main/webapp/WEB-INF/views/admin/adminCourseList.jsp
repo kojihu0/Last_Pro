@@ -46,9 +46,9 @@
 							<th colspan="3" class="border-b-4 border-info-700 bg-info-300 bg-info-300 w-32">상세정보</th> 
 						</tr>
 						<tr>   
-							<th class="border-4 border-info-700 bg-info-300 bg-info-300 w-32">요일</th>
-							<th class="border-4 border-info-700 bg-info-300 bg-info-300 w-32">시간</th>
-							<th class="border-4 border-info-700 bg-info-300 bg-info-300 w-32">장소</th> 
+							<th class="border border-info-700 bg-info-300 bg-info-300 w-32">요일</th>
+							<th class="border border-info-700 bg-info-300 bg-info-300 w-32">시간</th>
+							<th class="border border-info-700 bg-info-300 bg-info-300 w-32">장소</th> 
 						</tr>
 					</thead> 
 					<tbody>

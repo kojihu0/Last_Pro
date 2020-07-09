@@ -63,18 +63,17 @@
 					</c:if>
 				<div id="wishListCourseCarousel" class="-mx-4 overflow-hidden">
 				
-					<c:forEach var="list" items="${list}">
+					<c:forEach var="vo" items="${list}">
 						<div class="course-item px-4 text-center"><!-- course-item -->
-							<div class="course-image relative overflow-hidden border border-gray-300">
-								<img class="duration-300" src="<%=ctx %>/img/${list.course_img}">
-								<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx %>/course/courseDetail?course_no=${list.course_no}">READ MORE</a>
+							<div class="course-image relative overflow-hidden border border-gray-300 h-48 text-center bg-cover bg-center" style="background-image:url('<%=ctx %>/img/${vo.course_img}')">
+								<a class="course-readmore overlay-center bg-brand-500 inline-block py-2 px-4 text-sm duration-300" href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">READ MORE</a>
 							</div>
 							<div class="course-content border-b border-l border-r border-gray-300 bg-white px-6">
-								<h2 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4">
-									<a href="<%=ctx %>/course/courseDetail?course_no=${list.course_no}">${list.course_name}</a>
-								</h2>
-								<div class="course-author text-gray-900 mb-4">${list.employee_name}</div>
-								<div class="course-price text-danger-500 relative py-4">${list.course_price}<span>원</span></div>
+								<h3 class="course-title hover:text-brand-500 duration-500 pt-4 mb-4 truncate">
+									<a href="<%=ctx%>/course/courseDetail?course_no=${vo.course_no}">${vo.course_name}</a>
+								</h3>
+								<div class="course-author text-gray-900 mb-4">${vo.employee_name}</div>
+								<div class="course-price text-danger-500 relative py-4">${vo.course_price}<span>원</span></div>
 							</div>
 						</div><!-- course-item -->
 					</c:forEach>
