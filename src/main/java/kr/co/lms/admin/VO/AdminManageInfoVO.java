@@ -7,6 +7,7 @@ public class AdminManageInfoVO {
 	private int 	employee_no;
 	private String  employee_name;
 	
+	private String admin_manageinfo_title;
 	private String 	admin_manageinfo_subject;
 	private String 	admin_manageinfo_class;
 	private String 	admin_manageinfo_date;
@@ -35,15 +36,20 @@ public class AdminManageInfoVO {
 	
 	
 	//--------------------------------------
+
 	
 	public MultipartFile getAdmin_manageinfo_file_m() {
 		return admin_manageinfo_file_m;
 	}
+	public String getAdmin_manageinfo_title() {
+		return admin_manageinfo_title;
+	}
+	public void setAdmin_manageinfo_title(String admin_manageinfo_title) {
+		this.admin_manageinfo_title = admin_manageinfo_title;
+	}
 	public void setAdmin_manageinfo_file_m(MultipartFile admin_manageinfo_file_m) {
 		this.admin_manageinfo_file_m = admin_manageinfo_file_m;
-	}
-	
-	
+	}	
 	public int getAdmin_manageinfo_no() {
 		return admin_manageinfo_no;
 	}

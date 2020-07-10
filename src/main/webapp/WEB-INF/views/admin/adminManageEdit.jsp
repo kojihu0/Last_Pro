@@ -39,6 +39,14 @@
 									<c:if test="${result_Vo.admin_manageinfo_subject == 'Spring' }"><option value="Spring" selected="selected">Spring</option></c:if>
 									<c:if test="${result_Vo.admin_manageinfo_subject != 'Spring' }"><option value="Spring">Spring</option></c:if>
 								</select> 
+								 
+								<select name="admin_manageinfo_title" id="classTitle" class="border border-black mx-2 h-8">
+										<option selected="selected">::과정명::</option>
+									<c:forEach var="list" items="${titleNamesList}">  
+										<option value="${list.course_name }" <c:if test="${list.course_name == checkSubject}">selected</c:if>>${list.course_name}</option>  
+									</c:forEach> 		
+								</select>
+								
 								
 								<select name="admin_manageinfo_class" id="classSelect" class="border border-black h-8">   
 									<c:if test="${result_Vo.admin_manageinfo_class == null }"><option  selected="selected">::반::</option></c:if>

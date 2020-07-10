@@ -3,6 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.lms.admin.DAO.AdminRegiInterface">
+
+	<select id="selectTeacherClass"
+			parameterType="java.lang.String"
+			resultType="kr.co.lms.admin.VO.AdminTeacherVO">  
+		SELECT
+			employee_subject,
+			employee_class
+		FROM 
+			employee
+		WHERE
+			employee_name = #{param1} 
+	</select>
+	<select id="selectAdminCourseName"
+			parameterType="string"
+			resultType="kr.co.lms.admin.VO.AdminCourseVO">
+		SELECT
+			course_no,
+			course_name
+		FROM	
+			course
+		WHERE
+			employee_name = #{param1}
+		ORDER BY 
+			rownum
+		DESC	  	
+	</select>
 	
 	<select id="selectManageinfoNameAndNo"
 			parameterType="string"
@@ -20,7 +46,9 @@
 		SELECT 
 			employee_no, employee_name
 		FROM
-			employee 
+			employee
+		WHERE
+			employee_no != 0
 	</select>
 	
 	
@@ -52,6 +80,7 @@
 	 		admin_manageinfo_no,
 			employee_no,
 			employee_name,
+			admin_manageinfo_title,
 			admin_manageinfo_subject,
 			admin_manageinfo_class,
 			 TO_CHAR(admin_manageinfo_date, 'YYYY-MM-DD') admin_manageinfo_date,
@@ -83,6 +112,7 @@
 			(SELECT * FROM
 				 (SELECT    
 				        admin_manageinfo_no,  
+				        admin_manageinfo_title,
 				        admin_manageinfo_subject,
 				        employee_no,
 				        employee_name,
@@ -126,6 +156,7 @@
 			admin_manageinfo_no,
 			employee_no,
 			employee_name,
+			admin_manageinfo_title,
 			admin_manageinfo_subject,
 			admin_manageinfo_class,
 			admin_manageinfo_date,
@@ -149,6 +180,7 @@
 			admin_manageinfo_sq.nextval,
 			#{employee_no},
 			#{employee_name},
+			#{admin_manageinfo_title},
 			#{admin_manageinfo_subject},
 			#{admin_manageinfo_class},
 			TO_DATE(SYSDATE, 'YYYY-MM-DD'),
@@ -198,7 +230,8 @@
 	<update id="updateAdminManageInfo"
 		    parameterType="kr.co.lms.admin.VO.AdminManageInfoVO">
 		UPDATE admin_manageinfo
-		SET
+		SET 
+			admin_manageinfo_title	 = #{admin_manageinfo_title},
 			admin_manageinfo_subject = #{admin_manageinfo_subject},
 			admin_manageinfo_class 	 = #{admin_manageinfo_class},
 			admin_manageinfo_date 	 = #{admin_manageinfo_date},

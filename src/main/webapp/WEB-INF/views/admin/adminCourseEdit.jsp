@@ -26,7 +26,7 @@
 						</tr>
 						<tr> 
 							<th class="bg-info-300 p-3 w-32">수강료</th>
-							<td class="p-3"><input type="text" name="course_price" id="coursePrice"  value="${vo.course_price }"size="7"  onkeyup="inputNumberFormat(this)"/></td>
+							<td class="p-3 "><input type="text" class="border border-gray-600" name="course_price" id="coursePrice"  value="${vo.course_price }"size="7"  onkeyup="inputNumberFormat(this)"/></td>
 						</tr>
 						<tr>
 							<th class="bg-info-300 p-3 w-32">접수 기간</th> 
