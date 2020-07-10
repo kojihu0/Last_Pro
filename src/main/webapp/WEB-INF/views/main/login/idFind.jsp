@@ -18,7 +18,7 @@
 				<div class="mb-4">
 					<input type="text" id="userEmail" name="student_email" placeholder="EMAIL" class="block w-full focus:outline-none focus:bg-white focus:border-brand-500 bg-gray-200 py-2 px-3 border-2 border"/>
 				</div>
-				<input type="submit" id="idFindBtn" class="block w-full focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="아이디찾기"/>
+				<input type="submit" id="idFindBtn" class="text-white block w-full focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="아이디찾기"/>
 			</form>
 		</div>
 		<div class="w-1/2 px-40">
@@ -34,7 +34,7 @@
 					<div class="mb-4">
 						<input type="text" id="useremail" name="student_email" placeholder="EMAIL" class="block w-full focus:outline-none focus:bg-white focus:border-brand-500 bg-gray-200 py-2 px-3 border-2 border"/>
 					</div>
-					<input type="submit" id="pwFindBtn" class="block w-full focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="패스워드찾기"/>
+					<input type="submit" id="pwFindBtn" class="text-white block w-full focus:outline-none cursor-pointer py-3 px-5 bg-brand-500 font-bold focus:bg-brand-700" value="패스워드찾기"/>
 				</div>
 			</form>
 		</div>	

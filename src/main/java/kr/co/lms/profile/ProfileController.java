@@ -57,7 +57,7 @@ public class ProfileController {
 		vo.setStudent_no(no);
 		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
 		MemberDAOImp memDao = sqlSession.getMapper(MemberDAOImp.class);
-		MypageVO vo2 = dao.memberMypageDetailInfo(no);
+		MypageVO vo2 = dao.memberMypageDetailInfo(no,course_no);
 		MemberVO mVo = memDao.memberPaymentRecord(vo);
 		mav.addObject("vo",mVo);
 		mav.addObject("info",vo2);

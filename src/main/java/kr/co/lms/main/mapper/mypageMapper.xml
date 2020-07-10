@@ -76,7 +76,7 @@
 			e.employee_no = c.employee_no join payment p on 
 			c.course_no = p.course_no join student_course_state s on
 			p.payment_no = s.payment_no
-		WHERE  s.student_no = #{param1}
+		WHERE  s.student_no = #{param1} and c.course_no =#{param2}
  	</select>
  	<select id="wishListRecord" parameterType="kr.co.lms.main.VO.WishListVO" resultType="kr.co.lms.main.VO.WishListVO" >
 	 	select 
@@ -87,7 +87,6 @@
 		    JOIN employee e  ON e.employee_no = c.employee_no
 		where 
    			student_no = #{student_no}
- 	
  	</select>
  	<update id="updateSysdate">
  	update course set COURSE_PROGRESS = sysdate 

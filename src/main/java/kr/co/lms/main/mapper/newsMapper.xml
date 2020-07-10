@@ -7,7 +7,7 @@
 		select * from 	
 			(select * from 
 				(select admin_notice_no,admin_notice_title,admin_notice_content,admin_notice_img,
-					to_char(admin_notice_date,'YYYY')admin_notice_date ,
+					to_char(admin_notice_date,'YY')admin_notice_date ,
 					to_char(admin_notice_date,'MM')admin_notice_MM_date,
 					to_char(admin_notice_date,'DD')admin_notice_DD_date 
 					from admin_notice where admin_category=1  order by admin_notice_no desc)
@@ -18,19 +18,19 @@
 		select * from 	
 			(select * from 
 				(select admin_notice_no,admin_notice_title,admin_notice_content,admin_notice_img,
-					to_char(admin_notice_date,'YYYY')admin_notice_date ,
+					to_char(admin_notice_date,'YY')admin_notice_date ,
 					to_char(admin_notice_date,'MM')admin_notice_MM_date,
 					to_char(admin_notice_date,'DD')admin_notice_DD_date 
 					from admin_notice where admin_category=2 order by admin_notice_no desc)
-				where  rownum <![CDATA[<=]]>#{pageNum}*#{onePageRecord} order by admin_notice_no asc)
-			where   rownum <![CDATA[<=]]>#{lastPageRecord} order  by admin_notice_no desc 
+				where rownum <![CDATA[<=]]>#{pageNum}*#{onePageRecord} order by admin_notice_no asc)
+			where rownum <![CDATA[<=]]>#{lastPageRecord} order  by admin_notice_no desc 
 	</select>
 	<select id="newsSelectRecord" resultType="kr.co.lms.main.VO.NewsVO">
-		select admin_notice_no, admin_notice_title,admin_notice_content,admin_notice_img,to_char(admin_notice_date,'YYYY-MM-DD')admin_notice_date 
+		select admin_notice_no, admin_notice_title,admin_notice_content,admin_notice_img,to_char(admin_notice_date,'YY-MM-DD')admin_notice_date 
 		from admin_notice where admin_category=1 and admin_notice_no=#{param1}  
 	</select>
 	<select id="eventsSelectRecord" resultType="kr.co.lms.main.VO.NewsVO">
-		select admin_notice_no, admin_notice_title,admin_notice_content,admin_notice_img,to_char(admin_notice_date,'YYYY-MM-DD')admin_notice_date 
+		select admin_notice_no, admin_notice_title,admin_notice_content,admin_notice_img,to_char(admin_notice_date,'YY-MM-DD')admin_notice_date 
 		from admin_notice where admin_category=2 and admin_notice_no=#{param1}  
 	</select>
 	<select id="newsGetTotalRecord" resultType="java.lang.Integer">

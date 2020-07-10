@@ -16,7 +16,7 @@ public interface MypageDAOImp {
 	//시간표
 	public List<CourseVO> selectTimeTable(int student_no);
 	//수강상세페이지에서 학생정보와 강사 정보 가져오기
-	public MypageVO memberMypageDetailInfo(int no);
+	public MypageVO memberMypageDetailInfo(int no,int course_no);
 	//위시리스트 정보 가져오기
 	public List<WishListVO> wishListRecord(WishListVO wVO);
 	//등록날짜 증감
