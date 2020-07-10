@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>반별출결과제관리</title>
+<title>반별출결관리</title>
 </head>
 <body>
 <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 	<div class="h-10 text-lg my-6 w-full">
-		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
+		<i class="xi-school"></i><span class="ml-2">반별출결관리</span>
 	</div>
 	<form action="/lms/admin/table_attendance_grade2" method="post" class="w-full flex bg-gray-300 items-center">
 		<input type="hidden" name="course_no" value="${course_no}"/>

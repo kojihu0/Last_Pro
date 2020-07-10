@@ -60,8 +60,6 @@ public class AdminCkEditUpload {
 						
 						String fileUrl = request.getContextPath() + "/img/" + fileName;
 						
-						//json 데이터로 등록.
-						
 						json.addProperty("uploaded", 1);
 						json.addProperty("fileName", fileName);
 						json.addProperty("url", fileUrl);
@@ -76,7 +74,7 @@ public class AdminCkEditUpload {
 						}
 						if(printWriter != null) {
 							printWriter.close();
-						}
+						} 
 					}
 				}
 			}

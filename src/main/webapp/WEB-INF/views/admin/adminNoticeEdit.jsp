@@ -62,7 +62,7 @@
 						<td class="border border-gray-500"><textarea id="noticeWriteContent" name="admin_notice_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">${list.admin_notice_content }</textarea></td>
 					</tr>
 					<tr>
-						<th class="bg-info-300 border border-gray-500 p-3 w-32">강의 이미지</th>
+						<th class="bg-info-300 border border-gray-500 p-3 w-32">썸네일 </th>
 						<td class="p-3 border border-gray-500">  
 							<input class="border border-gray-500" type="file" name="admin_notice_img_m" value="${list.admin_notice_img }"/> 
 						</td>

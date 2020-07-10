@@ -7,8 +7,11 @@
 		</div>
 		 
 		<div class="p-3 text-right">  
-			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
-			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}">수정</a>
+			<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
+			<!-- 뭐가 문제여 또 -->
+			<c:if test="${employee_name != '관리자' || employee_name == result_Vo.employee_name}"> 
+				<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}&admin_manageinfo_title=${result_Vo.admin_manageinfo_title}">수정</a>
+			</c:if>
 		</div>
 		 
 		<!-- 테이블 -->
@@ -21,7 +24,7 @@
 						</tr>
 						<tr>		 
 							<th class="bg-info-300 py-2 text-center">클래스</th> 
-							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_subject }&nbsp;/&nbsp;${result_Vo.admin_manageinfo_class }</td>
+							<td class="border bg-white px-4 py-2 text-left">${result_Vo.admin_manageinfo_title}&nbsp;/&nbsp;${result_Vo.admin_manageinfo_subject }&nbsp;/&nbsp;${result_Vo.admin_manageinfo_class }</td>
 						</tr>
 						<tr>		
 							<th class="bg-info-300  py-2 text-center">강의 일자</th>
@@ -112,8 +115,10 @@
 				<div class="p-3"></div> 
 			
 				<div class="text-right">  
-					<input type="hidden"  name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
-					<input type="submit" value="결제" class="bg-info-700 text-white rounded py-2 px-4"/>
+					<input type="hidden" name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
+					<c:if test="${employee_name == '관리자'}">	
+						<input type="submit" value="결제" class="bg-info-700 text-white rounded py-2 px-4"/>
+					</c:if>
 					<!-- 목록으로 가는 버튼 -->		
 				</div>
 			</form>	

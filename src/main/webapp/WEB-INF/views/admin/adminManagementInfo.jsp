@@ -8,8 +8,8 @@
 		<div class="p-3 mb-4 w-full flex bg-gray-300 items-center flex">
 			<div class="inline-block relative mx-2">
 				<select name="employee_no" onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?admin_manageinfo_ok=${selectOk}&admin_manageinfo_subject=${selectSubject }&employee_no='+ this.value" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-					<option value="-1" <c:if test="${i.employee_no == selectNo}">selected</c:if>>::강사::</option>
-					<c:forEach var="i" items="${nameList}">    
+					<option <c:if test="${i.employee_no == -1}">selected</c:if> value="-1">::강사::</option>
+					<c:forEach var="i" items="${nameList}">     
 						<option value="${i.employee_no}" <c:if test="${i.employee_no == selectNo}">selected</c:if>>${i.employee_name}</option>		 			
 					</c:forEach>
 				</select>
@@ -57,7 +57,7 @@
 					<tr class="bg-white hover:bg-gray-200"> 
 						<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_no} </a></td>
 						<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_date} </a></td>
-						<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_subject} </a></td>
+						<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.admin_manageinfo_title}&nbsp;&nbsp;/&nbsp;&nbsp;${vo.admin_manageinfo_subject} </a></td>
 						<td class="border  text-center p-2"><a href="<%=projectPath%>/admin/adminManageView?admin_manageinfo_no=${vo.admin_manageinfo_no}">${vo.employee_name} </a></td>
 						
 						
@@ -76,8 +76,10 @@
 			</table>
 			<div class="p-3"></div>
 			<!-- 테이블 end -->
-			<div class="text-right">
-				<a href="<%=projectPath%>/admin/adminManageRegi" class="bg-info-700 text-white rounded py-2 px-4">등록</a>
+			<div class="text-right"> 
+				<c:if test="${employee_name != '관리자' }">
+					<a href="<%=projectPath%>/admin/adminManageRegi" class="bg-info-700 text-white rounded py-2 px-4">등록</a>
+				</c:if>
 			</div>
 		</div>
 			

@@ -41,7 +41,7 @@ white-space: nowrap;
 								<div class="event-row sm:flex border-t border-gray-300 py-12 fadeUp"><!-- event-row -->
 									<div class="event-date flex-shrink-0 text-brand-500 sm:text-center mr-12 flex items-end sm:block">
 										<div class="date text-6xl font-bold">${vo.admin_notice_DD_date}</div>
-										<div class="month">${vo.admin_notice_date }년&nbsp;${vo.admin_notice_MM_date}월</div>
+										<div class="month">20${vo.admin_notice_date }년&nbsp;${vo.admin_notice_MM_date}월</div>
 									</div>
 									<div class="flex-auto event-content relative px-4 pt-4 lg:px-16 sm:pt-0">
 										<h2 class="font-bold hover:text-brand-500 duration-500"><a href="<%=ctx%>/eventDetail?no=${vo.admin_notice_no}&pageNum=${pvo.pageNum}">${vo.admin_notice_title}</a></h2>

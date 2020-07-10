@@ -120,10 +120,6 @@
 		
 	
 	</insert>
-	
-	
-	
-
 	<update id="updateNotice" 
 			parameterType="kr.co.lms.admin.VO.AdminNoticeVO">
 		UPDATE 
@@ -138,5 +134,12 @@
 			admin_notice_no = #{admin_notice_no} 
 	</update>
 
+	<delete id="delNotice"
+			parameterType="int">
+		DELETE FROM
+			admin_notice
+		WHERE
+			admin_notice_no=#{param1}
+	</delete>
 	 
 </mapper>

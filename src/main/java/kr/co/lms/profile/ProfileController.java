@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -56,7 +57,7 @@ public class ProfileController {
 		vo.setStudent_no(no);
 		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
 		MemberDAOImp memDao = sqlSession.getMapper(MemberDAOImp.class);
-		MypageVO vo2 = dao.memberMypageDetailInfo(no);
+		MypageVO vo2 = dao.memberMypageDetailInfo(no,course_no);
 		MemberVO mVo = memDao.memberPaymentRecord(vo);
 		mav.addObject("vo",mVo);
 		mav.addObject("info",vo2);
@@ -151,16 +152,18 @@ public class ProfileController {
 	@RequestMapping(value="/schedule/getTimeTable", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public String getTimeTable(HttpServletRequest req) {
-		HttpSession sess = req.getSession();
-		int student_no = (Integer)sess.getAttribute("student_no");
 		
 		MypageDAOImp dao = sqlSession.getMapper(MypageDAOImp.class);
-		List<CourseVO> list = dao.selectTimeTable(student_no);
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
+		HttpSession sess = req.getSession();
+		
+		int student_no = (Integer)sess.getAttribute("student_no");
+		
+		List<CourseVO> list = dao.selectTimeTable(student_no);
 		List<AdminCalendarVO> admin_cal_list = adminRegiInter.selectAllCalendar();
 		
 		JsonArray jsonArr = new JsonArray();
-		Gson gson = new Gson();
+		Gson gson =  new GsonBuilder().setPrettyPrinting().create();
 		String jsonVal = "";
 		
 		for(int i=0; i<admin_cal_list.size(); i++) {
@@ -174,19 +177,22 @@ public class ProfileController {
 			jsonObj.addProperty("id", vo.getCalendar_no());
 			jsonArr.add(jsonObj);
 		}
+		
 		for(int i=0; i<list.size(); i++) {
 			CourseVO vo = list.get(i);
 			JsonObject jsonObj = new JsonObject();
 			
 			jsonObj.addProperty("title", vo.getCourse_name());
 			jsonObj.addProperty("start", vo.getCourse_start_date());
-			jsonObj.addProperty("end", vo.getCourse_end_date());
-			jsonObj.addProperty("description", vo.getCourse_time());
-			jsonArr.add(jsonObj);
+			jsonObj.addProperty("end", vo.getCourse_end_date()); 
+			jsonObj.addProperty("description", vo.getCourse_time()  + vo.getCourse_stage()); 
+			jsonArr.add(jsonObj);  
+			
+			
 		}
 		
 		jsonVal = gson.toJson(jsonArr);
-		System.out.println(jsonVal);
+		System.out.println("실험 : " +  jsonVal);
 		return jsonVal;
 	}
 	

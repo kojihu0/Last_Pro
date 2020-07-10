@@ -485,29 +485,29 @@ $(function(){
 $(function(){
 	$('#ajaxButton1').click(function () {  
 	    if($("#pContent1").css("display") == "none"){ 
-	       $("#ajaxButton1").val("내용닫기");
+	       $(this).val("내용닫기");
 	       $('#pContent1').show();  
 	    } else {  
-	    	$("#ajaxButton1").val("내용보기");
+	    	$(this).val("내용보기");
 	        $('#pContent1').hide();  
 	    }  
 	})
 	$('#ajaxButton2').click(function () {  
 	    if($("#pContent2").css("display") == "none"){   
-	       $("#ajaxButton2").val("내용닫기");
+	       $(this).val("내용닫기");
 	       $('#pContent2').show();  
 	    } else {  
-	    	$("#ajaxButton2").val("내용보기");
+	    	$(this).val("내용보기");
 	        $('#pContent2').hide();  
-	    }  
+	    }  //this 선택자 자신
 	})
 	$('#ajaxButton3').click(function () {  
 	    if($("#pContent3").css("display") == "none"){   
 	       $('#pContent3').show();  
-	       $("#ajaxButton3").val("내용닫기");
+	       $(this).val("내용닫기");
 	    } else {  
 	        $('#pContent3').hide();  
-	    	$("#ajaxButton3").val("내용보기");
+	    	$(this).val("내용보기");
 	    }  
 	})
 });
