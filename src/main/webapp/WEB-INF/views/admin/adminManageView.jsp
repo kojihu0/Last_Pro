@@ -115,7 +115,7 @@
 				<div class="p-3"></div> 
 			
 				<div class="text-right">  
-					<input type="hidden"  name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
+					<input type="hidden" name="admin_manageinfo_no" value="${result_Vo.admin_manageinfo_no}"/> 
 					<c:if test="${employee_name == '관리자'}">	
 						<input type="submit" value="결제" class="bg-info-700 text-white rounded py-2 px-4"/>
 					</c:if>

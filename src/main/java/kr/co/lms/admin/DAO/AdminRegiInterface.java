@@ -58,7 +58,6 @@ public interface AdminRegiInterface {
 
 	public AdminManageInfoVO selectManageinfoNameAndNo(String id);
 	
-
 	public List<AdminManageInfoVO> selectManageInfo(AdminStudentPagingVO pVo);
 
 	public AdminManageInfoVO selectOneRecord(int no);

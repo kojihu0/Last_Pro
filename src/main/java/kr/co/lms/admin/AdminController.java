@@ -277,14 +277,7 @@ public class AdminController {
 		List<AdminCourseVO>titleNamesList = adminRegiInter.selectAdminCourseName(employee_name);
 		//작성했었던 업무일지 과목명.
 		String checkSubject = vo.getAdmin_manageinfo_title();
-		
-		System.out.println("checkSubject ::: " + checkSubject);
-		System.out.println("titleNamesList ::: " + titleNamesList.size()); 
-		
-		for(int i = 0; i<titleNamesList.size(); i++) {
-			System.out.println("titleNamesList ::: " + titleNamesList.get(i).getCourse_name());
-		}
-		
+		 
 		if(titleNamesList.size() > 0) {
 			mav.addObject("checkSubject", checkSubject);
 			mav.addObject("titleNamesList", titleNamesList);
@@ -294,8 +287,6 @@ public class AdminController {
 		}else { 
 			mav.setViewName("redirect : admin/adminManagementInfo");
 		}	
-		
-		
 		
 		AdminManageInfoVO result_Vo = adminRegiInter.selectOneRecord(vo.getAdmin_manageinfo_no()); 
 		
@@ -368,6 +359,9 @@ public class AdminController {
 		
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 		 
+		
+		System.out.println("4번");
+		
 		//한페이지에 보이는 숫자 확인.
 		pVo.setOnePageRecord(5);
 		pVo.setOnePageCount(3);
@@ -377,6 +371,7 @@ public class AdminController {
 		if(pVo.getSearchKey() != null) {
 			searchKeyInt = Integer.parseInt(pVo.getSearchKey()); 
 		}
+		
 		int result_totalPage = adminRegiInter.selectNoticeTotalRecord(pVo);
 		//현재 페이지 설정 및 토탈 레코드 확인.
 		pVo.setPageNum(pVo.getPageNum());
@@ -515,8 +510,22 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/adminNoticeDel")
-	public String adminNoticeDel() {
-		return "admin/adminNotice";
+	public ModelAndView adminNoticeDel(AdminNoticeVO vo) {
+		ModelAndView mav = new ModelAndView();
+		
+		AdminRegiInterface adminRegiInter	= sqlSession.getMapper(AdminRegiInterface.class);
+	
+		int result_Int = adminRegiInter.delNotice(vo.getAdmin_notice_no());
+		System.out.println("1번");
+		if(result_Int > 0) {
+			System.out.println("2번"); 
+			mav.setViewName("redirect:/admin/adminNotice");
+			
+		}else { 
+			System.out.println("3번");
+			mav.setViewName("redirect:/admin/adminNotice");
+		}
+		return mav;
 	}
 //-------------------------------------------------------------	
 		//강사 리스트 뿌리기

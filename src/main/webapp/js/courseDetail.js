@@ -9,7 +9,7 @@ $(function(){
 		else {
 			$("#stickyNav").addClass('sticky-nav');
 		}
-	}
+	} 
 
 	/*별점*/
 	$('#stars li').on('mouseover', function(){
