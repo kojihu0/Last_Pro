@@ -277,6 +277,14 @@ public class AdminController {
 		List<AdminCourseVO>titleNamesList = adminRegiInter.selectAdminCourseName(employee_name);
 		//작성했었던 업무일지 과목명.
 		String checkSubject = vo.getAdmin_manageinfo_title();
+		
+		System.out.println("checkSubject ::: " + checkSubject);
+		System.out.println("titleNamesList ::: " + titleNamesList.size()); 
+		
+		for(int i = 0; i<titleNamesList.size(); i++) {
+			System.out.println("titleNamesList ::: " + titleNamesList.get(i).getCourse_name());
+		}
+		
 		if(titleNamesList.size() > 0) {
 			mav.addObject("checkSubject", checkSubject);
 			mav.addObject("titleNamesList", titleNamesList);

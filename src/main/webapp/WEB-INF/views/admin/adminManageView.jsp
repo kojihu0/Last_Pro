@@ -7,8 +7,11 @@
 		</div>
 		 
 		<div class="p-3 text-right">  
-			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
-			<a  class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}&admin_manageinfo_title=${result_Vo.admin_manageinfo_title}">수정</a>
+			<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManagementInfo">목록으로</a>
+			
+			<c:if test="${employee_name != '관리자' || employee_name == result_Vo.employee_name}"> 
+				<a class="bg-info-700 text-white rounded py-2 px-4" href="<%=projectPath%>/admin/adminManageEdit?admin_manageinfo_no=${result_Vo.admin_manageinfo_no}&admin_manageinfo_title=${result_Vo.admin_manageinfo_title}">수정</a>
+			</c:if>
 		</div>
 		 
 		<!-- 테이블 -->
