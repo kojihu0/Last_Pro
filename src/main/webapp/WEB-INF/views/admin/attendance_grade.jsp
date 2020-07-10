@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
 	<div class="h-10 text-lg my-6">
-		<i class="xi-school"></i><span class="ml-2">반별출결 및 과제관리</span>
+		<i class="xi-school"></i><span class="ml-2">반별출결 현황</span>
 	</div>
 	<form action="/lms/attendance_grade" class="w-full flex bg-gray-300 items-center">
 		<div class="mx-3 w-5/6">

@@ -55,7 +55,7 @@ $(function(){
 			return false;
 		}else{
 			//아이디 중복 체크 
-			window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=300px");
+			window.open("<%=ctx%>/idCheck?userid="+$('#userId').val(),"userIdChk","width=400px, height=200px");
 		}
 	});
 });
