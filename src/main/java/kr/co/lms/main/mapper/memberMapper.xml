@@ -6,11 +6,11 @@
  	<insert id="memberRegister" parameterType="kr.co.lms.main.VO.MemberVO">
  		<if test="student_tel_phone != null and student_tel_phone != ''">
 	 		insert into student(student_no,student_id,student_pw,student_name_ko,student_tel_phone,student_email,student_regi_date)
-	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_tel_phone},#{student_email},sysdate)
+	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_tel_phone},#{student_email},to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'))
  		</if>
  		<if test="student_tel_phone == null or student_tel_phone == ''">
  			insert into student(student_no,student_id,student_pw,student_name_ko,student_email,student_regi_date)
-	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_email},sysdate)
+	 		values(student_sq.nextval,#{student_id},#{student_pw},#{student_name_ko},#{student_email},to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'))
  		</if>
  	</insert>
  	<select id="memberLogin" parameterType="kr.co.lms.main.VO.MemberVO" resultType="kr.co.lms.main.VO.MemberVO">
@@ -48,6 +48,6 @@
  	</delete>
  	<insert id="studentStautsInsert"  parameterType="kr.co.lms.main.VO.paymentVO">
  		insert into STUDENT_COURSE_STATE(STUDENT_COURSE_STATE_NO,PAYMENT_NO,STUDENT_NO,STUDENT_COURSE_STATE_DATE,STATE) 
- 		values(STUDENT_COURSE_STATE_SQ.nextval,#{payment_no},#{student_no},sysdate,0) 
+ 		values(STUDENT_COURSE_STATE_SQ.nextval,#{payment_no},#{student_no},to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'),0) 
  	</insert>
 </mapper>
