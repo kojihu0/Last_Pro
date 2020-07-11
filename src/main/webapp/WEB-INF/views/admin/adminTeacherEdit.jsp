@@ -157,7 +157,6 @@
 		<div class="p-3 text-right">  
 			<input type="submit" value="수정 " class="bg-info-200 border-black border font-bold py-2 px-4 rounded"/>
 			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherList">수정취소</a> 
-			<a class="bg-info-200 border-black border font-bold py-2 px-4 rounded" href="<%=projectPath %>/admin/adminTeacherDel?employee_no=${vo.employee_no}">삭제</a> 
 		</div>
 	</form>
 </div>

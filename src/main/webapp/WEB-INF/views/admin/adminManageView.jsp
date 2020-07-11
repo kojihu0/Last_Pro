@@ -45,7 +45,7 @@
 				
 				<div class="p-3"></div>
 				
-				<!-- 2번째 테이블 -->
+				<!-- 2번째 테이블 66-->
 				<table class="w-full">
 					<thead>
 					<tr>

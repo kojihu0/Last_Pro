@@ -79,12 +79,12 @@
 		</c:if>	    
 		 
 		<c:if test="${pageVo.pageNum > 1 }"> 
-			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-left text-2xl"></i></a>
+			<a href="<%=projectPath %>/admin/adminTeacherList?pageNum=${pageVo.pageNum -1}<c:if test="${employee_rank != null || employee_class != null || searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-left text-2xl"></i></a>
 		</c:if>
 		 
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount-1}" > 
 			<c:if test="${i <= pageVo.totalPage }">
-				<a class="text-2xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
+				<a class="text-2xl" href="<%=projectPath %>/admin/adminTeacherList?pageNum=${i}<c:if test="${employee_rank != null || employee_class != null || searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>  
 		 
@@ -92,8 +92,8 @@
 		<c:if test="${pageVo.pageNum == pageVo.totalPage }">
 			<i class="xi-angle-right text-2xl"></i> 
 		</c:if> 
-		<c:if test="${pageVo.pageNum < pageVo.totalPage }"> 
-			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null && employee_class != null && searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-right text-2xl"></i></a> 
+		<c:if test="${pageVo.pageNum < pageVo.totalPage }">  
+			<a href="<%=projectPath%>/admin/adminTeacherList?pageNum=${pageVo.pageNum + 1}<c:if test="${employee_rank != null || employee_class != null || searchNameT != null}">&employee_rank=${employee_rank }&employee_class=${employee_class }&searchNameT=${searchNameT }</c:if>"><i class="xi-angle-right text-2xl"></i></a> 
 		</c:if>
 	</div>
 		
