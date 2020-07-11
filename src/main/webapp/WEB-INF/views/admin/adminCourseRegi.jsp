@@ -6,7 +6,7 @@
 			<i class="xi-school"></i>&nbsp;강좌 등록
 		</div>
 		<div class="p-3 flex justify-center">
-			<form method="post" action="/lms/admin/adminCourseRegiOk" onsubmit="return checkRegCourseRegi()">
+			<form method="post" action="/lms/admin/adminCourseRegiOk" enctype="multipart/form-data" onsubmit="return checkRegCourseRegi()">
 				<table>
 					<thead>
 						<tr>
@@ -133,7 +133,7 @@
 						<tr>
 							<th class="bg-info-300 p-3 w-32">강의 이미지</th>
 							<td class="p-3"> 
-								<input class="border border-black" type="file" name="course_img" value="${vo.course_img }"/>
+								<input class="border border-black" type="file" name="course_img_m" value="${vo.course_img }"/>
 							</td>
 						</tr>
 						<tr>
