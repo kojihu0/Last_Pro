@@ -100,13 +100,13 @@
 		SET  
 			course_reception_start 	= #{course_reception_start},
 			course_reception_end 	= #{course_reception_end},
-			course_start_date 		= #{course_start_date}, 
-			course_end_date = #{course_end_date},
+			course_start_date 		= to_date(#{course_start_date}, 'YYYY-MM-DD'), 
+			course_end_date = to_date(#{course_end_date}, 'YYYY-MM-DD'),
 			course_price 	= #{course_price},
 			course_overview = #{course_overview},
 			course_content 	= #{course_content},
 			course_textbook = #{course_textbook},
-			course_date 	= #{course_date},
+			course_date 	= to_date(#{course_date}, 'YYYY-MM-DD'),
 			course_state 	= #{course_state},
 			course_day 		= #{course_day}, 
 			course_time 	= #{course_time},
@@ -166,8 +166,8 @@
 			#{course_price},
 			#{course_reception_start},
 			#{course_reception_end},
-			#{course_start_date},
-			#{course_end_date},
+			to_date(#{course_start_date}, 'YYYY-MM-DD'),
+			to_date(#{course_end_date}, 'YYYY-MM-DD'),
 			#{course_state},
 			#{course_overview},
 			#{course_content}, 
@@ -175,7 +175,7 @@
 			#{course_day},
 			#{course_time},
 			#{course_stage},
-			#{course_date},
+			to_date(#{course_date}, 'YYYY-MM-DD'),
 			#{course_img}
 		)
 	</insert>

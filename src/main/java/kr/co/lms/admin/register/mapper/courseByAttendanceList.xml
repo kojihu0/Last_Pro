@@ -56,10 +56,10 @@
 	</select>
 	<insert id="studentAttendanceOk" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
 		insert into attendance(attendance_no, student_no, payment_no, attendance_date, attendance_state, attendance_reason, course_no)
-		values(attendance_sq.nextval, #{param1}, (select payment_no from payment where student_no=#{param1} and course_no=#{param4}), to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'), #{param2}, #{param3}, #{param4})
+		values(attendance_sq.nextval, #{param1}, (select payment_no from payment where student_no=#{param1} and course_no=#{param4}), sysdate, #{param2}, #{param3}, #{param4})
 	</insert>
 	<update id="studentAttendanceOk2" parameterType="kr.co.lms.admin.VO.StudentByCourseVO">
-		update attendance set attendance_date=to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'), attendance_state=#{param2}, attendance_reason=#{param3} where student_no=#{param1} and payment_no=(select payment_no from payment where student_no=#{param1} and course_no=#{param4})
+		update attendance set attendance_date=sysdate, attendance_state=#{param2}, attendance_reason=#{param3} where student_no=#{param1} and payment_no=(select payment_no from payment where student_no=#{param1} and course_no=#{param4})
 	</update>
 	<select id="selectAttendanceIndividual" resultType="kr.co.lms.admin.VO.StudentByCourseVO">
 		select s.student_no, c.course_no, s.student_name_ko, s.student_name_eng, TO_CHAR(a.attendance_date, 'YYYY-MM-DD') attendance_date,

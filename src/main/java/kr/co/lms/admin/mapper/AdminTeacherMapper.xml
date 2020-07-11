@@ -135,7 +135,7 @@
 			employee_img       = #{employee_img},
 			employee_rank      = #{employee_rank},
 			employee_subject   = #{employee_subject},
-			employee_date	   = to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'),
+			employee_date	   = sysdate,
 			employee_overview  = #{employee_overview}
 		WHERE
 			employee_no = #{employee_no}

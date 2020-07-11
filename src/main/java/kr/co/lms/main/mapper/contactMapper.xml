@@ -5,6 +5,6 @@
 <mapper namespace="kr.co.lms.main.DAO.ContactDAOImp">
 	<insert id="insertContact" parameterType="kr.co.lms.main.VO.ContactVO">
 		insert into contact(contact_no, contact_name, contact_email, contact_tel, contact_content, contact_date)
-		values(contact_sq.nextVal, #{contact_name}, #{contact_email}, #{contact_tel}, #{contact_content}, TO_DATE(sysdate, 'YYYY-MM-DD'))
+		values(contact_sq.nextVal, #{contact_name}, #{contact_email}, #{contact_tel}, #{contact_content}, sysdate)
 	</insert>
 </mapper>

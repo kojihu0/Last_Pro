@@ -111,7 +111,7 @@
 		select student_no, payment_no, refund_price, refund_method, to_char(refund_date, 'YYYY-MM-DD') refund_date, refund_reason, refund_memo from payment where student_no=#{param1} and payment_no=#{param2}
 	</select>
 	<insert id="CancelRecordInsert" parameterType="kr.co.lms.admin.VO.CancelRegisterVO">
-		update payment set refund_price=#{refund_price}, refund_reason=#{refund_reason}, refund_method=#{refund_method}, refund_date=#{refund_date}, refund_memo=#{refund_memo} where student_no=#{student_no} and payment_no=#{payment_no}
+		update payment set refund_price=#{refund_price}, refund_reason=#{refund_reason}, refund_method=#{refund_method}, refund_date=to_date(#{refund_date}, 'YYYY-MM-DD'), refund_memo=#{refund_memo} where student_no=#{student_no} and payment_no=#{payment_no}
 	</insert>
 	<select id="selectPaymentRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
 		select student_no, payment_no, payment_name, to_char(payment_date, 'YYYY-MM-DD') payment_date, course_name, to_char(course_start_date,'YYYY-MM-DD') course_start_date,
@@ -119,7 +119,7 @@
 		from payment p join course c on c.course_no=p.course_no where student_no=#{param1} and payment_no=#{param2}
 	</select>
 	<update id="updatePaymentRecord" parameterType="kr.co.lms.admin.VO.CancelRegisterVO">
-		update payment set payment_price=#{payment_price}, payment_method=#{payment_method}, payment_date=#{payment_date}, payment_memo=#{payment_memo} where student_no=#{student_no} and payment_no=#{payment_no}
+		update payment set payment_price=#{payment_price}, payment_method=#{payment_method}, payment_date=to_date(#{payment_date}, 'YYYY-MM-DD'), payment_memo=#{payment_memo} where student_no=#{student_no} and payment_no=#{payment_no}
 	</update>
 	<select id="selectReturnRecord" resultType="kr.co.lms.admin.VO.CancelRegisterVO">
 		select student_no, payment_name (select course_start_date from course where course_no=(select course_no from payment where student_no=#{param1})) course_start_date, (select course_name from course where course_no=(select course_no from payment where student_no=#{param1})) course_name, payment_price, payment_method, 

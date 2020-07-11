@@ -17,6 +17,6 @@
 				#{employee_name}, 
 				#{admin_id}, 
 				#{admin_pw}, 
-				to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'))			
+				sysdate)			
 	</insert> 
 </mapper>

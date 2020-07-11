@@ -26,7 +26,7 @@
 			#{calendar_content},
 			TO_DATE(#{calendar_start_date}, 'YYYY-MM-DD'),
 			TO_DATE(#{calendar_end_date}, 'YYYY-MM-DD'),
-			TO_DATE(SYSDATE, 'YYYY-MM-DD') 
+			sysdate 
 		)
 			
 	</insert>
@@ -38,7 +38,7 @@
 		SET
 			calendar_start_date = TO_DATE(#{calendar_start_date}, 'YYYY-MM-DD'),
 			calendar_end_date = TO_DATE(#{calendar_end_date}, 'YYYY-MM-DD'),
-			calendar_date = TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			calendar_date = sysdate,
 			calendar_title = #{calendar_title},
 			calendar_color = #{calendar_color},
 			calendar_content = #{calendar_content}

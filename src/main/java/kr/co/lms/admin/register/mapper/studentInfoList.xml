@@ -22,7 +22,7 @@
 		insert into student(student_no, student_name_ko, student_name_eng, student_img, student_gender, student_birthday, student_tel_phone, student_email, student_tel_house, student_id, student_pw, student_tel_parent, student_parent_email, student_parent_state, student_parent_name,
 							student_addr_no, student_addr_main, student_addr_sub, student_motive, student_interest, student_memo, student_regi_date)
 		values(student_sq.nextval, #{student_name_ko}, #{student_name_eng}, #{student_img}, #{student_gender}, #{student_birthday}, #{student_tel_phone}, #{student_email}, #{student_tel_house}, #{student_id}, #{student_pw}, #{student_tel_parent}, #{student_parent_email}, #{student_parent_state}, #{student_parent_name},
-				#{student_addr_no}, #{student_addr_main}, #{student_addr_sub}, #{student_motive}, #{student_interest}, #{student_memo}, #{student_regi_date})
+				#{student_addr_no}, #{student_addr_main}, #{student_addr_sub}, #{student_motive}, #{student_interest}, #{student_memo}, to_date(#{student_regi_date}, 'YYYY-MM-DD'))
 	</insert>
 	<select id="studentSelectDetail" resultType="kr.co.lms.admin.VO.StudentInfoVO">
 		select student_no, student_img, student_lately_course, student_name_ko, student_name_eng, student_gender, to_char(student_birthday,'YYYY-MM-DD') student_birthday, student_tel_phone, student_email,
@@ -33,7 +33,7 @@
 		update student set student_img=#{student_img}, student_name_ko=#{student_name_ko}, student_name_eng=#{student_name_eng}, student_gender=#{student_gender}, student_birthday=#{student_birthday},
 		student_tel_phone=#{student_tel_phone}, student_email=#{student_email}, student_tel_house=#{student_tel_house}, student_id=#{student_id}, student_tel_parent=#{student_tel_parent}, student_parent_email=#{student_parent_email},
 		student_parent_state=#{student_parent_state}, student_parent_name=#{student_parent_name}, student_addr_no=#{student_addr_no}, student_addr_main=#{student_addr_main}, student_addr_sub=#{student_addr_sub}, student_motive=#{student_motive},
-		student_interest=#{student_interest}, student_memo=#{student_memo}, student_regi_date=#{student_regi_date} where student_no=#{student_no}
+		student_interest=#{student_interest}, student_memo=#{student_memo}, student_regi_date=to_date(#{student_regi_date}, 'YYYY-MM-DD') where student_no=#{student_no}
 	</update>
 	<select id="studentPaymentInfo" resultType="kr.co.lms.admin.VO.StudentPaymentInfoVO">
 		select p.payment_date payment_date, to_char(course_start_date,'YYYY-MM-DD') course_start_date, c.course_name course_name, p.payment_price payment_price, e.employee_name employee_name from payment p join course c
@@ -43,7 +43,7 @@
 		select student_no, counseling_no, counseling_date, counseling_division, counseling_title, counseling_content from counseling where student_no=#{param1}
 	</select>
 	<insert id="studentCounselingInsert" parameterType="kr.co.lms.admin.VO.StudentCounselingVO">
-		insert into counseling (counseling_no, student_no, counseling_date, counseling_division, counseling_title, counseling_content) values(counseling_sq.nextval, #{student_no}, to_date(sysdate, 'YYYY-MM-DD HH24:MI:SS'), #{counseling_division}, #{counseling_title}, #{counseling_content})
+		insert into counseling (counseling_no, student_no, counseling_date, counseling_division, counseling_title, counseling_content) values(counseling_sq.nextval, #{student_no}, sysdate, #{counseling_division}, #{counseling_title}, #{counseling_content})
 	</insert>
 	<delete id="studentCounselingDelete">
 		delete from counseling where student_no=#{param1} and counseling_no=#{param2}
@@ -65,7 +65,7 @@
 		update student_course_state set student_course_state_date=to_date(#{student_course_state_date},'YYYY-MM-DD'), state=#{state} where student_no=#{student_no}
 	</update>
 	<update id="closedOutOk"  parameterType="kr.co.lms.admin.VO.StudentClassInfoVO">
-		update student_course_state set state=#{state}, student_course_state_date=#{student_course_state_date} where student_no=#{student_no}
+		update student_course_state set state=#{state}, student_course_state_date=to_date(#{student_course_state_date},'YYYY-MM-DD') where student_no=#{student_no}
 	</update>
 	<select id="studentAttendace" resultType="kr.co.lms.admin.VO.StudentAttendanceVO">
 		select c.course_name course_name, c.course_day course_day, to_char(c.course_start_date,'YYYY-MM-DD') course_start_date,

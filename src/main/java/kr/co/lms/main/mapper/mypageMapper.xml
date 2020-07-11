@@ -89,7 +89,7 @@
    			student_no = #{student_no}
  	</select>
  	<update id="updateSysdate">
- 	update course set COURSE_PROGRESS = to_date(sysdate, 'YYYY-MM-DD HH:MI:SS') 
+ 	update course set COURSE_PROGRESS = sysdate 
  	</update>
  	<select id="courseProgess"  resultType="kr.co.lms.main.VO.MypageVO">
  	SELECT  to_date(course_end_date, 'YYYY-MM-DD') - to_date(course_progress,'YYYY-MM-DD')course_progress FROM  course where course_no=#{param1}
