@@ -89,7 +89,7 @@
 		
 		<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.startPage + pageVo.onePageCount - 1}" > 
 			<c:if test="${i <= pageVo.totalPage }"> 
-				<a class="text-2xl" href="<%=projectPath %>/admin/adminCourseList?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null || pageVo.searchKey_02 != null || pageVo.searchWord != null}">&searchKey_01=${pageVo.searchKey_01 }&searchKey_02=${pageVo.searchKey_02 }&searchWord=${pageVo.searchWord } }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
+				<a class="text-2xl" href="<%=projectPath %>/admin/adminCourseList?pageNum=${i}<c:if test="${pageVo.searchKey_01 != null || pageVo.searchKey_02 != null || pageVo.searchWord != null}">&searchKey_01=${pageVo.searchKey_01 }&searchKey_02=${pageVo.searchKey_02 }&searchWord=${pageVo.searchWord }</c:if>"<c:if test="${i == pageVo.pageNum }">style='color:red'</c:if>> ${i}</a> 
 			</c:if>
 		</c:forEach>   
 		 
