@@ -1,5 +1,7 @@
 package kr.co.lms.admin.VO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdminCourseVO {
 
 	private int 	course_no;
@@ -20,8 +22,15 @@ public class AdminCourseVO {
 	private String 	course_stage;
 	private String 	course_date;
 	private String 	course_img;
+	private MultipartFile course_img_m;
 	
 	
+	public MultipartFile getCourse_img_m() {
+		return course_img_m;
+	}
+	public void setCourse_img_m(MultipartFile course_img_m) {
+		this.course_img_m = course_img_m;
+	}
 	public String getEmployee_name() {
 		return employee_name;
 	}

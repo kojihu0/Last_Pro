@@ -786,11 +786,37 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		AdminRegiInterface adminRegiInter = sqlSession.getMapper(AdminRegiInterface.class);
 
+		String price = vo.getCourse_price();
+		String priceUncomma = price.replaceAll(",", ""); 
+
+		int result_price = Integer.parseInt(priceUncomma);
+	
+		vo.setCourse_price(priceUncomma);
+		
+		
+		//파일 업로드를 위한 작업.
+		  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+	      String paramName 		= vo.getCourse_img_m().getName();
+	      String img 			= vo.getCourse_img_m().getOriginalFilename();
+	      
+	      try {
+		      if(img != null) {
+		    	  vo.getCourse_img_m().transferTo(new File(path, img));
+		    	  
+		    	  vo.setCourse_img(img);  
+		      }else { 
+		    	  vo.setCourse_img(vo.getCourse_img());
+		      }
+	      }catch(Exception e) {
+	    	  
+	      } 
+	      
 		int result_Int = adminRegiInter.updateCourse(vo);
 		
 		if(result_Int > 0) {
 			mav.setViewName("redirect:/admin/adminCourseList");   
 		}else { 
+			deleteFile(path, img); 
 			mav.addObject("vo", vo);
 			mav.setViewName("redirect:/admin/adminCourseEdit");
 		}
@@ -847,11 +873,31 @@ public class AdminController {
 		
 			vo.setCourse_price(priceUncomma);
 			
+			//==================================
+			//파일 업로드를 위한 작업.
+			  String path 	 		= request.getSession().getServletContext().getRealPath("/img");
+		      String paramName 		= vo.getCourse_img_m().getName();
+		      String img 			= vo.getCourse_img_m().getOriginalFilename();
+		      
+		      try {
+			      if(img != null) {
+			    	  vo.getCourse_img_m().transferTo(new File(path, img));
+			    	  vo.setCourse_img(img);  
+			      }else { 
+			    	  vo.setCourse_img(vo.getCourse_img());
+			      }
+		      }catch(Exception e) {
+		    	  
+		      } 
+
+			//===================================
+			
 			int result_Int = adminRegiInter.insertCourse(vo); 
 			
 			if(result_Int > 0) {
 				mav.setViewName("redirect:/admin/adminCourseList");   
 			}else { 
+				deleteFile(path, img); 
 				mav.setViewName("redirect:/admin/adminCourseList"); 
 			}	
 		}
