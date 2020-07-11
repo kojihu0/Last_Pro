@@ -35,7 +35,7 @@
 						n.admin_category,
 						n.employee_no,
 						e.employee_name,
-						n.admin_notice_date,
+						to_date(n.admin_notice_date, 'YYYY-MM-DD HH:MI:SS'),
 						n.admin_notice_hit 
 					 FROM  
 						employee e JOIN admin_notice n
@@ -75,7 +75,7 @@
 			n.employee_no,
 			e.employee_name,
 			n.admin_notice_content,
-			n.admin_notice_date,
+			to_char(n.admin_notice_date, 'YYYY-MM-DD HH:MI:SS'),
 			n.admin_notice_hit
 		FROM   
 			employee e JOIN admin_notice n
@@ -112,7 +112,7 @@
 			admin_notice_sq.nextval,
 			#{admin_notice_title},
 			#{admin_notice_content},
-			SYSDATE,
+			to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'),
 			#{employee_no},
 			#{admin_category},
 			#{admin_notice_img}
@@ -127,7 +127,7 @@
 		SET
 			admin_notice_title 		= #{admin_notice_title},
 			admin_notice_content 	= #{admin_notice_content},
-			admin_notice_date 		= TO_DATE(SYSDATE, 'YYYY-MM-DD'),
+			admin_notice_date 		= TO_DATE(SYSDATE, 'YYYY-MM-DD HH:MI:SS'),
 			admin_notice_hit 		= #{admin_notice_hit},
 			admin_notice_img		= #{admin_notice_img}
 		WHERE 

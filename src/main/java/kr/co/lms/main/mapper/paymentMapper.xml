@@ -9,7 +9,7 @@
 		payment_state,payment_date,payment_division)
 		values(payment_sq.nextval,#{course_no},#{student_no},
 		#{payment_price},#{payment_name},#{payment_email},#{payment_phone},#{payment_method},
-		0,sysdate,'신규')
+		0,to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'),'신규')
 	</insert>
 	<insert id="paymentCashInsert" parameterType="kr.co.lms.main.VO.paymentVO">
 		insert into payment(payment_no,course_no,student_no,
@@ -17,7 +17,7 @@
 		payment_state,payment_date,payment_division)
 		values(payment_sq.nextval,#{course_no},#{student_no},
 		#{payment_price},#{payment_name},#{payment_email},#{payment_phone},#{payment_method},
-		0,sysdate,'신규')
+		0,to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'),'신규')
 	</insert>
 	<select id="paymentNumberRecord" parameterType="kr.co.lms.main.VO.paymentVO"  resultType="int">
 		select payment_no from payment where course_no =#{course_no} and student_no=#{student_no} 

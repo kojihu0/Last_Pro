@@ -55,7 +55,7 @@
 	</select>
 	<insert id="insertReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
 		insert into course_review(review_no, student_no, payment_no, review_content, review_date, review_rank, course_no)
-		values(review_sq.nextVal, #{student_no}, #{payment_no}, #{review_content:CLOB}, sysdate, #{review_rank}, #{course_no})
+		values(review_sq.nextVal, #{student_no}, #{payment_no}, #{review_content:CLOB}, to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'), #{review_rank}, #{course_no})
 	</insert>
 	<update id="updateReview" parameterType="kr.co.lms.main.VO.CourseReviewVO">
 		update course_review set review_content=#{review_content}, review_rank=#{review_rank} where review_no=#{review_no}
@@ -68,7 +68,7 @@
 	</select>
 	<insert id="insertWish" parameterType="kr.co.lms.main.VO.WishVO">
 		insert into wish_list(wish_no, student_no, course_no, wish_date)
-		values(wish_sq.nextVal, #{student_no}, #{course_no}, sysdate)
+		values(wish_sq.nextVal, #{student_no}, #{course_no}, to_date(sysdate, 'YYYY-MM-DD HH:MI:SS'))
 	</insert>
 	<delete id="deleteWish" parameterType="kr.co.lms.main.VO.WishVO">
 		delete from wish_list where student_no=#{student_no} and course_no=#{course_no}
