@@ -35,7 +35,7 @@
 						n.admin_category,
 						n.employee_no,
 						e.employee_name,
-						n.admin_notice_date,
+						to_date(n.admin_notice_date, 'YYYY-MM-DD HH:MI:SS'),
 						n.admin_notice_hit 
 					 FROM  
 						employee e JOIN admin_notice n
@@ -75,7 +75,7 @@
 			n.employee_no,
 			e.employee_name,
 			n.admin_notice_content,
-			n.admin_notice_date,
+			to_char(n.admin_notice_date, 'YYYY-MM-DD HH:MI:SS'),
 			n.admin_notice_hit
 		FROM   
 			employee e JOIN admin_notice n
