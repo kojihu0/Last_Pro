@@ -8,7 +8,7 @@
 		<div class="p-3 mb-4 w-full flex bg-gray-300 items-center flex">
 			<div class="inline-block relative mx-2">
 				<select name="employee_no" onChange="location.href='<%=projectPath %>/admin/adminManagementInfo?admin_manageinfo_ok=${selectOk}&admin_manageinfo_subject=${selectSubject }&employee_no='+ this.value" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-					<option <c:if test="${i.employee_no == -1}">selected</c:if> value="-1">::강사::</option>
+					<option <c:if test="${i.employee_no == -1}">selected</c:if> value="0">::강사::</option>
 					<c:forEach var="i" items="${nameList}">     
 						<option value="${i.employee_no}" <c:if test="${i.employee_no == selectNo}">selected</c:if>>${i.employee_name}</option>		 			
 					</c:forEach>
