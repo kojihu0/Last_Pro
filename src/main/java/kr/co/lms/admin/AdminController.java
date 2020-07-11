@@ -133,11 +133,21 @@ public class AdminController {
 		} 
 		//처음 들어갈 때 강사 설정.
 		if(vo.getEmployee_no() == 0) {  
+			System.out.println("여기 들어오면 됨 처음은.");
+			selectNo = -1;  
+			pVo.setSearchKey_01(selectNo);
+			vo.setEmployee_no(selectNo);
+		}   
+		
+		if(vo.getEmployee_no() == -1) {  
+			System.out.println("여기 들어오면 됨 처음은.");
 			selectNo = -1;  
 			pVo.setSearchKey_01(selectNo);
 			vo.setEmployee_no(selectNo);
 		}  
-		if(vo.getEmployee_no() != -1 || vo.getEmployee_no() != 0) { 
+		 
+		System.out.println("vo.getEmployee_no() 확인 :::" + vo.getEmployee_no());
+		if(vo.getEmployee_no() > 0) {  
 			selectNo = vo.getEmployee_no();  
 			pVo.setSearchKey_01(selectNo);
 		}	
@@ -145,7 +155,10 @@ public class AdminController {
 			selectSubject =  vo.getAdmin_manageinfo_subject();	
 			pVo.setSearchKey_02(selectSubject);  
 		}
-		pVo.setSearchKey_03(vo.getAdmin_manageinfo_ok());
+
+		pVo.setSearchKey_03(selectOk);
+
+		
 		//페이지 설정.
 		int result_totalPage = adminRegiInter.selectTotalRecordManageInfo(pVo);
 		 

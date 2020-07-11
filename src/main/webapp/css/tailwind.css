@@ -4433,7 +4433,7 @@ h3 {
   border-width: 2px;
 }
 
-.border {
+.border-4 {
   border-width: 4px;
 }
 
@@ -18645,7 +18645,7 @@ h3 {
     border-width: 2px;
   }
 
-  .sm\:border {
+  .sm\:border-4 {
     border-width: 4px;
   }
 
@@ -32854,7 +32854,7 @@ h3 {
     border-width: 2px;
   }
 
-  .md\:border {
+  .md\:border-4 {
     border-width: 4px;
   }
 
@@ -47063,7 +47063,7 @@ h3 {
     border-width: 2px;
   }
 
-  .lg\:border {
+  .lg\:border-4 {
     border-width: 4px;
   }
 
@@ -61272,7 +61272,7 @@ h3 {
     border-width: 2px;
   }
 
-  .xl\:border {
+  .xl\:border-4 {
     border-width: 4px;
   }
 
