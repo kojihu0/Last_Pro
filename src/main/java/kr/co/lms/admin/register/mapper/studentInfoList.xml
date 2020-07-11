@@ -21,7 +21,7 @@
 	<insert id="memberInsert" parameterType="kr.co.lms.admin.VO.StudentInfoVO">
 		insert into student(student_no, student_name_ko, student_name_eng, student_img, student_gender, student_birthday, student_tel_phone, student_email, student_tel_house, student_id, student_pw, student_tel_parent, student_parent_email, student_parent_state, student_parent_name,
 							student_addr_no, student_addr_main, student_addr_sub, student_motive, student_interest, student_memo, student_regi_date)
-		values(student_sq.nextval, #{student_name_ko}, #{student_name_eng}, #{student_img}, #{student_gender}, #{student_birthday}, #{student_tel_phone}, #{student_email}, #{student_tel_house}, #{student_id}, #{student_pw}, #{student_tel_parent}, #{student_parent_email}, #{student_parent_state}, #{student_parent_name},
+		values(student_sq.nextval, #{student_name_ko}, #{student_name_eng}, #{student_img}, #{student_gender}, to_date(#{student_birthday}, 'YYYY-MM-DD'), #{student_tel_phone}, #{student_email}, #{student_tel_house}, #{student_id}, #{student_pw}, #{student_tel_parent}, #{student_parent_email}, #{student_parent_state}, #{student_parent_name},
 				#{student_addr_no}, #{student_addr_main}, #{student_addr_sub}, #{student_motive}, #{student_interest}, #{student_memo}, to_date(#{student_regi_date}, 'YYYY-MM-DD'))
 	</insert>
 	<select id="studentSelectDetail" resultType="kr.co.lms.admin.VO.StudentInfoVO">
@@ -30,7 +30,7 @@
 		student_motive, student_interest, student_memo, to_char(student_regi_date,'YYYY-MM-DD') student_regi_date from student where student_no=#{param1}
 	</select>
 	<update id="studentInfoUpdate" parameterType="kr.co.lms.admin.VO.StudentInfoVO">
-		update student set student_img=#{student_img}, student_name_ko=#{student_name_ko}, student_name_eng=#{student_name_eng}, student_gender=#{student_gender}, student_birthday=#{student_birthday},
+		update student set student_img=#{student_img}, student_name_ko=#{student_name_ko}, student_name_eng=#{student_name_eng}, student_gender=#{student_gender}, student_birthday=to_date(#{student_birthday}, 'YYYY-MM-DD'),
 		student_tel_phone=#{student_tel_phone}, student_email=#{student_email}, student_tel_house=#{student_tel_house}, student_id=#{student_id}, student_tel_parent=#{student_tel_parent}, student_parent_email=#{student_parent_email},
 		student_parent_state=#{student_parent_state}, student_parent_name=#{student_parent_name}, student_addr_no=#{student_addr_no}, student_addr_main=#{student_addr_main}, student_addr_sub=#{student_addr_sub}, student_motive=#{student_motive},
 		student_interest=#{student_interest}, student_memo=#{student_memo}, student_regi_date=to_date(#{student_regi_date}, 'YYYY-MM-DD') where student_no=#{student_no}
