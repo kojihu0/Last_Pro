@@ -25,7 +25,7 @@
 				<td class="border-solid border border-gray-600 text-center p-2" style="width:250px">
 					<div class="img_wrap border-solid border border-gray-600" style="width:200px; height:200px; margin:0 auto">
 						<c:if test="${vo2.student_img != null }">
-							<img src="/lms/img/${vo.student_img}" class="student_img">
+							<img src="/lms/img/${vo2.student_img}" class="student_img">
 						</c:if >
 						<c:if test="${vo2.student_img == null }">
 							<img src="/lms/img/user-avatar.png" class="student_img">

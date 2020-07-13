@@ -43,7 +43,7 @@ public class ContactController {
 	}
 	
 	@Inject
-	JavaMailSender mailSender;
+	JavaMailSender mailSender2;
 	
 	@RequestMapping(value = "/sendContactForm", method = RequestMethod.POST)
 	@ResponseBody
@@ -56,7 +56,7 @@ public class ContactController {
 		try {
 			//구글캡차인증
 			if(VerifyRecaptcha.verify(gRecaptchaResponse)) {
-				MimeMessage msg = mailSender.createMimeMessage(); //이메일객체
+				MimeMessage msg = mailSender2.createMimeMessage(); //이메일객체
 				MimeMessageHelper helper = new MimeMessageHelper(msg, true, "utf-8");
 				String contactContent = "성함: " + vo.getContact_name() + "\r\n"
 						+ "이메일: " + vo.getContact_email() + "\r\n"
@@ -65,14 +65,14 @@ public class ContactController {
 				//수신자
 				helper.setTo(new InternetAddress("fezze779@gmail.com"));
 				//발신자(이메일주소+이름)
-				helper.setFrom(new InternetAddress("fezze779@gmail.com", "Educamp"));
+				helper.setFrom(new InternetAddress("insunok0715@naver.com", "Educamp"));
 				
 				//이메일 제목
 				helper.setSubject(vo.getContact_name()+"님으로부터 새로운 문의가 수신되었습니다.");
 				//이메일 본문
 				helper.setText(contactContent);
 				
-				mailSender.send(msg); //메일보내기
+				mailSender2.send(msg); //메일보내기
 				cnt = dao.insertContact(vo); //데이터베이스 처리
 				System.out.println(cnt);
 				if(cnt>0) {
